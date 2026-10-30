@@ -1,0 +1,3693 @@
+{
+  "format": "DXF-CAM-project",
+  "version": 3,
+  "app": "dxf-2-grbl-web",
+  "language": "de",
+  "sourceName": "cnc.dxf",
+  "sourceDxfText": " 0\r\nSECTION\r\n 2\r\nENTITIES\r\n  0\r\nPOLYLINE\r\n 8\r\nLayer0\r\n 66\r\n     1\r\n70\r\n    8\r\n 10\r\n0.0\r\n 20\r\n 0.0\r\n 30\r\n0.0\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n0.0\r\n20\r\n2.850000000000006\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n0.0\r\n20\r\n33.630000000000024\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n0.02438214508464077\r\n20\r\n34.00199964782713\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n0.09711139507615611\r\n20\r\n34.367634278542205\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n0.21694333234283322\r\n20\r\n34.720647782240526\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n0.38182759921435083\r\n20\r\n35.055000000000014\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n0.5889429801699811\r\n20\r\n35.364970072674865\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n0.8347456736183394\r\n20\r\n35.64525432638167\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n1.1150299273251463\r\n20\r\n35.891057019830036\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n1.4250000000000025\r\n20\r\n36.09817240078565\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n1.7593522177594947\r\n20\r\n36.263056667657196\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n2.112365721457815\r\n20\r\n36.382888604923856\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n2.4780003521728586\r\n20\r\n36.455617854915396\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n2.850000000000006\r\n20\r\n36.48000000000003\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n96.90000000000015\r\n20\r\n36.48000000000003\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n97.2719996478273\r\n20\r\n36.455617854915396\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n97.63763427854232\r\n20\r\n36.382888604923856\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n97.99064778224067\r\n20\r\n36.263056667657196\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n98.32500000000013\r\n20\r\n36.09817240078565\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n98.63497007267505\r\n20\r\n35.891057019830036\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n98.91525432638183\r\n20\r\n35.64525432638167\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n99.16105701983025\r\n20\r\n35.364970072674865\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n99.36817240078584\r\n20\r\n35.055000000000014\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n99.53305666765738\r\n20\r\n34.720647782240526\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n99.65288860492404\r\n20\r\n34.367634278542205\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n99.72561785491553\r\n20\r\n34.00199964782713\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n99.75000000000018\r\n20\r\n33.630000000000024\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n99.75000000000018\r\n20\r\n2.8500000000000063\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n99.72561785491551\r\n20\r\n2.4780003521728604\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n99.65288860492403\r\n20\r\n2.1123657214578166\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n99.53305666765735\r\n20\r\n1.7593522177594971\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n99.36817240078584\r\n20\r\n1.4250000000000052\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n99.16105701983025\r\n20\r\n1.1150299273251498\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n98.91525432638183\r\n20\r\n0.8347456736183434\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n98.63497007267505\r\n20\r\n0.5889429801699849\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n98.32500000000013\r\n20\r\n0.38182759921435483\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n97.99064778224063\r\n20\r\n0.21694333234283716\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n97.63763427854232\r\n20\r\n0.0971113950761601\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n97.2719996478273\r\n20\r\n0.024382145084644785\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n96.90000000000015\r\n20\r\n0.0\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n2.850000000000006\r\n20\r\n0.0\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n2.478000352172859\r\n20\r\n0.02438214508464115\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n2.1123657214578158\r\n20\r\n0.09711139507615611\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n1.7593522177594954\r\n20\r\n0.21694333234283322\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n1.4250000000000032\r\n20\r\n0.3818275992143511\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n1.1150299273251467\r\n20\r\n0.5889429801699821\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n0.8347456736183395\r\n20\r\n0.8347456736183401\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n0.5889429801699816\r\n20\r\n1.1150299273251467\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n0.3818275992143511\r\n20\r\n1.4250000000000032\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n0.2169433323428336\r\n20\r\n1.7593522177594942\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n0.09711139507615646\r\n20\r\n2.112365721457815\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n0.02438214508464077\r\n20\r\n2.4780003521728586\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n0.0\r\n20\r\n2.850000000000006\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nSEQEND\r\n  0\r\nPOLYLINE\r\n 8\r\nLayer0\r\n 66\r\n     1\r\n70\r\n    8\r\n 10\r\n0.0\r\n 20\r\n 0.0\r\n 30\r\n0.0\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n95.85486764570364\r\n20\r\n13.253472032742154\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n88.13692767298875\r\n20\r\n15.586350613915418\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n87.37631205225205\r\n20\r\n13.204870395634376\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n86.26090448062861\r\n20\r\n11.464931787176024\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n85.53734760818654\r\n20\r\n10.84404587312418\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n84.65948053792741\r\n20\r\n10.400555934515715\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n82.44081580395745\r\n20\r\n10.045763983628953\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n81.21119438513063\r\n20\r\n10.155592292483833\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n80.12737787762728\r\n20\r\n10.485077219048463\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n79.18936628144715\r\n20\r\n11.034218763322839\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n78.3971595965904\r\n20\r\n11.803016925306979\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n77.76776839604469\r\n20\r\n12.867943343387621\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n77.31820325279776\r\n20\r\n14.305469655951574\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n76.95855113820019\r\n20\r\n18.298321964529347\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n77.25988128826845\r\n20\r\n21.61363707580155\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n77.6365439758537\r\n20\r\n22.88906933460527\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n78.16387173847306\r\n20\r\n23.909684728854074\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n79.0484215338346\r\n20\r\n24.96314419817956\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n80.10793722278416\r\n20\r\n25.715615247697826\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n81.34241880532169\r\n20\r\n26.167097877408775\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n82.75186628144712\r\n20\r\n26.31759208731241\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n84.01064868253853\r\n20\r\n26.181507503410646\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n85.14306682714975\r\n20\r\n25.773253751705315\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n86.12968006043756\r\n20\r\n25.112271487039553\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n86.95104772755899\r\n20\r\n24.218001364256523\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n87.80643654065582\r\n20\r\n22.312817189631694\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n95.58269847790007\r\n20\r\n24.04303547066853\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n94.7352074308332\r\n20\r\n26.15234652114598\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n93.68966471255212\r\n20\r\n27.97004774897681\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n92.44607032305697\r\n20\r\n29.496139154160964\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n91.00442426234757\r\n20\r\n30.730620736698498\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n89.31977001609924\r\n20\r\n31.683212824010926\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n87.3471510699874\r\n20\r\n32.36363574351981\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n85.08656742401192\r\n20\r\n32.77188949522512\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n82.53801907817298\r\n20\r\n32.90797407912688\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n79.29203723983734\r\n20\r\n32.670585457878595\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n76.43608353929162\r\n20\r\n31.95841959413371\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n73.97015797653569\r\n20\r\n30.77147648789224\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n71.89426055156976\r\n20\r\n29.109756139154165\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n70.24848761500768\r\n20\r\n27.006064652967257\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n69.07293551746335\r\n20\r\n24.493208134379305\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n68.36760425893671\r\n20\r\n21.571186583390222\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n68.13249383942787\r\n20\r\n18.240000000000016\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n68.26614834147423\r\n20\r\n15.707028858554331\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n68.66711184761338\r\n20\r\n13.412072843835265\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n69.33538435784537\r\n20\r\n11.355131955842875\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n70.27096587217007\r\n20\r\n9.536206194577106\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n71.39062608704039\r\n20\r\n7.96438938198116\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n72.61113469890945\r\n20\r\n6.648775339998299\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n73.93249170777716\r\n20\r\n5.589364068628511\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n75.35469711364361\r\n20\r\n4.786155567871772\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n76.93364279918252\r\n20\r\n4.195436841852831\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n78.72522064706787\r\n20\r\n3.7734948946964537\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n82.94627282987821\r\n20\r\n3.4359413369713527\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n86.43830045607196\r\n20\r\n3.7129706684856756\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n89.25476532646759\r\n20\r\n4.544058663028652\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n91.53175202496693\r\n20\r\n5.9194849931787274\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n93.4053451354717\r\n20\r\n7.829529331514324\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n94.85367392128349\r\n20\r\n10.274191678035494\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n95.85486764570364\r\n20\r\n13.253472032742154\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nSEQEND\r\n  0\r\nPOLYLINE\r\n 8\r\nLayer0\r\n 66\r\n     1\r\n70\r\n    8\r\n 10\r\n0.0\r\n 20\r\n 0.0\r\n 30\r\n0.0\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n31.720147318281878\r\n20\r\n13.253472032742154\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n24.00220734556704\r\n20\r\n15.586350613915418\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n23.241591724830347\r\n20\r\n13.204870395634376\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n22.126184153206882\r\n20\r\n11.464931787176024\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n21.402627280764854\r\n20\r\n10.84404587312418\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n20.524760210505654\r\n20\r\n10.400555934515715\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n18.306095476535642\r\n20\r\n10.045763983628953\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n17.07647405770889\r\n20\r\n10.155592292483833\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n15.992657550205479\r\n20\r\n10.485077219048463\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n15.054645954025387\r\n20\r\n11.034218763322839\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n14.26243926916864\r\n20\r\n11.803016925306979\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n13.633048068622937\r\n20\r\n12.867943343387621\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n13.183482925376007\r\n20\r\n14.305469655951574\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n12.823830810778462\r\n20\r\n18.298321964529347\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n13.12516096084667\r\n20\r\n21.61363707580155\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n13.501823648431936\r\n20\r\n22.88906933460527\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n14.029151411051306\r\n20\r\n23.909684728854074\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n14.913701206412837\r\n20\r\n24.96314419817956\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n15.973216895362363\r\n20\r\n25.715615247697826\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n17.20769847789988\r\n20\r\n26.167097877408775\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n18.617145954025396\r\n20\r\n26.31759208731241\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n19.875928355116844\r\n20\r\n26.181507503410646\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n21.008346499728038\r\n20\r\n25.773253751705315\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n21.994959733015882\r\n20\r\n25.112271487039553\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n22.816327400137308\r\n20\r\n24.218001364256523\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n23.671716213234173\r\n20\r\n22.312817189631694\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n31.447978150478352\r\n20\r\n24.04303547066853\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n30.600487103411478\r\n20\r\n26.15234652114598\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n29.55494438513044\r\n20\r\n27.97004774897681\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n28.31134999563522\r\n20\r\n29.496139154160964\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n26.869703934925813\r\n20\r\n30.730620736698498\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n25.18504968867748\r\n20\r\n31.683212824010926\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n23.212430742565683\r\n20\r\n32.36363574351981\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n20.951847096590235\r\n20\r\n32.77188949522512\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n18.40329875075117\r\n20\r\n32.90797407912688\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n15.157316912415569\r\n20\r\n32.670585457878595\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n12.301363211869878\r\n20\r\n31.95841959413371\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n9.835437649114091\r\n20\r\n30.77147648789224\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n7.7595402241481715\r\n20\r\n29.109756139154165\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n6.113767287586102\r\n20\r\n27.006064652967257\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n4.938215190041772\r\n20\r\n24.493208134379305\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n4.232883931515155\r\n20\r\n21.571186583390222\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n3.997773512006287\r\n20\r\n18.240000000000016\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n4.131428014052672\r\n20\r\n15.707028858554331\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n4.532391520191827\r\n20\r\n13.412072843835265\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n5.20066403042376\r\n20\r\n11.355131955842875\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n6.136245544748454\r\n20\r\n9.536206194577106\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n7.2559057596188365\r\n20\r\n7.96438938198116\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n8.47641437148787\r\n20\r\n6.648775339998299\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n9.79777138035556\r\n20\r\n5.589364068628511\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n11.219976786221856\r\n20\r\n4.786155567871772\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n12.798922471760724\r\n20\r\n4.195436841852831\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n14.590500319646125\r\n20\r\n3.7734948946964537\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n18.81155250245655\r\n20\r\n3.4359413369713527\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n22.30358012865026\r\n20\r\n3.7129706684856756\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n25.120044999045835\r\n20\r\n4.544058663028652\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n27.397031697545174\r\n20\r\n5.9194849931787274\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n29.27062480804994\r\n20\r\n7.829529331514324\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n30.718953593861688\r\n20\r\n10.274191678035494\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n31.720147318281878\r\n20\r\n13.253472032742154\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nSEQEND\r\n  0\r\nPOLYLINE\r\n 8\r\nLayer0\r\n 66\r\n     1\r\n70\r\n    8\r\n 10\r\n0.0\r\n 20\r\n 0.0\r\n 30\r\n0.0\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n44.27881034693135\r\n20\r\n32.42195770804914\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n36.05541334829552\r\n20\r\n32.42195770804914\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n36.05541334829552\r\n20\r\n3.921957708049114\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n44.33713231146072\r\n20\r\n3.921957708049114\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n44.33713231146072\r\n20\r\n19.570469815825433\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n55.01005182032826\r\n20\r\n3.921957708049114\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n63.31121143833645\r\n20\r\n3.921957708049114\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n63.31121143833645\r\n20\r\n32.42195770804914\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n55.01005182032826\r\n20\r\n32.42195770804914\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n55.01005182032826\r\n20\r\n16.654371589358792\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n44.27881034693135\r\n20\r\n32.42195770804914\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nSEQEND\r\n  0\r\nPOLYLINE\r\n 8\r\nLayer0\r\n 66\r\n     1\r\n70\r\n    8\r\n 10\r\n0.0\r\n 20\r\n 0.0\r\n 30\r\n0.0\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n88.13692767298875\r\n20\r\n15.586350613915418\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n95.85486764570364\r\n20\r\n13.253472032742154\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n94.85367392128349\r\n20\r\n10.274191678035494\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n93.4053451354717\r\n20\r\n7.829529331514324\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n91.53175202496693\r\n20\r\n5.9194849931787274\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n89.25476532646759\r\n20\r\n4.544058663028652\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n86.43830045607196\r\n20\r\n3.7129706684856756\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n82.94627282987821\r\n20\r\n3.4359413369713527\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n78.72522064706787\r\n20\r\n3.7734948946964537\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n76.93364279918252\r\n20\r\n4.195436841852831\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n75.35469711364361\r\n20\r\n4.786155567871772\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n73.93249170777716\r\n20\r\n5.589364068628511\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n72.61113469890945\r\n20\r\n6.648775339998299\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n71.39062608704039\r\n20\r\n7.96438938198116\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n70.27096587217007\r\n20\r\n9.536206194577106\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n69.33538435784537\r\n20\r\n11.355131955842875\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n68.66711184761338\r\n20\r\n13.412072843835265\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n68.26614834147423\r\n20\r\n15.707028858554331\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n68.13249383942787\r\n20\r\n18.240000000000016\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n68.36760425893671\r\n20\r\n21.571186583390222\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n69.07293551746335\r\n20\r\n24.493208134379305\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n70.24848761500768\r\n20\r\n27.006064652967257\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n71.89426055156976\r\n20\r\n29.109756139154165\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n73.97015797653569\r\n20\r\n30.77147648789224\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n76.43608353929162\r\n20\r\n31.95841959413371\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n79.29203723983734\r\n20\r\n32.670585457878595\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n82.53801907817298\r\n20\r\n32.90797407912688\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n85.08656742401192\r\n20\r\n32.77188949522512\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n87.3471510699874\r\n20\r\n32.36363574351981\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n89.31977001609924\r\n20\r\n31.683212824010926\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n91.00442426234757\r\n20\r\n30.730620736698498\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n92.44607032305697\r\n20\r\n29.496139154160964\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n93.68966471255212\r\n20\r\n27.97004774897681\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n94.7352074308332\r\n20\r\n26.15234652114598\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n95.58269847790007\r\n20\r\n24.04303547066853\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n87.80643654065582\r\n20\r\n22.312817189631694\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n86.95104772755899\r\n20\r\n24.218001364256523\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n86.12968006043756\r\n20\r\n25.112271487039553\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n85.14306682714975\r\n20\r\n25.773253751705315\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n84.01064868253853\r\n20\r\n26.181507503410646\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n82.75186628144712\r\n20\r\n26.31759208731241\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n81.34241880532169\r\n20\r\n26.167097877408775\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n80.10793722278416\r\n20\r\n25.715615247697826\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n79.0484215338346\r\n20\r\n24.96314419817956\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n78.16387173847306\r\n20\r\n23.909684728854074\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n77.6365439758537\r\n20\r\n22.88906933460527\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n77.25988128826845\r\n20\r\n21.61363707580155\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n76.95855113820019\r\n20\r\n18.298321964529347\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n77.31820325279776\r\n20\r\n14.305469655951574\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n77.76776839604469\r\n20\r\n12.867943343387621\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n78.3971595965904\r\n20\r\n11.803016925306979\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n79.18936628144715\r\n20\r\n11.034218763322839\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n80.12737787762728\r\n20\r\n10.485077219048463\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n81.21119438513063\r\n20\r\n10.155592292483833\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n82.44081580395745\r\n20\r\n10.045763983628953\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n84.65948053792741\r\n20\r\n10.400555934515715\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n85.53734760818654\r\n20\r\n10.84404587312418\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n86.26090448062861\r\n20\r\n11.464931787176024\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n87.37631205225205\r\n20\r\n13.204870395634376\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n88.13692767298875\r\n20\r\n15.586350613915418\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nSEQEND\r\n  0\r\nPOLYLINE\r\n 8\r\nLayer0\r\n 66\r\n     1\r\n70\r\n    8\r\n 10\r\n0.0\r\n 20\r\n 0.0\r\n 30\r\n0.0\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n24.00220734556704\r\n20\r\n15.586350613915418\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n31.720147318281878\r\n20\r\n13.253472032742154\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n30.718953593861688\r\n20\r\n10.274191678035494\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n29.27062480804994\r\n20\r\n7.829529331514324\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n27.397031697545174\r\n20\r\n5.9194849931787274\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n25.120044999045835\r\n20\r\n4.544058663028652\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n22.30358012865026\r\n20\r\n3.7129706684856756\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n18.81155250245655\r\n20\r\n3.4359413369713527\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n14.590500319646125\r\n20\r\n3.7734948946964537\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n12.798922471760724\r\n20\r\n4.195436841852831\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n11.219976786221856\r\n20\r\n4.786155567871772\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n9.79777138035556\r\n20\r\n5.589364068628511\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n8.47641437148787\r\n20\r\n6.648775339998299\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n7.2559057596188365\r\n20\r\n7.96438938198116\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n6.136245544748454\r\n20\r\n9.536206194577106\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n5.20066403042376\r\n20\r\n11.355131955842875\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n4.532391520191827\r\n20\r\n13.412072843835265\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n4.131428014052672\r\n20\r\n15.707028858554331\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n3.997773512006287\r\n20\r\n18.240000000000016\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n4.232883931515155\r\n20\r\n21.571186583390222\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n4.938215190041772\r\n20\r\n24.493208134379305\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n6.113767287586102\r\n20\r\n27.006064652967257\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n7.7595402241481715\r\n20\r\n29.109756139154165\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n9.835437649114091\r\n20\r\n30.77147648789224\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n12.301363211869878\r\n20\r\n31.95841959413371\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n15.157316912415569\r\n20\r\n32.670585457878595\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n18.40329875075117\r\n20\r\n32.90797407912688\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n20.951847096590235\r\n20\r\n32.77188949522512\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n23.212430742565683\r\n20\r\n32.36363574351981\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n25.18504968867748\r\n20\r\n31.683212824010926\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n26.869703934925813\r\n20\r\n30.730620736698498\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n28.31134999563522\r\n20\r\n29.496139154160964\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n29.55494438513044\r\n20\r\n27.97004774897681\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n30.600487103411478\r\n20\r\n26.15234652114598\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n31.447978150478352\r\n20\r\n24.04303547066853\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n23.671716213234173\r\n20\r\n22.312817189631694\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n22.816327400137308\r\n20\r\n24.218001364256523\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n21.994959733015882\r\n20\r\n25.112271487039553\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n21.008346499728038\r\n20\r\n25.773253751705315\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n19.875928355116844\r\n20\r\n26.181507503410646\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n18.617145954025396\r\n20\r\n26.31759208731241\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n17.20769847789988\r\n20\r\n26.167097877408775\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n15.973216895362363\r\n20\r\n25.715615247697826\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n14.913701206412837\r\n20\r\n24.96314419817956\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n14.029151411051306\r\n20\r\n23.909684728854074\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n13.501823648431936\r\n20\r\n22.88906933460527\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n13.12516096084667\r\n20\r\n21.61363707580155\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n12.823830810778462\r\n20\r\n18.298321964529347\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n13.183482925376007\r\n20\r\n14.305469655951574\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n13.633048068622937\r\n20\r\n12.867943343387621\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n14.26243926916864\r\n20\r\n11.803016925306979\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n15.054645954025387\r\n20\r\n11.034218763322839\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n15.992657550205479\r\n20\r\n10.485077219048463\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n17.07647405770889\r\n20\r\n10.155592292483833\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n18.306095476535642\r\n20\r\n10.045763983628953\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n20.524760210505654\r\n20\r\n10.400555934515715\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n21.402627280764854\r\n20\r\n10.84404587312418\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n22.126184153206882\r\n20\r\n11.464931787176024\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n23.241591724830347\r\n20\r\n13.204870395634376\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n24.00220734556704\r\n20\r\n15.586350613915418\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nSEQEND\r\n  0\r\nPOLYLINE\r\n 8\r\nLayer0\r\n 66\r\n     1\r\n70\r\n    8\r\n 10\r\n0.0\r\n 20\r\n 0.0\r\n 30\r\n0.0\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n36.05541334829552\r\n20\r\n32.42195770804914\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n44.27881034693135\r\n20\r\n32.42195770804914\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n55.01005182032826\r\n20\r\n16.654371589358792\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n55.01005182032826\r\n20\r\n32.42195770804914\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n63.31121143833645\r\n20\r\n32.42195770804914\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n63.31121143833645\r\n20\r\n3.921957708049114\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n55.01005182032826\r\n20\r\n3.921957708049114\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n44.33713231146072\r\n20\r\n19.570469815825433\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n44.33713231146072\r\n20\r\n3.921957708049114\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n36.05541334829552\r\n20\r\n3.921957708049114\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nVERTEX\r\n  8\r\nMY3DLAYER\r\n10\r\n36.05541334829552\r\n20\r\n32.42195770804914\r\n30\r\n0.0\r\n 70\r\n     32\r\n  0\r\nSEQEND\r\n 0\r\nENDSEC\r\n 0\r\nEOF\r\n",
+  "config": {
+    "safeZ": "5",
+    "rapidRate": "3000",
+    "spindleRpm": "10000",
+    "gridStep": "10",
+    "gridExtent": "400",
+    "viewmode": "3d"
+  },
+  "defaults": {
+    "side": "inside",
+    "direction": "ccw",
+    "stockTop": 0,
+    "cutterDia": 1,
+    "finalDepth": 2,
+    "stepDepth": 1,
+    "feedRate": 500,
+    "plungeRate": 100,
+    "stepover": 40,
+    "islands": "yes",
+    "tabCount": 0,
+    "tabWidth": 4,
+    "tabHeight": 1.5,
+    "tabShape": "rect",
+    "tabRampAngle": 45
+  },
+  "elements": [
+    {
+      "entityIndex": 2,
+      "params": {
+        "side": "inside",
+        "direction": "ccw",
+        "stockTop": 0,
+        "cutterDia": 1,
+        "finalDepth": 2,
+        "stepDepth": 1,
+        "feedRate": 500,
+        "plungeRate": 111,
+        "stepover": 40,
+        "islands": "yes",
+        "tabCount": 0,
+        "tabWidth": 4,
+        "tabHeight": 1.5,
+        "tabShape": "rect",
+        "tabRampAngle": 45
+      }
+    },
+    {
+      "entityIndex": 3,
+      "params": {
+        "side": "pocket",
+        "direction": "ccw",
+        "stockTop": 0,
+        "cutterDia": 1,
+        "finalDepth": 2,
+        "stepDepth": 1,
+        "feedRate": 500,
+        "plungeRate": 100,
+        "stepover": 40,
+        "islands": "yes",
+        "tabCount": 0,
+        "tabWidth": 4,
+        "tabHeight": 1.5,
+        "tabShape": "rect",
+        "tabRampAngle": 45
+      }
+    },
+    {
+      "entityIndex": 1,
+      "params": {
+        "side": "inside",
+        "direction": "ccw",
+        "stockTop": 0,
+        "cutterDia": 1,
+        "finalDepth": 2,
+        "stepDepth": 1,
+        "feedRate": 500,
+        "plungeRate": 100,
+        "stepover": 40,
+        "islands": "yes",
+        "tabCount": 0,
+        "tabWidth": 4,
+        "tabHeight": 1.5,
+        "tabShape": "rect",
+        "tabRampAngle": 45
+      }
+    },
+    {
+      "entityIndex": 0,
+      "params": {
+        "side": "outside",
+        "direction": "ccw",
+        "stockTop": 0,
+        "cutterDia": 1,
+        "finalDepth": 4.2,
+        "stepDepth": 1,
+        "feedRate": 500,
+        "plungeRate": 100,
+        "stepover": 40,
+        "islands": "yes",
+        "tabCount": 4,
+        "tabWidth": 4,
+        "tabHeight": 1.5,
+        "tabShape": "rect",
+        "tabRampAngle": 45,
+        "tabPositions": [
+          {
+            "x": 19.2549,
+            "y": -0.5
+          },
+          {
+            "x": 81.655,
+            "y": -0.5
+          },
+          {
+            "x": 81.7597,
+            "y": 36.98
+          },
+          {
+            "x": 19.2158,
+            "y": 36.98
+          }
+        ]
+      }
+    }
+  ],
+  "names": {
+    "0": "Frame",
+    "1": "C",
+    "2": "C",
+    "3": "N"
+  },
+  "order": [
+    2,
+    3,
+    1,
+    0
+  ],
+  "cam": {
+    "generated": true,
+    "paths": [
+      {
+        "entityIndices": [
+          2
+        ],
+        "side": "inside",
+        "closed": true,
+        "loops": [
+          {
+            "pts": [
+              {
+                "x": 22.2118,
+                "y": 4.2073
+              },
+              {
+                "x": 24.9168,
+                "y": 5.0055
+              },
+              {
+                "x": 27.0845,
+                "y": 6.3149
+              },
+              {
+                "x": 28.871,
+                "y": 8.1361
+              },
+              {
+                "x": 30.2618,
+                "y": 10.4836
+              },
+              {
+                "x": 31.0819,
+                "y": 12.9241
+              },
+              {
+                "x": 24.3287,
+                "y": 14.9654
+              },
+              {
+                "x": 23.7179,
+                "y": 13.0528
+              },
+              {
+                "x": 23.6625,
+                "y": 12.9351
+              },
+              {
+                "x": 22.5471,
+                "y": 11.1951
+              },
+              {
+                "x": 22.4518,
+                "y": 11.0854
+              },
+              {
+                "x": 21.7282,
+                "y": 10.4645
+              },
+              {
+                "x": 21.628,
+                "y": 10.3977
+              },
+              {
+                "x": 20.7502,
+                "y": 9.9543
+              },
+              {
+                "x": 20.6038,
+                "y": 9.9069
+              },
+              {
+                "x": 18.3851,
+                "y": 9.5521
+              },
+              {
+                "x": 18.2616,
+                "y": 9.5478
+              },
+              {
+                "x": 17.032,
+                "y": 9.6576
+              },
+              {
+                "x": 16.9311,
+                "y": 9.6772
+              },
+              {
+                "x": 15.8473,
+                "y": 10.0067
+              },
+              {
+                "x": 15.7401,
+                "y": 10.0536
+              },
+              {
+                "x": 14.802,
+                "y": 10.6027
+              },
+              {
+                "x": 14.7064,
+                "y": 10.6754
+              },
+              {
+                "x": 13.9142,
+                "y": 11.4442
+              },
+              {
+                "x": 13.832,
+                "y": 11.5486
+              },
+              {
+                "x": 13.2026,
+                "y": 12.6135
+              },
+              {
+                "x": 13.1558,
+                "y": 12.7187
+              },
+              {
+                "x": 12.7063,
+                "y": 14.1563
+              },
+              {
+                "x": 12.6855,
+                "y": 14.2606
+              },
+              {
+                "x": 12.3258,
+                "y": 18.2534
+              },
+              {
+                "x": 12.3259,
+                "y": 18.3436
+              },
+              {
+                "x": 12.6273,
+                "y": 21.6589
+              },
+              {
+                "x": 12.6457,
+                "y": 21.7552
+              },
+              {
+                "x": 13.0223,
+                "y": 23.0307
+              },
+              {
+                "x": 13.0576,
+                "y": 23.1186
+              },
+              {
+                "x": 13.585,
+                "y": 24.1392
+              },
+              {
+                "x": 13.6463,
+                "y": 24.2312
+              },
+              {
+                "x": 14.5308,
+                "y": 25.2846
+              },
+              {
+                "x": 14.6242,
+                "y": 25.3707
+              },
+              {
+                "x": 15.6837,
+                "y": 26.1232
+              },
+              {
+                "x": 15.8015,
+                "y": 26.1852
+              },
+              {
+                "x": 17.036,
+                "y": 26.6367
+              },
+              {
+                "x": 17.1546,
+                "y": 26.6643
+              },
+              {
+                "x": 18.564,
+                "y": 26.8148
+              },
+              {
+                "x": 18.6708,
+                "y": 26.8147
+              },
+              {
+                "x": 19.9296,
+                "y": 26.6786
+              },
+              {
+                "x": 20.0455,
+                "y": 26.6519
+              },
+              {
+                "x": 21.1779,
+                "y": 26.2437
+              },
+              {
+                "x": 21.2866,
+                "y": 26.1887
+              },
+              {
+                "x": 22.2733,
+                "y": 25.5277
+              },
+              {
+                "x": 22.3633,
+                "y": 25.4505
+              },
+              {
+                "x": 23.1846,
+                "y": 24.5562
+              },
+              {
+                "x": 23.2724,
+                "y": 24.4228
+              },
+              {
+                "x": 23.9609,
+                "y": 22.8894
+              },
+              {
+                "x": 30.7644,
+                "y": 24.4032
+              },
+              {
+                "x": 30.1494,
+                "y": 25.9337
+              },
+              {
+                "x": 29.1418,
+                "y": 27.6854
+              },
+              {
+                "x": 27.9519,
+                "y": 29.1456
+              },
+              {
+                "x": 26.5812,
+                "y": 30.3194
+              },
+              {
+                "x": 24.979,
+                "y": 31.2253
+              },
+              {
+                "x": 23.0854,
+                "y": 31.8785
+              },
+              {
+                "x": 20.8942,
+                "y": 32.2743
+              },
+              {
+                "x": 18.4084,
+                "y": 32.407
+              },
+              {
+                "x": 15.2362,
+                "y": 32.175
+              },
+              {
+                "x": 12.472,
+                "y": 31.4857
+              },
+              {
+                "x": 10.1036,
+                "y": 30.3457
+              },
+              {
+                "x": 8.1175,
+                "y": 28.7559
+              },
+              {
+                "x": 6.5427,
+                "y": 26.7428
+              },
+              {
+                "x": 5.4123,
+                "y": 24.3266
+              },
+              {
+                "x": 4.7288,
+                "y": 21.4949
+              },
+              {
+                "x": 4.4987,
+                "y": 18.2352
+              },
+              {
+                "x": 4.6291,
+                "y": 15.7632
+              },
+              {
+                "x": 5.0188,
+                "y": 13.533
+              },
+              {
+                "x": 5.6637,
+                "y": 11.5479
+              },
+              {
+                "x": 6.5643,
+                "y": 9.7969
+              },
+              {
+                "x": 7.644,
+                "y": 8.2814
+              },
+              {
+                "x": 8.8181,
+                "y": 7.0157
+              },
+              {
+                "x": 10.0789,
+                "y": 6.0049
+              },
+              {
+                "x": 11.4321,
+                "y": 5.2407
+              },
+              {
+                "x": 12.9443,
+                "y": 4.6748
+              },
+              {
+                "x": 14.6683,
+                "y": 4.2689
+              },
+              {
+                "x": 18.8119,
+                "y": 3.9375
+              },
+              {
+                "x": 22.2118,
+                "y": 4.2073
+              }
+            ],
+            "linked": false
+          }
+        ],
+        "params": {
+          "side": "inside",
+          "direction": "ccw",
+          "stockTop": 0,
+          "cutterDia": 1,
+          "finalDepth": 2,
+          "stepDepth": 1,
+          "feedRate": 500,
+          "plungeRate": 111,
+          "stepover": 40,
+          "islands": "yes",
+          "tabCount": 0,
+          "tabWidth": 4,
+          "tabHeight": 1.5,
+          "tabShape": "rect",
+          "tabRampAngle": 45
+        }
+      },
+      {
+        "entityIndices": [
+          3
+        ],
+        "side": "pocket",
+        "closed": true,
+        "loops": [
+          {
+            "pts": [
+              {
+                "x": 42.1601,
+                "y": 25.0488
+              },
+              {
+                "x": 41.9554,
+                "y": 25.3496
+              },
+              {
+                "x": 41.9554,
+                "y": 24.9678
+              },
+              {
+                "x": 42.1601,
+                "y": 25.0488
+              }
+            ],
+            "linked": false
+          },
+          {
+            "pts": [
+              {
+                "x": 57.2005,
+                "y": 11.1814
+              },
+              {
+                "x": 57.4112,
+                "y": 10.8724
+              },
+              {
+                "x": 57.4112,
+                "y": 11.2654
+              },
+              {
+                "x": 57.405,
+                "y": 11.2623
+              },
+              {
+                "x": 57.2005,
+                "y": 11.1814
+              }
+            ],
+            "linked": false
+          },
+          {
+            "pts": [
+              {
+                "x": 42.4682,
+                "y": 24.9516
+              },
+              {
+                "x": 41.7554,
+                "y": 25.9989
+              },
+              {
+                "x": 41.7554,
+                "y": 24.6497
+              },
+              {
+                "x": 42.1283,
+                "y": 24.8252
+              },
+              {
+                "x": 42.4682,
+                "y": 24.9516
+              }
+            ],
+            "linked": false
+          },
+          {
+            "pts": [
+              {
+                "x": 56.8924,
+                "y": 11.2783
+              },
+              {
+                "x": 57.6112,
+                "y": 10.2244
+              },
+              {
+                "x": 57.6112,
+                "y": 11.5844
+              },
+              {
+                "x": 57.2189,
+                "y": 11.3997
+              },
+              {
+                "x": 56.8924,
+                "y": 11.2783
+              }
+            ],
+            "linked": false
+          },
+          {
+            "pts": [
+              {
+                "x": 43.1088,
+                "y": 24.7213
+              },
+              {
+                "x": 41.4749,
+                "y": 27.122
+              },
+              {
+                "x": 41.3554,
+                "y": 27.122
+              },
+              {
+                "x": 41.3554,
+                "y": 23.9484
+              },
+              {
+                "x": 41.6659,
+                "y": 24.1481
+              },
+              {
+                "x": 42.0732,
+                "y": 24.3627
+              },
+              {
+                "x": 42.4976,
+                "y": 24.541
+              },
+              {
+                "x": 42.9358,
+                "y": 24.6819
+              },
+              {
+                "x": 43.1088,
+                "y": 24.7213
+              }
+            ],
+            "linked": false
+          },
+          {
+            "pts": [
+              {
+                "x": 56.2523,
+                "y": 11.5067
+              },
+              {
+                "x": 57.8106,
+                "y": 9.222
+              },
+              {
+                "x": 58.0112,
+                "y": 9.222
+              },
+              {
+                "x": 58.0112,
+                "y": 12.289
+              },
+              {
+                "x": 57.6813,
+                "y": 12.0768
+              },
+              {
+                "x": 57.274,
+                "y": 11.8622
+              },
+              {
+                "x": 56.8496,
+                "y": 11.6839
+              },
+              {
+                "x": 56.4114,
+                "y": 11.543
+              },
+              {
+                "x": 56.2523,
+                "y": 11.5067
+              }
+            ],
+            "linked": false
+          },
+          {
+            "pts": [
+              {
+                "x": 43.7861,
+                "y": 24.437
+              },
+              {
+                "x": 41.6865,
+                "y": 27.522
+              },
+              {
+                "x": 40.9554,
+                "y": 27.522
+              },
+              {
+                "x": 40.9554,
+                "y": 23.1153
+              },
+              {
+                "x": 40.97,
+                "y": 23.1304
+              },
+              {
+                "x": 41.305,
+                "y": 23.4197
+              },
+              {
+                "x": 41.6647,
+                "y": 23.6776
+              },
+              {
+                "x": 42.0462,
+                "y": 23.902
+              },
+              {
+                "x": 42.4464,
+                "y": 24.091
+              },
+              {
+                "x": 42.862,
+                "y": 24.2432
+              },
+              {
+                "x": 43.2897,
+                "y": 24.3572
+              },
+              {
+                "x": 43.7259,
+                "y": 24.4322
+              },
+              {
+                "x": 43.7861,
+                "y": 24.437
+              }
+            ],
+            "linked": false
+          },
+          {
+            "pts": [
+              {
+                "x": 55.5756,
+                "y": 11.789
+              },
+              {
+                "x": 57.5993,
+                "y": 8.822
+              },
+              {
+                "x": 58.4112,
+                "y": 8.822
+              },
+              {
+                "x": 58.4112,
+                "y": 13.1297
+              },
+              {
+                "x": 58.3772,
+                "y": 13.0945
+              },
+              {
+                "x": 58.0422,
+                "y": 12.8052
+              },
+              {
+                "x": 57.6825,
+                "y": 12.5473
+              },
+              {
+                "x": 57.301,
+                "y": 12.3229
+              },
+              {
+                "x": 56.9008,
+                "y": 12.1339
+              },
+              {
+                "x": 56.4852,
+                "y": 11.9817
+              },
+              {
+                "x": 56.0575,
+                "y": 11.8677
+              },
+              {
+                "x": 55.6213,
+                "y": 11.7927
+              },
+              {
+                "x": 55.5756,
+                "y": 11.789
+              }
+            ],
+            "linked": false
+          },
+          {
+            "pts": [
+              {
+                "x": 44.5233,
+                "y": 24.0649
+              },
+              {
+                "x": 41.8982,
+                "y": 27.922
+              },
+              {
+                "x": 40.5554,
+                "y": 27.922
+              },
+              {
+                "x": 40.5554,
+                "y": 22.0072
+              },
+              {
+                "x": 40.7822,
+                "y": 22.3296
+              },
+              {
+                "x": 41.0578,
+                "y": 22.6521
+              },
+              {
+                "x": 41.3625,
+                "y": 22.9471
+              },
+              {
+                "x": 41.6936,
+                "y": 23.2122
+              },
+              {
+                "x": 42.0482,
+                "y": 23.4449
+              },
+              {
+                "x": 42.4231,
+                "y": 23.6432
+              },
+              {
+                "x": 42.8151,
+                "y": 23.8053
+              },
+              {
+                "x": 43.2205,
+                "y": 23.9298
+              },
+              {
+                "x": 43.6359,
+                "y": 24.0155
+              },
+              {
+                "x": 44.0576,
+                "y": 24.0618
+              },
+              {
+                "x": 44.4816,
+                "y": 24.0682
+              },
+              {
+                "x": 44.5233,
+                "y": 24.0649
+              }
+            ],
+            "linked": false
+          },
+          {
+            "pts": [
+              {
+                "x": 54.8392,
+                "y": 12.1588
+              },
+              {
+                "x": 57.3879,
+                "y": 8.422
+              },
+              {
+                "x": 58.8112,
+                "y": 8.422
+              },
+              {
+                "x": 58.8112,
+                "y": 14.2461
+              },
+              {
+                "x": 58.809,
+                "y": 14.2422
+              },
+              {
+                "x": 58.565,
+                "y": 13.8953
+              },
+              {
+                "x": 58.2894,
+                "y": 13.5728
+              },
+              {
+                "x": 57.9847,
+                "y": 13.2778
+              },
+              {
+                "x": 57.6536,
+                "y": 13.0127
+              },
+              {
+                "x": 57.299,
+                "y": 12.78
+              },
+              {
+                "x": 56.9241,
+                "y": 12.5817
+              },
+              {
+                "x": 56.5321,
+                "y": 12.4196
+              },
+              {
+                "x": 56.1267,
+                "y": 12.2951
+              },
+              {
+                "x": 55.7113,
+                "y": 12.2094
+              },
+              {
+                "x": 55.2896,
+                "y": 12.1631
+              },
+              {
+                "x": 54.8656,
+                "y": 12.1567
+              },
+              {
+                "x": 54.8392,
+                "y": 12.1588
+              }
+            ],
+            "linked": false
+          },
+          {
+            "pts": [
+              {
+                "x": 54.9702,
+                "y": 12.5546
+              },
+              {
+                "x": 54.5661,
+                "y": 12.5785
+              },
+              {
+                "x": 54.1663,
+                "y": 12.6422
+              },
+              {
+                "x": 53.9947,
+                "y": 12.6873
+              },
+              {
+                "x": 57.1766,
+                "y": 8.022
+              },
+              {
+                "x": 59.2112,
+                "y": 8.022
+              },
+              {
+                "x": 59.2112,
+                "y": 28.322
+              },
+              {
+                "x": 59.1101,
+                "y": 28.322
+              },
+              {
+                "x": 59.1101,
+                "y": 16.6544
+              },
+              {
+                "x": 59.0901,
+                "y": 16.25
+              },
+              {
+                "x": 59.0303,
+                "y": 15.8496
+              },
+              {
+                "x": 58.9314,
+                "y": 15.4571
+              },
+              {
+                "x": 58.7942,
+                "y": 15.0762
+              },
+              {
+                "x": 58.6201,
+                "y": 14.7107
+              },
+              {
+                "x": 58.4108,
+                "y": 14.3641
+              },
+              {
+                "x": 58.1683,
+                "y": 14.0399
+              },
+              {
+                "x": 57.8951,
+                "y": 13.7412
+              },
+              {
+                "x": 57.5937,
+                "y": 13.4709
+              },
+              {
+                "x": 57.2672,
+                "y": 13.2316
+              },
+              {
+                "x": 56.9186,
+                "y": 13.0257
+              },
+              {
+                "x": 56.5514,
+                "y": 12.8551
+              },
+              {
+                "x": 56.1692,
+                "y": 12.7217
+              },
+              {
+                "x": 55.7757,
+                "y": 12.6265
+              },
+              {
+                "x": 55.3747,
+                "y": 12.5706
+              },
+              {
+                "x": 54.9702,
+                "y": 12.5546
+              }
+            ],
+            "linked": true
+          },
+          {
+            "pts": [
+              {
+                "x": 45.3688,
+                "y": 23.5334
+              },
+              {
+                "x": 42.1097,
+                "y": 28.322
+              },
+              {
+                "x": 40.1554,
+                "y": 28.322
+              },
+              {
+                "x": 40.1554,
+                "y": 8.022
+              },
+              {
+                "x": 40.2371,
+                "y": 8.022
+              },
+              {
+                "x": 40.2371,
+                "y": 19.5705
+              },
+              {
+                "x": 40.2571,
+                "y": 19.9749
+              },
+              {
+                "x": 40.3169,
+                "y": 20.3753
+              },
+              {
+                "x": 40.4158,
+                "y": 20.7678
+              },
+              {
+                "x": 40.553,
+                "y": 21.1487
+              },
+              {
+                "x": 40.7271,
+                "y": 21.5142
+              },
+              {
+                "x": 40.9364,
+                "y": 21.8608
+              },
+              {
+                "x": 41.1789,
+                "y": 22.185
+              },
+              {
+                "x": 41.4521,
+                "y": 22.4837
+              },
+              {
+                "x": 41.7535,
+                "y": 22.754
+              },
+              {
+                "x": 42.08,
+                "y": 22.9933
+              },
+              {
+                "x": 42.4286,
+                "y": 23.1992
+              },
+              {
+                "x": 42.7958,
+                "y": 23.3698
+              },
+              {
+                "x": 43.178,
+                "y": 23.5032
+              },
+              {
+                "x": 43.5715,
+                "y": 23.5984
+              },
+              {
+                "x": 43.9725,
+                "y": 23.6543
+              },
+              {
+                "x": 44.377,
+                "y": 23.6703
+              },
+              {
+                "x": 44.7811,
+                "y": 23.6464
+              },
+              {
+                "x": 45.1809,
+                "y": 23.5827
+              },
+              {
+                "x": 45.3688,
+                "y": 23.5334
+              }
+            ],
+            "linked": false
+          },
+          {
+            "pts": [
+              {
+                "x": 52.8542,
+                "y": 13.6494
+              },
+              {
+                "x": 56.9652,
+                "y": 7.622
+              },
+              {
+                "x": 59.6112,
+                "y": 7.622
+              },
+              {
+                "x": 59.6112,
+                "y": 28.722
+              },
+              {
+                "x": 58.7101,
+                "y": 28.722
+              },
+              {
+                "x": 58.7101,
+                "y": 16.6544
+              },
+              {
+                "x": 58.6901,
+                "y": 16.2703
+              },
+              {
+                "x": 58.6304,
+                "y": 15.8904
+              },
+              {
+                "x": 58.5315,
+                "y": 15.5188
+              },
+              {
+                "x": 58.3946,
+                "y": 15.1594
+              },
+              {
+                "x": 58.2212,
+                "y": 14.8162
+              },
+              {
+                "x": 58.013,
+                "y": 14.4928
+              },
+              {
+                "x": 57.7724,
+                "y": 14.1928
+              },
+              {
+                "x": 57.502,
+                "y": 13.9193
+              },
+              {
+                "x": 57.2046,
+                "y": 13.6754
+              },
+              {
+                "x": 56.8835,
+                "y": 13.4638
+              },
+              {
+                "x": 56.5422,
+                "y": 13.2865
+              },
+              {
+                "x": 56.1844,
+                "y": 13.1457
+              },
+              {
+                "x": 55.8138,
+                "y": 13.0427
+              },
+              {
+                "x": 55.4346,
+                "y": 12.9788
+              },
+              {
+                "x": 55.0508,
+                "y": 12.9546
+              },
+              {
+                "x": 54.6665,
+                "y": 12.9704
+              },
+              {
+                "x": 54.286,
+                "y": 13.0259
+              },
+              {
+                "x": 53.9133,
+                "y": 13.1207
+              },
+              {
+                "x": 53.5524,
+                "y": 13.2537
+              },
+              {
+                "x": 53.2073,
+                "y": 13.4233
+              },
+              {
+                "x": 52.8816,
+                "y": 13.6279
+              },
+              {
+                "x": 52.8542,
+                "y": 13.6494
+              }
+            ],
+            "linked": false
+          },
+          {
+            "pts": [
+              {
+                "x": 46.5178,
+                "y": 22.556
+              },
+              {
+                "x": 42.3213,
+                "y": 28.722
+              },
+              {
+                "x": 39.7554,
+                "y": 28.722
+              },
+              {
+                "x": 39.7554,
+                "y": 7.622
+              },
+              {
+                "x": 40.6371,
+                "y": 7.622
+              },
+              {
+                "x": 40.6371,
+                "y": 19.5705
+              },
+              {
+                "x": 40.6571,
+                "y": 19.9546
+              },
+              {
+                "x": 40.7168,
+                "y": 20.3345
+              },
+              {
+                "x": 40.8157,
+                "y": 20.7061
+              },
+              {
+                "x": 40.9526,
+                "y": 21.0655
+              },
+              {
+                "x": 41.126,
+                "y": 21.4087
+              },
+              {
+                "x": 41.3342,
+                "y": 21.7321
+              },
+              {
+                "x": 41.5748,
+                "y": 22.0321
+              },
+              {
+                "x": 41.8452,
+                "y": 22.3056
+              },
+              {
+                "x": 42.1426,
+                "y": 22.5495
+              },
+              {
+                "x": 42.4637,
+                "y": 22.7611
+              },
+              {
+                "x": 42.805,
+                "y": 22.9384
+              },
+              {
+                "x": 43.1628,
+                "y": 23.0792
+              },
+              {
+                "x": 43.5334,
+                "y": 23.1822
+              },
+              {
+                "x": 43.9126,
+                "y": 23.2461
+              },
+              {
+                "x": 44.2964,
+                "y": 23.2703
+              },
+              {
+                "x": 44.6807,
+                "y": 23.2545
+              },
+              {
+                "x": 45.0612,
+                "y": 23.199
+              },
+              {
+                "x": 45.4339,
+                "y": 23.1042
+              },
+              {
+                "x": 45.7948,
+                "y": 22.9712
+              },
+              {
+                "x": 46.1399,
+                "y": 22.8016
+              },
+              {
+                "x": 46.4656,
+                "y": 22.597
+              },
+              {
+                "x": 46.5178,
+                "y": 22.556
+              }
+            ],
+            "linked": false
+          },
+          {
+            "pts": [
+              {
+                "x": 46.285,
+                "y": 22.2342
+              },
+              {
+                "x": 46.566,
+                "y": 22.0041
+              },
+              {
+                "x": 46.8199,
+                "y": 21.7444
+              },
+              {
+                "x": 47.0634,
+                "y": 21.4299
+              },
+              {
+                "x": 56.7538,
+                "y": 7.222
+              },
+              {
+                "x": 60.0112,
+                "y": 7.222
+              },
+              {
+                "x": 60.0112,
+                "y": 29.122
+              },
+              {
+                "x": 58.3101,
+                "y": 29.122
+              },
+              {
+                "x": 58.3101,
+                "y": 16.6544
+              },
+              {
+                "x": 58.2901,
+                "y": 16.2918
+              },
+              {
+                "x": 58.2304,
+                "y": 15.9335
+              },
+              {
+                "x": 58.1317,
+                "y": 15.584
+              },
+              {
+                "x": 57.9952,
+                "y": 15.2475
+              },
+              {
+                "x": 57.8225,
+                "y": 14.928
+              },
+              {
+                "x": 57.6157,
+                "y": 14.6294
+              },
+              {
+                "x": 57.3774,
+                "y": 14.3553
+              },
+              {
+                "x": 57.1105,
+                "y": 14.1091
+              },
+              {
+                "x": 56.818,
+                "y": 13.8937
+              },
+              {
+                "x": 56.5037,
+                "y": 13.7118
+              },
+              {
+                "x": 56.1713,
+                "y": 13.5655
+              },
+              {
+                "x": 55.8248,
+                "y": 13.4566
+              },
+              {
+                "x": 55.4685,
+                "y": 13.3864
+              },
+              {
+                "x": 55.1066,
+                "y": 13.3558
+              },
+              {
+                "x": 54.7436,
+                "y": 13.3652
+              },
+              {
+                "x": 54.3837,
+                "y": 13.4144
+              },
+              {
+                "x": 54.0315,
+                "y": 13.5028
+              },
+              {
+                "x": 53.6911,
+                "y": 13.6295
+              },
+              {
+                "x": 53.3667,
+                "y": 13.7927
+              },
+              {
+                "x": 53.0622,
+                "y": 13.9907
+              },
+              {
+                "x": 52.7812,
+                "y": 14.2208
+              },
+              {
+                "x": 52.5273,
+                "y": 14.4805
+              },
+              {
+                "x": 52.282,
+                "y": 14.7977
+              },
+              {
+                "x": 42.533,
+                "y": 29.122
+              },
+              {
+                "x": 39.3554,
+                "y": 29.122
+              },
+              {
+                "x": 39.3554,
+                "y": 7.222
+              },
+              {
+                "x": 41.0371,
+                "y": 7.222
+              },
+              {
+                "x": 41.0371,
+                "y": 19.5705
+              },
+              {
+                "x": 41.0571,
+                "y": 19.9331
+              },
+              {
+                "x": 41.1168,
+                "y": 20.2914
+              },
+              {
+                "x": 41.2155,
+                "y": 20.6409
+              },
+              {
+                "x": 41.352,
+                "y": 20.9774
+              },
+              {
+                "x": 41.5247,
+                "y": 21.2969
+              },
+              {
+                "x": 41.7315,
+                "y": 21.5955
+              },
+              {
+                "x": 41.9698,
+                "y": 21.8696
+              },
+              {
+                "x": 42.2367,
+                "y": 22.1158
+              },
+              {
+                "x": 42.5292,
+                "y": 22.3312
+              },
+              {
+                "x": 42.8435,
+                "y": 22.5131
+              },
+              {
+                "x": 43.1759,
+                "y": 22.6594
+              },
+              {
+                "x": 43.5224,
+                "y": 22.7683
+              },
+              {
+                "x": 43.8787,
+                "y": 22.8385
+              },
+              {
+                "x": 44.2406,
+                "y": 22.8691
+              },
+              {
+                "x": 44.6036,
+                "y": 22.8597
+              },
+              {
+                "x": 44.9635,
+                "y": 22.8105
+              },
+              {
+                "x": 45.3157,
+                "y": 22.7221
+              },
+              {
+                "x": 45.6561,
+                "y": 22.5954
+              },
+              {
+                "x": 45.9805,
+                "y": 22.4322
+              },
+              {
+                "x": 46.285,
+                "y": 22.2342
+              }
+            ],
+            "linked": true
+          },
+          {
+            "pts": [
+              {
+                "x": 46.1173,
+                "y": 21.8598
+              },
+              {
+                "x": 46.3734,
+                "y": 21.6354
+              },
+              {
+                "x": 46.6013,
+                "y": 21.3825
+              },
+              {
+                "x": 46.7329,
+                "y": 21.2045
+              },
+              {
+                "x": 56.5424,
+                "y": 6.822
+              },
+              {
+                "x": 60.4112,
+                "y": 6.822
+              },
+              {
+                "x": 60.4112,
+                "y": 29.522
+              },
+              {
+                "x": 57.9101,
+                "y": 29.522
+              },
+              {
+                "x": 57.9101,
+                "y": 16.6544
+              },
+              {
+                "x": 57.8901,
+                "y": 16.3145
+              },
+              {
+                "x": 57.8304,
+                "y": 15.9794
+              },
+              {
+                "x": 57.7319,
+                "y": 15.6535
+              },
+              {
+                "x": 57.5959,
+                "y": 15.3414
+              },
+              {
+                "x": 57.4242,
+                "y": 15.0475
+              },
+              {
+                "x": 57.2192,
+                "y": 14.7756
+              },
+              {
+                "x": 56.9838,
+                "y": 14.5297
+              },
+              {
+                "x": 56.7212,
+                "y": 14.313
+              },
+              {
+                "x": 56.435,
+                "y": 14.1286
+              },
+              {
+                "x": 56.1292,
+                "y": 13.979
+              },
+              {
+                "x": 55.808,
+                "y": 13.8663
+              },
+              {
+                "x": 55.4757,
+                "y": 13.792
+              },
+              {
+                "x": 55.1371,
+                "y": 13.7572
+              },
+              {
+                "x": 54.7967,
+                "y": 13.7623
+              },
+              {
+                "x": 54.4592,
+                "y": 13.8072
+              },
+              {
+                "x": 54.1294,
+                "y": 13.8914
+              },
+              {
+                "x": 53.8116,
+                "y": 14.0136
+              },
+              {
+                "x": 53.5104,
+                "y": 14.1723
+              },
+              {
+                "x": 53.2299,
+                "y": 14.3651
+              },
+              {
+                "x": 52.9738,
+                "y": 14.5895
+              },
+              {
+                "x": 52.7459,
+                "y": 14.8424
+              },
+              {
+                "x": 52.6127,
+                "y": 15.0227
+              },
+              {
+                "x": 42.7446,
+                "y": 29.522
+              },
+              {
+                "x": 38.9554,
+                "y": 29.522
+              },
+              {
+                "x": 38.9554,
+                "y": 6.822
+              },
+              {
+                "x": 41.4371,
+                "y": 6.822
+              },
+              {
+                "x": 41.4371,
+                "y": 19.5705
+              },
+              {
+                "x": 41.4571,
+                "y": 19.9104
+              },
+              {
+                "x": 41.5168,
+                "y": 20.2455
+              },
+              {
+                "x": 41.6153,
+                "y": 20.5714
+              },
+              {
+                "x": 41.7513,
+                "y": 20.8835
+              },
+              {
+                "x": 41.923,
+                "y": 21.1774
+              },
+              {
+                "x": 42.128,
+                "y": 21.4493
+              },
+              {
+                "x": 42.3634,
+                "y": 21.6952
+              },
+              {
+                "x": 42.626,
+                "y": 21.9119
+              },
+              {
+                "x": 42.9122,
+                "y": 22.0963
+              },
+              {
+                "x": 43.218,
+                "y": 22.2459
+              },
+              {
+                "x": 43.5392,
+                "y": 22.3586
+              },
+              {
+                "x": 43.8715,
+                "y": 22.4329
+              },
+              {
+                "x": 44.2101,
+                "y": 22.4677
+              },
+              {
+                "x": 44.5505,
+                "y": 22.4626
+              },
+              {
+                "x": 44.888,
+                "y": 22.4177
+              },
+              {
+                "x": 45.2178,
+                "y": 22.3335
+              },
+              {
+                "x": 45.5356,
+                "y": 22.2113
+              },
+              {
+                "x": 45.8368,
+                "y": 22.0526
+              },
+              {
+                "x": 46.1173,
+                "y": 21.8598
+              }
+            ],
+            "linked": true
+          },
+          {
+            "pts": [
+              {
+                "x": 45.9599,
+                "y": 21.4722
+              },
+              {
+                "x": 46.1869,
+                "y": 21.2523
+              },
+              {
+                "x": 46.4024,
+                "y": 20.9792
+              },
+              {
+                "x": 56.3311,
+                "y": 6.422
+              },
+              {
+                "x": 60.8112,
+                "y": 6.422
+              },
+              {
+                "x": 60.8112,
+                "y": 29.922
+              },
+              {
+                "x": 57.5101,
+                "y": 29.922
+              },
+              {
+                "x": 57.5101,
+                "y": 16.6544
+              },
+              {
+                "x": 57.4901,
+                "y": 16.339
+              },
+              {
+                "x": 57.4305,
+                "y": 16.0286
+              },
+              {
+                "x": 57.3322,
+                "y": 15.7282
+              },
+              {
+                "x": 57.1968,
+                "y": 15.4426
+              },
+              {
+                "x": 57.0264,
+                "y": 15.1764
+              },
+              {
+                "x": 56.8238,
+                "y": 14.9338
+              },
+              {
+                "x": 56.5922,
+                "y": 14.7187
+              },
+              {
+                "x": 56.3353,
+                "y": 14.5345
+              },
+              {
+                "x": 56.0572,
+                "y": 14.3843
+              },
+              {
+                "x": 55.7624,
+                "y": 14.2703
+              },
+              {
+                "x": 55.4556,
+                "y": 14.1944
+              },
+              {
+                "x": 55.1417,
+                "y": 14.1579
+              },
+              {
+                "x": 54.8256,
+                "y": 14.1612
+              },
+              {
+                "x": 54.5125,
+                "y": 14.2044
+              },
+              {
+                "x": 54.2074,
+                "y": 14.2868
+              },
+              {
+                "x": 53.915,
+                "y": 14.407
+              },
+              {
+                "x": 53.6402,
+                "y": 14.5631
+              },
+              {
+                "x": 53.3873,
+                "y": 14.7527
+              },
+              {
+                "x": 53.1603,
+                "y": 14.9726
+              },
+              {
+                "x": 52.9434,
+                "y": 15.2478
+              },
+              {
+                "x": 42.9563,
+                "y": 29.922
+              },
+              {
+                "x": 38.5554,
+                "y": 29.922
+              },
+              {
+                "x": 38.5554,
+                "y": 6.422
+              },
+              {
+                "x": 41.8371,
+                "y": 6.422
+              },
+              {
+                "x": 41.8371,
+                "y": 19.5705
+              },
+              {
+                "x": 41.8571,
+                "y": 19.8859
+              },
+              {
+                "x": 41.9167,
+                "y": 20.1963
+              },
+              {
+                "x": 42.015,
+                "y": 20.4967
+              },
+              {
+                "x": 42.1504,
+                "y": 20.7823
+              },
+              {
+                "x": 42.3208,
+                "y": 21.0485
+              },
+              {
+                "x": 42.5234,
+                "y": 21.2911
+              },
+              {
+                "x": 42.755,
+                "y": 21.5062
+              },
+              {
+                "x": 43.0119,
+                "y": 21.6904
+              },
+              {
+                "x": 43.29,
+                "y": 21.8406
+              },
+              {
+                "x": 43.5848,
+                "y": 21.9546
+              },
+              {
+                "x": 43.8916,
+                "y": 22.0305
+              },
+              {
+                "x": 44.2055,
+                "y": 22.067
+              },
+              {
+                "x": 44.5216,
+                "y": 22.0637
+              },
+              {
+                "x": 44.8347,
+                "y": 22.0205
+              },
+              {
+                "x": 45.1398,
+                "y": 21.9381
+              },
+              {
+                "x": 45.4322,
+                "y": 21.8179
+              },
+              {
+                "x": 45.707,
+                "y": 21.6618
+              },
+              {
+                "x": 45.9599,
+                "y": 21.4722
+              }
+            ],
+            "linked": true
+          },
+          {
+            "pts": [
+              {
+                "x": 45.5876,
+                "y": 21.2576
+              },
+              {
+                "x": 45.8078,
+                "y": 21.0695
+              },
+              {
+                "x": 46.072,
+                "y": 20.7538
+              },
+              {
+                "x": 56.1198,
+                "y": 6.022
+              },
+              {
+                "x": 61.2112,
+                "y": 6.022
+              },
+              {
+                "x": 61.2112,
+                "y": 30.322
+              },
+              {
+                "x": 57.1101,
+                "y": 30.322
+              },
+              {
+                "x": 57.1101,
+                "y": 16.6544
+              },
+              {
+                "x": 57.0901,
+                "y": 16.3654
+              },
+              {
+                "x": 57.0306,
+                "y": 16.082
+              },
+              {
+                "x": 56.9326,
+                "y": 15.8094
+              },
+              {
+                "x": 56.798,
+                "y": 15.5529
+              },
+              {
+                "x": 56.6294,
+                "y": 15.3173
+              },
+              {
+                "x": 56.4301,
+                "y": 15.1072
+              },
+              {
+                "x": 56.2037,
+                "y": 14.9266
+              },
+              {
+                "x": 55.9546,
+                "y": 14.7788
+              },
+              {
+                "x": 55.6875,
+                "y": 14.6666
+              },
+              {
+                "x": 55.4075,
+                "y": 14.5923
+              },
+              {
+                "x": 55.12,
+                "y": 14.5573
+              },
+              {
+                "x": 54.8304,
+                "y": 14.5621
+              },
+              {
+                "x": 54.5442,
+                "y": 14.6067
+              },
+              {
+                "x": 54.2668,
+                "y": 14.6903
+              },
+              {
+                "x": 54.0037,
+                "y": 14.8113
+              },
+              {
+                "x": 53.7596,
+                "y": 14.9673
+              },
+              {
+                "x": 53.5394,
+                "y": 15.1554
+              },
+              {
+                "x": 53.274,
+                "y": 15.4728
+              },
+              {
+                "x": 43.1678,
+                "y": 30.322
+              },
+              {
+                "x": 38.1554,
+                "y": 30.322
+              },
+              {
+                "x": 38.1554,
+                "y": 6.022
+              },
+              {
+                "x": 42.2371,
+                "y": 6.022
+              },
+              {
+                "x": 42.2371,
+                "y": 19.5705
+              },
+              {
+                "x": 42.2571,
+                "y": 19.8595
+              },
+              {
+                "x": 42.3166,
+                "y": 20.1429
+              },
+              {
+                "x": 42.4146,
+                "y": 20.4155
+              },
+              {
+                "x": 42.5492,
+                "y": 20.672
+              },
+              {
+                "x": 42.7178,
+                "y": 20.9076
+              },
+              {
+                "x": 42.9171,
+                "y": 21.1177
+              },
+              {
+                "x": 43.1435,
+                "y": 21.2983
+              },
+              {
+                "x": 43.3926,
+                "y": 21.4461
+              },
+              {
+                "x": 43.6597,
+                "y": 21.5583
+              },
+              {
+                "x": 43.9397,
+                "y": 21.6326
+              },
+              {
+                "x": 44.2272,
+                "y": 21.6676
+              },
+              {
+                "x": 44.5168,
+                "y": 21.6628
+              },
+              {
+                "x": 44.803,
+                "y": 21.6182
+              },
+              {
+                "x": 45.0804,
+                "y": 21.5346
+              },
+              {
+                "x": 45.3435,
+                "y": 21.4136
+              },
+              {
+                "x": 45.5876,
+                "y": 21.2576
+              }
+            ],
+            "linked": true
+          },
+          {
+            "pts": [
+              {
+                "x": 45.2648,
+                "y": 20.9951
+              },
+              {
+                "x": 45.4716,
+                "y": 20.8365
+              },
+              {
+                "x": 45.6518,
+                "y": 20.6483
+              },
+              {
+                "x": 45.7415,
+                "y": 20.5284
+              },
+              {
+                "x": 55.9084,
+                "y": 5.622
+              },
+              {
+                "x": 61.6112,
+                "y": 5.622
+              },
+              {
+                "x": 61.6112,
+                "y": 30.722
+              },
+              {
+                "x": 56.7101,
+                "y": 30.722
+              },
+              {
+                "x": 56.7101,
+                "y": 16.6544
+              },
+              {
+                "x": 56.6901,
+                "y": 16.3946
+              },
+              {
+                "x": 56.6307,
+                "y": 16.1409
+              },
+              {
+                "x": 56.5332,
+                "y": 15.8992
+              },
+              {
+                "x": 56.3999,
+                "y": 15.6753
+              },
+              {
+                "x": 56.2339,
+                "y": 15.4744
+              },
+              {
+                "x": 56.0392,
+                "y": 15.3013
+              },
+              {
+                "x": 55.8203,
+                "y": 15.1599
+              },
+              {
+                "x": 55.5824,
+                "y": 15.0536
+              },
+              {
+                "x": 55.331,
+                "y": 14.985
+              },
+              {
+                "x": 55.0721,
+                "y": 14.9555
+              },
+              {
+                "x": 54.8118,
+                "y": 14.966
+              },
+              {
+                "x": 54.556,
+                "y": 15.0162
+              },
+              {
+                "x": 54.311,
+                "y": 15.1048
+              },
+              {
+                "x": 54.0824,
+                "y": 15.2298
+              },
+              {
+                "x": 53.8756,
+                "y": 15.3884
+              },
+              {
+                "x": 53.6954,
+                "y": 15.5766
+              },
+              {
+                "x": 53.6047,
+                "y": 15.6979
+              },
+              {
+                "x": 43.3794,
+                "y": 30.722
+              },
+              {
+                "x": 37.7554,
+                "y": 30.722
+              },
+              {
+                "x": 37.7554,
+                "y": 5.622
+              },
+              {
+                "x": 42.6371,
+                "y": 5.622
+              },
+              {
+                "x": 42.6371,
+                "y": 19.5705
+              },
+              {
+                "x": 42.6571,
+                "y": 19.8303
+              },
+              {
+                "x": 42.7165,
+                "y": 20.084
+              },
+              {
+                "x": 42.814,
+                "y": 20.3257
+              },
+              {
+                "x": 42.9473,
+                "y": 20.5496
+              },
+              {
+                "x": 43.1133,
+                "y": 20.7505
+              },
+              {
+                "x": 43.308,
+                "y": 20.9236
+              },
+              {
+                "x": 43.5269,
+                "y": 21.065
+              },
+              {
+                "x": 43.7648,
+                "y": 21.1713
+              },
+              {
+                "x": 44.0162,
+                "y": 21.2399
+              },
+              {
+                "x": 44.2751,
+                "y": 21.2694
+              },
+              {
+                "x": 44.5354,
+                "y": 21.2589
+              },
+              {
+                "x": 44.7912,
+                "y": 21.2087
+              },
+              {
+                "x": 45.0362,
+                "y": 21.1201
+              },
+              {
+                "x": 45.2648,
+                "y": 20.9951
+              }
+            ],
+            "linked": true
+          },
+          {
+            "pts": [
+              {
+                "x": 44.9997,
+                "y": 20.689
+              },
+              {
+                "x": 45.1848,
+                "y": 20.5561
+              },
+              {
+                "x": 45.4111,
+                "y": 20.303
+              },
+              {
+                "x": 55.697,
+                "y": 5.222
+              },
+              {
+                "x": 62.0112,
+                "y": 5.222
+              },
+              {
+                "x": 62.0112,
+                "y": 31.122
+              },
+              {
+                "x": 56.3101,
+                "y": 31.122
+              },
+              {
+                "x": 56.3101,
+                "y": 16.6544
+              },
+              {
+                "x": 56.2901,
+                "y": 16.4275
+              },
+              {
+                "x": 56.2309,
+                "y": 16.2075
+              },
+              {
+                "x": 56.1341,
+                "y": 16.0012
+              },
+              {
+                "x": 56.0028,
+                "y": 15.8151
+              },
+              {
+                "x": 55.8411,
+                "y": 15.6546
+              },
+              {
+                "x": 55.6538,
+                "y": 15.5249
+              },
+              {
+                "x": 55.4467,
+                "y": 15.4299
+              },
+              {
+                "x": 55.2263,
+                "y": 15.3725
+              },
+              {
+                "x": 54.9992,
+                "y": 15.3544
+              },
+              {
+                "x": 54.7724,
+                "y": 15.3763
+              },
+              {
+                "x": 54.5529,
+                "y": 15.4374
+              },
+              {
+                "x": 54.3475,
+                "y": 15.5359
+              },
+              {
+                "x": 54.1624,
+                "y": 15.6688
+              },
+              {
+                "x": 53.9354,
+                "y": 15.923
+              },
+              {
+                "x": 43.5911,
+                "y": 31.122
+              },
+              {
+                "x": 37.3554,
+                "y": 31.122
+              },
+              {
+                "x": 37.3554,
+                "y": 5.222
+              },
+              {
+                "x": 43.0371,
+                "y": 5.222
+              },
+              {
+                "x": 43.0371,
+                "y": 19.5705
+              },
+              {
+                "x": 43.0571,
+                "y": 19.7974
+              },
+              {
+                "x": 43.1163,
+                "y": 20.0174
+              },
+              {
+                "x": 43.2131,
+                "y": 20.2237
+              },
+              {
+                "x": 43.3444,
+                "y": 20.4098
+              },
+              {
+                "x": 43.5061,
+                "y": 20.5703
+              },
+              {
+                "x": 43.6934,
+                "y": 20.7
+              },
+              {
+                "x": 43.9005,
+                "y": 20.795
+              },
+              {
+                "x": 44.1209,
+                "y": 20.8524
+              },
+              {
+                "x": 44.348,
+                "y": 20.8705
+              },
+              {
+                "x": 44.5748,
+                "y": 20.8486
+              },
+              {
+                "x": 44.7943,
+                "y": 20.7875
+              },
+              {
+                "x": 44.9997,
+                "y": 20.689
+              }
+            ],
+            "linked": true
+          },
+          {
+            "pts": [
+              {
+                "x": 44.7986,
+                "y": 20.3432
+              },
+              {
+                "x": 44.9501,
+                "y": 20.2295
+              },
+              {
+                "x": 45.0806,
+                "y": 20.0776
+              },
+              {
+                "x": 55.4856,
+                "y": 4.822
+              },
+              {
+                "x": 62.4112,
+                "y": 4.822
+              },
+              {
+                "x": 62.4112,
+                "y": 31.522
+              },
+              {
+                "x": 55.9101,
+                "y": 31.522
+              },
+              {
+                "x": 55.9101,
+                "y": 16.6544
+              },
+              {
+                "x": 55.8902,
+                "y": 16.466
+              },
+              {
+                "x": 55.8312,
+                "y": 16.2859
+              },
+              {
+                "x": 55.7359,
+                "y": 16.1222
+              },
+              {
+                "x": 55.6084,
+                "y": 15.982
+              },
+              {
+                "x": 55.4543,
+                "y": 15.8717
+              },
+              {
+                "x": 55.2806,
+                "y": 15.796
+              },
+              {
+                "x": 55.0949,
+                "y": 15.7584
+              },
+              {
+                "x": 54.9055,
+                "y": 15.7605
+              },
+              {
+                "x": 54.7206,
+                "y": 15.8022
+              },
+              {
+                "x": 54.5486,
+                "y": 15.8817
+              },
+              {
+                "x": 54.3971,
+                "y": 15.9954
+              },
+              {
+                "x": 54.2661,
+                "y": 16.148
+              },
+              {
+                "x": 43.8027,
+                "y": 31.522
+              },
+              {
+                "x": 36.9554,
+                "y": 31.522
+              },
+              {
+                "x": 36.9554,
+                "y": 4.822
+              },
+              {
+                "x": 43.4371,
+                "y": 4.822
+              },
+              {
+                "x": 43.4371,
+                "y": 19.5705
+              },
+              {
+                "x": 43.457,
+                "y": 19.7589
+              },
+              {
+                "x": 43.516,
+                "y": 19.939
+              },
+              {
+                "x": 43.6113,
+                "y": 20.1027
+              },
+              {
+                "x": 43.7388,
+                "y": 20.2429
+              },
+              {
+                "x": 43.8929,
+                "y": 20.3532
+              },
+              {
+                "x": 44.0666,
+                "y": 20.4289
+              },
+              {
+                "x": 44.2523,
+                "y": 20.4665
+              },
+              {
+                "x": 44.4417,
+                "y": 20.4644
+              },
+              {
+                "x": 44.6266,
+                "y": 20.4227
+              },
+              {
+                "x": 44.7986,
+                "y": 20.3432
+              }
+            ],
+            "linked": true
+          },
+          {
+            "pts": [
+              {
+                "x": 44.5368,
+                "y": 20.0289
+              },
+              {
+                "x": 44.6568,
+                "y": 19.9549
+              },
+              {
+                "x": 44.7502,
+                "y": 19.8522
+              },
+              {
+                "x": 55.2743,
+                "y": 4.422
+              },
+              {
+                "x": 62.8112,
+                "y": 4.422
+              },
+              {
+                "x": 62.8112,
+                "y": 31.922
+              },
+              {
+                "x": 55.5101,
+                "y": 31.922
+              },
+              {
+                "x": 55.5101,
+                "y": 16.6544
+              },
+              {
+                "x": 55.4902,
+                "y": 16.5147
+              },
+              {
+                "x": 55.4321,
+                "y": 16.3862
+              },
+              {
+                "x": 55.3404,
+                "y": 16.279
+              },
+              {
+                "x": 55.2224,
+                "y": 16.2017
+              },
+              {
+                "x": 55.0875,
+                "y": 16.1604
+              },
+              {
+                "x": 54.9464,
+                "y": 16.1585
+              },
+              {
+                "x": 54.8104,
+                "y": 16.196
+              },
+              {
+                "x": 54.6904,
+                "y": 16.27
+              },
+              {
+                "x": 54.5968,
+                "y": 16.3731
+              },
+              {
+                "x": 44.0143,
+                "y": 31.922
+              },
+              {
+                "x": 36.5554,
+                "y": 31.922
+              },
+              {
+                "x": 36.5554,
+                "y": 4.422
+              },
+              {
+                "x": 43.8371,
+                "y": 4.422
+              },
+              {
+                "x": 43.8371,
+                "y": 19.5705
+              },
+              {
+                "x": 43.857,
+                "y": 19.7102
+              },
+              {
+                "x": 43.9151,
+                "y": 19.8387
+              },
+              {
+                "x": 44.0068,
+                "y": 19.9459
+              },
+              {
+                "x": 44.1248,
+                "y": 20.0232
+              },
+              {
+                "x": 44.2597,
+                "y": 20.0645
+              },
+              {
+                "x": 44.4008,
+                "y": 20.0664
+              },
+              {
+                "x": 44.5368,
+                "y": 20.0289
+              }
+            ],
+            "linked": true
+          }
+        ],
+        "params": {
+          "side": "pocket",
+          "direction": "ccw",
+          "stockTop": 0,
+          "cutterDia": 1,
+          "finalDepth": 2,
+          "stepDepth": 1,
+          "feedRate": 500,
+          "plungeRate": 100,
+          "stepover": 40,
+          "islands": "yes",
+          "tabCount": 0,
+          "tabWidth": 4,
+          "tabHeight": 1.5,
+          "tabShape": "rect",
+          "tabRampAngle": 45
+        }
+      },
+      {
+        "entityIndices": [
+          1
+        ],
+        "side": "inside",
+        "closed": true,
+        "loops": [
+          {
+            "pts": [
+              {
+                "x": 86.3465,
+                "y": 4.2073
+              },
+              {
+                "x": 89.0516,
+                "y": 5.0055
+              },
+              {
+                "x": 91.2193,
+                "y": 6.3149
+              },
+              {
+                "x": 93.0057,
+                "y": 8.1361
+              },
+              {
+                "x": 94.3965,
+                "y": 10.4836
+              },
+              {
+                "x": 95.2167,
+                "y": 12.9241
+              },
+              {
+                "x": 88.4634,
+                "y": 14.9654
+              },
+              {
+                "x": 87.8526,
+                "y": 13.0528
+              },
+              {
+                "x": 87.7972,
+                "y": 12.9351
+              },
+              {
+                "x": 86.6818,
+                "y": 11.1951
+              },
+              {
+                "x": 86.5865,
+                "y": 11.0854
+              },
+              {
+                "x": 85.8629,
+                "y": 10.4645
+              },
+              {
+                "x": 85.7627,
+                "y": 10.3977
+              },
+              {
+                "x": 84.8849,
+                "y": 9.9543
+              },
+              {
+                "x": 84.7385,
+                "y": 9.9069
+              },
+              {
+                "x": 82.5198,
+                "y": 9.5521
+              },
+              {
+                "x": 82.3963,
+                "y": 9.5478
+              },
+              {
+                "x": 81.1667,
+                "y": 9.6576
+              },
+              {
+                "x": 81.0658,
+                "y": 9.6772
+              },
+              {
+                "x": 79.982,
+                "y": 10.0067
+              },
+              {
+                "x": 79.8748,
+                "y": 10.0536
+              },
+              {
+                "x": 78.9368,
+                "y": 10.6027
+              },
+              {
+                "x": 78.8412,
+                "y": 10.6754
+              },
+              {
+                "x": 78.049,
+                "y": 11.4442
+              },
+              {
+                "x": 77.9668,
+                "y": 11.5486
+              },
+              {
+                "x": 77.3374,
+                "y": 12.6135
+              },
+              {
+                "x": 77.2906,
+                "y": 12.7187
+              },
+              {
+                "x": 76.841,
+                "y": 14.1563
+              },
+              {
+                "x": 76.8202,
+                "y": 14.2606
+              },
+              {
+                "x": 76.4605,
+                "y": 18.2534
+              },
+              {
+                "x": 76.4606,
+                "y": 18.3436
+              },
+              {
+                "x": 76.762,
+                "y": 21.6589
+              },
+              {
+                "x": 76.7804,
+                "y": 21.7552
+              },
+              {
+                "x": 77.157,
+                "y": 23.0307
+              },
+              {
+                "x": 77.1923,
+                "y": 23.1186
+              },
+              {
+                "x": 77.7197,
+                "y": 24.1392
+              },
+              {
+                "x": 77.781,
+                "y": 24.2312
+              },
+              {
+                "x": 78.6655,
+                "y": 25.2846
+              },
+              {
+                "x": 78.7589,
+                "y": 25.3707
+              },
+              {
+                "x": 79.8184,
+                "y": 26.1232
+              },
+              {
+                "x": 79.9362,
+                "y": 26.1852
+              },
+              {
+                "x": 81.1707,
+                "y": 26.6367
+              },
+              {
+                "x": 81.2893,
+                "y": 26.6643
+              },
+              {
+                "x": 82.6988,
+                "y": 26.8148
+              },
+              {
+                "x": 82.8056,
+                "y": 26.8147
+              },
+              {
+                "x": 84.0644,
+                "y": 26.6786
+              },
+              {
+                "x": 84.1803,
+                "y": 26.6519
+              },
+              {
+                "x": 85.3127,
+                "y": 26.2437
+              },
+              {
+                "x": 85.4214,
+                "y": 26.1887
+              },
+              {
+                "x": 86.408,
+                "y": 25.5277
+              },
+              {
+                "x": 86.498,
+                "y": 25.4505
+              },
+              {
+                "x": 87.3193,
+                "y": 24.5562
+              },
+              {
+                "x": 87.4071,
+                "y": 24.4228
+              },
+              {
+                "x": 88.0956,
+                "y": 22.8894
+              },
+              {
+                "x": 94.8991,
+                "y": 24.4032
+              },
+              {
+                "x": 94.2841,
+                "y": 25.9337
+              },
+              {
+                "x": 93.2766,
+                "y": 27.6854
+              },
+              {
+                "x": 92.0867,
+                "y": 29.1456
+              },
+              {
+                "x": 90.7159,
+                "y": 30.3194
+              },
+              {
+                "x": 89.1138,
+                "y": 31.2253
+              },
+              {
+                "x": 87.2202,
+                "y": 31.8785
+              },
+              {
+                "x": 85.029,
+                "y": 32.2743
+              },
+              {
+                "x": 82.5431,
+                "y": 32.407
+              },
+              {
+                "x": 79.3709,
+                "y": 32.175
+              },
+              {
+                "x": 76.6069,
+                "y": 31.4857
+              },
+              {
+                "x": 74.2383,
+                "y": 30.3456
+              },
+              {
+                "x": 72.2523,
+                "y": 28.7559
+              },
+              {
+                "x": 70.6774,
+                "y": 26.7428
+              },
+              {
+                "x": 69.547,
+                "y": 24.3266
+              },
+              {
+                "x": 68.8635,
+                "y": 21.4949
+              },
+              {
+                "x": 68.6334,
+                "y": 18.2352
+              },
+              {
+                "x": 68.7639,
+                "y": 15.763
+              },
+              {
+                "x": 69.1535,
+                "y": 13.5331
+              },
+              {
+                "x": 69.7984,
+                "y": 11.5479
+              },
+              {
+                "x": 70.6991,
+                "y": 9.7969
+              },
+              {
+                "x": 71.7787,
+                "y": 8.2814
+              },
+              {
+                "x": 72.9528,
+                "y": 7.0157
+              },
+              {
+                "x": 74.2136,
+                "y": 6.0049
+              },
+              {
+                "x": 75.5668,
+                "y": 5.2407
+              },
+              {
+                "x": 77.079,
+                "y": 4.6748
+              },
+              {
+                "x": 78.803,
+                "y": 4.2689
+              },
+              {
+                "x": 82.9466,
+                "y": 3.9375
+              },
+              {
+                "x": 86.3465,
+                "y": 4.2073
+              }
+            ],
+            "linked": false
+          }
+        ],
+        "params": {
+          "side": "inside",
+          "direction": "ccw",
+          "stockTop": 0,
+          "cutterDia": 1,
+          "finalDepth": 2,
+          "stepDepth": 1,
+          "feedRate": 500,
+          "plungeRate": 100,
+          "stepover": 40,
+          "islands": "yes",
+          "tabCount": 0,
+          "tabWidth": 4,
+          "tabHeight": 1.5,
+          "tabShape": "rect",
+          "tabRampAngle": 45
+        }
+      },
+      {
+        "entityIndices": [
+          0
+        ],
+        "side": "outside",
+        "closed": true,
+        "loops": [
+          {
+            "pts": [
+              {
+                "x": -0.5,
+                "y": 2.8336315936153746
+              },
+              {
+                "x": -0.47240394280790765,
+                "y": 2.4125972724301286
+              },
+              {
+                "x": -0.38688779756956,
+                "y": 1.9826785340715418
+              },
+              {
+                "x": -0.24598760418640458,
+                "y": 1.5675999518696255
+              },
+              {
+                "x": -0.052114205963996685,
+                "y": 1.1744635173725932
+              },
+              {
+                "x": 0.19141519833870474,
+                "y": 0.8099961221879464
+              },
+              {
+                "x": 0.4804336419726896,
+                "y": 0.4804336419726896
+              },
+              {
+                "x": 0.8099961221879464,
+                "y": 0.19141519833870474
+              },
+              {
+                "x": 1.1744635173725932,
+                "y": -0.052114205963996685
+              },
+              {
+                "x": 1.5675999518696255,
+                "y": -0.24598760418640458
+              },
+              {
+                "x": 1.9826785340715418,
+                "y": -0.38688779756956
+              },
+              {
+                "x": 2.4125972724301286,
+                "y": -0.47240394280790776
+              },
+              {
+                "x": 2.8336315936153746,
+                "y": -0.5
+              },
+              {
+                "x": 16.754900000069583,
+                "y": -0.5
+              },
+              {
+                "x": 21.754900000069586,
+                "y": -0.5
+              },
+              {
+                "x": 79.15500000006958,
+                "y": -0.5
+              },
+              {
+                "x": 84.15500000006958,
+                "y": -0.5
+              },
+              {
+                "x": 96.91636974268312,
+                "y": -0.5
+              },
+              {
+                "x": 97.33740668003567,
+                "y": -0.4724039305148066
+              },
+              {
+                "x": 97.76732221461926,
+                "y": -0.38688758611012347
+              },
+              {
+                "x": 98.18239936611859,
+                "y": -0.24598730741692904
+              },
+              {
+                "x": 98.57553223638254,
+                "y": -0.05211469915805794
+              },
+              {
+                "x": 98.94000530807871,
+                "y": 0.1914148454312556
+              },
+              {
+                "x": 99.26956517766624,
+                "y": 0.48043431856845276
+              },
+              {
+                "x": 99.55858407750102,
+                "y": 0.8099957206753192
+              },
+              {
+                "x": 99.80211280467819,
+                "y": 1.1744625220221678
+              },
+              {
+                "x": 99.99598999581767,
+                "y": 1.5676013539272282
+              },
+              {
+                "x": 100.13688483738635,
+                "y": 1.982680351581977
+              },
+              {
+                "x": 100.22240228216357,
+                "y": 2.41259518529709
+              },
+              {
+                "x": 100.25,
+                "y": 2.8336306552996295
+              },
+              {
+                "x": 100.25,
+                "y": 33.64637039072987
+              },
+              {
+                "x": 100.22240226986963,
+                "y": 34.06740415936615
+              },
+              {
+                "x": 100.13688478703958,
+                "y": 34.49731946471484
+              },
+              {
+                "x": 99.99599006429902,
+                "y": 34.912396430282485
+              },
+              {
+                "x": 99.80211329787953,
+                "y": 35.30553692398742
+              },
+              {
+                "x": 99.5585844304172,
+                "y": 35.67000491646148
+              },
+              {
+                "x": 99.269564501068,
+                "y": 35.999568193339805
+              },
+              {
+                "x": 98.94000410352615,
+                "y": 36.288585045772095
+              },
+              {
+                "x": 98.57553323174174,
+                "y": 36.53211284011434
+              },
+              {
+                "x": 98.18240014598138,
+                "y": 36.72598816526615
+              },
+              {
+                "x": 97.76732039710207,
+                "y": 36.86688831818971
+              },
+              {
+                "x": 97.33740625276866,
+                "y": 36.95240197691724
+              },
+              {
+                "x": 96.91637068099348,
+                "y": 36.97999954223633
+              },
+              {
+                "x": 84.25970000014462,
+                "y": 36.97999954223633
+              },
+              {
+                "x": 79.25970000014462,
+                "y": 36.97999954223633
+              },
+              {
+                "x": 21.71580000014461,
+                "y": 36.97999954223633
+              },
+              {
+                "x": 16.71580000014461,
+                "y": 36.97999954223633
+              },
+              {
+                "x": 2.8336306552996295,
+                "y": 36.97999954223633
+              },
+              {
+                "x": 2.4125976996792167,
+                "y": 36.95240198921074
+              },
+              {
+                "x": 1.9826803515762372,
+                "y": 36.86688852964231
+              },
+              {
+                "x": 1.567599172009106,
+                "y": 36.72598846203677
+              },
+              {
+                "x": 1.1744625220221678,
+                "y": 36.532112346914516
+              },
+              {
+                "x": 0.8099973267338234,
+                "y": 36.28858469287044
+              },
+              {
+                "x": 0.4804343185666957,
+                "y": 35.99956886993786
+              },
+              {
+                "x": 0.19141484542304948,
+                "y": 35.67000451494856
+              },
+              {
+                "x": -0.05211469916146594,
+                "y": 35.30553592864036
+              },
+              {
+                "x": -0.24598767267042632,
+                "y": 34.91239783235718
+              },
+              {
+                "x": -0.3868877472224025,
+                "y": 34.49732128223604
+              },
+              {
+                "x": -0.47240393051495433,
+                "y": 34.06740207222976
+              },
+              {
+                "x": -0.5,
+                "y": 33.64636945240994
+              },
+              {
+                "x": -0.5,
+                "y": 2.8336315936153746
+              }
+            ],
+            "linked": false,
+            "cum": [
+              0,
+              0.42193772287918296,
+              0.8602790655429399,
+              1.298620363960239,
+              1.7369617271320754,
+              2.175302978798754,
+              2.6136442717728956,
+              3.0519855647470373,
+              3.490326816413716,
+              3.9286681795855523,
+              4.367009478002851,
+              4.805350820666608,
+              5.227288543545791,
+              19.14855695,
+              24.14855695,
+              81.54865695,
+              86.54865695,
+              99.31002669261353,
+              99.73196702686265,
+              100.17030526616722,
+              100.60864523723149,
+              101.04698305434869,
+              101.48532910381134,
+              101.92366911281697,
+              102.36200989602149,
+              102.80035027773933,
+              103.23869546865147,
+              103.67703544022004,
+              104.11537320679909,
+              104.5373121846502,
+              135.35005192008043,
+              135.7719892010126,
+              136.21032743758641,
+              136.64866544670835,
+              137.0870119401902,
+              137.5253533902329,
+              137.96369626177048,
+              138.40203493975568,
+              138.84037818767501,
+              139.27871739972682,
+              139.71705978990096,
+              140.15539614172098,
+              140.57733521115114,
+              153.234005892,
+              158.234005892,
+              215.777905892,
+              220.777905892,
+              234.660075236845,
+              235.08201169491832,
+              235.52035115009804,
+              235.95869486760986,
+              236.3970376257089,
+              236.83537607583708,
+              237.27371603780446,
+              237.71205941911157,
+              238.15040173909796,
+              238.58874440483604,
+              239.0270837408181,
+              239.465425553491,
+              239.88736157945152,
+              270.70009943824607
+            ],
+            "tabSeg": [
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              true,
+              false,
+              true,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              true,
+              false,
+              true,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false
+            ],
+            "tabCenters": [
+              {
+                "s": 21.648556949930416,
+                "x": 19.254900000000006,
+                "y": -0.5
+              },
+              {
+                "s": 84.0486569499304,
+                "x": 81.65500000000002,
+                "y": -0.5
+              },
+              {
+                "s": 155.73400589214464,
+                "x": 81.75969999999998,
+                "y": 36.97999954223633
+              },
+              {
+                "s": 218.27790589214462,
+                "x": 19.215799999999973,
+                "y": 36.97999954223633
+              }
+            ]
+          }
+        ],
+        "params": {
+          "side": "outside",
+          "direction": "ccw",
+          "stockTop": 0,
+          "cutterDia": 1,
+          "finalDepth": 4.2,
+          "stepDepth": 1,
+          "feedRate": 500,
+          "plungeRate": 100,
+          "stepover": 40,
+          "islands": "yes",
+          "tabCount": 4,
+          "tabWidth": 4,
+          "tabHeight": 1.5,
+          "tabShape": "rect",
+          "tabRampAngle": 45,
+          "tabPositions": [
+            {
+              "x": 19.2549,
+              "y": -0.5
+            },
+            {
+              "x": 81.655,
+              "y": -0.5
+            },
+            {
+              "x": 81.7597,
+              "y": 36.98
+            },
+            {
+              "x": 19.2158,
+              "y": 36.98
+            }
+          ]
+        }
+      }
+    ],
+    "gcode": "(dxf-2-grbl-web - check and simulate before running the machine)\nG21 (mm)\nG90 (absolute coordinates)\nG17 (XY plane)\nG94 (feed rate mm/min)\nG54\nG0 Z5.000\nM3 S10000\nG4 P2\n(Tool: cutter dia 1 mm)\n(Contour 1: C, inside contour, CCW, stock top Z0.000)\nG0 Z5.000\nG0 X22.212 Y4.207\nG0 Z0.000\nG1 Z-1.000 F111.000\nG1 X24.917 Y5.005 F500.000\nG1 X27.084 Y6.315 F500.000\nG1 X28.871 Y8.136 F500.000\nG1 X30.262 Y10.484 F500.000\nG1 X31.082 Y12.924 F500.000\nG1 X24.329 Y14.965 F500.000\nG1 X23.718 Y13.053 F500.000\nG1 X23.663 Y12.935 F500.000\nG1 X22.547 Y11.195 F500.000\nG1 X22.452 Y11.085 F500.000\nG1 X21.728 Y10.464 F500.000\nG1 X21.628 Y10.398 F500.000\nG1 X20.750 Y9.954 F500.000\nG1 X20.604 Y9.907 F500.000\nG1 X18.385 Y9.552 F500.000\nG1 X18.262 Y9.548 F500.000\nG1 X17.032 Y9.658 F500.000\nG1 X16.931 Y9.677 F500.000\nG1 X15.847 Y10.007 F500.000\nG1 X15.740 Y10.054 F500.000\nG1 X14.802 Y10.603 F500.000\nG1 X14.706 Y10.675 F500.000\nG1 X13.914 Y11.444 F500.000\nG1 X13.832 Y11.549 F500.000\nG1 X13.203 Y12.614 F500.000\nG1 X13.156 Y12.719 F500.000\nG1 X12.706 Y14.156 F500.000\nG1 X12.685 Y14.261 F500.000\nG1 X12.326 Y18.253 F500.000\nG1 X12.326 Y18.344 F500.000\nG1 X12.627 Y21.659 F500.000\nG1 X12.646 Y21.755 F500.000\nG1 X13.022 Y23.031 F500.000\nG1 X13.058 Y23.119 F500.000\nG1 X13.585 Y24.139 F500.000\nG1 X13.646 Y24.231 F500.000\nG1 X14.531 Y25.285 F500.000\nG1 X14.624 Y25.371 F500.000\nG1 X15.684 Y26.123 F500.000\nG1 X15.802 Y26.185 F500.000\nG1 X17.036 Y26.637 F500.000\nG1 X17.155 Y26.664 F500.000\nG1 X18.564 Y26.815 F500.000\nG1 X18.671 Y26.815 F500.000\nG1 X19.930 Y26.679 F500.000\nG1 X20.046 Y26.652 F500.000\nG1 X21.178 Y26.244 F500.000\nG1 X21.287 Y26.189 F500.000\nG1 X22.273 Y25.528 F500.000\nG1 X22.363 Y25.451 F500.000\nG1 X23.185 Y24.556 F500.000\nG1 X23.272 Y24.423 F500.000\nG1 X23.961 Y22.889 F500.000\nG1 X30.764 Y24.403 F500.000\nG1 X30.149 Y25.934 F500.000\nG1 X29.142 Y27.685 F500.000\nG1 X27.952 Y29.146 F500.000\nG1 X26.581 Y30.319 F500.000\nG1 X24.979 Y31.225 F500.000\nG1 X23.085 Y31.878 F500.000\nG1 X20.894 Y32.274 F500.000\nG1 X18.408 Y32.407 F500.000\nG1 X15.236 Y32.175 F500.000\nG1 X12.472 Y31.486 F500.000\nG1 X10.104 Y30.346 F500.000\nG1 X8.117 Y28.756 F500.000\nG1 X6.543 Y26.743 F500.000\nG1 X5.412 Y24.327 F500.000\nG1 X4.729 Y21.495 F500.000\nG1 X4.499 Y18.235 F500.000\nG1 X4.629 Y15.763 F500.000\nG1 X5.019 Y13.533 F500.000\nG1 X5.664 Y11.548 F500.000\nG1 X6.564 Y9.797 F500.000\nG1 X7.644 Y8.281 F500.000\nG1 X8.818 Y7.016 F500.000\nG1 X10.079 Y6.005 F500.000\nG1 X11.432 Y5.241 F500.000\nG1 X12.944 Y4.675 F500.000\nG1 X14.668 Y4.269 F500.000\nG1 X18.812 Y3.938 F500.000\nG1 X22.212 Y4.207 F500.000\nG1 Z-2.000 F111.000\nG1 X24.917 Y5.005 F500.000\nG1 X27.084 Y6.315 F500.000\nG1 X28.871 Y8.136 F500.000\nG1 X30.262 Y10.484 F500.000\nG1 X31.082 Y12.924 F500.000\nG1 X24.329 Y14.965 F500.000\nG1 X23.718 Y13.053 F500.000\nG1 X23.663 Y12.935 F500.000\nG1 X22.547 Y11.195 F500.000\nG1 X22.452 Y11.085 F500.000\nG1 X21.728 Y10.464 F500.000\nG1 X21.628 Y10.398 F500.000\nG1 X20.750 Y9.954 F500.000\nG1 X20.604 Y9.907 F500.000\nG1 X18.385 Y9.552 F500.000\nG1 X18.262 Y9.548 F500.000\nG1 X17.032 Y9.658 F500.000\nG1 X16.931 Y9.677 F500.000\nG1 X15.847 Y10.007 F500.000\nG1 X15.740 Y10.054 F500.000\nG1 X14.802 Y10.603 F500.000\nG1 X14.706 Y10.675 F500.000\nG1 X13.914 Y11.444 F500.000\nG1 X13.832 Y11.549 F500.000\nG1 X13.203 Y12.614 F500.000\nG1 X13.156 Y12.719 F500.000\nG1 X12.706 Y14.156 F500.000\nG1 X12.685 Y14.261 F500.000\nG1 X12.326 Y18.253 F500.000\nG1 X12.326 Y18.344 F500.000\nG1 X12.627 Y21.659 F500.000\nG1 X12.646 Y21.755 F500.000\nG1 X13.022 Y23.031 F500.000\nG1 X13.058 Y23.119 F500.000\nG1 X13.585 Y24.139 F500.000\nG1 X13.646 Y24.231 F500.000\nG1 X14.531 Y25.285 F500.000\nG1 X14.624 Y25.371 F500.000\nG1 X15.684 Y26.123 F500.000\nG1 X15.802 Y26.185 F500.000\nG1 X17.036 Y26.637 F500.000\nG1 X17.155 Y26.664 F500.000\nG1 X18.564 Y26.815 F500.000\nG1 X18.671 Y26.815 F500.000\nG1 X19.930 Y26.679 F500.000\nG1 X20.046 Y26.652 F500.000\nG1 X21.178 Y26.244 F500.000\nG1 X21.287 Y26.189 F500.000\nG1 X22.273 Y25.528 F500.000\nG1 X22.363 Y25.451 F500.000\nG1 X23.185 Y24.556 F500.000\nG1 X23.272 Y24.423 F500.000\nG1 X23.961 Y22.889 F500.000\nG1 X30.764 Y24.403 F500.000\nG1 X30.149 Y25.934 F500.000\nG1 X29.142 Y27.685 F500.000\nG1 X27.952 Y29.146 F500.000\nG1 X26.581 Y30.319 F500.000\nG1 X24.979 Y31.225 F500.000\nG1 X23.085 Y31.878 F500.000\nG1 X20.894 Y32.274 F500.000\nG1 X18.408 Y32.407 F500.000\nG1 X15.236 Y32.175 F500.000\nG1 X12.472 Y31.486 F500.000\nG1 X10.104 Y30.346 F500.000\nG1 X8.117 Y28.756 F500.000\nG1 X6.543 Y26.743 F500.000\nG1 X5.412 Y24.327 F500.000\nG1 X4.729 Y21.495 F500.000\nG1 X4.499 Y18.235 F500.000\nG1 X4.629 Y15.763 F500.000\nG1 X5.019 Y13.533 F500.000\nG1 X5.664 Y11.548 F500.000\nG1 X6.564 Y9.797 F500.000\nG1 X7.644 Y8.281 F500.000\nG1 X8.818 Y7.016 F500.000\nG1 X10.079 Y6.005 F500.000\nG1 X11.432 Y5.241 F500.000\nG1 X12.944 Y4.675 F500.000\nG1 X14.668 Y4.269 F500.000\nG1 X18.812 Y3.938 F500.000\nG1 X22.212 Y4.207 F500.000\nG0 Z5.000\n(Contour 2: N, pocket, CCW, stock top Z0.000)\nG0 Z5.000\nG0 X42.160 Y25.049\nG0 Z0.000\nG1 Z-1.000 F100.000\nG1 X41.955 Y25.350 F500.000\nG1 X41.955 Y24.968 F500.000\nG1 X42.160 Y25.049 F500.000\nG0 Z5.000\nG0 X57.200 Y11.181\nG0 Z0.000\nG1 Z-1.000 F100.000\nG1 X57.411 Y10.872 F500.000\nG1 X57.411 Y11.265 F500.000\nG1 X57.405 Y11.262 F500.000\nG1 X57.200 Y11.181 F500.000\nG0 Z5.000\nG0 X42.468 Y24.952\nG0 Z0.000\nG1 Z-1.000 F100.000\nG1 X41.755 Y25.999 F500.000\nG1 X41.755 Y24.650 F500.000\nG1 X42.128 Y24.825 F500.000\nG1 X42.468 Y24.952 F500.000\nG0 Z5.000\nG0 X56.892 Y11.278\nG0 Z0.000\nG1 Z-1.000 F100.000\nG1 X57.611 Y10.224 F500.000\nG1 X57.611 Y11.584 F500.000\nG1 X57.219 Y11.400 F500.000\nG1 X56.892 Y11.278 F500.000\nG0 Z5.000\nG0 X43.109 Y24.721\nG0 Z0.000\nG1 Z-1.000 F100.000\nG1 X41.475 Y27.122 F500.000\nG1 X41.355 Y27.122 F500.000\nG1 X41.355 Y23.948 F500.000\nG1 X41.666 Y24.148 F500.000\nG1 X42.073 Y24.363 F500.000\nG1 X42.498 Y24.541 F500.000\nG1 X42.936 Y24.682 F500.000\nG1 X43.109 Y24.721 F500.000\nG0 Z5.000\nG0 X56.252 Y11.507\nG0 Z0.000\nG1 Z-1.000 F100.000\nG1 X57.811 Y9.222 F500.000\nG1 X58.011 Y9.222 F500.000\nG1 X58.011 Y12.289 F500.000\nG1 X57.681 Y12.077 F500.000\nG1 X57.274 Y11.862 F500.000\nG1 X56.850 Y11.684 F500.000\nG1 X56.411 Y11.543 F500.000\nG1 X56.252 Y11.507 F500.000\nG0 Z5.000\nG0 X43.786 Y24.437\nG0 Z0.000\nG1 Z-1.000 F100.000\nG1 X41.687 Y27.522 F500.000\nG1 X40.955 Y27.522 F500.000\nG1 X40.955 Y23.115 F500.000\nG1 X40.970 Y23.130 F500.000\nG1 X41.305 Y23.420 F500.000\nG1 X41.665 Y23.678 F500.000\nG1 X42.046 Y23.902 F500.000\nG1 X42.446 Y24.091 F500.000\nG1 X42.862 Y24.243 F500.000\nG1 X43.290 Y24.357 F500.000\nG1 X43.726 Y24.432 F500.000\nG1 X43.786 Y24.437 F500.000\nG0 Z5.000\nG0 X55.576 Y11.789\nG0 Z0.000\nG1 Z-1.000 F100.000\nG1 X57.599 Y8.822 F500.000\nG1 X58.411 Y8.822 F500.000\nG1 X58.411 Y13.130 F500.000\nG1 X58.377 Y13.095 F500.000\nG1 X58.042 Y12.805 F500.000\nG1 X57.682 Y12.547 F500.000\nG1 X57.301 Y12.323 F500.000\nG1 X56.901 Y12.134 F500.000\nG1 X56.485 Y11.982 F500.000\nG1 X56.057 Y11.868 F500.000\nG1 X55.621 Y11.793 F500.000\nG1 X55.576 Y11.789 F500.000\nG0 Z5.000\nG0 X44.523 Y24.065\nG0 Z0.000\nG1 Z-1.000 F100.000\nG1 X41.898 Y27.922 F500.000\nG1 X40.555 Y27.922 F500.000\nG1 X40.555 Y22.007 F500.000\nG1 X40.782 Y22.330 F500.000\nG1 X41.058 Y22.652 F500.000\nG1 X41.362 Y22.947 F500.000\nG1 X41.694 Y23.212 F500.000\nG1 X42.048 Y23.445 F500.000\nG1 X42.423 Y23.643 F500.000\nG1 X42.815 Y23.805 F500.000\nG1 X43.221 Y23.930 F500.000\nG1 X43.636 Y24.015 F500.000\nG1 X44.058 Y24.062 F500.000\nG1 X44.482 Y24.068 F500.000\nG1 X44.523 Y24.065 F500.000\nG0 Z5.000\nG0 X54.839 Y12.159\nG0 Z0.000\nG1 Z-1.000 F100.000\nG1 X57.388 Y8.422 F500.000\nG1 X58.811 Y8.422 F500.000\nG1 X58.811 Y14.246 F500.000\nG1 X58.809 Y14.242 F500.000\nG1 X58.565 Y13.895 F500.000\nG1 X58.289 Y13.573 F500.000\nG1 X57.985 Y13.278 F500.000\nG1 X57.654 Y13.013 F500.000\nG1 X57.299 Y12.780 F500.000\nG1 X56.924 Y12.582 F500.000\nG1 X56.532 Y12.420 F500.000\nG1 X56.127 Y12.295 F500.000\nG1 X55.711 Y12.209 F500.000\nG1 X55.290 Y12.163 F500.000\nG1 X54.866 Y12.157 F500.000\nG1 X54.839 Y12.159 F500.000\nG1 X54.970 Y12.555 F500.000\nG1 X54.566 Y12.579 F500.000\nG1 X54.166 Y12.642 F500.000\nG1 X53.995 Y12.687 F500.000\nG1 X57.177 Y8.022 F500.000\nG1 X59.211 Y8.022 F500.000\nG1 X59.211 Y28.322 F500.000\nG1 X59.110 Y28.322 F500.000\nG1 X59.110 Y16.654 F500.000\nG1 X59.090 Y16.250 F500.000\nG1 X59.030 Y15.850 F500.000\nG1 X58.931 Y15.457 F500.000\nG1 X58.794 Y15.076 F500.000\nG1 X58.620 Y14.711 F500.000\nG1 X58.411 Y14.364 F500.000\nG1 X58.168 Y14.040 F500.000\nG1 X57.895 Y13.741 F500.000\nG1 X57.594 Y13.471 F500.000\nG1 X57.267 Y13.232 F500.000\nG1 X56.919 Y13.026 F500.000\nG1 X56.551 Y12.855 F500.000\nG1 X56.169 Y12.722 F500.000\nG1 X55.776 Y12.627 F500.000\nG1 X55.375 Y12.571 F500.000\nG1 X54.970 Y12.555 F500.000\nG0 Z5.000\nG0 X45.369 Y23.533\nG0 Z0.000\nG1 Z-1.000 F100.000\nG1 X42.110 Y28.322 F500.000\nG1 X40.155 Y28.322 F500.000\nG1 X40.155 Y8.022 F500.000\nG1 X40.237 Y8.022 F500.000\nG1 X40.237 Y19.570 F500.000\nG1 X40.257 Y19.975 F500.000\nG1 X40.317 Y20.375 F500.000\nG1 X40.416 Y20.768 F500.000\nG1 X40.553 Y21.149 F500.000\nG1 X40.727 Y21.514 F500.000\nG1 X40.936 Y21.861 F500.000\nG1 X41.179 Y22.185 F500.000\nG1 X41.452 Y22.484 F500.000\nG1 X41.754 Y22.754 F500.000\nG1 X42.080 Y22.993 F500.000\nG1 X42.429 Y23.199 F500.000\nG1 X42.796 Y23.370 F500.000\nG1 X43.178 Y23.503 F500.000\nG1 X43.572 Y23.598 F500.000\nG1 X43.972 Y23.654 F500.000\nG1 X44.377 Y23.670 F500.000\nG1 X44.781 Y23.646 F500.000\nG1 X45.181 Y23.583 F500.000\nG1 X45.369 Y23.533 F500.000\nG0 Z5.000\nG0 X52.854 Y13.649\nG0 Z0.000\nG1 Z-1.000 F100.000\nG1 X56.965 Y7.622 F500.000\nG1 X59.611 Y7.622 F500.000\nG1 X59.611 Y28.722 F500.000\nG1 X58.710 Y28.722 F500.000\nG1 X58.710 Y16.654 F500.000\nG1 X58.690 Y16.270 F500.000\nG1 X58.630 Y15.890 F500.000\nG1 X58.532 Y15.519 F500.000\nG1 X58.395 Y15.159 F500.000\nG1 X58.221 Y14.816 F500.000\nG1 X58.013 Y14.493 F500.000\nG1 X57.772 Y14.193 F500.000\nG1 X57.502 Y13.919 F500.000\nG1 X57.205 Y13.675 F500.000\nG1 X56.883 Y13.464 F500.000\nG1 X56.542 Y13.287 F500.000\nG1 X56.184 Y13.146 F500.000\nG1 X55.814 Y13.043 F500.000\nG1 X55.435 Y12.979 F500.000\nG1 X55.051 Y12.955 F500.000\nG1 X54.666 Y12.970 F500.000\nG1 X54.286 Y13.026 F500.000\nG1 X53.913 Y13.121 F500.000\nG1 X53.552 Y13.254 F500.000\nG1 X53.207 Y13.423 F500.000\nG1 X52.882 Y13.628 F500.000\nG1 X52.854 Y13.649 F500.000\nG0 Z5.000\nG0 X46.518 Y22.556\nG0 Z0.000\nG1 Z-1.000 F100.000\nG1 X42.321 Y28.722 F500.000\nG1 X39.755 Y28.722 F500.000\nG1 X39.755 Y7.622 F500.000\nG1 X40.637 Y7.622 F500.000\nG1 X40.637 Y19.570 F500.000\nG1 X40.657 Y19.955 F500.000\nG1 X40.717 Y20.334 F500.000\nG1 X40.816 Y20.706 F500.000\nG1 X40.953 Y21.066 F500.000\nG1 X41.126 Y21.409 F500.000\nG1 X41.334 Y21.732 F500.000\nG1 X41.575 Y22.032 F500.000\nG1 X41.845 Y22.306 F500.000\nG1 X42.143 Y22.549 F500.000\nG1 X42.464 Y22.761 F500.000\nG1 X42.805 Y22.938 F500.000\nG1 X43.163 Y23.079 F500.000\nG1 X43.533 Y23.182 F500.000\nG1 X43.913 Y23.246 F500.000\nG1 X44.296 Y23.270 F500.000\nG1 X44.681 Y23.255 F500.000\nG1 X45.061 Y23.199 F500.000\nG1 X45.434 Y23.104 F500.000\nG1 X45.795 Y22.971 F500.000\nG1 X46.140 Y22.802 F500.000\nG1 X46.466 Y22.597 F500.000\nG1 X46.518 Y22.556 F500.000\nG1 X46.285 Y22.234 F500.000\nG1 X46.566 Y22.004 F500.000\nG1 X46.820 Y21.744 F500.000\nG1 X47.063 Y21.430 F500.000\nG1 X56.754 Y7.222 F500.000\nG1 X60.011 Y7.222 F500.000\nG1 X60.011 Y29.122 F500.000\nG1 X58.310 Y29.122 F500.000\nG1 X58.310 Y16.654 F500.000\nG1 X58.290 Y16.292 F500.000\nG1 X58.230 Y15.934 F500.000\nG1 X58.132 Y15.584 F500.000\nG1 X57.995 Y15.248 F500.000\nG1 X57.822 Y14.928 F500.000\nG1 X57.616 Y14.629 F500.000\nG1 X57.377 Y14.355 F500.000\nG1 X57.111 Y14.109 F500.000\nG1 X56.818 Y13.894 F500.000\nG1 X56.504 Y13.712 F500.000\nG1 X56.171 Y13.566 F500.000\nG1 X55.825 Y13.457 F500.000\nG1 X55.468 Y13.386 F500.000\nG1 X55.107 Y13.356 F500.000\nG1 X54.744 Y13.365 F500.000\nG1 X54.384 Y13.414 F500.000\nG1 X54.032 Y13.503 F500.000\nG1 X53.691 Y13.630 F500.000\nG1 X53.367 Y13.793 F500.000\nG1 X53.062 Y13.991 F500.000\nG1 X52.781 Y14.221 F500.000\nG1 X52.527 Y14.480 F500.000\nG1 X52.282 Y14.798 F500.000\nG1 X42.533 Y29.122 F500.000\nG1 X39.355 Y29.122 F500.000\nG1 X39.355 Y7.222 F500.000\nG1 X41.037 Y7.222 F500.000\nG1 X41.037 Y19.570 F500.000\nG1 X41.057 Y19.933 F500.000\nG1 X41.117 Y20.291 F500.000\nG1 X41.215 Y20.641 F500.000\nG1 X41.352 Y20.977 F500.000\nG1 X41.525 Y21.297 F500.000\nG1 X41.731 Y21.596 F500.000\nG1 X41.970 Y21.870 F500.000\nG1 X42.237 Y22.116 F500.000\nG1 X42.529 Y22.331 F500.000\nG1 X42.843 Y22.513 F500.000\nG1 X43.176 Y22.659 F500.000\nG1 X43.522 Y22.768 F500.000\nG1 X43.879 Y22.838 F500.000\nG1 X44.241 Y22.869 F500.000\nG1 X44.604 Y22.860 F500.000\nG1 X44.964 Y22.811 F500.000\nG1 X45.316 Y22.722 F500.000\nG1 X45.656 Y22.595 F500.000\nG1 X45.980 Y22.432 F500.000\nG1 X46.285 Y22.234 F500.000\nG1 X46.117 Y21.860 F500.000\nG1 X46.373 Y21.635 F500.000\nG1 X46.601 Y21.383 F500.000\nG1 X46.733 Y21.204 F500.000\nG1 X56.542 Y6.822 F500.000\nG1 X60.411 Y6.822 F500.000\nG1 X60.411 Y29.522 F500.000\nG1 X57.910 Y29.522 F500.000\nG1 X57.910 Y16.654 F500.000\nG1 X57.890 Y16.314 F500.000\nG1 X57.830 Y15.979 F500.000\nG1 X57.732 Y15.653 F500.000\nG1 X57.596 Y15.341 F500.000\nG1 X57.424 Y15.047 F500.000\nG1 X57.219 Y14.776 F500.000\nG1 X56.984 Y14.530 F500.000\nG1 X56.721 Y14.313 F500.000\nG1 X56.435 Y14.129 F500.000\nG1 X56.129 Y13.979 F500.000\nG1 X55.808 Y13.866 F500.000\nG1 X55.476 Y13.792 F500.000\nG1 X55.137 Y13.757 F500.000\nG1 X54.797 Y13.762 F500.000\nG1 X54.459 Y13.807 F500.000\nG1 X54.129 Y13.891 F500.000\nG1 X53.812 Y14.014 F500.000\nG1 X53.510 Y14.172 F500.000\nG1 X53.230 Y14.365 F500.000\nG1 X52.974 Y14.589 F500.000\nG1 X52.746 Y14.842 F500.000\nG1 X52.613 Y15.023 F500.000\nG1 X42.745 Y29.522 F500.000\nG1 X38.955 Y29.522 F500.000\nG1 X38.955 Y6.822 F500.000\nG1 X41.437 Y6.822 F500.000\nG1 X41.437 Y19.570 F500.000\nG1 X41.457 Y19.910 F500.000\nG1 X41.517 Y20.245 F500.000\nG1 X41.615 Y20.571 F500.000\nG1 X41.751 Y20.884 F500.000\nG1 X41.923 Y21.177 F500.000\nG1 X42.128 Y21.449 F500.000\nG1 X42.363 Y21.695 F500.000\nG1 X42.626 Y21.912 F500.000\nG1 X42.912 Y22.096 F500.000\nG1 X43.218 Y22.246 F500.000\nG1 X43.539 Y22.359 F500.000\nG1 X43.871 Y22.433 F500.000\nG1 X44.210 Y22.468 F500.000\nG1 X44.550 Y22.463 F500.000\nG1 X44.888 Y22.418 F500.000\nG1 X45.218 Y22.334 F500.000\nG1 X45.536 Y22.211 F500.000\nG1 X45.837 Y22.053 F500.000\nG1 X46.117 Y21.860 F500.000\nG1 X45.960 Y21.472 F500.000\nG1 X46.187 Y21.252 F500.000\nG1 X46.402 Y20.979 F500.000\nG1 X56.331 Y6.422 F500.000\nG1 X60.811 Y6.422 F500.000\nG1 X60.811 Y29.922 F500.000\nG1 X57.510 Y29.922 F500.000\nG1 X57.510 Y16.654 F500.000\nG1 X57.490 Y16.339 F500.000\nG1 X57.431 Y16.029 F500.000\nG1 X57.332 Y15.728 F500.000\nG1 X57.197 Y15.443 F500.000\nG1 X57.026 Y15.176 F500.000\nG1 X56.824 Y14.934 F500.000\nG1 X56.592 Y14.719 F500.000\nG1 X56.335 Y14.534 F500.000\nG1 X56.057 Y14.384 F500.000\nG1 X55.762 Y14.270 F500.000\nG1 X55.456 Y14.194 F500.000\nG1 X55.142 Y14.158 F500.000\nG1 X54.826 Y14.161 F500.000\nG1 X54.513 Y14.204 F500.000\nG1 X54.207 Y14.287 F500.000\nG1 X53.915 Y14.407 F500.000\nG1 X53.640 Y14.563 F500.000\nG1 X53.387 Y14.753 F500.000\nG1 X53.160 Y14.973 F500.000\nG1 X52.943 Y15.248 F500.000\nG1 X42.956 Y29.922 F500.000\nG1 X38.555 Y29.922 F500.000\nG1 X38.555 Y6.422 F500.000\nG1 X41.837 Y6.422 F500.000\nG1 X41.837 Y19.570 F500.000\nG1 X41.857 Y19.886 F500.000\nG1 X41.917 Y20.196 F500.000\nG1 X42.015 Y20.497 F500.000\nG1 X42.150 Y20.782 F500.000\nG1 X42.321 Y21.049 F500.000\nG1 X42.523 Y21.291 F500.000\nG1 X42.755 Y21.506 F500.000\nG1 X43.012 Y21.690 F500.000\nG1 X43.290 Y21.841 F500.000\nG1 X43.585 Y21.955 F500.000\nG1 X43.892 Y22.030 F500.000\nG1 X44.206 Y22.067 F500.000\nG1 X44.522 Y22.064 F500.000\nG1 X44.835 Y22.020 F500.000\nG1 X45.140 Y21.938 F500.000\nG1 X45.432 Y21.818 F500.000\nG1 X45.707 Y21.662 F500.000\nG1 X45.960 Y21.472 F500.000\nG1 X45.588 Y21.258 F500.000\nG1 X45.808 Y21.070 F500.000\nG1 X46.072 Y20.754 F500.000\nG1 X56.120 Y6.022 F500.000\nG1 X61.211 Y6.022 F500.000\nG1 X61.211 Y30.322 F500.000\nG1 X57.110 Y30.322 F500.000\nG1 X57.110 Y16.654 F500.000\nG1 X57.090 Y16.365 F500.000\nG1 X57.031 Y16.082 F500.000\nG1 X56.933 Y15.809 F500.000\nG1 X56.798 Y15.553 F500.000\nG1 X56.629 Y15.317 F500.000\nG1 X56.430 Y15.107 F500.000\nG1 X56.204 Y14.927 F500.000\nG1 X55.955 Y14.779 F500.000\nG1 X55.688 Y14.667 F500.000\nG1 X55.407 Y14.592 F500.000\nG1 X55.120 Y14.557 F500.000\nG1 X54.830 Y14.562 F500.000\nG1 X54.544 Y14.607 F500.000\nG1 X54.267 Y14.690 F500.000\nG1 X54.004 Y14.811 F500.000\nG1 X53.760 Y14.967 F500.000\nG1 X53.539 Y15.155 F500.000\nG1 X53.274 Y15.473 F500.000\nG1 X43.168 Y30.322 F500.000\nG1 X38.155 Y30.322 F500.000\nG1 X38.155 Y6.022 F500.000\nG1 X42.237 Y6.022 F500.000\nG1 X42.237 Y19.570 F500.000\nG1 X42.257 Y19.860 F500.000\nG1 X42.317 Y20.143 F500.000\nG1 X42.415 Y20.416 F500.000\nG1 X42.549 Y20.672 F500.000\nG1 X42.718 Y20.908 F500.000\nG1 X42.917 Y21.118 F500.000\nG1 X43.144 Y21.298 F500.000\nG1 X43.393 Y21.446 F500.000\nG1 X43.660 Y21.558 F500.000\nG1 X43.940 Y21.633 F500.000\nG1 X44.227 Y21.668 F500.000\nG1 X44.517 Y21.663 F500.000\nG1 X44.803 Y21.618 F500.000\nG1 X45.080 Y21.535 F500.000\nG1 X45.343 Y21.414 F500.000\nG1 X45.588 Y21.258 F500.000\nG1 X45.265 Y20.995 F500.000\nG1 X45.472 Y20.837 F500.000\nG1 X45.652 Y20.648 F500.000\nG1 X45.742 Y20.528 F500.000\nG1 X55.908 Y5.622 F500.000\nG1 X61.611 Y5.622 F500.000\nG1 X61.611 Y30.722 F500.000\nG1 X56.710 Y30.722 F500.000\nG1 X56.710 Y16.654 F500.000\nG1 X56.690 Y16.395 F500.000\nG1 X56.631 Y16.141 F500.000\nG1 X56.533 Y15.899 F500.000\nG1 X56.400 Y15.675 F500.000\nG1 X56.234 Y15.474 F500.000\nG1 X56.039 Y15.301 F500.000\nG1 X55.820 Y15.160 F500.000\nG1 X55.582 Y15.054 F500.000\nG1 X55.331 Y14.985 F500.000\nG1 X55.072 Y14.956 F500.000\nG1 X54.812 Y14.966 F500.000\nG1 X54.556 Y15.016 F500.000\nG1 X54.311 Y15.105 F500.000\nG1 X54.082 Y15.230 F500.000\nG1 X53.876 Y15.388 F500.000\nG1 X53.695 Y15.577 F500.000\nG1 X53.605 Y15.698 F500.000\nG1 X43.379 Y30.722 F500.000\nG1 X37.755 Y30.722 F500.000\nG1 X37.755 Y5.622 F500.000\nG1 X42.637 Y5.622 F500.000\nG1 X42.637 Y19.570 F500.000\nG1 X42.657 Y19.830 F500.000\nG1 X42.717 Y20.084 F500.000\nG1 X42.814 Y20.326 F500.000\nG1 X42.947 Y20.550 F500.000\nG1 X43.113 Y20.750 F500.000\nG1 X43.308 Y20.924 F500.000\nG1 X43.527 Y21.065 F500.000\nG1 X43.765 Y21.171 F500.000\nG1 X44.016 Y21.240 F500.000\nG1 X44.275 Y21.269 F500.000\nG1 X44.535 Y21.259 F500.000\nG1 X44.791 Y21.209 F500.000\nG1 X45.036 Y21.120 F500.000\nG1 X45.265 Y20.995 F500.000\nG1 X45.000 Y20.689 F500.000\nG1 X45.185 Y20.556 F500.000\nG1 X45.411 Y20.303 F500.000\nG1 X55.697 Y5.222 F500.000\nG1 X62.011 Y5.222 F500.000\nG1 X62.011 Y31.122 F500.000\nG1 X56.310 Y31.122 F500.000\nG1 X56.310 Y16.654 F500.000\nG1 X56.290 Y16.427 F500.000\nG1 X56.231 Y16.207 F500.000\nG1 X56.134 Y16.001 F500.000\nG1 X56.003 Y15.815 F500.000\nG1 X55.841 Y15.655 F500.000\nG1 X55.654 Y15.525 F500.000\nG1 X55.447 Y15.430 F500.000\nG1 X55.226 Y15.373 F500.000\nG1 X54.999 Y15.354 F500.000\nG1 X54.772 Y15.376 F500.000\nG1 X54.553 Y15.437 F500.000\nG1 X54.347 Y15.536 F500.000\nG1 X54.162 Y15.669 F500.000\nG1 X53.935 Y15.923 F500.000\nG1 X43.591 Y31.122 F500.000\nG1 X37.355 Y31.122 F500.000\nG1 X37.355 Y5.222 F500.000\nG1 X43.037 Y5.222 F500.000\nG1 X43.037 Y19.570 F500.000\nG1 X43.057 Y19.797 F500.000\nG1 X43.116 Y20.017 F500.000\nG1 X43.213 Y20.224 F500.000\nG1 X43.344 Y20.410 F500.000\nG1 X43.506 Y20.570 F500.000\nG1 X43.693 Y20.700 F500.000\nG1 X43.901 Y20.795 F500.000\nG1 X44.121 Y20.852 F500.000\nG1 X44.348 Y20.870 F500.000\nG1 X44.575 Y20.849 F500.000\nG1 X44.794 Y20.788 F500.000\nG1 X45.000 Y20.689 F500.000\nG1 X44.799 Y20.343 F500.000\nG1 X44.950 Y20.230 F500.000\nG1 X45.081 Y20.078 F500.000\nG1 X55.486 Y4.822 F500.000\nG1 X62.411 Y4.822 F500.000\nG1 X62.411 Y31.522 F500.000\nG1 X55.910 Y31.522 F500.000\nG1 X55.910 Y16.654 F500.000\nG1 X55.890 Y16.466 F500.000\nG1 X55.831 Y16.286 F500.000\nG1 X55.736 Y16.122 F500.000\nG1 X55.608 Y15.982 F500.000\nG1 X55.454 Y15.872 F500.000\nG1 X55.281 Y15.796 F500.000\nG1 X55.095 Y15.758 F500.000\nG1 X54.906 Y15.761 F500.000\nG1 X54.721 Y15.802 F500.000\nG1 X54.549 Y15.882 F500.000\nG1 X54.397 Y15.995 F500.000\nG1 X54.266 Y16.148 F500.000\nG1 X43.803 Y31.522 F500.000\nG1 X36.955 Y31.522 F500.000\nG1 X36.955 Y4.822 F500.000\nG1 X43.437 Y4.822 F500.000\nG1 X43.437 Y19.570 F500.000\nG1 X43.457 Y19.759 F500.000\nG1 X43.516 Y19.939 F500.000\nG1 X43.611 Y20.103 F500.000\nG1 X43.739 Y20.243 F500.000\nG1 X43.893 Y20.353 F500.000\nG1 X44.067 Y20.429 F500.000\nG1 X44.252 Y20.466 F500.000\nG1 X44.442 Y20.464 F500.000\nG1 X44.627 Y20.423 F500.000\nG1 X44.799 Y20.343 F500.000\nG1 X44.537 Y20.029 F500.000\nG1 X44.657 Y19.955 F500.000\nG1 X44.750 Y19.852 F500.000\nG1 X55.274 Y4.422 F500.000\nG1 X62.811 Y4.422 F500.000\nG1 X62.811 Y31.922 F500.000\nG1 X55.510 Y31.922 F500.000\nG1 X55.510 Y16.654 F500.000\nG1 X55.490 Y16.515 F500.000\nG1 X55.432 Y16.386 F500.000\nG1 X55.340 Y16.279 F500.000\nG1 X55.222 Y16.202 F500.000\nG1 X55.087 Y16.160 F500.000\nG1 X54.946 Y16.159 F500.000\nG1 X54.810 Y16.196 F500.000\nG1 X54.690 Y16.270 F500.000\nG1 X54.597 Y16.373 F500.000\nG1 X44.014 Y31.922 F500.000\nG1 X36.555 Y31.922 F500.000\nG1 X36.555 Y4.422 F500.000\nG1 X43.837 Y4.422 F500.000\nG1 X43.837 Y19.570 F500.000\nG1 X43.857 Y19.710 F500.000\nG1 X43.915 Y19.839 F500.000\nG1 X44.007 Y19.946 F500.000\nG1 X44.125 Y20.023 F500.000\nG1 X44.260 Y20.064 F500.000\nG1 X44.401 Y20.066 F500.000\nG1 X44.537 Y20.029 F500.000\nG1 Z-2.000 F100.000\nG1 X44.657 Y19.955 F500.000\nG1 X44.750 Y19.852 F500.000\nG1 X55.274 Y4.422 F500.000\nG1 X62.811 Y4.422 F500.000\nG1 X62.811 Y31.922 F500.000\nG1 X55.510 Y31.922 F500.000\nG1 X55.510 Y16.654 F500.000\nG1 X55.490 Y16.515 F500.000\nG1 X55.432 Y16.386 F500.000\nG1 X55.340 Y16.279 F500.000\nG1 X55.222 Y16.202 F500.000\nG1 X55.087 Y16.160 F500.000\nG1 X54.946 Y16.159 F500.000\nG1 X54.810 Y16.196 F500.000\nG1 X54.690 Y16.270 F500.000\nG1 X54.597 Y16.373 F500.000\nG1 X44.014 Y31.922 F500.000\nG1 X36.555 Y31.922 F500.000\nG1 X36.555 Y4.422 F500.000\nG1 X43.837 Y4.422 F500.000\nG1 X43.837 Y19.570 F500.000\nG1 X43.857 Y19.710 F500.000\nG1 X43.915 Y19.839 F500.000\nG1 X44.007 Y19.946 F500.000\nG1 X44.125 Y20.023 F500.000\nG1 X44.260 Y20.064 F500.000\nG1 X44.401 Y20.066 F500.000\nG1 X44.537 Y20.029 F500.000\nG1 X44.799 Y20.343 F500.000\nG1 X44.950 Y20.230 F500.000\nG1 X45.081 Y20.078 F500.000\nG1 X55.486 Y4.822 F500.000\nG1 X62.411 Y4.822 F500.000\nG1 X62.411 Y31.522 F500.000\nG1 X55.910 Y31.522 F500.000\nG1 X55.910 Y16.654 F500.000\nG1 X55.890 Y16.466 F500.000\nG1 X55.831 Y16.286 F500.000\nG1 X55.736 Y16.122 F500.000\nG1 X55.608 Y15.982 F500.000\nG1 X55.454 Y15.872 F500.000\nG1 X55.281 Y15.796 F500.000\nG1 X55.095 Y15.758 F500.000\nG1 X54.906 Y15.761 F500.000\nG1 X54.721 Y15.802 F500.000\nG1 X54.549 Y15.882 F500.000\nG1 X54.397 Y15.995 F500.000\nG1 X54.266 Y16.148 F500.000\nG1 X43.803 Y31.522 F500.000\nG1 X36.955 Y31.522 F500.000\nG1 X36.955 Y4.822 F500.000\nG1 X43.437 Y4.822 F500.000\nG1 X43.437 Y19.570 F500.000\nG1 X43.457 Y19.759 F500.000\nG1 X43.516 Y19.939 F500.000\nG1 X43.611 Y20.103 F500.000\nG1 X43.739 Y20.243 F500.000\nG1 X43.893 Y20.353 F500.000\nG1 X44.067 Y20.429 F500.000\nG1 X44.252 Y20.466 F500.000\nG1 X44.442 Y20.464 F500.000\nG1 X44.627 Y20.423 F500.000\nG1 X44.799 Y20.343 F500.000\nG1 X45.000 Y20.689 F500.000\nG1 X45.185 Y20.556 F500.000\nG1 X45.411 Y20.303 F500.000\nG1 X55.697 Y5.222 F500.000\nG1 X62.011 Y5.222 F500.000\nG1 X62.011 Y31.122 F500.000\nG1 X56.310 Y31.122 F500.000\nG1 X56.310 Y16.654 F500.000\nG1 X56.290 Y16.427 F500.000\nG1 X56.231 Y16.207 F500.000\nG1 X56.134 Y16.001 F500.000\nG1 X56.003 Y15.815 F500.000\nG1 X55.841 Y15.655 F500.000\nG1 X55.654 Y15.525 F500.000\nG1 X55.447 Y15.430 F500.000\nG1 X55.226 Y15.373 F500.000\nG1 X54.999 Y15.354 F500.000\nG1 X54.772 Y15.376 F500.000\nG1 X54.553 Y15.437 F500.000\nG1 X54.347 Y15.536 F500.000\nG1 X54.162 Y15.669 F500.000\nG1 X53.935 Y15.923 F500.000\nG1 X43.591 Y31.122 F500.000\nG1 X37.355 Y31.122 F500.000\nG1 X37.355 Y5.222 F500.000\nG1 X43.037 Y5.222 F500.000\nG1 X43.037 Y19.570 F500.000\nG1 X43.057 Y19.797 F500.000\nG1 X43.116 Y20.017 F500.000\nG1 X43.213 Y20.224 F500.000\nG1 X43.344 Y20.410 F500.000\nG1 X43.506 Y20.570 F500.000\nG1 X43.693 Y20.700 F500.000\nG1 X43.901 Y20.795 F500.000\nG1 X44.121 Y20.852 F500.000\nG1 X44.348 Y20.870 F500.000\nG1 X44.575 Y20.849 F500.000\nG1 X44.794 Y20.788 F500.000\nG1 X45.000 Y20.689 F500.000\nG1 X45.265 Y20.995 F500.000\nG1 X45.472 Y20.837 F500.000\nG1 X45.652 Y20.648 F500.000\nG1 X45.742 Y20.528 F500.000\nG1 X55.908 Y5.622 F500.000\nG1 X61.611 Y5.622 F500.000\nG1 X61.611 Y30.722 F500.000\nG1 X56.710 Y30.722 F500.000\nG1 X56.710 Y16.654 F500.000\nG1 X56.690 Y16.395 F500.000\nG1 X56.631 Y16.141 F500.000\nG1 X56.533 Y15.899 F500.000\nG1 X56.400 Y15.675 F500.000\nG1 X56.234 Y15.474 F500.000\nG1 X56.039 Y15.301 F500.000\nG1 X55.820 Y15.160 F500.000\nG1 X55.582 Y15.054 F500.000\nG1 X55.331 Y14.985 F500.000\nG1 X55.072 Y14.956 F500.000\nG1 X54.812 Y14.966 F500.000\nG1 X54.556 Y15.016 F500.000\nG1 X54.311 Y15.105 F500.000\nG1 X54.082 Y15.230 F500.000\nG1 X53.876 Y15.388 F500.000\nG1 X53.695 Y15.577 F500.000\nG1 X53.605 Y15.698 F500.000\nG1 X43.379 Y30.722 F500.000\nG1 X37.755 Y30.722 F500.000\nG1 X37.755 Y5.622 F500.000\nG1 X42.637 Y5.622 F500.000\nG1 X42.637 Y19.570 F500.000\nG1 X42.657 Y19.830 F500.000\nG1 X42.717 Y20.084 F500.000\nG1 X42.814 Y20.326 F500.000\nG1 X42.947 Y20.550 F500.000\nG1 X43.113 Y20.750 F500.000\nG1 X43.308 Y20.924 F500.000\nG1 X43.527 Y21.065 F500.000\nG1 X43.765 Y21.171 F500.000\nG1 X44.016 Y21.240 F500.000\nG1 X44.275 Y21.269 F500.000\nG1 X44.535 Y21.259 F500.000\nG1 X44.791 Y21.209 F500.000\nG1 X45.036 Y21.120 F500.000\nG1 X45.265 Y20.995 F500.000\nG1 X45.588 Y21.258 F500.000\nG1 X45.808 Y21.070 F500.000\nG1 X46.072 Y20.754 F500.000\nG1 X56.120 Y6.022 F500.000\nG1 X61.211 Y6.022 F500.000\nG1 X61.211 Y30.322 F500.000\nG1 X57.110 Y30.322 F500.000\nG1 X57.110 Y16.654 F500.000\nG1 X57.090 Y16.365 F500.000\nG1 X57.031 Y16.082 F500.000\nG1 X56.933 Y15.809 F500.000\nG1 X56.798 Y15.553 F500.000\nG1 X56.629 Y15.317 F500.000\nG1 X56.430 Y15.107 F500.000\nG1 X56.204 Y14.927 F500.000\nG1 X55.955 Y14.779 F500.000\nG1 X55.688 Y14.667 F500.000\nG1 X55.407 Y14.592 F500.000\nG1 X55.120 Y14.557 F500.000\nG1 X54.830 Y14.562 F500.000\nG1 X54.544 Y14.607 F500.000\nG1 X54.267 Y14.690 F500.000\nG1 X54.004 Y14.811 F500.000\nG1 X53.760 Y14.967 F500.000\nG1 X53.539 Y15.155 F500.000\nG1 X53.274 Y15.473 F500.000\nG1 X43.168 Y30.322 F500.000\nG1 X38.155 Y30.322 F500.000\nG1 X38.155 Y6.022 F500.000\nG1 X42.237 Y6.022 F500.000\nG1 X42.237 Y19.570 F500.000\nG1 X42.257 Y19.860 F500.000\nG1 X42.317 Y20.143 F500.000\nG1 X42.415 Y20.416 F500.000\nG1 X42.549 Y20.672 F500.000\nG1 X42.718 Y20.908 F500.000\nG1 X42.917 Y21.118 F500.000\nG1 X43.144 Y21.298 F500.000\nG1 X43.393 Y21.446 F500.000\nG1 X43.660 Y21.558 F500.000\nG1 X43.940 Y21.633 F500.000\nG1 X44.227 Y21.668 F500.000\nG1 X44.517 Y21.663 F500.000\nG1 X44.803 Y21.618 F500.000\nG1 X45.080 Y21.535 F500.000\nG1 X45.343 Y21.414 F500.000\nG1 X45.588 Y21.258 F500.000\nG1 X45.960 Y21.472 F500.000\nG1 X46.187 Y21.252 F500.000\nG1 X46.402 Y20.979 F500.000\nG1 X56.331 Y6.422 F500.000\nG1 X60.811 Y6.422 F500.000\nG1 X60.811 Y29.922 F500.000\nG1 X57.510 Y29.922 F500.000\nG1 X57.510 Y16.654 F500.000\nG1 X57.490 Y16.339 F500.000\nG1 X57.431 Y16.029 F500.000\nG1 X57.332 Y15.728 F500.000\nG1 X57.197 Y15.443 F500.000\nG1 X57.026 Y15.176 F500.000\nG1 X56.824 Y14.934 F500.000\nG1 X56.592 Y14.719 F500.000\nG1 X56.335 Y14.534 F500.000\nG1 X56.057 Y14.384 F500.000\nG1 X55.762 Y14.270 F500.000\nG1 X55.456 Y14.194 F500.000\nG1 X55.142 Y14.158 F500.000\nG1 X54.826 Y14.161 F500.000\nG1 X54.513 Y14.204 F500.000\nG1 X54.207 Y14.287 F500.000\nG1 X53.915 Y14.407 F500.000\nG1 X53.640 Y14.563 F500.000\nG1 X53.387 Y14.753 F500.000\nG1 X53.160 Y14.973 F500.000\nG1 X52.943 Y15.248 F500.000\nG1 X42.956 Y29.922 F500.000\nG1 X38.555 Y29.922 F500.000\nG1 X38.555 Y6.422 F500.000\nG1 X41.837 Y6.422 F500.000\nG1 X41.837 Y19.570 F500.000\nG1 X41.857 Y19.886 F500.000\nG1 X41.917 Y20.196 F500.000\nG1 X42.015 Y20.497 F500.000\nG1 X42.150 Y20.782 F500.000\nG1 X42.321 Y21.049 F500.000\nG1 X42.523 Y21.291 F500.000\nG1 X42.755 Y21.506 F500.000\nG1 X43.012 Y21.690 F500.000\nG1 X43.290 Y21.841 F500.000\nG1 X43.585 Y21.955 F500.000\nG1 X43.892 Y22.030 F500.000\nG1 X44.206 Y22.067 F500.000\nG1 X44.522 Y22.064 F500.000\nG1 X44.835 Y22.020 F500.000\nG1 X45.140 Y21.938 F500.000\nG1 X45.432 Y21.818 F500.000\nG1 X45.707 Y21.662 F500.000\nG1 X45.960 Y21.472 F500.000\nG1 X46.117 Y21.860 F500.000\nG1 X46.373 Y21.635 F500.000\nG1 X46.601 Y21.383 F500.000\nG1 X46.733 Y21.204 F500.000\nG1 X56.542 Y6.822 F500.000\nG1 X60.411 Y6.822 F500.000\nG1 X60.411 Y29.522 F500.000\nG1 X57.910 Y29.522 F500.000\nG1 X57.910 Y16.654 F500.000\nG1 X57.890 Y16.314 F500.000\nG1 X57.830 Y15.979 F500.000\nG1 X57.732 Y15.653 F500.000\nG1 X57.596 Y15.341 F500.000\nG1 X57.424 Y15.047 F500.000\nG1 X57.219 Y14.776 F500.000\nG1 X56.984 Y14.530 F500.000\nG1 X56.721 Y14.313 F500.000\nG1 X56.435 Y14.129 F500.000\nG1 X56.129 Y13.979 F500.000\nG1 X55.808 Y13.866 F500.000\nG1 X55.476 Y13.792 F500.000\nG1 X55.137 Y13.757 F500.000\nG1 X54.797 Y13.762 F500.000\nG1 X54.459 Y13.807 F500.000\nG1 X54.129 Y13.891 F500.000\nG1 X53.812 Y14.014 F500.000\nG1 X53.510 Y14.172 F500.000\nG1 X53.230 Y14.365 F500.000\nG1 X52.974 Y14.589 F500.000\nG1 X52.746 Y14.842 F500.000\nG1 X52.613 Y15.023 F500.000\nG1 X42.745 Y29.522 F500.000\nG1 X38.955 Y29.522 F500.000\nG1 X38.955 Y6.822 F500.000\nG1 X41.437 Y6.822 F500.000\nG1 X41.437 Y19.570 F500.000\nG1 X41.457 Y19.910 F500.000\nG1 X41.517 Y20.245 F500.000\nG1 X41.615 Y20.571 F500.000\nG1 X41.751 Y20.884 F500.000\nG1 X41.923 Y21.177 F500.000\nG1 X42.128 Y21.449 F500.000\nG1 X42.363 Y21.695 F500.000\nG1 X42.626 Y21.912 F500.000\nG1 X42.912 Y22.096 F500.000\nG1 X43.218 Y22.246 F500.000\nG1 X43.539 Y22.359 F500.000\nG1 X43.871 Y22.433 F500.000\nG1 X44.210 Y22.468 F500.000\nG1 X44.550 Y22.463 F500.000\nG1 X44.888 Y22.418 F500.000\nG1 X45.218 Y22.334 F500.000\nG1 X45.536 Y22.211 F500.000\nG1 X45.837 Y22.053 F500.000\nG1 X46.117 Y21.860 F500.000\nG1 X46.285 Y22.234 F500.000\nG1 X46.566 Y22.004 F500.000\nG1 X46.820 Y21.744 F500.000\nG1 X47.063 Y21.430 F500.000\nG1 X56.754 Y7.222 F500.000\nG1 X60.011 Y7.222 F500.000\nG1 X60.011 Y29.122 F500.000\nG1 X58.310 Y29.122 F500.000\nG1 X58.310 Y16.654 F500.000\nG1 X58.290 Y16.292 F500.000\nG1 X58.230 Y15.934 F500.000\nG1 X58.132 Y15.584 F500.000\nG1 X57.995 Y15.248 F500.000\nG1 X57.822 Y14.928 F500.000\nG1 X57.616 Y14.629 F500.000\nG1 X57.377 Y14.355 F500.000\nG1 X57.111 Y14.109 F500.000\nG1 X56.818 Y13.894 F500.000\nG1 X56.504 Y13.712 F500.000\nG1 X56.171 Y13.566 F500.000\nG1 X55.825 Y13.457 F500.000\nG1 X55.468 Y13.386 F500.000\nG1 X55.107 Y13.356 F500.000\nG1 X54.744 Y13.365 F500.000\nG1 X54.384 Y13.414 F500.000\nG1 X54.032 Y13.503 F500.000\nG1 X53.691 Y13.630 F500.000\nG1 X53.367 Y13.793 F500.000\nG1 X53.062 Y13.991 F500.000\nG1 X52.781 Y14.221 F500.000\nG1 X52.527 Y14.480 F500.000\nG1 X52.282 Y14.798 F500.000\nG1 X42.533 Y29.122 F500.000\nG1 X39.355 Y29.122 F500.000\nG1 X39.355 Y7.222 F500.000\nG1 X41.037 Y7.222 F500.000\nG1 X41.037 Y19.570 F500.000\nG1 X41.057 Y19.933 F500.000\nG1 X41.117 Y20.291 F500.000\nG1 X41.215 Y20.641 F500.000\nG1 X41.352 Y20.977 F500.000\nG1 X41.525 Y21.297 F500.000\nG1 X41.731 Y21.596 F500.000\nG1 X41.970 Y21.870 F500.000\nG1 X42.237 Y22.116 F500.000\nG1 X42.529 Y22.331 F500.000\nG1 X42.843 Y22.513 F500.000\nG1 X43.176 Y22.659 F500.000\nG1 X43.522 Y22.768 F500.000\nG1 X43.879 Y22.838 F500.000\nG1 X44.241 Y22.869 F500.000\nG1 X44.604 Y22.860 F500.000\nG1 X44.964 Y22.811 F500.000\nG1 X45.316 Y22.722 F500.000\nG1 X45.656 Y22.595 F500.000\nG1 X45.980 Y22.432 F500.000\nG1 X46.285 Y22.234 F500.000\nG1 X46.518 Y22.556 F500.000\nG1 X42.321 Y28.722 F500.000\nG1 X39.755 Y28.722 F500.000\nG1 X39.755 Y7.622 F500.000\nG1 X40.637 Y7.622 F500.000\nG1 X40.637 Y19.570 F500.000\nG1 X40.657 Y19.955 F500.000\nG1 X40.717 Y20.334 F500.000\nG1 X40.816 Y20.706 F500.000\nG1 X40.953 Y21.066 F500.000\nG1 X41.126 Y21.409 F500.000\nG1 X41.334 Y21.732 F500.000\nG1 X41.575 Y22.032 F500.000\nG1 X41.845 Y22.306 F500.000\nG1 X42.143 Y22.549 F500.000\nG1 X42.464 Y22.761 F500.000\nG1 X42.805 Y22.938 F500.000\nG1 X43.163 Y23.079 F500.000\nG1 X43.533 Y23.182 F500.000\nG1 X43.913 Y23.246 F500.000\nG1 X44.296 Y23.270 F500.000\nG1 X44.681 Y23.255 F500.000\nG1 X45.061 Y23.199 F500.000\nG1 X45.434 Y23.104 F500.000\nG1 X45.795 Y22.971 F500.000\nG1 X46.140 Y22.802 F500.000\nG1 X46.466 Y22.597 F500.000\nG1 X46.518 Y22.556 F500.000\nG0 Z5.000\nG0 X52.854 Y13.649\nG0 Z-1.000\nG1 Z-2.000 F100.000\nG1 X56.965 Y7.622 F500.000\nG1 X59.611 Y7.622 F500.000\nG1 X59.611 Y28.722 F500.000\nG1 X58.710 Y28.722 F500.000\nG1 X58.710 Y16.654 F500.000\nG1 X58.690 Y16.270 F500.000\nG1 X58.630 Y15.890 F500.000\nG1 X58.532 Y15.519 F500.000\nG1 X58.395 Y15.159 F500.000\nG1 X58.221 Y14.816 F500.000\nG1 X58.013 Y14.493 F500.000\nG1 X57.772 Y14.193 F500.000\nG1 X57.502 Y13.919 F500.000\nG1 X57.205 Y13.675 F500.000\nG1 X56.883 Y13.464 F500.000\nG1 X56.542 Y13.287 F500.000\nG1 X56.184 Y13.146 F500.000\nG1 X55.814 Y13.043 F500.000\nG1 X55.435 Y12.979 F500.000\nG1 X55.051 Y12.955 F500.000\nG1 X54.666 Y12.970 F500.000\nG1 X54.286 Y13.026 F500.000\nG1 X53.913 Y13.121 F500.000\nG1 X53.552 Y13.254 F500.000\nG1 X53.207 Y13.423 F500.000\nG1 X52.882 Y13.628 F500.000\nG1 X52.854 Y13.649 F500.000\nG0 Z5.000\nG0 X45.369 Y23.533\nG0 Z-1.000\nG1 Z-2.000 F100.000\nG1 X42.110 Y28.322 F500.000\nG1 X40.155 Y28.322 F500.000\nG1 X40.155 Y8.022 F500.000\nG1 X40.237 Y8.022 F500.000\nG1 X40.237 Y19.570 F500.000\nG1 X40.257 Y19.975 F500.000\nG1 X40.317 Y20.375 F500.000\nG1 X40.416 Y20.768 F500.000\nG1 X40.553 Y21.149 F500.000\nG1 X40.727 Y21.514 F500.000\nG1 X40.936 Y21.861 F500.000\nG1 X41.179 Y22.185 F500.000\nG1 X41.452 Y22.484 F500.000\nG1 X41.754 Y22.754 F500.000\nG1 X42.080 Y22.993 F500.000\nG1 X42.429 Y23.199 F500.000\nG1 X42.796 Y23.370 F500.000\nG1 X43.178 Y23.503 F500.000\nG1 X43.572 Y23.598 F500.000\nG1 X43.972 Y23.654 F500.000\nG1 X44.377 Y23.670 F500.000\nG1 X44.781 Y23.646 F500.000\nG1 X45.181 Y23.583 F500.000\nG1 X45.369 Y23.533 F500.000\nG0 Z5.000\nG0 X54.970 Y12.555\nG0 Z-1.000\nG1 Z-2.000 F100.000\nG1 X54.566 Y12.579 F500.000\nG1 X54.166 Y12.642 F500.000\nG1 X53.995 Y12.687 F500.000\nG1 X57.177 Y8.022 F500.000\nG1 X59.211 Y8.022 F500.000\nG1 X59.211 Y28.322 F500.000\nG1 X59.110 Y28.322 F500.000\nG1 X59.110 Y16.654 F500.000\nG1 X59.090 Y16.250 F500.000\nG1 X59.030 Y15.850 F500.000\nG1 X58.931 Y15.457 F500.000\nG1 X58.794 Y15.076 F500.000\nG1 X58.620 Y14.711 F500.000\nG1 X58.411 Y14.364 F500.000\nG1 X58.168 Y14.040 F500.000\nG1 X57.895 Y13.741 F500.000\nG1 X57.594 Y13.471 F500.000\nG1 X57.267 Y13.232 F500.000\nG1 X56.919 Y13.026 F500.000\nG1 X56.551 Y12.855 F500.000\nG1 X56.169 Y12.722 F500.000\nG1 X55.776 Y12.627 F500.000\nG1 X55.375 Y12.571 F500.000\nG1 X54.970 Y12.555 F500.000\nG1 X54.839 Y12.159 F500.000\nG1 X57.388 Y8.422 F500.000\nG1 X58.811 Y8.422 F500.000\nG1 X58.811 Y14.246 F500.000\nG1 X58.809 Y14.242 F500.000\nG1 X58.565 Y13.895 F500.000\nG1 X58.289 Y13.573 F500.000\nG1 X57.985 Y13.278 F500.000\nG1 X57.654 Y13.013 F500.000\nG1 X57.299 Y12.780 F500.000\nG1 X56.924 Y12.582 F500.000\nG1 X56.532 Y12.420 F500.000\nG1 X56.127 Y12.295 F500.000\nG1 X55.711 Y12.209 F500.000\nG1 X55.290 Y12.163 F500.000\nG1 X54.866 Y12.157 F500.000\nG1 X54.839 Y12.159 F500.000\nG0 Z5.000\nG0 X44.523 Y24.065\nG0 Z-1.000\nG1 Z-2.000 F100.000\nG1 X41.898 Y27.922 F500.000\nG1 X40.555 Y27.922 F500.000\nG1 X40.555 Y22.007 F500.000\nG1 X40.782 Y22.330 F500.000\nG1 X41.058 Y22.652 F500.000\nG1 X41.362 Y22.947 F500.000\nG1 X41.694 Y23.212 F500.000\nG1 X42.048 Y23.445 F500.000\nG1 X42.423 Y23.643 F500.000\nG1 X42.815 Y23.805 F500.000\nG1 X43.221 Y23.930 F500.000\nG1 X43.636 Y24.015 F500.000\nG1 X44.058 Y24.062 F500.000\nG1 X44.482 Y24.068 F500.000\nG1 X44.523 Y24.065 F500.000\nG0 Z5.000\nG0 X55.576 Y11.789\nG0 Z-1.000\nG1 Z-2.000 F100.000\nG1 X57.599 Y8.822 F500.000\nG1 X58.411 Y8.822 F500.000\nG1 X58.411 Y13.130 F500.000\nG1 X58.377 Y13.095 F500.000\nG1 X58.042 Y12.805 F500.000\nG1 X57.682 Y12.547 F500.000\nG1 X57.301 Y12.323 F500.000\nG1 X56.901 Y12.134 F500.000\nG1 X56.485 Y11.982 F500.000\nG1 X56.057 Y11.868 F500.000\nG1 X55.621 Y11.793 F500.000\nG1 X55.576 Y11.789 F500.000\nG0 Z5.000\nG0 X43.786 Y24.437\nG0 Z-1.000\nG1 Z-2.000 F100.000\nG1 X41.687 Y27.522 F500.000\nG1 X40.955 Y27.522 F500.000\nG1 X40.955 Y23.115 F500.000\nG1 X40.970 Y23.130 F500.000\nG1 X41.305 Y23.420 F500.000\nG1 X41.665 Y23.678 F500.000\nG1 X42.046 Y23.902 F500.000\nG1 X42.446 Y24.091 F500.000\nG1 X42.862 Y24.243 F500.000\nG1 X43.290 Y24.357 F500.000\nG1 X43.726 Y24.432 F500.000\nG1 X43.786 Y24.437 F500.000\nG0 Z5.000\nG0 X56.252 Y11.507\nG0 Z-1.000\nG1 Z-2.000 F100.000\nG1 X57.811 Y9.222 F500.000\nG1 X58.011 Y9.222 F500.000\nG1 X58.011 Y12.289 F500.000\nG1 X57.681 Y12.077 F500.000\nG1 X57.274 Y11.862 F500.000\nG1 X56.850 Y11.684 F500.000\nG1 X56.411 Y11.543 F500.000\nG1 X56.252 Y11.507 F500.000\nG0 Z5.000\nG0 X43.109 Y24.721\nG0 Z-1.000\nG1 Z-2.000 F100.000\nG1 X41.475 Y27.122 F500.000\nG1 X41.355 Y27.122 F500.000\nG1 X41.355 Y23.948 F500.000\nG1 X41.666 Y24.148 F500.000\nG1 X42.073 Y24.363 F500.000\nG1 X42.498 Y24.541 F500.000\nG1 X42.936 Y24.682 F500.000\nG1 X43.109 Y24.721 F500.000\nG0 Z5.000\nG0 X56.892 Y11.278\nG0 Z-1.000\nG1 Z-2.000 F100.000\nG1 X57.611 Y10.224 F500.000\nG1 X57.611 Y11.584 F500.000\nG1 X57.219 Y11.400 F500.000\nG1 X56.892 Y11.278 F500.000\nG0 Z5.000\nG0 X42.468 Y24.952\nG0 Z-1.000\nG1 Z-2.000 F100.000\nG1 X41.755 Y25.999 F500.000\nG1 X41.755 Y24.650 F500.000\nG1 X42.128 Y24.825 F500.000\nG1 X42.468 Y24.952 F500.000\nG0 Z5.000\nG0 X57.200 Y11.181\nG0 Z-1.000\nG1 Z-2.000 F100.000\nG1 X57.411 Y10.872 F500.000\nG1 X57.411 Y11.265 F500.000\nG1 X57.405 Y11.262 F500.000\nG1 X57.200 Y11.181 F500.000\nG0 Z5.000\nG0 X42.160 Y25.049\nG0 Z-1.000\nG1 Z-2.000 F100.000\nG1 X41.955 Y25.350 F500.000\nG1 X41.955 Y24.968 F500.000\nG1 X42.160 Y25.049 F500.000\nG0 Z5.000\n(Contour 3: C, inside contour, CCW, stock top Z0.000)\nG0 Z5.000\nG0 X86.347 Y4.207\nG0 Z0.000\nG1 Z-1.000 F100.000\nG1 X89.052 Y5.005 F500.000\nG1 X91.219 Y6.315 F500.000\nG1 X93.006 Y8.136 F500.000\nG1 X94.397 Y10.484 F500.000\nG1 X95.217 Y12.924 F500.000\nG1 X88.463 Y14.965 F500.000\nG1 X87.853 Y13.053 F500.000\nG1 X87.797 Y12.935 F500.000\nG1 X86.682 Y11.195 F500.000\nG1 X86.587 Y11.085 F500.000\nG1 X85.863 Y10.464 F500.000\nG1 X85.763 Y10.398 F500.000\nG1 X84.885 Y9.954 F500.000\nG1 X84.739 Y9.907 F500.000\nG1 X82.520 Y9.552 F500.000\nG1 X82.396 Y9.548 F500.000\nG1 X81.167 Y9.658 F500.000\nG1 X81.066 Y9.677 F500.000\nG1 X79.982 Y10.007 F500.000\nG1 X79.875 Y10.054 F500.000\nG1 X78.937 Y10.603 F500.000\nG1 X78.841 Y10.675 F500.000\nG1 X78.049 Y11.444 F500.000\nG1 X77.967 Y11.549 F500.000\nG1 X77.337 Y12.614 F500.000\nG1 X77.291 Y12.719 F500.000\nG1 X76.841 Y14.156 F500.000\nG1 X76.820 Y14.261 F500.000\nG1 X76.460 Y18.253 F500.000\nG1 X76.461 Y18.344 F500.000\nG1 X76.762 Y21.659 F500.000\nG1 X76.780 Y21.755 F500.000\nG1 X77.157 Y23.031 F500.000\nG1 X77.192 Y23.119 F500.000\nG1 X77.720 Y24.139 F500.000\nG1 X77.781 Y24.231 F500.000\nG1 X78.665 Y25.285 F500.000\nG1 X78.759 Y25.371 F500.000\nG1 X79.818 Y26.123 F500.000\nG1 X79.936 Y26.185 F500.000\nG1 X81.171 Y26.637 F500.000\nG1 X81.289 Y26.664 F500.000\nG1 X82.699 Y26.815 F500.000\nG1 X82.806 Y26.815 F500.000\nG1 X84.064 Y26.679 F500.000\nG1 X84.180 Y26.652 F500.000\nG1 X85.313 Y26.244 F500.000\nG1 X85.421 Y26.189 F500.000\nG1 X86.408 Y25.528 F500.000\nG1 X86.498 Y25.451 F500.000\nG1 X87.319 Y24.556 F500.000\nG1 X87.407 Y24.423 F500.000\nG1 X88.096 Y22.889 F500.000\nG1 X94.899 Y24.403 F500.000\nG1 X94.284 Y25.934 F500.000\nG1 X93.277 Y27.685 F500.000\nG1 X92.087 Y29.146 F500.000\nG1 X90.716 Y30.319 F500.000\nG1 X89.114 Y31.225 F500.000\nG1 X87.220 Y31.878 F500.000\nG1 X85.029 Y32.274 F500.000\nG1 X82.543 Y32.407 F500.000\nG1 X79.371 Y32.175 F500.000\nG1 X76.607 Y31.486 F500.000\nG1 X74.238 Y30.346 F500.000\nG1 X72.252 Y28.756 F500.000\nG1 X70.677 Y26.743 F500.000\nG1 X69.547 Y24.327 F500.000\nG1 X68.864 Y21.495 F500.000\nG1 X68.633 Y18.235 F500.000\nG1 X68.764 Y15.763 F500.000\nG1 X69.153 Y13.533 F500.000\nG1 X69.798 Y11.548 F500.000\nG1 X70.699 Y9.797 F500.000\nG1 X71.779 Y8.281 F500.000\nG1 X72.953 Y7.016 F500.000\nG1 X74.214 Y6.005 F500.000\nG1 X75.567 Y5.241 F500.000\nG1 X77.079 Y4.675 F500.000\nG1 X78.803 Y4.269 F500.000\nG1 X82.947 Y3.938 F500.000\nG1 X86.347 Y4.207 F500.000\nG1 Z-2.000 F100.000\nG1 X89.052 Y5.005 F500.000\nG1 X91.219 Y6.315 F500.000\nG1 X93.006 Y8.136 F500.000\nG1 X94.397 Y10.484 F500.000\nG1 X95.217 Y12.924 F500.000\nG1 X88.463 Y14.965 F500.000\nG1 X87.853 Y13.053 F500.000\nG1 X87.797 Y12.935 F500.000\nG1 X86.682 Y11.195 F500.000\nG1 X86.587 Y11.085 F500.000\nG1 X85.863 Y10.464 F500.000\nG1 X85.763 Y10.398 F500.000\nG1 X84.885 Y9.954 F500.000\nG1 X84.739 Y9.907 F500.000\nG1 X82.520 Y9.552 F500.000\nG1 X82.396 Y9.548 F500.000\nG1 X81.167 Y9.658 F500.000\nG1 X81.066 Y9.677 F500.000\nG1 X79.982 Y10.007 F500.000\nG1 X79.875 Y10.054 F500.000\nG1 X78.937 Y10.603 F500.000\nG1 X78.841 Y10.675 F500.000\nG1 X78.049 Y11.444 F500.000\nG1 X77.967 Y11.549 F500.000\nG1 X77.337 Y12.614 F500.000\nG1 X77.291 Y12.719 F500.000\nG1 X76.841 Y14.156 F500.000\nG1 X76.820 Y14.261 F500.000\nG1 X76.460 Y18.253 F500.000\nG1 X76.461 Y18.344 F500.000\nG1 X76.762 Y21.659 F500.000\nG1 X76.780 Y21.755 F500.000\nG1 X77.157 Y23.031 F500.000\nG1 X77.192 Y23.119 F500.000\nG1 X77.720 Y24.139 F500.000\nG1 X77.781 Y24.231 F500.000\nG1 X78.665 Y25.285 F500.000\nG1 X78.759 Y25.371 F500.000\nG1 X79.818 Y26.123 F500.000\nG1 X79.936 Y26.185 F500.000\nG1 X81.171 Y26.637 F500.000\nG1 X81.289 Y26.664 F500.000\nG1 X82.699 Y26.815 F500.000\nG1 X82.806 Y26.815 F500.000\nG1 X84.064 Y26.679 F500.000\nG1 X84.180 Y26.652 F500.000\nG1 X85.313 Y26.244 F500.000\nG1 X85.421 Y26.189 F500.000\nG1 X86.408 Y25.528 F500.000\nG1 X86.498 Y25.451 F500.000\nG1 X87.319 Y24.556 F500.000\nG1 X87.407 Y24.423 F500.000\nG1 X88.096 Y22.889 F500.000\nG1 X94.899 Y24.403 F500.000\nG1 X94.284 Y25.934 F500.000\nG1 X93.277 Y27.685 F500.000\nG1 X92.087 Y29.146 F500.000\nG1 X90.716 Y30.319 F500.000\nG1 X89.114 Y31.225 F500.000\nG1 X87.220 Y31.878 F500.000\nG1 X85.029 Y32.274 F500.000\nG1 X82.543 Y32.407 F500.000\nG1 X79.371 Y32.175 F500.000\nG1 X76.607 Y31.486 F500.000\nG1 X74.238 Y30.346 F500.000\nG1 X72.252 Y28.756 F500.000\nG1 X70.677 Y26.743 F500.000\nG1 X69.547 Y24.327 F500.000\nG1 X68.864 Y21.495 F500.000\nG1 X68.633 Y18.235 F500.000\nG1 X68.764 Y15.763 F500.000\nG1 X69.153 Y13.533 F500.000\nG1 X69.798 Y11.548 F500.000\nG1 X70.699 Y9.797 F500.000\nG1 X71.779 Y8.281 F500.000\nG1 X72.953 Y7.016 F500.000\nG1 X74.214 Y6.005 F500.000\nG1 X75.567 Y5.241 F500.000\nG1 X77.079 Y4.675 F500.000\nG1 X78.803 Y4.269 F500.000\nG1 X82.947 Y3.938 F500.000\nG1 X86.347 Y4.207 F500.000\nG0 Z5.000\n(Contour 4: Frame, outside contour, CCW, stock top Z0.000, 4 holding tabs W4.000 H1.500)\nG0 Z5.000\nG0 X-0.500 Y2.834\nG0 Z0.000\nG1 Z-1.000 F100.000\nG1 X-0.472 Y2.413 F500.000\nG1 X-0.387 Y1.983 F500.000\nG1 X-0.246 Y1.568 F500.000\nG1 X-0.052 Y1.174 F500.000\nG1 X0.191 Y0.810 F500.000\nG1 X0.480 Y0.480 F500.000\nG1 X0.810 Y0.191 F500.000\nG1 X1.174 Y-0.052 F500.000\nG1 X1.568 Y-0.246 F500.000\nG1 X1.983 Y-0.387 F500.000\nG1 X2.413 Y-0.472 F500.000\nG1 X2.834 Y-0.500 F500.000\nG1 X16.755 Y-0.500 F500.000\nG1 X21.755 Y-0.500 F500.000\nG1 X79.155 Y-0.500 F500.000\nG1 X84.155 Y-0.500 F500.000\nG1 X96.916 Y-0.500 F500.000\nG1 X97.337 Y-0.472 F500.000\nG1 X97.767 Y-0.387 F500.000\nG1 X98.182 Y-0.246 F500.000\nG1 X98.576 Y-0.052 F500.000\nG1 X98.940 Y0.191 F500.000\nG1 X99.270 Y0.480 F500.000\nG1 X99.559 Y0.810 F500.000\nG1 X99.802 Y1.174 F500.000\nG1 X99.996 Y1.568 F500.000\nG1 X100.137 Y1.983 F500.000\nG1 X100.222 Y2.413 F500.000\nG1 X100.250 Y2.834 F500.000\nG1 X100.250 Y33.646 F500.000\nG1 X100.222 Y34.067 F500.000\nG1 X100.137 Y34.497 F500.000\nG1 X99.996 Y34.912 F500.000\nG1 X99.802 Y35.306 F500.000\nG1 X99.559 Y35.670 F500.000\nG1 X99.270 Y36.000 F500.000\nG1 X98.940 Y36.289 F500.000\nG1 X98.576 Y36.532 F500.000\nG1 X98.182 Y36.726 F500.000\nG1 X97.767 Y36.867 F500.000\nG1 X97.337 Y36.952 F500.000\nG1 X96.916 Y36.980 F500.000\nG1 X84.260 Y36.980 F500.000\nG1 X79.260 Y36.980 F500.000\nG1 X21.716 Y36.980 F500.000\nG1 X16.716 Y36.980 F500.000\nG1 X2.834 Y36.980 F500.000\nG1 X2.413 Y36.952 F500.000\nG1 X1.983 Y36.867 F500.000\nG1 X1.568 Y36.726 F500.000\nG1 X1.174 Y36.532 F500.000\nG1 X0.810 Y36.289 F500.000\nG1 X0.480 Y36.000 F500.000\nG1 X0.191 Y35.670 F500.000\nG1 X-0.052 Y35.306 F500.000\nG1 X-0.246 Y34.912 F500.000\nG1 X-0.387 Y34.497 F500.000\nG1 X-0.472 Y34.067 F500.000\nG1 X-0.500 Y33.646 F500.000\nG1 X-0.500 Y2.834 F500.000\nG1 Z-2.000 F100.000\nG1 X-0.472 Y2.413 F500.000\nG1 X-0.387 Y1.983 F500.000\nG1 X-0.246 Y1.568 F500.000\nG1 X-0.052 Y1.174 F500.000\nG1 X0.191 Y0.810 F500.000\nG1 X0.480 Y0.480 F500.000\nG1 X0.810 Y0.191 F500.000\nG1 X1.174 Y-0.052 F500.000\nG1 X1.568 Y-0.246 F500.000\nG1 X1.983 Y-0.387 F500.000\nG1 X2.413 Y-0.472 F500.000\nG1 X2.834 Y-0.500 F500.000\nG1 X16.755 Y-0.500 F500.000\nG1 X21.755 Y-0.500 F500.000\nG1 X79.155 Y-0.500 F500.000\nG1 X84.155 Y-0.500 F500.000\nG1 X96.916 Y-0.500 F500.000\nG1 X97.337 Y-0.472 F500.000\nG1 X97.767 Y-0.387 F500.000\nG1 X98.182 Y-0.246 F500.000\nG1 X98.576 Y-0.052 F500.000\nG1 X98.940 Y0.191 F500.000\nG1 X99.270 Y0.480 F500.000\nG1 X99.559 Y0.810 F500.000\nG1 X99.802 Y1.174 F500.000\nG1 X99.996 Y1.568 F500.000\nG1 X100.137 Y1.983 F500.000\nG1 X100.222 Y2.413 F500.000\nG1 X100.250 Y2.834 F500.000\nG1 X100.250 Y33.646 F500.000\nG1 X100.222 Y34.067 F500.000\nG1 X100.137 Y34.497 F500.000\nG1 X99.996 Y34.912 F500.000\nG1 X99.802 Y35.306 F500.000\nG1 X99.559 Y35.670 F500.000\nG1 X99.270 Y36.000 F500.000\nG1 X98.940 Y36.289 F500.000\nG1 X98.576 Y36.532 F500.000\nG1 X98.182 Y36.726 F500.000\nG1 X97.767 Y36.867 F500.000\nG1 X97.337 Y36.952 F500.000\nG1 X96.916 Y36.980 F500.000\nG1 X84.260 Y36.980 F500.000\nG1 X79.260 Y36.980 F500.000\nG1 X21.716 Y36.980 F500.000\nG1 X16.716 Y36.980 F500.000\nG1 X2.834 Y36.980 F500.000\nG1 X2.413 Y36.952 F500.000\nG1 X1.983 Y36.867 F500.000\nG1 X1.568 Y36.726 F500.000\nG1 X1.174 Y36.532 F500.000\nG1 X0.810 Y36.289 F500.000\nG1 X0.480 Y36.000 F500.000\nG1 X0.191 Y35.670 F500.000\nG1 X-0.052 Y35.306 F500.000\nG1 X-0.246 Y34.912 F500.000\nG1 X-0.387 Y34.497 F500.000\nG1 X-0.472 Y34.067 F500.000\nG1 X-0.500 Y33.646 F500.000\nG1 X-0.500 Y2.834 F500.000\nG1 Z-3.000 F100.000\nG1 X-0.472 Y2.413 F500.000\nG1 X-0.387 Y1.983 F500.000\nG1 X-0.246 Y1.568 F500.000\nG1 X-0.052 Y1.174 F500.000\nG1 X0.191 Y0.810 F500.000\nG1 X0.480 Y0.480 F500.000\nG1 X0.810 Y0.191 F500.000\nG1 X1.174 Y-0.052 F500.000\nG1 X1.568 Y-0.246 F500.000\nG1 X1.983 Y-0.387 F500.000\nG1 X2.413 Y-0.472 F500.000\nG1 X2.834 Y-0.500 F500.000\nG1 X16.755 Y-0.500 F500.000\nG1 Z-2.700 F100.000\nG1 X21.755 Y-0.500 F500.000\nG1 Z-3.000 F100.000\nG1 X79.155 Y-0.500 F500.000\nG1 Z-2.700 F100.000\nG1 X84.155 Y-0.500 F500.000\nG1 Z-3.000 F100.000\nG1 X96.916 Y-0.500 F500.000\nG1 X97.337 Y-0.472 F500.000\nG1 X97.767 Y-0.387 F500.000\nG1 X98.182 Y-0.246 F500.000\nG1 X98.576 Y-0.052 F500.000\nG1 X98.940 Y0.191 F500.000\nG1 X99.270 Y0.480 F500.000\nG1 X99.559 Y0.810 F500.000\nG1 X99.802 Y1.174 F500.000\nG1 X99.996 Y1.568 F500.000\nG1 X100.137 Y1.983 F500.000\nG1 X100.222 Y2.413 F500.000\nG1 X100.250 Y2.834 F500.000\nG1 X100.250 Y33.646 F500.000\nG1 X100.222 Y34.067 F500.000\nG1 X100.137 Y34.497 F500.000\nG1 X99.996 Y34.912 F500.000\nG1 X99.802 Y35.306 F500.000\nG1 X99.559 Y35.670 F500.000\nG1 X99.270 Y36.000 F500.000\nG1 X98.940 Y36.289 F500.000\nG1 X98.576 Y36.532 F500.000\nG1 X98.182 Y36.726 F500.000\nG1 X97.767 Y36.867 F500.000\nG1 X97.337 Y36.952 F500.000\nG1 X96.916 Y36.980 F500.000\nG1 X84.260 Y36.980 F500.000\nG1 Z-2.700 F100.000\nG1 X79.260 Y36.980 F500.000\nG1 Z-3.000 F100.000\nG1 X21.716 Y36.980 F500.000\nG1 Z-2.700 F100.000\nG1 X16.716 Y36.980 F500.000\nG1 Z-3.000 F100.000\nG1 X2.834 Y36.980 F500.000\nG1 X2.413 Y36.952 F500.000\nG1 X1.983 Y36.867 F500.000\nG1 X1.568 Y36.726 F500.000\nG1 X1.174 Y36.532 F500.000\nG1 X0.810 Y36.289 F500.000\nG1 X0.480 Y36.000 F500.000\nG1 X0.191 Y35.670 F500.000\nG1 X-0.052 Y35.306 F500.000\nG1 X-0.246 Y34.912 F500.000\nG1 X-0.387 Y34.497 F500.000\nG1 X-0.472 Y34.067 F500.000\nG1 X-0.500 Y33.646 F500.000\nG1 X-0.500 Y2.834 F500.000\nG1 Z-4.000 F100.000\nG1 X-0.472 Y2.413 F500.000\nG1 X-0.387 Y1.983 F500.000\nG1 X-0.246 Y1.568 F500.000\nG1 X-0.052 Y1.174 F500.000\nG1 X0.191 Y0.810 F500.000\nG1 X0.480 Y0.480 F500.000\nG1 X0.810 Y0.191 F500.000\nG1 X1.174 Y-0.052 F500.000\nG1 X1.568 Y-0.246 F500.000\nG1 X1.983 Y-0.387 F500.000\nG1 X2.413 Y-0.472 F500.000\nG1 X2.834 Y-0.500 F500.000\nG1 X16.755 Y-0.500 F500.000\nG1 Z-2.700 F100.000\nG1 X21.755 Y-0.500 F500.000\nG1 Z-4.000 F100.000\nG1 X79.155 Y-0.500 F500.000\nG1 Z-2.700 F100.000\nG1 X84.155 Y-0.500 F500.000\nG1 Z-4.000 F100.000\nG1 X96.916 Y-0.500 F500.000\nG1 X97.337 Y-0.472 F500.000\nG1 X97.767 Y-0.387 F500.000\nG1 X98.182 Y-0.246 F500.000\nG1 X98.576 Y-0.052 F500.000\nG1 X98.940 Y0.191 F500.000\nG1 X99.270 Y0.480 F500.000\nG1 X99.559 Y0.810 F500.000\nG1 X99.802 Y1.174 F500.000\nG1 X99.996 Y1.568 F500.000\nG1 X100.137 Y1.983 F500.000\nG1 X100.222 Y2.413 F500.000\nG1 X100.250 Y2.834 F500.000\nG1 X100.250 Y33.646 F500.000\nG1 X100.222 Y34.067 F500.000\nG1 X100.137 Y34.497 F500.000\nG1 X99.996 Y34.912 F500.000\nG1 X99.802 Y35.306 F500.000\nG1 X99.559 Y35.670 F500.000\nG1 X99.270 Y36.000 F500.000\nG1 X98.940 Y36.289 F500.000\nG1 X98.576 Y36.532 F500.000\nG1 X98.182 Y36.726 F500.000\nG1 X97.767 Y36.867 F500.000\nG1 X97.337 Y36.952 F500.000\nG1 X96.916 Y36.980 F500.000\nG1 X84.260 Y36.980 F500.000\nG1 Z-2.700 F100.000\nG1 X79.260 Y36.980 F500.000\nG1 Z-4.000 F100.000\nG1 X21.716 Y36.980 F500.000\nG1 Z-2.700 F100.000\nG1 X16.716 Y36.980 F500.000\nG1 Z-4.000 F100.000\nG1 X2.834 Y36.980 F500.000\nG1 X2.413 Y36.952 F500.000\nG1 X1.983 Y36.867 F500.000\nG1 X1.568 Y36.726 F500.000\nG1 X1.174 Y36.532 F500.000\nG1 X0.810 Y36.289 F500.000\nG1 X0.480 Y36.000 F500.000\nG1 X0.191 Y35.670 F500.000\nG1 X-0.052 Y35.306 F500.000\nG1 X-0.246 Y34.912 F500.000\nG1 X-0.387 Y34.497 F500.000\nG1 X-0.472 Y34.067 F500.000\nG1 X-0.500 Y33.646 F500.000\nG1 X-0.500 Y2.834 F500.000\nG1 Z-4.200 F100.000\nG1 X-0.472 Y2.413 F500.000\nG1 X-0.387 Y1.983 F500.000\nG1 X-0.246 Y1.568 F500.000\nG1 X-0.052 Y1.174 F500.000\nG1 X0.191 Y0.810 F500.000\nG1 X0.480 Y0.480 F500.000\nG1 X0.810 Y0.191 F500.000\nG1 X1.174 Y-0.052 F500.000\nG1 X1.568 Y-0.246 F500.000\nG1 X1.983 Y-0.387 F500.000\nG1 X2.413 Y-0.472 F500.000\nG1 X2.834 Y-0.500 F500.000\nG1 X16.755 Y-0.500 F500.000\nG1 Z-2.700 F100.000\nG1 X21.755 Y-0.500 F500.000\nG1 Z-4.200 F100.000\nG1 X79.155 Y-0.500 F500.000\nG1 Z-2.700 F100.000\nG1 X84.155 Y-0.500 F500.000\nG1 Z-4.200 F100.000\nG1 X96.916 Y-0.500 F500.000\nG1 X97.337 Y-0.472 F500.000\nG1 X97.767 Y-0.387 F500.000\nG1 X98.182 Y-0.246 F500.000\nG1 X98.576 Y-0.052 F500.000\nG1 X98.940 Y0.191 F500.000\nG1 X99.270 Y0.480 F500.000\nG1 X99.559 Y0.810 F500.000\nG1 X99.802 Y1.174 F500.000\nG1 X99.996 Y1.568 F500.000\nG1 X100.137 Y1.983 F500.000\nG1 X100.222 Y2.413 F500.000\nG1 X100.250 Y2.834 F500.000\nG1 X100.250 Y33.646 F500.000\nG1 X100.222 Y34.067 F500.000\nG1 X100.137 Y34.497 F500.000\nG1 X99.996 Y34.912 F500.000\nG1 X99.802 Y35.306 F500.000\nG1 X99.559 Y35.670 F500.000\nG1 X99.270 Y36.000 F500.000\nG1 X98.940 Y36.289 F500.000\nG1 X98.576 Y36.532 F500.000\nG1 X98.182 Y36.726 F500.000\nG1 X97.767 Y36.867 F500.000\nG1 X97.337 Y36.952 F500.000\nG1 X96.916 Y36.980 F500.000\nG1 X84.260 Y36.980 F500.000\nG1 Z-2.700 F100.000\nG1 X79.260 Y36.980 F500.000\nG1 Z-4.200 F100.000\nG1 X21.716 Y36.980 F500.000\nG1 Z-2.700 F100.000\nG1 X16.716 Y36.980 F500.000\nG1 Z-4.200 F100.000\nG1 X2.834 Y36.980 F500.000\nG1 X2.413 Y36.952 F500.000\nG1 X1.983 Y36.867 F500.000\nG1 X1.568 Y36.726 F500.000\nG1 X1.174 Y36.532 F500.000\nG1 X0.810 Y36.289 F500.000\nG1 X0.480 Y36.000 F500.000\nG1 X0.191 Y35.670 F500.000\nG1 X-0.052 Y35.306 F500.000\nG1 X-0.246 Y34.912 F500.000\nG1 X-0.387 Y34.497 F500.000\nG1 X-0.472 Y34.067 F500.000\nG1 X-0.500 Y33.646 F500.000\nG1 X-0.500 Y2.834 F500.000\nG0 Z5.000\nM5\nG0 Z5.000\nM30\n"
+  }
+}

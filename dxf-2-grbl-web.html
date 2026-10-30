@@ -1,0 +1,2110 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>dxf-2-grbl-web</title>
+<style>
+:root{color-scheme:dark;--bg:#11151b;--panel:#1b222c;--line:#303b49;--text:#e7edf5;--muted:#9eacbd;--accent:#67c8ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 system-ui,-apple-system,Segoe UI,sans-serif}
+header{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:12px 16px;border-bottom:1px solid var(--line);background:#171d25}
+h1{font-size:17px;margin:0;font-weight:650}.sub{color:var(--muted);font-size:12px}
+body{display:flex;flex-direction:column;height:100vh}header{position:relative;z-index:20;flex:none}
+main{display:grid;grid-template-columns:290px minmax(0,1fr) 340px;flex:1;min-height:0}
+aside{padding:16px;overflow:auto;border-right:1px solid var(--line);background:var(--panel)}
+section{margin-bottom:20px}h2{font-size:12px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin:0 0 10px}
+label{display:block;color:#d1dbe7;margin:10px 0 5px;font-size:13px}
+input[type=number],input[type=text],select{width:100%;background:#10151b;color:var(--text);border:1px solid #3b4858;border-radius:6px;padding:8px}
+input[type=checkbox]{accent-color:var(--accent);margin-right:7px}
+button,.filebtn{border:1px solid #3b5368;border-radius:7px;background:#223547;color:#eaf7ff;padding:9px 11px;cursor:pointer;font:inherit;display:inline-block;text-align:center}
+button:hover,.filebtn:hover{background:#2c4a60}.primary{background:#1679a9;border-color:#2b9dd1}.btnrow{display:flex;gap:8px;flex-wrap:wrap}.btnrow>*{flex:1}
+input[type=file]{display:none}.hint{color:var(--muted);font-size:12px;margin-top:8px}
+.status{font-size:12px;color:var(--muted);padding:10px;background:#11171e;border:1px solid var(--line);border-radius:7px;overflow-wrap:anywhere}
+#view{position:relative;min-width:0;min-height:0;background:#0d1117}canvas{display:block;width:100%;height:100%}
+.overlay{position:absolute;left:12px;top:12px;pointer-events:none;color:#b8c7d8;font-size:12px;background:#111923c9;border:1px solid #344151;border-radius:7px;padding:7px 9px;max-width:calc(100% - 24px)}
+.legend{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;color:var(--muted);font-size:12px}.selection-box{position:absolute;border:1px solid #ff4b4b;background:#ff333322;pointer-events:none;display:none;z-index:5}.select-active{border-color:#ff6262;background:#512626}.dim{opacity:.6}.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px}
+.toolbar{display:flex;align-items:center;gap:3px;flex-wrap:wrap}
+.tb{position:relative;width:38px;height:36px;padding:0;margin:0;display:inline-flex;align-items:center;justify-content:center;border:1px solid transparent;border-radius:7px;background:transparent;color:#cfe3f3;cursor:pointer;font-size:13px}
+.tb:hover{background:#2c4a60;border-color:#3b5368}.tb:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.tb svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+.tb.accent{background:#1679a9;border-color:#2b9dd1;color:#fff}.tb.accent:hover{background:#1d8fc7}
+.tb.select-active,.tbtoggle:has(input:checked){background:#1b4a66;border-color:#2b9dd1;color:#fff}
+.tb.select-active{background:#7a2b2b;border-color:#ff6262}
+.tbtoggle input{position:absolute;opacity:0;pointer-events:none;margin:0}
+.tbsep{width:1px;height:24px;background:var(--line);margin:0 7px}
+.tbsel{width:auto;padding:0 3px}.tbsel select{width:auto;padding:6px 6px;border-radius:6px}
+.tb[data-tip]:hover::after,.tb[data-tip]:focus-visible::after{content:attr(data-tip);position:absolute;top:calc(100% + 8px);left:0;white-space:nowrap;background:#0b0f14;color:#eaf2fa;border:1px solid #3b4858;border-radius:6px;padding:5px 9px;font-size:12px;line-height:1.3;box-shadow:0 4px 14px #0008;z-index:60;pointer-events:none}
+.header-hint{margin-left:auto}
+#toasts{position:fixed;top:14px;right:14px;z-index:1000;display:flex;flex-direction:column;gap:10px;width:min(420px,calc(100vw - 28px));pointer-events:none}
+.toast{pointer-events:auto;display:flex;align-items:flex-start;gap:10px;background:#c62828;color:#fff;border:1px solid #ff8a80;border-radius:9px;padding:11px 12px;box-shadow:0 8px 26px #000a;font-size:13px;line-height:1.4;animation:toastin .22s ease-out;overflow-wrap:anywhere}
+.toast svg{flex:none;width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;margin-top:1px}
+.toast .msg{flex:1}.toast b{display:block;margin-bottom:2px}
+.toast button{flex:none;background:transparent;border:0;color:#fff;padding:0 4px;font-size:20px;line-height:1;opacity:.85}.toast button:hover{opacity:1;background:transparent}
+.toast.warn{background:#b26a00;border-color:#ffcc80}.toast.out{opacity:0;transform:translateX(30px);transition:.25s}
+@keyframes toastin{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:none}}
+#rightPanel{border-right:0;border-left:1px solid var(--line)}
+#elemList{height:260px;min-height:90px;max-height:72vh;overflow:auto;resize:vertical;border:1px solid var(--line);border-radius:7px;background:#11171e}
+.erow{display:flex;align-items:center;gap:7px;padding:6px 8px;border-bottom:1px solid #1f2a36;cursor:pointer;user-select:none}
+.erow:last-child{border-bottom:0}.erow:hover{background:#1b2531}.erow.sel{background:#3a2327}.erow.sel:hover{background:#452a2f}
+.erow.dragging{opacity:.4}.erow.drop-before{box-shadow:inset 0 2px 0 var(--accent)}.erow.drop-after{box-shadow:inset 0 -2px 0 var(--accent)}
+.egrip{color:#6c7b8d;cursor:grab;font-size:13px;letter-spacing:-3px;flex:none}.eidx{color:var(--muted);font-size:11px;min-width:22px;text-align:right;flex:none}
+.edot{width:11px;height:11px;border-radius:50%;flex:none;border:2px solid #66788c}.edot.on{background:#4cd964;border-color:#4cd964}
+.ename{flex:1;min-width:0}.ename b{display:block;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ename small{display:block;color:var(--muted);font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rename{width:100%;padding:3px 6px!important}
+.tb:disabled{opacity:.35;cursor:default;background:transparent;border-color:transparent}
+.tb svg .f{fill:currentColor}
+.simbar{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);width:min(860px,calc(100% - 24px));display:grid;grid-template-columns:auto minmax(170px,230px) minmax(0,1fr);gap:6px 14px;align-items:center;background:#111923ee;border:1px solid #344151;border-radius:10px;padding:7px 10px;z-index:5;box-shadow:0 6px 20px #0008}
+.simbtns{display:flex;gap:3px}.simrange{display:flex;align-items:center;gap:8px;min-width:0;color:#b8c7d8;font-size:12px}
+.simrange input[type=range]{flex:1;min-width:50px;padding:0;margin:0;accent-color:var(--accent)}
+.simrange output,.simrange .simtime{font-variant-numeric:tabular-nums;white-space:nowrap}.simrange output{min-width:42px;text-align:right}
+.siminfo{grid-column:1/-1;color:#b8c7d8;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-height:16px}
+.simbar .tb[data-tip]:hover::after,.simbar .tb[data-tip]:focus-visible::after{top:auto;bottom:calc(100% + 8px)}
+@media(max-width:760px){.simbar{grid-template-columns:1fr}}
+.tb.conn::before{content:"";position:absolute;top:4px;right:4px;width:8px;height:8px;border-radius:50%;background:#4cd964;box-shadow:0 0 0 2px #1b2430}
+.machine{position:absolute;top:10px;bottom:var(--mbot,10px);right:10px;width:356px;overflow:auto;background:#111923f5;border:1px solid #344151;border-radius:10px;padding:10px 12px 12px;z-index:6;box-shadow:0 8px 24px #000a;font-size:13px}
+.machine[hidden]{display:none}.machine h3{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#8fa3b8;margin:12px 0 6px}
+.machine fieldset{border:0;margin:0;padding:0;min-width:0}.machine fieldset:disabled{opacity:.42}
+.machine label{margin:8px 0 4px}.machine .hint{margin:6px 0 0}
+.mhead{display:flex;align-items:center;gap:8px}.mhead b{font-size:14px}
+.mstate{margin-left:auto;padding:2px 10px;border-radius:999px;font-size:12px;background:#2a3441;white-space:nowrap}
+.mstate.idle{background:#1f5f2e}.mstate.run,.mstate.jog,.mstate.home{background:#1b4a66}.mstate.hold,.mstate.door,.mstate.check{background:#8a5a00}.mstate.alarm{background:#8a1f1f}
+.mrow{display:flex;gap:6px;align-items:center;flex-wrap:wrap}.mrow>*{margin:0}
+.mpos{display:grid;grid-template-columns:20px 1fr auto;gap:1px 10px;align-items:baseline;font-variant-numeric:tabular-nums;margin-top:10px;background:#0b0f14;border:1px solid #2a3441;border-radius:8px;padding:6px 10px}
+.mpos .ax{font-weight:700;color:#8fa3b8}.mpos .w{font-size:21px;text-align:right}.mpos .m{font-size:11px;color:#8fa3b8;min-width:74px;text-align:right}
+.msteps button,.maxis button{padding:5px 8px;flex:1;min-width:0}.msteps button.on,.maxis button.on{background:#1679a9;border-color:#2b9dd1;color:#fff}
+.mjog{display:flex;gap:12px;align-items:center;margin-top:10px}
+.jogpad{display:grid;grid-template-columns:repeat(3,42px) 14px 42px;grid-template-rows:repeat(3,42px);gap:4px}
+.jb{width:42px;height:42px;padding:0;font-size:15px;display:flex;align-items:center;justify-content:center;user-select:none;touch-action:none}
+.dialbox{display:flex;flex-direction:column;align-items:center;gap:6px;flex:1}.maxis{display:flex;gap:4px;width:100%}
+#mDial{touch-action:none;cursor:grab;user-select:none}#mDial:active{cursor:grabbing}
+.mbar{height:8px;background:#222c38;border-radius:4px;overflow:hidden;margin:8px 0 4px}.mbar i{display:block;height:100%;width:0;background:#4cd964;transition:width .2s}
+.mtc{background:#3a2b00;border:1px solid #ffcc80;border-radius:8px;padding:8px 10px;margin:8px 0}.mtc[hidden]{display:none}
+.mlog{height:112px;overflow:auto;background:#0b0f14;border:1px solid #2a3441;border-radius:6px;font:11px/1.35 ui-monospace,Menlo,Consolas,monospace;padding:4px 6px;white-space:pre-wrap;word-break:break-all}
+.mlog .tx{color:#7fc8ff}.mlog .rx{color:#c9d4e0}.mlog .er{color:#ff8a80}
+.toast.ok{background:#2e7d32;border-color:#a5d6a7}
+footer{color:var(--muted);font-size:11px;line-height:1.5}
+@media(max-width:760px){body{display:block;height:auto}main{grid-template-columns:1fr;min-height:calc(100vh - 120px)}aside{order:2;border-right:0;border-top:1px solid var(--line)}#rightPanel{border-left:0}#view{height:58vh;min-height:340px;order:1}}
+</style>
+</head>
+<body>
+<header>
+  <div><h1>dxf-2-grbl-web</h1><div class="sub" data-i18n="header.sub">Einheiten und Raster in mm</div></div>
+  <div class="toolbar" role="toolbar" aria-label="Werkzeugleiste" data-i18n-label="tb.aria">
+    <label class="tb" for="file" tabindex="0" role="button" data-tip="DXF öffnen…" data-i18n-tip="tb.openDxf" aria-label="DXF öffnen…"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M12 18v-5"/><path d="m9.5 15 2.5-2.5 2.5 2.5"/></svg></label><input id="file" type="file" accept=".dxf,.DXF">
+    <label class="tb" for="projectFile" tabindex="0" role="button" data-tip="Projekt öffnen…" data-i18n-tip="tb.openProject" aria-label="Projekt öffnen…"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v1"/><path d="M3 10h18.5l-2 8a2 2 0 0 1-2 1.5H5A2 2 0 0 1 3 17.5z"/></svg></label><input id="projectFile" type="file" accept=".json,.dxfcam,application/json">
+    <button id="saveProject" class="tb " data-tip="Projekt speichern" data-i18n-tip="tb.saveProject" aria-label="Projekt speichern"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h11l4 4v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M7 3v5h8V3"/><path d="M7 21v-7h10v7"/></svg></button>
+    <span class="tbsep"></span>
+    <button id="fit" class="tb " data-tip="Alles einpassen" data-i18n-tip="tb.fit" aria-label="Alles einpassen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V5a1 1 0 0 1 1-1h4"/><path d="M15 4h4a1 1 0 0 1 1 1v4"/><path d="M20 15v4a1 1 0 0 1-1 1h-4"/><path d="M9 20H5a1 1 0 0 1-1-1v-4"/><rect x="9" y="9" width="6" height="6"/></svg></button><button id="reset" class="tb " data-tip="Ansicht zurücksetzen" data-i18n-tip="tb.resetView" aria-label="Ansicht zurücksetzen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg></button>
+    <span class="tb tbsel" data-tip="Kameraansicht" data-i18n-tip="tb.camera"><select id="viewmode" aria-label="Kameraansicht" data-i18n-label="tb.camera"><option value="3d" data-i18n="view.3d">3D-Perspektive</option><option value="top" data-i18n="view.top">Draufsicht (XY)</option><option value="front" data-i18n="view.front">Vorderansicht (XZ)</option><option value="side" data-i18n="view.side">Seitenansicht (YZ)</option></select></span>
+    <label class="tb tbtoggle" data-tip="XY-Raster ein/aus" data-i18n-tip="tb.grid" aria-label="XY-Raster ein/aus"><input id="showGrid" type="checkbox" checked><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg></label><label class="tb tbtoggle" data-tip="XYZ-Achsen ein/aus" data-i18n-tip="tb.axes" aria-label="XYZ-Achsen ein/aus"><input id="showAxes" type="checkbox" checked><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19V4M5 19h15M5 19l6-6"/><path d="M2.8 6.2 5 3.8l2.2 2.4M17.8 16.8 20.2 19l-2.4 2.2"/></svg></label><label class="tb tbtoggle" data-tip="DXF-Geometrie ein/aus" data-i18n-tip="tb.model" aria-label="DXF-Geometrie ein/aus"><input id="showModel" type="checkbox" checked><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 3.5 7.5v9L12 21l8.5-4.5v-9z"/><path d="M3.5 7.5 12 12l8.5-4.5M12 12v9"/></svg></label>
+    <span class="tbsep"></span>
+    <button id="selectMode" class="tb " data-tip="Auswahlmodus aktivieren (Esc)" aria-label="Auswahlmodus aktivieren (Esc)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 3 14 7-6.2 1.8L10.5 19z"/></svg></button><button id="clearSelection" class="tb " data-tip="Auswahl löschen" data-i18n-tip="tb.clearSel" aria-label="Auswahl löschen"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="14" height="14" rx="1" stroke-dasharray="3 2.5"/><path d="m14 14 7 7M21 14l-7 7"/></svg></button>
+    <span class="tbsep"></span>
+    <label class="tb tbtoggle" data-tip="CAM-Wege ein/ausblenden" data-i18n-tip="tb.cam" aria-label="CAM-Wege ein/ausblenden"><input id="showCam" type="checkbox" checked><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="6" r="2.2"/><path d="M8.2 18H14a3.5 3.5 0 0 0 0-7h-4a3.5 3.5 0 0 1 0-7h5.8"/></svg></label><button id="exportGcode" class="tb " data-tip="G-Code exportieren" data-i18n-tip="tb.export" aria-label="G-Code exportieren"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11"/><path d="m7.5 11 4.5 4.5 4.5-4.5"/><path d="M4 20h16"/></svg></button><span class="tbsep"></span><button id="machineToggle" class="tb" data-tip="Maschine (GRBL): Steuerung ein/aus" data-i18n-tip="tb.machine" aria-label="Maschine (GRBL)" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 2v6M15 2v6"/><path d="M6 8h12v4a6 6 0 0 1-12 0z"/><path d="M12 18v4"/></svg></button><span class="tbsep"></span><span class="tb tbsel" data-tip="Sprache" data-i18n-tip="tb.lang"><select id="lang" aria-label="Sprache" data-i18n-label="tb.lang"></select></span>
+  </div>
+  <span class="sub header-hint" data-i18n="header.hint">Maus: drehen · Rad: zoomen · rechte Taste/Shift+Ziehen: verschieben</span>
+</header>
+<main>
+<aside>
+  <section>
+    <h2 data-i18n="grid.title">Raster und Geometrie</h2>
+    <label for="gridStep" data-i18n="grid.step">Rasterabstand (mm)</label><input id="gridStep" type="number" min="0.001" step="1" value="10">
+    <label for="gridExtent" data-i18n="grid.extent">Rastergröße gesamt (mm)</label><input id="gridExtent" type="number" min="1" step="10" value="500">
+  </section>
+  <section>
+    <h2 data-i18n="def.title">Projekt-Defaults</h2>
+    <div id="defaultsFields"></div>
+    <label for="safeZ" data-i18n="def.safeZ">Sicherheitsebene Z (global, mm)</label><input id="safeZ" type="number" step="0.5" value="5">
+    <label for="rapidRate" data-i18n="def.rapid">Eilganggeschwindigkeit (mm/min, nur Simulator)</label><input id="rapidRate" type="number" step="100" min="1" value="3000">
+    <label for="spindleRpm" data-i18n="def.spindle">Spindeldrehzahl S (U/min, 0 = keine Spindelsteuerung im G-Code)</label><input id="spindleRpm" type="number" step="500" min="0" value="10000">
+    <div class="hint" data-i18n="def.hint">Defaults werden beim Zuweisen in das Element kopiert. Spätere Änderungen der Defaults verändern bereits zugewiesene Elemente nicht. Die Rohteil-Oberfläche darf nicht über der Sicherheitsebene liegen.</div>
+  </section>
+  <section>
+    <h2 data-i18n="cam.title">CAM / G-Code</h2>
+    <div id="camStatus" class="hint" style="margin-top:0">Die Fräsbahnen werden bei jeder Änderung automatisch für alle grünen Elemente (mit zugewiesener Kontur) berechnet.</div>
+    <div class="legend"><span><i class="dot" style="background:#28a9ff"></i><span data-i18n="cam.leg.path">Fräsbahn</span></span><span><i class="dot" style="background:#ffb020"></i><span data-i18n="cam.leg.tab">Holding Tab</span></span><span><i class="dot" style="background:#9aa4b2"></i><span data-i18n="cam.leg.rapid">Verfahrweg (gestrichelt)</span></span></div>
+    <div class="hint" data-i18n="cam.hint">Die Reihenfolge der Fräsbahnen entspricht der Elementliste rechts. Bei Wechsel des Fräserdurchmessers setzt der G-Code ein M0 (Pause). Tasche: räumt die Fläche innerhalb einer geschlossenen Kontur mit konzentrischen Bahnen von innen nach außen aus. Geschlossene Konturen innerhalb der Tasche (auch ohne Fräsparameter) bleiben als Inseln stehen, sofern „Inseln stehen lassen“ aktiv ist; andere Taschen darin gelten nicht als Inseln. Geschlossene Konturen (auch aus mehreren zusammenhängenden Linien/Bögen mit gleichen Parametern) werden unabhängig von der Zeichenrichtung bearbeitet; bei offenen Linien gilt die Zeichenrichtung („innen“ links, „außen“ rechts); die Fräsrichtung CW/CCW wirkt nur bei geschlossenen Konturen und Taschen und ist unabhängig von der Punktreihenfolge im DXF. Doppelte Elemente werden beim Laden automatisch entfernt. Simulator (unten in der Ansicht): 1,0x entspricht Echtzeit nach Vorschub und Eilgang; Beschleunigung der Maschine wird nicht berücksichtigt, bei Werkzeugwechsel (M0) hält die Simulation an. Prüfe G-Code, Nullpunkt, Werkzeug und Maschinenkonfiguration unbedingt in einem Simulator vor dem Fräsen.</div>
+  </section>
+  <section>
+    <h2 data-i18n="file.title">Datei</h2>
+    <div id="status" class="status">Noch keine DXF-Datei geladen.</div>
+    <div class="legend"><span><i class="dot" style="background:#ff6262"></i>X</span><span><i class="dot" style="background:#62df8d"></i>Y</span><span><i class="dot" style="background:#68aaff"></i>Z</span></div>
+  </section>
+  <footer data-i18n="footer">Unterstützt gängige DXF-Entitäten wie LINE, LWPOLYLINE, POLYLINE, CIRCLE, ARC, ELLIPSE, SPLINE, POINT und Blöcke (INSERT), abhängig vom Dateiinhalt. DXF wird im Browser verarbeitet; die Datei wird nicht hochgeladen. Die Anzeige ist eine geometrische Vorschau, kein CAD-Prüfwerkzeug.</footer>
+</aside>
+<div id="view"><div class="overlay" id="info">Öffne eine DXF-Datei, um die Geometrie anzuzeigen.</div><div id="selectionRect" class="selection-box"></div>
+<div id="simBar" class="simbar" role="group" aria-label="Fräs-Simulator" data-i18n-label="sim.bar">
+  <div class="simbtns"><button id="simPlay" class="tb accent" data-tip="Simulation starten / fortsetzen" data-i18n-tip="sim.play" aria-label="Play"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="f" d="M7 4.5v15l12-7.5z"/></svg></button><button id="simPause" class="tb" data-tip="Pause" data-i18n-tip="sim.pause" aria-label="Pause" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14" stroke-width="3"/></svg></button><button id="simStop" class="tb" data-tip="Stop (zurück zum Anfang)" data-i18n-tip="sim.stop" aria-label="Stop" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><rect class="f" x="6" y="6" width="12" height="12" rx="1.5"/></svg></button></div>
+  <label class="simrange" for="simSpeed" style="margin:0"><span>Speed</span><input id="simSpeed" type="range" min="0.5" max="50" step="0.5" value="1"><output id="simSpeedOut" for="simSpeed">1.0x</output></label>
+  <div class="simrange"><input id="simProg" type="range" min="0" max="1000" step="1" value="0" aria-label="Fortschritt" data-i18n-label="sim.progress"><span id="simTime" class="simtime">00:00 / 00:00</span></div>
+  <div id="simInfo" class="siminfo"></div>
+</div>
+<div id="machinePanel" class="machine" hidden role="dialog" aria-label="Maschine (GRBL)" data-i18n-label="m.title">
+  <div class="mhead"><b data-i18n="m.title">Maschine (GRBL)</b><span id="mState" class="mstate">Getrennt</span><button id="mClose" class="tb" data-tip="Schließen" data-i18n-tip="close" aria-label="Schließen" style="width:30px;height:30px;font-size:20px">×</button></div>
+  <div class="mrow" style="margin-top:8px"><select id="mBaud" style="width:auto" aria-label="Baudrate" data-i18n-label="m.baud"><option>115200</option><option>57600</option><option>38400</option><option>19200</option><option>9600</option></select><button id="mConnect" class="primary" style="flex:1">Verbinden</button></div>
+  <div class="hint" id="mHint">Direkt per USB über Web Serial (Chrome/Edge am Desktop). Baudrate bei GRBL meist 115200.</div>
+  <div class="mpos"><span class="ax">X</span><span class="w" id="mwX">–</span><span class="m" id="mmX"></span><span class="ax">Y</span><span class="w" id="mwY">–</span><span class="m" id="mmY"></span><span class="ax">Z</span><span class="w" id="mwZ">–</span><span class="m" id="mmZ"></span></div>
+  <div class="hint" style="margin-top:3px" data-i18n="m.coords">Große Zahlen: Arbeitskoordinaten (G54), klein: Maschinenkoordinaten.</div>
+  <fieldset id="mJogSet" disabled>
+    <h3 data-i18n="m.jog.title">Verfahren (Jog)</h3>
+    <div class="mrow msteps" id="mSteps"><button data-step="0.01">0,01</button><button data-step="0.1">0,1</button><button data-step="1" class="on">1</button><button data-step="10">10</button><button data-step="100">100</button></div>
+    <label for="mFeed" data-i18n="m.jog.feed">Jog-Vorschub (mm/min)</label><input id="mFeed" type="number" min="1" step="100" value="1000">
+    <div class="mjog">
+      <div class="jogpad">
+        <span></span><button class="jb" data-ax="Y" data-dir="1" aria-label="Y plus">▲</button><span></span><span></span><button class="jb" data-ax="Z" data-dir="1" aria-label="Z plus">Z+</button>
+        <button class="jb" data-ax="X" data-dir="-1" aria-label="X minus">◀</button><span></span><button class="jb" data-ax="X" data-dir="1" aria-label="X plus">▶</button><span></span><span></span>
+        <span></span><button class="jb" data-ax="Y" data-dir="-1" aria-label="Y minus">▼</button><span></span><span></span><button class="jb" data-ax="Z" data-dir="-1" aria-label="Z minus">Z−</button>
+      </div>
+      <div class="dialbox">
+        <div class="maxis" id="mAxis"><button data-ax="X" class="on">X</button><button data-ax="Y">Y</button><button data-ax="Z">Z</button></div>
+        <svg id="mDial" viewBox="-60 -60 120 120" width="116" height="116" tabindex="0" role="slider" aria-label="Jog-Rad: drehen oder Mausrad, ein Raster = ein Schritt" data-i18n-label="m.dial"><circle r="54" fill="#1a232e" stroke="#3b5368" stroke-width="2"/><g id="mDialRot"><g id="mDialTicks" stroke="#6c7b8d" stroke-width="2"></g><circle cx="0" cy="-40" r="6" fill="#ffb020"/></g><text id="mDialTxt" y="5" text-anchor="middle" fill="#cfe3f3" font-size="14">X 1</text></svg>
+      </div>
+    </div>
+    <div class="hint" data-i18n="m.jog.hint">Jog-Rad: mit der Maus drehen oder Mausrad nutzen (ein Raster = ein Schritt der gewählten Achse). Tasten gedrückt halten wiederholt.</div>
+  </fieldset>
+  <fieldset id="mZeroSet" disabled>
+    <h3 data-i18n="m.zero.title">Nullpunkt (Arbeitskoordinaten G54)</h3>
+    <div class="mrow"><button id="mZX" style="flex:1">X = 0</button><button id="mZY" style="flex:1">Y = 0</button><button id="mZZ" style="flex:1">Z = 0</button></div>
+    <div class="mrow" style="margin-top:6px"><button id="mZXY" style="flex:1">XY = 0</button><button id="mZAll" style="flex:1">XYZ = 0</button><button id="mGoXY" style="flex:1" title="Hebt Z auf die Sicherheitsebene und fährt dann nach X0 Y0" data-i18n-title="m.goxy.tip" data-i18n="m.goxy">XY-Null anfahren</button></div>
+    <div class="hint" data-i18n="m.zero.hint">Z = 0 muss der Z=0-Ebene des Programms entsprechen (Rohteil-Oberfläche relativ dazu einstellen).</div>
+  </fieldset>
+  <fieldset id="mCtlSet" disabled>
+    <h3 data-i18n="m.ctl.title">Steuerung</h3>
+    <div class="mrow"><button id="mUnlock" style="flex:1" title="$X – Alarm entsperren" data-i18n-title="m.unlock.tip" data-i18n="m.unlock">Entsperren</button><button id="mHome" style="flex:1" title="$H – Referenzfahrt" data-i18n-title="m.home.tip" data-i18n="m.home">Referenzfahrt</button><button id="mReset" style="flex:1" title="Soft-Reset (Strg+X)" data-i18n-title="m.reset.tip">Reset</button></div>
+    <div class="mrow" style="margin-top:6px"><input id="mRpm" type="number" min="0" step="500" value="10000" style="width:96px" aria-label="Spindeldrehzahl" data-i18n-label="m.rpm.aria"><button id="mSpOn" style="flex:1" data-i18n="m.spon">Spindel an</button><button id="mSpOff" style="flex:1" data-i18n="m.spoff">Spindel aus</button></div>
+  </fieldset>
+  <fieldset id="mJobSet" disabled>
+    <h3 data-i18n="m.job.title">Fräsen</h3>
+    <div class="mrow"><button id="mStart" class="primary" style="flex:1.3" data-i18n="m.start">Fräsen starten</button><button id="mPauseJob" style="flex:1">Pause</button><button id="mAbort" style="flex:1" data-i18n="m.abort">Abbrechen</button></div>
+    <div class="mbar"><i id="mBar"></i></div><div id="mJobInfo" class="hint" style="margin-top:2px">Kein Programm läuft.</div>
+    <div id="mTc" class="mtc" hidden><b data-i18n="m.tc.title">Werkzeugwechsel</b><div id="mTcMsg" style="margin:4px 0 8px"></div><button id="mTcGo" class="primary" style="width:100%" data-i18n="m.tc.go">Weiter fräsen</button><div class="hint" data-i18n="m.tc.hint">Jetzt sind Jog und „Z = 0“ möglich. Nach dem Wechsel Z neu nullen!</div></div>
+    <div class="mrow" style="margin-top:8px"><span style="color:#8fa3b8" data-i18n="m.ov.label">Vorschub-Override</span><button id="mOvMinus" style="flex:1">−10 %</button><button id="mOvReset" style="flex:1">100 %</button><button id="mOvPlus" style="flex:1">+10 %</button></div>
+    <div id="mOvLbl" class="hint">Override: –</div>
+  </fieldset>
+  <h3 data-i18n="m.log.title">Konsole</h3>
+  <div id="mLog" class="mlog" aria-live="off"></div>
+  <div class="mrow" style="margin-top:6px"><input id="mCmd" type="text" placeholder="Befehl, z. B. $$ oder $G" data-i18n-ph="m.cmd.ph" style="flex:1" disabled><button id="mSend" disabled data-i18n="m.send">Senden</button></div>
+</div>
+</div>
+<aside id="rightPanel">
+  <section>
+    <h2><span data-i18n="list.title">Elemente</span> <span id="listCount"></span></h2>
+    <div id="elemList" role="listbox" aria-multiselectable="true" aria-label="DXF-Elemente" data-i18n-label="list.aria"></div>
+    <div id="selectionStatus" class="hint">Keine Elemente ausgewählt.</div>
+    <div class="hint" data-i18n="list.hint">Zeile anklicken = auswählen (Strg/Shift = mehrere), Doppelklick = umbenennen, per Drag &amp; Drop umsortieren. Die Reihenfolge bestimmt die CAM-Reihenfolge. Auswahl in der Grafik: Auswahlmodus (Esc).</div>
+    <div class="legend"><span><i class="dot" style="background:#4cd964"></i><span data-i18n="legend.cam">CAM-Infos hinterlegt</span></span><span><i class="dot" style="background:transparent;border:2px solid #66788c"></i><span data-i18n="legend.nocam">keine CAM-Infos</span></span></div>
+    <div class="legend"><span><i class="dot" style="background:#e8f4ff"></i><span data-i18n="legend.nocontour">ohne Kontur</span></span><span><i class="dot" style="background:#4cd964"></i><span data-i18n="legend.contour">Kontur zugewiesen</span></span><span><i class="dot" style="background:#ff3030"></i><span data-i18n="legend.selected">ausgewählt</span></span></div>
+  </section>
+  <section>
+    <h2 data-i18n="elem.title">CAM-Infos des Elements</h2>
+    <div id="elemEmpty" class="hint" data-i18n="elem.empty">Ein Element in der Liste oder im Auswahlmodus in der Grafik auswählen.</div>
+    <div id="elemPanel" style="display:none">
+      <div id="nameWrap"><label for="e_name" style="margin-top:0">Name</label><input id="e_name" type="text" maxlength="80"></div>
+      <div id="elemStatus" class="status" style="margin-top:10px"></div>
+      <div class="btnrow" style="margin-top:10px"><button id="assignDefaults" class="primary">Defaults zuweisen</button><button id="unassign" data-i18n="elem.unassign">Zuweisung entfernen</button></div>
+      <div id="elemFields"></div>
+      <div id="tabTools" style="display:none"><div class="btnrow" style="margin-top:10px"><button id="resetTabs" data-i18n="tab.reset">Tabs automatisch verteilen</button></div><div class="hint" data-i18n="tab.hint">Holding Tabs lassen sich in der Grafik mit der Maus entlang der Kontur verschieben (orange Kugeln, am besten in der Draufsicht). Automatisch werden sie bevorzugt auf Geraden gesetzt.</div></div>
+    </div>
+  </section>
+</aside>
+</main>
+<div id="toasts" aria-live="assertive"></div>
+<script type="module">
+import * as THREE from 'https://esm.sh/three@0.160.0';
+import { OrbitControls } from 'https://esm.sh/three@0.160.0/examples/jsm/controls/OrbitControls.js';
+import DxfParser from 'https://esm.sh/dxf-parser@1.1.2';
+
+// ===== Sprachen / Languages =====
+// Neue Sprache hinzufügen / How to add a language:
+//   1. Block "I18N.en = {...}" unten kopieren und den Code anpassen, z. B. "I18N.fr = {...}".
+//      Copy the "I18N.en = {...}" block below and change the code, e.g. "I18N.fr = {...}".
+//   2. Alle Werte übersetzen, auch 'lang.name' (Name im Sprachmenü). Platzhalter wie {name} unverändert lassen.
+//      Translate all values, including 'lang.name' (shown in the language menu). Keep placeholders such as {name}.
+//   3. Fehlende Schlüssel fallen automatisch auf Englisch zurück. / Missing keys automatically fall back to English.
+// Das Sprachmenü, die Projektdatei und die automatische Erkennung übernehmen die neue Sprache von selbst.
+const I18N={};
+I18N.de={
+  "lang.name": "Deutsch",
+  "app.title": "dxf-2-grbl-web",
+  "q": "„{s}“",
+  "close": "Schließen",
+  "header.sub": "Einheiten und Raster in mm",
+  "header.hint": "Maus: drehen · Rad: zoomen · rechte Taste/Shift+Ziehen: verschieben",
+  "tb.aria": "Werkzeugleiste",
+  "tb.openDxf": "DXF öffnen…",
+  "tb.openProject": "Projekt öffnen…",
+  "tb.saveProject": "Projekt speichern",
+  "tb.fit": "Alles einpassen",
+  "tb.resetView": "Ansicht zurücksetzen",
+  "tb.camera": "Kameraansicht",
+  "view.3d": "3D-Perspektive",
+  "view.top": "Draufsicht (XY)",
+  "view.front": "Vorderansicht (XZ)",
+  "view.side": "Seitenansicht (YZ)",
+  "tb.grid": "XY-Raster ein/aus",
+  "tb.axes": "XYZ-Achsen ein/aus",
+  "tb.model": "DXF-Geometrie ein/aus",
+  "tb.select.on": "Auswahlmodus beenden (Esc)",
+  "tb.select.off": "Auswahlmodus aktivieren (Esc)",
+  "tb.clearSel": "Auswahl löschen",
+  "tb.cam": "CAM-Wege ein/ausblenden",
+  "tb.export": "G-Code exportieren",
+  "tb.machine": "Maschine (GRBL): Steuerung ein/aus",
+  "tb.lang": "Sprache",
+  "grid.title": "Raster und Geometrie",
+  "grid.step": "Rasterabstand (mm)",
+  "grid.extent": "Rastergröße gesamt (mm)",
+  "def.title": "Projekt-Defaults",
+  "def.safeZ": "Sicherheitsebene Z (global, mm)",
+  "def.rapid": "Eilganggeschwindigkeit (mm/min, nur Simulator)",
+  "def.spindle": "Spindeldrehzahl S (U/min, 0 = keine Spindelsteuerung im G-Code)",
+  "def.hint": "Defaults werden beim Zuweisen in das Element kopiert. Spätere Änderungen der Defaults verändern bereits zugewiesene Elemente nicht. Die Rohteil-Oberfläche darf nicht über der Sicherheitsebene liegen.",
+  "cam.title": "CAM / G-Code",
+  "cam.idle": "Die Fräsbahnen werden bei jeder Änderung automatisch für alle grünen Elemente (mit zugewiesener Kontur) berechnet.",
+  "cam.leg.path": "Fräsbahn",
+  "cam.leg.tab": "Holding Tab",
+  "cam.leg.rapid": "Verfahrweg (gestrichelt)",
+  "cam.hint": "Die Reihenfolge der Fräsbahnen entspricht der Elementliste rechts. Bei Wechsel des Fräserdurchmessers setzt der G-Code ein M0 (Pause). Tasche: räumt die Fläche innerhalb einer geschlossenen Kontur mit konzentrischen Bahnen von innen nach außen aus. Geschlossene Konturen innerhalb der Tasche (auch ohne Fräsparameter) bleiben als Inseln stehen, sofern „Inseln stehen lassen“ aktiv ist; andere Taschen darin gelten nicht als Inseln. Geschlossene Konturen (auch aus mehreren zusammenhängenden Linien/Bögen mit gleichen Parametern) werden unabhängig von der Zeichenrichtung bearbeitet; bei offenen Linien gilt die Zeichenrichtung („innen“ links, „außen“ rechts); die Fräsrichtung CW/CCW wirkt nur bei geschlossenen Konturen und Taschen und ist unabhängig von der Punktreihenfolge im DXF. Doppelte Elemente werden beim Laden automatisch entfernt. Simulator (unten in der Ansicht): 1,0x entspricht Echtzeit nach Vorschub und Eilgang; Beschleunigung der Maschine wird nicht berücksichtigt, bei Werkzeugwechsel (M0) hält die Simulation an. Prüfe G-Code, Nullpunkt, Werkzeug und Maschinenkonfiguration unbedingt in einem Simulator vor dem Fräsen.",
+  "file.title": "Datei",
+  "status.none": "Noch keine DXF-Datei geladen.",
+  "footer": "Unterstützt gängige DXF-Entitäten wie LINE, LWPOLYLINE, POLYLINE, CIRCLE, ARC, ELLIPSE, SPLINE, POINT und Blöcke (INSERT), abhängig vom Dateiinhalt. DXF wird im Browser verarbeitet; die Datei wird nicht hochgeladen. Die Anzeige ist eine geometrische Vorschau, kein CAD-Prüfwerkzeug.",
+  "info.open": "Öffne eine DXF-Datei, um die Geometrie anzuzeigen.",
+  "info.text": "{name} · {n} Geometrie-Objekte · Ausdehnung ca. {x} × {y} × {z} mm",
+  "status.reading": "Lese {name} …",
+  "status.loaded": "Geladen: {name} · {n} Geometrie-Objekte",
+  "status.dups": " · {n} Duplikat(e) entfernt",
+  "status.joined": " · {p} Elemente zu {g} verbunden",
+  "status.readerr": "Fehler beim Lesen der DXF: {msg}",
+  "status.readerr.title": "Fehler beim Lesen der DXF",
+  "status.projopen": "Projekt geöffnet: {name}",
+  "proj.invalid": "Keine gültige DXF-CAM-Projektdatei.",
+  "proj.error": "Projektfehler",
+  "err.loadfirst": "Bitte zuerst eine DXF-Datei laden.",
+  "geom.none": "In der Datei wurde keine darstellbare Geometrie gefunden. Enthaltene Elementtypen: {types}. Unterstützt werden LINE, POLYLINE/LWPOLYLINE, CIRCLE, ARC, ELLIPSE, SPLINE, POINT und Blöcke (INSERT).",
+  "geom.noentities": "Die Datei enthält keine Elemente im Modellbereich (ENTITIES).",
+  "geom.title": "Keine Geometrie",
+  "geom.skipped": "Nicht unterstützte Elemente werden ignoriert: {types}.",
+  "join.msg": "{p} Elemente wurden zu {g} Element(en) verbunden (Enden näher als {tol} mm), davon {c} geschlossen. Enden an Verzweigungen bleiben getrennt.",
+  "join.title": "Elemente verbunden",
+  "dups.msg": "{n} doppelte Element(e) erkannt und automatisch entfernt (Duplikat = behaltenes Element): {list}{more}.",
+  "dups.title": "Duplikate entfernt",
+  "toast.error": "Fehler",
+  "toast.unknown": "Unbekannter Fehler",
+  "toast.unexpected": "Unerwarteter Fehler",
+  "toast.note": "Hinweis",
+  "toast.simulator": "Simulator",
+  "toast.visual": "Visualisierung",
+  "err.gcode": "G-Code-Fehler",
+  "msg.clamp": "Rohteil-Oberfläche auf die Sicherheitsebene ({v} mm) begrenzt.",
+  "param.side": "Frässeite",
+  "opt.side.outside": "Außenkontur (Fräser außerhalb der Linie)",
+  "opt.side.inside": "Innenkontur (Fräser innerhalb der Linie)",
+  "opt.side.pocket": "Tasche (Fläche innerhalb der Kontur ausräumen)",
+  "param.direction": "Fräsrichtung (Umlaufsinn in der Draufsicht; nur geschlossene Konturen und Taschen)",
+  "opt.dir.ccw": "Gegenuhrzeigersinn (CCW)",
+  "opt.dir.cw": "Uhrzeigersinn (CW)",
+  "param.stockTop": "Rohteil-Oberfläche Z (mm) – hier startet das Fräsen",
+  "param.cutterDia": "Fräserdurchmesser (mm)",
+  "param.finalDepth": "Finale Schnitttiefe unter Z=0 (mm)",
+  "param.stepDepth": "Max. Zustellung je Durchgang (mm)",
+  "param.feedRate": "Fräsgeschwindigkeit (mm/min)",
+  "param.plungeRate": "Eintauchgeschwindigkeit (mm/min)",
+  "param.stepover": "Seitliche Zustellung Tasche (% vom Fräserdurchmesser)",
+  "param.islands": "Tasche: Inseln stehen lassen (geschlossene Konturen innerhalb der Tasche)",
+  "opt.islands.yes": "Ja (Inseln aussparen)",
+  "opt.islands.no": "Nein (alles ausräumen)",
+  "param.tabCount": "Holding Tabs: Anzahl (0 = keine)",
+  "param.tabWidth": "Holding Tabs: Breite (mm, Stegbreite im Material)",
+  "param.tabHeight": "Holding Tabs: Höhe (mm über der Frästiefe)",
+  "param.tabShape": "Holding Tabs: Form",
+  "opt.shape.rect": "Stufe (senkrecht hoch/runter)",
+  "opt.shape.ramp": "Rampe (Fräser fährt schräg hoch/runter)",
+  "param.tabRampAngle": "Holding Tabs: Rampenwinkel (°)",
+  "opt.mixed": "uneinheitlich",
+  "side.outside": "Außenkontur",
+  "side.inside": "Innenkontur",
+  "side.pocket": "Tasche",
+  "what.inside": "Innenkontur",
+  "what.pocket": "Tasche",
+  "type.joined": "Kontur",
+  "type.element": "Element",
+  "name.parts": "{n} Teile",
+  "list.title": "Elemente",
+  "list.aria": "DXF-Elemente",
+  "sel.none": "Keine Elemente ausgewählt.",
+  "sel.some": "{n} Element(e) ausgewählt (rot), davon {a} mit Kontur.",
+  "sel.total": "Gesamt: {a} von {t} Elementen mit Kontur (grün).",
+  "list.hint": "Zeile anklicken = auswählen (Strg/Shift = mehrere), Doppelklick = umbenennen, per Drag & Drop umsortieren. Die Reihenfolge bestimmt die CAM-Reihenfolge. Auswahl in der Grafik: Auswahlmodus (Esc).",
+  "list.empty": "Noch keine DXF-Elemente.",
+  "legend.cam": "CAM-Infos hinterlegt",
+  "legend.nocam": "keine CAM-Infos",
+  "legend.nocontour": "ohne Kontur",
+  "legend.contour": "Kontur zugewiesen",
+  "legend.selected": "ausgewählt",
+  "list.dot.off": "Keine CAM-Infos",
+  "sum.line": "{side} · {dir} · Ø{dia} · Tiefe {depth}",
+  "sum.tabs": " · {n} Tabs",
+  "sum.ramp": " (Rampe)",
+  "sum.manual": " (manuell)",
+  "elem.title": "CAM-Infos des Elements",
+  "elem.empty": "Ein Element in der Liste oder im Auswahlmodus in der Grafik auswählen.",
+  "elem.assign": "Defaults zuweisen",
+  "elem.reset": "Auf Defaults zurücksetzen",
+  "elem.unassign": "Zuweisung entfernen",
+  "elem.status.has": "{name}: CAM-Infos hinterlegt.",
+  "elem.status.no": "{name} hat noch keine CAM-Infos. „Defaults zuweisen“ legt sie aus den Projekt-Defaults an.",
+  "elem.status.multi": "{n} Elemente ausgewählt · {a} mit CAM-Infos. Änderungen gelten für alle ausgewählten Elemente mit CAM-Infos.",
+  "tab.reset": "Tabs automatisch verteilen",
+  "tab.hint": "Holding Tabs lassen sich in der Grafik mit der Maus entlang der Kontur verschieben (orange Kugeln, am besten in der Draufsicht). Automatisch werden sie bevorzugt auf Geraden gesetzt.",
+  "cam.none": "Keine Konturen zugewiesen – keine Fräsbahnen.",
+  "cam.errprefix": "CAM-Fehler: {msg}",
+  "cam.errtitle": "CAM-Fehler",
+  "cam.result": "{n} Fräsbahn(en) in Listenreihenfolge, {passes} Durchgänge gesamt.",
+  "cam.result.tabs": " {n} Holding Tab(s) (orange).",
+  "cam.result.open": " {n} offene Kontur(en): innen = links, außen = rechts der Zeichenrichtung.",
+  "cam.err.clipper": "Diese Berechnung braucht die Bibliothek Clipper (Laden von esm.sh fehlgeschlagen oder noch nicht beendet).",
+  "cam.err.toowide": "Fräser Ø {dia} mm ist zu breit für diese {what}.",
+  "cam.err.narrow": "Die {what} hat Engstellen, die schmaler als der Fräser (Ø {dia} mm) sind.",
+  "cam.err.tabstoomany": "Holding Tabs zu breit oder zu viele – es bleibt kaum Fräsweg übrig.",
+  "cam.err.nocontour": "Keine Elemente mit Kontur (grün). Element auswählen und CAM-Infos zuweisen.",
+  "cam.err.stockTop": "{name}: Rohteil-Oberfläche ({top} mm) liegt über der Sicherheitsebene ({sz} mm).",
+  "cam.err.depth": "{name}: Schnitttiefe Z={z} mm liegt nicht unter der Rohteil-Oberfläche (Z={top} mm).",
+  "cam.err.tabwh": "{name}: Holding Tabs brauchen Breite und Höhe größer 0.",
+  "cam.err.rampangle": "{name}: Der Rampenwinkel muss zwischen 0 und 90° liegen.",
+  "cam.err.tabheight": "{name}: Tab-Höhe ({h} mm) muss kleiner sein als die Gesamttiefe ({d} mm).",
+  "cam.err.pocketclosed": "Eine Tasche braucht eine geschlossene Kontur.",
+  "cam.err.noarea": "Geschlossene Kontur ohne gültige Fläche.",
+  "cam.err.inside.toowide": "Fräser Ø {dia} mm ist zu breit für diese Innenkontur.",
+  "cam.err.outside.ambig": "Außenkontur lässt sich mit Fräser Ø {dia} mm nicht eindeutig berechnen.",
+  "cam.err.inside.narrow": "Fräser Ø {dia} mm ist zu breit für diese Innenkontur (Engstelle).",
+  "cam.err.nousable": "Keine nutzbaren Linien in den zugewiesenen Elementen.",
+  "sim.bar": "Fräs-Simulator",
+  "sim.play": "Simulation starten / fortsetzen",
+  "sim.pause": "Pause",
+  "sim.stop": "Stop (zurück zum Anfang)",
+  "sim.progress": "Fortschritt",
+  "sim.ready": "Bereit – Play startet die Simulation ({speed}x, 1,0x = Echtzeit).",
+  "sim.rapid": "Eilgang",
+  "sim.feed": "Vorschub {f} mm/min",
+  "sim.finished": "Fertig",
+  "sim.info": "Kontur {pi}/{n}: {names} · {side} · Durchgang {k}/{kn}",
+  "sim.toolchange": "Werkzeugwechsel: Fräser Ø {dia} mm einsetzen – Play drücken zum Fortfahren",
+  "sim.live": "Maschine: {state}",
+  "sim.live.done": " · Programm beendet – Stop blendet die Anzeige aus",
+  "sim.lines": "{a} / {n} Zeilen",
+  "sim.err.nopaths": "Keine Fräsbahnen vorhanden – bitte Konturen mit CAM-Infos zuweisen bzw. CAM-Fehler beheben.",
+  "sim.err.nomoves": "Die Fräsbahnen enthalten keine Bewegungen.",
+  "m.title": "Maschine (GRBL)",
+  "m.baud": "Baudrate",
+  "m.connect": "Verbinden",
+  "m.disconnect": "Trennen",
+  "m.hint.off": "Direkt per USB über Web Serial (Chrome/Edge am Desktop). Baudrate bei GRBL meist 115200.",
+  "m.hint.on": "GRBL {ver} verbunden.",
+  "m.state.off": "Getrennt",
+  "m.state.wait": "Warte auf GRBL …",
+  "m.coords": "Große Zahlen: Arbeitskoordinaten (G54), klein: Maschinenkoordinaten.",
+  "m.jog.title": "Verfahren (Jog)",
+  "m.jog.feed": "Jog-Vorschub (mm/min)",
+  "m.dial": "Jog-Rad: drehen oder Mausrad, ein Raster = ein Schritt",
+  "m.jog.hint": "Jog-Rad: mit der Maus drehen oder Mausrad nutzen (ein Raster = ein Schritt der gewählten Achse). Tasten gedrückt halten wiederholt.",
+  "m.zero.title": "Nullpunkt (Arbeitskoordinaten G54)",
+  "m.goxy": "XY-Null anfahren",
+  "m.goxy.tip": "Hebt Z auf die Sicherheitsebene und fährt dann nach X0 Y0",
+  "m.zero.hint": "Z = 0 muss der Z=0-Ebene des Programms entsprechen (Rohteil-Oberfläche relativ dazu einstellen).",
+  "m.ctl.title": "Steuerung",
+  "m.unlock": "Entsperren",
+  "m.unlock.tip": "$X – Alarm entsperren",
+  "m.home": "Referenzfahrt",
+  "m.home.tip": "$H – Referenzfahrt",
+  "m.reset.tip": "Soft-Reset (Strg+X)",
+  "m.rpm.aria": "Spindeldrehzahl",
+  "m.spon": "Spindel an",
+  "m.spoff": "Spindel aus",
+  "m.job.title": "Fräsen",
+  "m.start": "Fräsen starten",
+  "m.pause": "Pause",
+  "m.resume": "Fortsetzen",
+  "m.abort": "Abbrechen",
+  "m.job.none": "Kein Programm läuft.",
+  "m.tc.title": "Werkzeugwechsel",
+  "m.tc.go": "Weiter fräsen",
+  "m.tc.hint": "Jetzt sind Jog und „Z = 0“ möglich. Nach dem Wechsel Z neu nullen!",
+  "m.tc.msg": "Werkzeugwechsel: Fräser Ø {dia} mm",
+  "m.ov.label": "Vorschub-Override",
+  "m.ov.lbl": "Override: {v}",
+  "m.ov.vals": "Vorschub {f} % · Eilgang {r} % · Spindel {s} %",
+  "m.log.title": "Konsole",
+  "m.cmd.ph": "Befehl, z. B. $$ oder $G",
+  "m.send": "Senden",
+  "m.job.running": "Läuft",
+  "m.job.paused": "Pausiert (Feed Hold)",
+  "m.job.toolchange": "Werkzeugwechsel – wartet auf dich",
+  "m.job.done": "Fertig",
+  "m.job.error": "Fehler/Alarm – Programm angehalten",
+  "m.job.aborted": "Abgebrochen",
+  "m.job.line": " · {a}/{n} Zeilen · {dur}",
+  "m.toast": "Maschine",
+  "m.grblerr": "GRBL-Fehler",
+  "m.grblalm": "GRBL-Alarm",
+  "m.alarm.unknown": "Unbekannter Alarm",
+  "m.err.cmd": " (Befehl: {cmd})",
+  "m.err.reset": "Controller wurde zurückgesetzt",
+  "m.lost": "Verbindung zur Maschine verloren.",
+  "m.lost.job": "Verbindung getrennt",
+  "m.disconnected": "Die Maschine wurde getrennt.",
+  "m.noserial": "Web Serial wird von diesem Browser nicht unterstützt. Bitte Chrome oder Edge am Desktop verwenden (Datei lokal öffnen).",
+  "m.log.connected": "— verbunden —",
+  "m.log.disconnected": "— getrennt —",
+  "m.log.started": "— Programm gestartet ({n} Zeilen) —",
+  "m.log.aborted": "— abgebrochen (Reset) —",
+  "m.zero.idle": "Nullen ist nur im Zustand Idle möglich.",
+  "m.go.idle": "Anfahren ist nur im Zustand Idle möglich.",
+  "m.connectfirst": "Bitte zuerst mit der Maschine verbinden.",
+  "m.notready": "Die Maschine ist nicht bereit (Zustand: {state}). Bei Alarm zuerst „Entsperren“.",
+  "m.nogcode": "Kein G-Code vorhanden.",
+  "m.confirm.start": "Fräsprogramm starten?\n\n• Nullpunkt X/Y/Z korrekt gesetzt (Z=0 wie im Programm)?\n• Werkstück fest gespannt, Fräser Ø {dia} mm eingespannt?\n• Sicherheitsebene Z={sz} mm frei von Hindernissen?\n• Aktuelle Position: {pos}\n\n{n} Zeilen{tc}. Die Maschine fährt zuerst auf Z={sz} und dann zum ersten Punkt.",
+  "m.confirm.tc": ", {n} Werkzeugwechsel",
+  "m.confirm.disc": "Ein Fräsprogramm läuft. Trotzdem trennen?",
+  "m.confirm.reset": "Reset während des Fräsens beendet das Programm. Fortfahren?",
+  "m.job.finished": "Fräsprogramm abgeschlossen ({n} Zeilen, {dur}).",
+  "m.job.finished.title": "Fertig",
+  "grbl.err.1": "G-Code-Buchstabe fehlt",
+  "grbl.err.2": "Ungültiges Zahlenformat",
+  "grbl.err.3": "Ungültiger $-Befehl",
+  "grbl.err.4": "Negativer Wert",
+  "grbl.err.5": "Referenzfahrt ist nicht aktiviert",
+  "grbl.err.6": "Schrittimpuls zu kurz",
+  "grbl.err.7": "EEPROM-Lesefehler",
+  "grbl.err.8": "Befehl nur im Zustand Idle erlaubt",
+  "grbl.err.9": "G-Code im Alarm-/Jog-Zustand gesperrt (erst entsperren)",
+  "grbl.err.10": "Software-Endschalter ohne Referenzfahrt",
+  "grbl.err.11": "Zeile zu lang",
+  "grbl.err.12": "Schrittrate zu hoch",
+  "grbl.err.13": "Tür offen",
+  "grbl.err.14": "Zeilenlänge überschritten",
+  "grbl.err.15": "Jog-Ziel außerhalb des Verfahrwegs",
+  "grbl.err.16": "Ungültiger Jog-Befehl",
+  "grbl.err.17": "Laser-Modus braucht PWM",
+  "grbl.err.20": "Nicht unterstützter G-Code",
+  "grbl.err.21": "Mehrere Befehle derselben Gruppe",
+  "grbl.err.22": "Vorschub nicht gesetzt",
+  "grbl.err.23": "Ganzzahl erwartet",
+  "grbl.err.24": "Zwei Befehle mit Achsworten",
+  "grbl.err.25": "Wiederholtes G-Code-Wort",
+  "grbl.err.26": "Achsworte fehlen",
+  "grbl.err.27": "Zeilennummer außerhalb des Bereichs",
+  "grbl.err.28": "Wert fehlt",
+  "grbl.err.29": "G59.x nicht unterstützt",
+  "grbl.err.30": "G53 braucht G0/G1",
+  "grbl.err.31": "Achsworte ohne passenden Befehl",
+  "grbl.err.32": "G2/G3 braucht Achsworte",
+  "grbl.err.33": "Ungültiges Ziel",
+  "grbl.err.34": "Bogenradius-Fehler",
+  "grbl.err.35": "G2/G3 braucht Offsets",
+  "grbl.err.36": "Unbenutzte Wörter",
+  "grbl.err.37": "Ungültiger G43.1-Offset",
+  "grbl.err.38": "Werkzeugnummer zu groß",
+  "grbl.alm.1": "Hardware-Endschalter ausgelöst",
+  "grbl.alm.2": "Ziel außerhalb des Verfahrwegs (Software-Limit)",
+  "grbl.alm.3": "Reset während der Bewegung – Position möglicherweise verloren",
+  "grbl.alm.4": "Antast-Fehler",
+  "grbl.alm.5": "Antast-Fehler (kein Kontakt)",
+  "grbl.alm.6": "Referenzfahrt abgebrochen",
+  "grbl.alm.7": "Referenzfahrt: Tür geöffnet",
+  "grbl.alm.8": "Referenzfahrt: Abheben fehlgeschlagen",
+  "grbl.alm.9": "Referenzfahrt: Endschalter nicht gefunden",
+};
+I18N.en={
+  "lang.name": "English",
+  "app.title": "dxf-2-grbl-web",
+  "q": "“{s}”",
+  "close": "Close",
+  "header.sub": "Units and grid in mm",
+  "header.hint": "Mouse: rotate · wheel: zoom · right button/Shift+drag: pan",
+  "tb.aria": "Toolbar",
+  "tb.openDxf": "Open DXF…",
+  "tb.openProject": "Open project…",
+  "tb.saveProject": "Save project",
+  "tb.fit": "Fit all",
+  "tb.resetView": "Reset view",
+  "tb.camera": "Camera view",
+  "view.3d": "3D perspective",
+  "view.top": "Top view (XY)",
+  "view.front": "Front view (XZ)",
+  "view.side": "Side view (YZ)",
+  "tb.grid": "Toggle XY grid",
+  "tb.axes": "Toggle XYZ axes",
+  "tb.model": "Toggle DXF geometry",
+  "tb.select.on": "End selection mode (Esc)",
+  "tb.select.off": "Enable selection mode (Esc)",
+  "tb.clearSel": "Clear selection",
+  "tb.cam": "Show/hide CAM paths",
+  "tb.export": "Export G-code",
+  "tb.machine": "Machine (GRBL): toggle control panel",
+  "tb.lang": "Language",
+  "grid.title": "Grid and geometry",
+  "grid.step": "Grid spacing (mm)",
+  "grid.extent": "Total grid size (mm)",
+  "def.title": "Project defaults",
+  "def.safeZ": "Safe height Z (global, mm)",
+  "def.rapid": "Rapid traverse rate (mm/min, simulator only)",
+  "def.spindle": "Spindle speed S (rpm, 0 = no spindle control in G-code)",
+  "def.hint": "Defaults are copied into an element when assigned. Later changes to the defaults do not affect elements that are already assigned. The stock top must not be above the safe height.",
+  "cam.title": "CAM / G-code",
+  "cam.idle": "Toolpaths are recalculated automatically after every change for all green elements (those with an assigned contour).",
+  "cam.leg.path": "Toolpath",
+  "cam.leg.tab": "Holding tab",
+  "cam.leg.rapid": "Rapid move (dashed)",
+  "cam.hint": "The order of the toolpaths follows the element list on the right. When the cutter diameter changes, the G-code inserts an M0 (pause). Pocket: clears the area inside a closed contour with concentric paths from the inside out. Closed contours inside the pocket (even without milling parameters) are left standing as islands while “leave islands standing” is on; other pockets inside do not count as islands. Closed contours (also made of several connected lines/arcs with identical parameters) are machined independently of the drawing direction; for open lines the drawing direction applies (“inside” = left, “outside” = right); the CW/CCW cutting direction only applies to closed contours and pockets and is independent of the point order in the DXF. Duplicate elements are removed automatically on loading. Simulator (bottom of the view): 1.0x equals real time based on feed and rapid rates; machine acceleration is not considered, and the simulation stops at a tool change (M0). Always check G-code, zero point, tool and machine configuration in a simulator before milling.",
+  "file.title": "File",
+  "status.none": "No DXF file loaded yet.",
+  "footer": "Supports common DXF entities such as LINE, LWPOLYLINE, POLYLINE, CIRCLE, ARC, ELLIPSE, SPLINE, POINT and blocks (INSERT), depending on the file contents. DXF files are processed in the browser; the file is not uploaded. The display is a geometric preview, not a CAD verification tool.",
+  "info.open": "Open a DXF file to display the geometry.",
+  "info.text": "{name} · {n} geometry objects · extent approx. {x} × {y} × {z} mm",
+  "status.reading": "Reading {name} …",
+  "status.loaded": "Loaded: {name} · {n} geometry objects",
+  "status.dups": " · {n} duplicate(s) removed",
+  "status.joined": " · {p} elements joined into {g}",
+  "status.readerr": "Error reading DXF: {msg}",
+  "status.readerr.title": "Error reading DXF",
+  "status.projopen": "Project opened: {name}",
+  "proj.invalid": "Not a valid DXF-CAM project file.",
+  "proj.error": "Project error",
+  "err.loadfirst": "Please load a DXF file first.",
+  "geom.none": "No displayable geometry was found in the file. Contained element types: {types}. Supported: LINE, POLYLINE/LWPOLYLINE, CIRCLE, ARC, ELLIPSE, SPLINE, POINT and blocks (INSERT).",
+  "geom.noentities": "The file contains no elements in model space (ENTITIES).",
+  "geom.title": "No geometry",
+  "geom.skipped": "Unsupported elements are ignored: {types}.",
+  "join.msg": "{p} elements were joined into {g} element(s) (ends closer than {tol} mm), {c} of them closed. Ends at branches stay separate.",
+  "join.title": "Elements joined",
+  "dups.msg": "{n} duplicate element(s) detected and removed automatically (duplicate = kept element): {list}{more}.",
+  "dups.title": "Duplicates removed",
+  "toast.error": "Error",
+  "toast.unknown": "Unknown error",
+  "toast.unexpected": "Unexpected error",
+  "toast.note": "Note",
+  "toast.simulator": "Simulator",
+  "toast.visual": "Visualization",
+  "err.gcode": "G-code error",
+  "msg.clamp": "Stock top limited to the safe height ({v} mm).",
+  "param.side": "Cutting side",
+  "opt.side.outside": "Outside contour (cutter outside the line)",
+  "opt.side.inside": "Inside contour (cutter inside the line)",
+  "opt.side.pocket": "Pocket (clear the area inside the contour)",
+  "param.direction": "Cutting direction (rotation seen from above; closed contours and pockets only)",
+  "opt.dir.ccw": "Counter-clockwise (CCW)",
+  "opt.dir.cw": "Clockwise (CW)",
+  "param.stockTop": "Stock top Z (mm) – milling starts here",
+  "param.cutterDia": "Cutter diameter (mm)",
+  "param.finalDepth": "Final cutting depth below Z=0 (mm)",
+  "param.stepDepth": "Max. depth per pass (mm)",
+  "param.feedRate": "Cutting feed rate (mm/min)",
+  "param.plungeRate": "Plunge feed rate (mm/min)",
+  "param.stepover": "Pocket stepover (% of cutter diameter)",
+  "param.islands": "Pocket: leave islands standing (closed contours inside the pocket)",
+  "opt.islands.yes": "Yes (skip islands)",
+  "opt.islands.no": "No (clear everything)",
+  "param.tabCount": "Holding tabs: count (0 = none)",
+  "param.tabWidth": "Holding tabs: width (mm, bridge width in the material)",
+  "param.tabHeight": "Holding tabs: height (mm above the cutting depth)",
+  "param.tabShape": "Holding tabs: shape",
+  "opt.shape.rect": "Step (vertical up/down)",
+  "opt.shape.ramp": "Ramp (cutter moves up/down at an angle)",
+  "param.tabRampAngle": "Holding tabs: ramp angle (°)",
+  "opt.mixed": "mixed",
+  "side.outside": "Outside contour",
+  "side.inside": "Inside contour",
+  "side.pocket": "Pocket",
+  "what.inside": "inside contour",
+  "what.pocket": "pocket",
+  "type.joined": "Contour",
+  "type.element": "Element",
+  "name.parts": "{n} parts",
+  "list.title": "Elements",
+  "list.aria": "DXF elements",
+  "sel.none": "No elements selected.",
+  "sel.some": "{n} element(s) selected (red), {a} with contour.",
+  "sel.total": "Total: {a} of {t} elements with contour (green).",
+  "list.hint": "Click a row to select (Ctrl/Shift = several), double-click to rename, drag & drop to reorder. The order defines the CAM order. Selecting in the graphic: selection mode (Esc).",
+  "list.empty": "No DXF elements yet.",
+  "legend.cam": "CAM info set",
+  "legend.nocam": "no CAM info",
+  "legend.nocontour": "no contour",
+  "legend.contour": "contour assigned",
+  "legend.selected": "selected",
+  "list.dot.off": "No CAM info",
+  "sum.line": "{side} · {dir} · Ø{dia} · depth {depth}",
+  "sum.tabs": " · {n} tabs",
+  "sum.ramp": " (ramp)",
+  "sum.manual": " (manual)",
+  "elem.title": "CAM info of the element",
+  "elem.empty": "Select an element in the list, or in the graphic using selection mode.",
+  "elem.assign": "Assign defaults",
+  "elem.reset": "Reset to defaults",
+  "elem.unassign": "Remove assignment",
+  "elem.status.has": "{name}: CAM info set.",
+  "elem.status.no": "{name} has no CAM info yet. “Assign defaults” creates it from the project defaults.",
+  "elem.status.multi": "{n} elements selected · {a} with CAM info. Changes apply to all selected elements that have CAM info.",
+  "tab.reset": "Distribute tabs automatically",
+  "tab.hint": "Holding tabs can be moved along the contour with the mouse in the graphic (orange spheres, best in top view). Automatically they are preferably placed on straight sections.",
+  "cam.none": "No contours assigned – no toolpaths.",
+  "cam.errprefix": "CAM error: {msg}",
+  "cam.errtitle": "CAM error",
+  "cam.result": "{n} toolpath(s) in list order, {passes} passes in total.",
+  "cam.result.tabs": " {n} holding tab(s) (orange).",
+  "cam.result.open": " {n} open contour(s): inside = left, outside = right of the drawing direction.",
+  "cam.err.clipper": "This calculation needs the Clipper library (loading from esm.sh failed or has not finished yet).",
+  "cam.err.toowide": "Cutter Ø {dia} mm is too wide for this {what}.",
+  "cam.err.narrow": "The {what} has narrow spots that are narrower than the cutter (Ø {dia} mm).",
+  "cam.err.tabstoomany": "Holding tabs too wide or too many – hardly any toolpath is left.",
+  "cam.err.nocontour": "No elements with a contour (green). Select an element and assign CAM info.",
+  "cam.err.stockTop": "{name}: stock top ({top} mm) is above the safe height ({sz} mm).",
+  "cam.err.depth": "{name}: cutting depth Z={z} mm is not below the stock top (Z={top} mm).",
+  "cam.err.tabwh": "{name}: holding tabs need a width and height greater than 0.",
+  "cam.err.rampangle": "{name}: the ramp angle must be between 0 and 90°.",
+  "cam.err.tabheight": "{name}: tab height ({h} mm) must be smaller than the total depth ({d} mm).",
+  "cam.err.pocketclosed": "A pocket needs a closed contour.",
+  "cam.err.noarea": "Closed contour without a valid area.",
+  "cam.err.inside.toowide": "Cutter Ø {dia} mm is too wide for this inside contour.",
+  "cam.err.outside.ambig": "The outside contour cannot be calculated unambiguously with cutter Ø {dia} mm.",
+  "cam.err.inside.narrow": "Cutter Ø {dia} mm is too wide for this inside contour (narrow spot).",
+  "cam.err.nousable": "No usable lines in the assigned elements.",
+  "sim.bar": "Milling simulator",
+  "sim.play": "Start / resume simulation",
+  "sim.pause": "Pause",
+  "sim.stop": "Stop (back to start)",
+  "sim.progress": "Progress",
+  "sim.ready": "Ready – Play starts the simulation ({speed}x, 1.0x = real time).",
+  "sim.rapid": "Rapid",
+  "sim.feed": "Feed {f} mm/min",
+  "sim.finished": "Done",
+  "sim.info": "Contour {pi}/{n}: {names} · {side} · Pass {k}/{kn}",
+  "sim.toolchange": "Tool change: insert cutter Ø {dia} mm – press Play to continue",
+  "sim.live": "Machine: {state}",
+  "sim.live.done": " · Program finished – Stop hides the display",
+  "sim.lines": "{a} / {n} lines",
+  "sim.err.nopaths": "No toolpaths available – please assign contours with CAM info or fix the CAM error.",
+  "sim.err.nomoves": "The toolpaths contain no moves.",
+  "m.title": "Machine (GRBL)",
+  "m.baud": "Baud rate",
+  "m.connect": "Connect",
+  "m.disconnect": "Disconnect",
+  "m.hint.off": "Directly over USB via Web Serial (Chrome/Edge on desktop). GRBL baud rate is usually 115200.",
+  "m.hint.on": "GRBL {ver} connected.",
+  "m.state.off": "Disconnected",
+  "m.state.wait": "Waiting for GRBL …",
+  "m.coords": "Large numbers: work coordinates (G54), small: machine coordinates.",
+  "m.jog.title": "Move (jog)",
+  "m.jog.feed": "Jog feed rate (mm/min)",
+  "m.dial": "Jog wheel: rotate or use mouse wheel, one notch = one step",
+  "m.jog.hint": "Jog wheel: rotate with the mouse or use the mouse wheel (one notch = one step of the selected axis). Holding a button down repeats.",
+  "m.zero.title": "Zero point (work coordinates G54)",
+  "m.goxy": "Go to XY zero",
+  "m.goxy.tip": "Raises Z to the safe height, then moves to X0 Y0",
+  "m.zero.hint": "Z = 0 must match the Z=0 plane of the program (set the stock top relative to it).",
+  "m.ctl.title": "Control",
+  "m.unlock": "Unlock",
+  "m.unlock.tip": "$X – clear alarm lock",
+  "m.home": "Homing",
+  "m.home.tip": "$H – homing cycle",
+  "m.reset.tip": "Soft reset (Ctrl+X)",
+  "m.rpm.aria": "Spindle speed",
+  "m.spon": "Spindle on",
+  "m.spoff": "Spindle off",
+  "m.job.title": "Milling",
+  "m.start": "Start milling",
+  "m.pause": "Pause",
+  "m.resume": "Resume",
+  "m.abort": "Abort",
+  "m.job.none": "No program running.",
+  "m.tc.title": "Tool change",
+  "m.tc.go": "Continue milling",
+  "m.tc.hint": "Jog and “Z = 0” are possible now. Re-zero Z after the change!",
+  "m.tc.msg": "Tool change: cutter Ø {dia} mm",
+  "m.ov.label": "Feed override",
+  "m.ov.lbl": "Override: {v}",
+  "m.ov.vals": "Feed {f} % · Rapid {r} % · Spindle {s} %",
+  "m.log.title": "Console",
+  "m.cmd.ph": "Command, e.g. $$ or $G",
+  "m.send": "Send",
+  "m.job.running": "Running",
+  "m.job.paused": "Paused (feed hold)",
+  "m.job.toolchange": "Tool change – waiting for you",
+  "m.job.done": "Done",
+  "m.job.error": "Error/alarm – program halted",
+  "m.job.aborted": "Aborted",
+  "m.job.line": " · {a}/{n} lines · {dur}",
+  "m.toast": "Machine",
+  "m.grblerr": "GRBL error",
+  "m.grblalm": "GRBL alarm",
+  "m.alarm.unknown": "Unknown alarm",
+  "m.err.cmd": " (command: {cmd})",
+  "m.err.reset": "Controller was reset",
+  "m.lost": "Connection to the machine lost.",
+  "m.lost.job": "Connection lost",
+  "m.disconnected": "The machine was disconnected.",
+  "m.noserial": "Web Serial is not supported by this browser. Please use Chrome or Edge on the desktop (open the file locally).",
+  "m.log.connected": "— connected —",
+  "m.log.disconnected": "— disconnected —",
+  "m.log.started": "— program started ({n} lines) —",
+  "m.log.aborted": "— aborted (reset) —",
+  "m.zero.idle": "Zeroing is only possible in the Idle state.",
+  "m.go.idle": "Moving is only possible in the Idle state.",
+  "m.connectfirst": "Please connect to the machine first.",
+  "m.notready": "The machine is not ready (state: {state}). On alarm, use “Unlock” first.",
+  "m.nogcode": "No G-code available.",
+  "m.confirm.start": "Start the milling program?\n\n• Zero point X/Y/Z set correctly (Z=0 as in the program)?\n• Workpiece clamped firmly, cutter Ø {dia} mm mounted?\n• Safe height Z={sz} mm free of obstacles?\n• Current position: {pos}\n\n{n} lines{tc}. The machine first moves to Z={sz} and then to the first point.",
+  "m.confirm.tc": ", {n} tool change(s)",
+  "m.confirm.disc": "A milling program is running. Disconnect anyway?",
+  "m.confirm.reset": "A reset while milling ends the program. Continue?",
+  "m.job.finished": "Milling program finished ({n} lines, {dur}).",
+  "m.job.finished.title": "Done",
+  "grbl.err.1": "G-code letter missing",
+  "grbl.err.2": "Invalid number format",
+  "grbl.err.3": "Invalid $ command",
+  "grbl.err.4": "Negative value",
+  "grbl.err.5": "Homing is not enabled",
+  "grbl.err.6": "Step pulse too short",
+  "grbl.err.7": "EEPROM read failed",
+  "grbl.err.8": "Command only allowed in Idle state",
+  "grbl.err.9": "G-code locked out during alarm or jog (unlock first)",
+  "grbl.err.10": "Soft limits require homing",
+  "grbl.err.11": "Line too long",
+  "grbl.err.12": "Step rate too high",
+  "grbl.err.13": "Door open",
+  "grbl.err.14": "Line length exceeded",
+  "grbl.err.15": "Jog target exceeds machine travel",
+  "grbl.err.16": "Invalid jog command",
+  "grbl.err.17": "Laser mode requires PWM output",
+  "grbl.err.20": "Unsupported G-code command",
+  "grbl.err.21": "Multiple commands from the same modal group",
+  "grbl.err.22": "Feed rate not set",
+  "grbl.err.23": "Integer value expected",
+  "grbl.err.24": "Two commands need axis words",
+  "grbl.err.25": "Repeated G-code word",
+  "grbl.err.26": "Axis words missing",
+  "grbl.err.27": "Line number out of range",
+  "grbl.err.28": "Value missing",
+  "grbl.err.29": "G59.x not supported",
+  "grbl.err.30": "G53 requires G0/G1",
+  "grbl.err.31": "Axis words without a matching command",
+  "grbl.err.32": "G2/G3 require axis words",
+  "grbl.err.33": "Invalid target",
+  "grbl.err.34": "Arc radius error",
+  "grbl.err.35": "G2/G3 require offsets",
+  "grbl.err.36": "Unused value words",
+  "grbl.err.37": "Invalid G43.1 offset",
+  "grbl.err.38": "Tool number too large",
+  "grbl.alm.1": "Hard limit triggered",
+  "grbl.alm.2": "Target exceeds machine travel (soft limit)",
+  "grbl.alm.3": "Reset while in motion – position may be lost",
+  "grbl.alm.4": "Probe failed",
+  "grbl.alm.5": "Probe failed (no contact)",
+  "grbl.alm.6": "Homing cycle aborted",
+  "grbl.alm.7": "Homing: door opened",
+  "grbl.alm.8": "Homing: pull-off failed",
+  "grbl.alm.9": "Homing: limit switch not found",
+};
+const LANG_KEY='dxf-2-grbl-web.lang';
+function detectLang(){
+ try{const st=localStorage.getItem(LANG_KEY);if(st&&I18N[st])return st;}catch{}
+ for(const l of (navigator.languages||[navigator.language||''])){const c=String(l).toLowerCase().split('-')[0];if(I18N[c])return c;}
+ return I18N.en?'en':Object.keys(I18N)[0];
+}
+let LANG=detectLang();
+function tr(key,p){
+ let s=I18N[LANG]?.[key];if(s==null)s=I18N.en?.[key];if(s==null)s=I18N.de?.[key];
+ if(s==null){console.warn('[i18n] missing key',key);return key;}
+ return p?s.replace(/\{(\w+)\}/g,(m,k)=>p[k]!=null?p[k]:m):s;
+}
+const hasTr=key=>I18N[LANG]?.[key]!=null||I18N.en?.[key]!=null;
+// statische Texte im HTML: data-i18n (Text), data-i18n-tip (Tooltip + aria-label), data-i18n-label, data-i18n-title, data-i18n-ph (Platzhalter)
+function applyI18n(root=document){
+ root.querySelectorAll('[data-i18n]').forEach(e=>{e.textContent=tr(e.dataset.i18n);});
+ root.querySelectorAll('[data-i18n-tip]').forEach(e=>{const v=tr(e.dataset.i18nTip);e.dataset.tip=v;e.setAttribute('aria-label',v);});
+ root.querySelectorAll('[data-i18n-label]').forEach(e=>e.setAttribute('aria-label',tr(e.dataset.i18nLabel)));
+ root.querySelectorAll('[data-i18n-title]').forEach(e=>{e.title=tr(e.dataset.i18nTitle);});
+ root.querySelectorAll('[data-i18n-ph]').forEach(e=>{e.placeholder=tr(e.dataset.i18nPh);});
+ document.documentElement.lang=LANG;document.title=tr('app.title');
+}
+// Statuszeilen, die einmal gesetzt und danach nicht neu berechnet werden: als Funktion merken, damit sie bei Sprachwechsel neu erzeugt werden
+const boundTexts=new Map();
+function setBound(sel,fn){boundTexts.set(sel,fn);const el=document.querySelector(sel);if(el)el.textContent=fn();}
+function refreshBound(){for(const [sel,fn] of boundTexts){const el=document.querySelector(sel);if(el)el.textContent=fn();}}
+const setStatus=fn=>setBound('#status',fn),setCamStatus=fn=>setBound('#camStatus',fn);
+
+const view=document.querySelector('#view'), info=document.querySelector('#info'), status=document.querySelector('#status');
+const scene=new THREE.Scene(); scene.background=new THREE.Color('#0d1117');
+const camera=new THREE.PerspectiveCamera(45,1,0.01,1e9); camera.up.set(0,0,1);
+const renderer=new THREE.WebGLRenderer({antialias:true,alpha:false}); renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.outputColorSpace=THREE.SRGBColorSpace; view.appendChild(renderer.domElement);
+const controls=new OrbitControls(camera,renderer.domElement); controls.enableDamping=true; controls.dampingFactor=.08; controls.screenSpacePanning=true;
+scene.add(new THREE.HemisphereLight(0xffffff,0x293342,2));
+const keyLight=new THREE.DirectionalLight(0xffffff,1.2); keyLight.position.set(100,100,200);scene.add(keyLight);
+const modelGroup=new THREE.Group();scene.add(modelGroup);
+let gridGroup=new THREE.Group();scene.add(gridGroup);let axesGroup=new THREE.Group();scene.add(axesGroup);
+let loadedObject=null, sourceName='', modelBounds=null, modelLineCount=0, sourceDxfText='';
+const camGroup=new THREE.Group();scene.add(camGroup); let camPaths=[]; let camGcode='';
+const selectedLines=new Set(); let selectionMode=false;
+const $=s=>document.querySelector(s);
+
+// ===== Fehlermeldungen (rotes Growl oben rechts) =====
+const toastBox=document.querySelector('#toasts');
+function showError(msg,title,kind='error'){
+ msg=String(msg||tr('toast.unknown'));title=title||tr('toast.error');
+ for(const t of toastBox.children){if(t.dataset.msg===msg){clearTimeout(t._timer);t._timer=setTimeout(()=>closeToast(t),9000);t.animate([{transform:'scale(1.03)'},{transform:'none'}],{duration:180});return;}}
+ while(toastBox.children.length>=4)toastBox.firstChild.remove();
+ const t=document.createElement('div');t.className='toast'+(kind==='warn'?' warn':kind==='ok'?' ok':'');t.setAttribute('role','alert');t.dataset.msg=msg;
+ t.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 7v6M12 16.5v.5"/></svg><div class="msg"><b></b><span></span></div><button type="button">×</button>';
+ {const cb=t.querySelector('button'),cl=tr('close');cb.title=cl;cb.setAttribute('aria-label',cl);}
+ t.querySelector('b').textContent=title;t.querySelector('span').textContent=msg;
+ t.querySelector('button').addEventListener('click',()=>closeToast(t));
+ const arm=()=>{t._timer=setTimeout(()=>closeToast(t),9000);};
+ t.addEventListener('mouseenter',()=>clearTimeout(t._timer));t.addEventListener('mouseleave',arm);arm();
+ toastBox.appendChild(t);
+}
+function closeToast(t){clearTimeout(t._timer);t.classList.add('out');setTimeout(()=>t.remove(),260);}
+window.addEventListener('error',e=>{if(/ResizeObserver/.test(e.message||''))return;showError(e.message||tr('toast.unexpected'),tr('toast.unexpected'));});
+window.addEventListener('unhandledrejection',e=>showError(e.reason?.message||String(e.reason),tr('toast.unexpected')));
+function fail(title,err){const m=err?.message||String(err);console.error(err);showError(m,title);const c=document.querySelector('#camStatus');if(c)c.textContent=title+': '+m;}
+
+// ===== Fräsparameter pro Element =====
+const PLAIN='#e8f4ff', ASSIGNED='#4cd964', SELECTED='#ff3030';
+const PARAMS=[
+ {key:'side',label:'param.side',type:'select',opts:[['outside','opt.side.outside'],['inside','opt.side.inside'],['pocket','opt.side.pocket']]},
+ {key:'stepover',label:'param.stepover',step:5,min:1,max:100,only:'pocket'},
+ {key:'islands',label:'param.islands',type:'select',opts:[['yes','opt.islands.yes'],['no','opt.islands.no']],only:'pocket'},
+ {key:'direction',label:'param.direction',type:'select',opts:[['ccw','opt.dir.ccw'],['cw','opt.dir.cw']]},
+ {key:'stockTop',label:'param.stockTop',step:.5,min:null},
+ {key:'cutterDia',label:'param.cutterDia',step:.1,min:.01},
+ {key:'finalDepth',label:'param.finalDepth',step:.1,min:.01},
+ {key:'stepDepth',label:'param.stepDepth',step:.1,min:.01},
+ {key:'feedRate',label:'param.feedRate',step:10,min:1},
+ {key:'plungeRate',label:'param.plungeRate',step:10,min:1},
+ {key:'tabCount',label:'param.tabCount',step:1,min:0,int:true,only:'contour'},
+ {key:'tabWidth',label:'param.tabWidth',step:.5,min:.1,only:'contour'},
+ {key:'tabHeight',label:'param.tabHeight',step:.1,min:.1,only:'contour'},
+ {key:'tabShape',label:'param.tabShape',type:'select',opts:[['rect','opt.shape.rect'],['ramp','opt.shape.ramp']],only:'contour'},
+ {key:'tabRampAngle',label:'param.tabRampAngle',step:5,min:5,max:90,only:'ramp'}];
+const defaults={side:'outside',direction:'ccw',stockTop:0,cutterDia:3,finalDepth:3,stepDepth:1,feedRate:400,plungeRate:100,stepover:40,islands:'yes',tabCount:0,tabWidth:4,tabHeight:1.5,tabShape:'rect',tabRampAngle:45};
+function safeZ(){const v=Number($('#safeZ').value);return Number.isFinite(v)?v:5;}
+function buildFields(box,prefix){
+ box.innerHTML=PARAMS.map(p=>{const id=`${prefix}_${p.key}`;
+  const lab=`<label for="${id}" data-i18n="${p.label}">${tr(p.label)}</label>`;
+  const ctl=p.type==='select'
+   ?`${lab}<select id="${id}"><option value="" hidden data-i18n="opt.mixed">${tr('opt.mixed')}</option>${p.opts.map(([v,k])=>`<option value="${v}" data-i18n="${k}">${tr(k)}</option>`).join('')}</select>`
+   :`${lab}<input id="${id}" type="number" step="${p.step}"${p.min!=null?` min="${p.min}"`:''}${p.max!=null?` max="${p.max}"`:''}>`;
+  return `<div id="${prefix}_wrap_${p.key}">${ctl}</div>`;}).join('');
+}
+function applyFieldVisibility(prefix,plist){
+ for(const p of PARAMS){if(!p.only)continue;const w=$(`#${prefix}_wrap_${p.key}`);if(!w)continue;
+  const show=p.only==='pocket'?plist.some(q=>q.side==='pocket'):p.only==='ramp'?plist.some(q=>q.side!=='pocket'&&q.tabShape==='ramp'):plist.some(q=>q.side!=='pocket');
+  w.style.display=show?'':'none';}
+}
+buildFields($('#defaultsFields'),'d');buildFields($('#elemFields'),'e');
+function readField(el,p){if(p.type==='select')return el.value||null;if(el.value.trim()==='')return null;const n=Number(el.value);return Number.isFinite(n)&&(p.min==null||n>=p.min)&&(p.max==null||n<=p.max)?(p.int?Math.round(n):n):null;}
+function setDefaultsUI(){for(const p of PARAMS)$('#d_'+p.key).value=String(defaults[p.key]);applyFieldVisibility('d',[defaults]);}
+function refreshColor(o){if(o.material?.color)o.material.color.set(selectedLines.has(o)?SELECTED:(o.userData.params?ASSIGNED:PLAIN));}
+let camTimer=null,lastCamError=null;
+let tabHandles=[];
+function clearCam(){clearGroup(camGroup);camPaths=[];camGcode='';tabHandles=[];simInvalidate();}
+function scheduleCam(){clearTimeout(camTimer);camTimer=setTimeout(runCam,200);}
+function invalidateCam(){scheduleCam();}
+function runCam(){
+ clearTimeout(camTimer);camTimer=null;
+ let any=false;modelGroup.traverse(o=>{if(o.userData.params)any=true;});
+ if(!loadedObject||!any){clearCam();lastCamError=null;setCamStatus(()=>loadedObject?tr('cam.none'):tr('status.none'));return;}
+ try{generateCam();lastCamError=null;}
+ catch(e){clearCam();const m=e.message||String(e);setCamStatus(()=>tr('cam.errprefix',{msg:m}));if(m!==lastCamError)showError(m,tr('cam.errtitle'));lastCamError=m;}
+}
+const sideLabel=sd=>tr('side.'+sd);
+let dupMap=new Map(),lastDupCount=0,lastJoin=null,suppressListScroll=false;
+let elementOrder=[];const listRows=new Map();let lastRowClicked=null,dragEls=null,dropInfo=null;
+function defName(o){const ty=o.userData.dxfType==='JOINED'?tr('type.joined'):(o.userData.dxfType||tr('type.element'));return `${ty} ${o.userData.entityIndex+1}${o.userData.joinedCount>1?` (${tr('name.parts',{n:o.userData.joinedCount})})`:''}`;}
+function elName(o){return o.userData.name||defName(o);}
+function elSummary(o){const p=o.userData.params;if(!p)return tr('legend.nocam');
+ return tr('sum.line',{side:sideLabel(p.side),dir:p.direction==='cw'?'CW':'CCW',dia:p.cutterDia,depth:p.finalDepth})+(p.side!=='pocket'&&p.tabCount>0?tr('sum.tabs',{n:p.tabCount})+(p.tabShape==='ramp'?tr('sum.ramp'):'')+(p.tabPositions?tr('sum.manual'):''):'');}
+const listEl=$('#elemList');
+function clearDropMarks(){listEl.querySelectorAll('.drop-before,.drop-after').forEach(r=>r.classList.remove('drop-before','drop-after'));}
+function renderElementList(){
+ const keepScroll=listEl.scrollTop;listEl.textContent='';listRows.clear();
+ $('#listCount').textContent=elementOrder.length?`(${elementOrder.length})`:'';
+ if(!elementOrder.length){const d=document.createElement('div');d.className='hint';d.style.cssText='padding:10px;margin:0';d.textContent=tr('list.empty');listEl.appendChild(d);return;}
+ const frag=document.createDocumentFragment();
+ elementOrder.forEach((o,i)=>{
+  const row=document.createElement('div'),has=!!o.userData.params;
+  row.className='erow'+(selectedLines.has(o)?' sel':'');row.draggable=true;row._obj=o;row.setAttribute('role','option');row.setAttribute('aria-selected',String(selectedLines.has(o)));
+  row.innerHTML='<span class="egrip" aria-hidden="true">⋮⋮</span><span class="eidx"></span><span class="edot"></span><span class="ename"><b></b><small></small></span>';
+  row.querySelector('.eidx').textContent=i+1;
+  const dot=row.querySelector('.edot');dot.classList.toggle('on',has);dot.title=has?tr('legend.cam'):tr('list.dot.off');
+  row.querySelector('b').textContent=elName(o);row.querySelector('small').textContent=elSummary(o);row.title=elName(o)+' – '+elSummary(o);
+  row.addEventListener('click',e=>{
+   if(e.target.closest('.rename'))return;
+   if(e.shiftKey&&lastRowClicked&&elementOrder.includes(lastRowClicked)){
+    const a=elementOrder.indexOf(lastRowClicked),b=elementOrder.indexOf(o);
+    if(!(e.ctrlKey||e.metaKey))for(const l of [...selectedLines])setLineSelected(l,false);
+    for(const l of elementOrder.slice(Math.min(a,b),Math.max(a,b)+1))setLineSelected(l,true);
+   }else if(e.ctrlKey||e.metaKey){setLineSelected(o,!selectedLines.has(o));lastRowClicked=o;}
+   else{for(const l of [...selectedLines])setLineSelected(l,false);setLineSelected(o,true);lastRowClicked=o;}
+   updateSelectionStatus();});
+  row.addEventListener('dblclick',()=>startRename(row,o));
+  row.addEventListener('dragstart',e=>{
+   dragEls=selectedLines.has(o)&&selectedLines.size>1?elementOrder.filter(x=>selectedLines.has(x)):[o];
+   e.dataTransfer.effectAllowed='move';e.dataTransfer.setData('text/plain',elName(o));row.classList.add('dragging');});
+  row.addEventListener('dragend',()=>{row.classList.remove('dragging');dragEls=null;dropInfo=null;clearDropMarks();});
+  listRows.set(o,row);frag.appendChild(row);
+ });
+ listEl.appendChild(frag);listEl.scrollTop=keepScroll;
+}
+function refreshListSelection(){
+ for(const [o,row] of listRows){const on=selectedLines.has(o);row.classList.toggle('sel',on);row.setAttribute('aria-selected',String(on));}
+ if(suppressListScroll||selectedLines.size!==1)return;
+ const row=listRows.get([...selectedLines][0]);if(!row)return;
+ const r=row.getBoundingClientRect(),l=listEl.getBoundingClientRect();      // nur die Liste selbst scrollen, nie die Seitenleiste
+ if(r.top<l.top)listEl.scrollTop-=l.top-r.top;else if(r.bottom>l.bottom)listEl.scrollTop+=r.bottom-l.bottom;
+}
+function startRename(row,o){
+ const b=row.querySelector('b');if(!b||row.querySelector('.rename'))return;
+ const inp=document.createElement('input');inp.type='text';inp.className='rename';inp.value=o.userData.name||'';inp.placeholder=defName(o);inp.maxLength=80;
+ row.draggable=false;b.replaceWith(inp);inp.focus();inp.select();
+ let done=false;
+ const finish=ok=>{if(done)return;done=true;if(ok){o.userData.name=inp.value.trim();invalidateCam();}renderElementList();refreshParamPanel();};
+ inp.addEventListener('keydown',e=>{e.stopPropagation();if(e.key==='Enter')finish(true);else if(e.key==='Escape')finish(false);});
+ inp.addEventListener('blur',()=>finish(true));
+ inp.addEventListener('click',e=>e.stopPropagation());inp.addEventListener('dblclick',e=>e.stopPropagation());
+}
+function moveElements(items,target,before){
+ const set=new Set(items);if(set.has(target))return;
+ const rest=elementOrder.filter(x=>!set.has(x));let idx=rest.indexOf(target);if(idx<0)idx=rest.length;else if(!before)idx++;
+ const moving=elementOrder.filter(x=>set.has(x));
+ elementOrder=rest.slice(0,idx).concat(moving,rest.slice(idx));
+ renderElementList();invalidateCam();
+}
+listEl.addEventListener('dragover',e=>{if(!dragEls)return;e.preventDefault();e.dataTransfer.dropEffect='move';clearDropMarks();
+ const row=e.target.closest?.('.erow');
+ if(row){const r=row.getBoundingClientRect(),before=e.clientY<r.top+r.height/2;row.classList.add(before?'drop-before':'drop-after');dropInfo={obj:row._obj,before};}
+ else{const last=listEl.lastElementChild;if(last?._obj){last.classList.add('drop-after');dropInfo={obj:last._obj,before:false};}}
+});
+listEl.addEventListener('drop',e=>{if(!dragEls)return;e.preventDefault();const d=dropInfo,items=dragEls;clearDropMarks();dragEls=null;dropInfo=null;if(d)moveElements(items,d.obj,d.before);});
+listEl.addEventListener('dragleave',e=>{if(!listEl.contains(e.relatedTarget))clearDropMarks();});
+
+function refreshParamPanel(){
+ const sel=[...selectedLines];
+ $('#elemEmpty').style.display=sel.length?'none':'block';$('#elemPanel').style.display=sel.length?'block':'none';
+ if(!sel.length)return;
+ const asg=sel.filter(o=>o.userData.params);
+ $('#nameWrap').style.display=sel.length===1?'block':'none';
+ if(sel.length===1){$('#e_name').value=sel[0].userData.name||'';$('#e_name').placeholder=defName(sel[0]);}
+ $('#elemStatus').textContent=sel.length===1
+  ?(asg.length?tr('elem.status.has',{name:tr('q',{s:elName(sel[0])})}):tr('elem.status.no',{name:tr('q',{s:elName(sel[0])})}))
+  :tr('elem.status.multi',{n:sel.length,a:asg.length});
+ $('#elemFields').style.display=asg.length?'block':'none';
+ $('#tabTools').style.display=asg.some(o=>{const q=o.userData.params;return q.side!=='pocket'&&q.tabCount>0;})?'block':'none';
+ $('#assignDefaults').textContent=asg.length===sel.length?tr('elem.reset'):tr('elem.assign');
+ $('#unassign').disabled=!asg.length;
+ if(!asg.length)return;
+ for(const p of PARAMS){const el=$('#e_'+p.key);const vals=new Set(asg.map(o=>o.userData.params[p.key]??defaults[p.key]));
+  el.value=vals.size===1?String([...vals][0]):'';el.placeholder=vals.size>1?tr('opt.mixed'):'';}
+ applyFieldVisibility('e',asg.map(o=>o.userData.params));
+}
+function afterAssignmentChange(){suppressListScroll=true;try{for(const o of selectedLines)refreshColor(o);renderElementList();invalidateCam();updateSelectionStatus();}finally{suppressListScroll=false;}}
+for(const p of PARAMS){
+ $('#d_'+p.key).addEventListener('change',()=>{let v=readField($('#d_'+p.key),p);if(v===null){setDefaultsUI();return;}
+  if(p.key==='stockTop'&&v>safeZ()){v=safeZ();showError(tr('msg.clamp',{v}),tr('toast.note'),'warn');}
+  defaults[p.key]=v;setDefaultsUI();});
+ $('#e_'+p.key).addEventListener('change',()=>{let v=readField($('#e_'+p.key),p);const targets=[...selectedLines].filter(o=>o.userData.params);
+  if(v===null||!targets.length){refreshParamPanel();return;}
+  if(p.key==='stockTop'&&v>safeZ()){v=safeZ();showError(tr('msg.clamp',{v}),tr('toast.note'),'warn');}
+  for(const o of targets)o.userData.params[p.key]=v;
+  if(p.key==='tabCount')for(const o of targets)delete o.userData.params.tabPositions;   // neue Anzahl = wieder automatisch verteilen
+  afterAssignmentChange();});
+}
+$('#e_name').addEventListener('change',()=>{const o=[...selectedLines][0];if(selectedLines.size!==1||!o)return;o.userData.name=$('#e_name').value.trim();renderElementList();invalidateCam();refreshParamPanel();});
+$('#e_name').addEventListener('keydown',e=>{e.stopPropagation();if(e.key==='Enter'||e.key==='Escape')e.target.blur();});
+setDefaultsUI();
+$('#assignDefaults').addEventListener('click',()=>{for(const o of selectedLines)o.userData.params={...defaults,stockTop:Math.min(defaults.stockTop,safeZ())};afterAssignmentChange();});
+$('#resetTabs').addEventListener('click',()=>{for(const o of selectedLines)if(o.userData.params)delete o.userData.params.tabPositions;afterAssignmentChange();});
+$('#unassign').addEventListener('click',()=>{for(const o of selectedLines)delete o.userData.params;afterAssignmentChange();});
+$('#safeZ').addEventListener('change',()=>{const sz=safeZ();invalidateCam();if(defaults.stockTop>sz){defaults.stockTop=sz;setDefaultsUI();}
+});
+function mat(color,opacity=1){return new THREE.LineBasicMaterial({color,transparent:opacity<1,opacity,depthTest:true});}
+function clearGroup(g){while(g.children.length){const o=g.children.pop(); if(o.geometry)o.geometry.dispose(); if(o.material){if(Array.isArray(o.material))o.material.forEach(m=>m.dispose());else o.material.dispose();}}}
+function rebuildGrid(){
+ clearGroup(gridGroup);clearGroup(axesGroup);
+ const step=Math.max(.001,Number($('#gridStep').value)||10), extent=Math.max(step,Number($('#gridExtent').value)||500), half=extent/2;
+ const divisions=Math.min(1000,Math.ceil(extent/step)); const actualStep=extent/divisions;
+ const pts=[];
+ for(let i=0;i<=divisions;i++){let p=-half+i*actualStep;pts.push(p,-half,0,p,half,0,-half,p,0,half,p,0);}
+ const geo=new THREE.BufferGeometry();geo.setAttribute('position',new THREE.Float32BufferAttribute(pts,3));
+ gridGroup.add(new THREE.LineSegments(geo,mat('#344151',.8)));
+ const axisLen=Math.max(extent*.55,modelBounds?modelBounds.getSize(new THREE.Vector3()).length()*.65:0,50);
+ function axis(a,b,c){const g=new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0,0,0),new THREE.Vector3(a,b,c)]);axesGroup.add(new THREE.Line(g,mat(c?'#68aaff':a?'#ff6262':'#62df8d')));}
+ axis(axisLen,0,0);axis(0,axisLen,0);axis(0,0,axisLen);
+ addAxisLabel('X',axisLen,0,0,'#ff6262');addAxisLabel('Y',0,axisLen,0,'#62df8d');addAxisLabel('Z',0,0,axisLen,'#68aaff');
+}
+function addAxisLabel(txt,x,y,z,color){
+ const canvas=document.createElement('canvas');canvas.width=128;canvas.height=64;const ctx=canvas.getContext('2d');ctx.fillStyle=color;ctx.font='bold 42px sans-serif';ctx.fillText(txt,12,46);
+ const tex=new THREE.CanvasTexture(canvas);const sprite=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,transparent:true,depthTest:false}));sprite.position.set(x,y,z);sprite.scale.set( Math.max(8,(modelBounds?.getSize(new THREE.Vector3()).length()||100)*.07),Math.max(4,(modelBounds?.getSize(new THREE.Vector3()).length()||100)*.035),1);axesGroup.add(sprite);
+}
+function fitObject(){
+ let box=new THREE.Box3().setFromObject(modelGroup);
+ if(box.isEmpty()){box=new THREE.Box3(new THREE.Vector3(-100,-100,-10),new THREE.Vector3(100,100,10));}
+ modelBounds=box.clone(); const center=box.getCenter(new THREE.Vector3()), size=box.getSize(new THREE.Vector3()); const maxDim=Math.max(size.x,size.y,size.z,10);
+ controls.target.copy(center);camera.position.set(center.x+maxDim*1.5,center.y-maxDim*1.8,center.z+maxDim*1.5);camera.near=Math.max(.001,maxDim/10000);camera.far=maxDim*100;camera.updateProjectionMatrix();controls.update();
+ $('#gridExtent').value=Math.max(100,Math.ceil(maxDim*1.5/10)*10);rebuildGrid();updateInfo();
+}
+function setView(mode){
+ const target=controls.target.clone();const box=modelBounds||new THREE.Box3(new THREE.Vector3(-50,-50,-5),new THREE.Vector3(50,50,5));const size=box.getSize(new THREE.Vector3());const d=Math.max(size.x,size.y,size.z,100)*2;
+ if(mode==='top'){camera.up.set(0,1,0);camera.position.set(target.x,target.y,target.z+d);}
+ else if(mode==='front'){camera.up.set(0,0,1);camera.position.set(target.x,target.y-d,target.z);}
+ else if(mode==='side'){camera.up.set(0,0,1);camera.position.set(target.x+d,target.y,target.z);}
+ else{camera.up.set(0,0,1);camera.position.set(target.x+d*.8,target.y-d,target.z+d*.8);}
+ camera.lookAt(target);controls.target.copy(target);controls.update();
+}
+function updateInfo(){
+ const box=new THREE.Box3().setFromObject(modelGroup), size=box.getSize(new THREE.Vector3());
+ if(!loadedObject){info.textContent=tr('info.open');return;}
+ info.textContent=tr('info.text',{name:sourceName,n:modelLineCount,x:size.x.toFixed(2),y:size.y.toFixed(2),z:size.z.toFixed(2)});
+}
+function applyDisplay(){
+ gridGroup.visible=$('#showGrid').checked;axesGroup.visible=$('#showAxes').checked;modelGroup.visible=$('#showModel').checked;camGroup.visible=$('#showCam').checked;
+ modelGroup.traverse(o=>{if(o.userData.isDxfEntity)refreshColor(o);});
+ if(loadedObject){modelBounds=new THREE.Box3().setFromObject(modelGroup);rebuildGrid();updateInfo();}
+}
+
+function buildThreeFromDxf(dxf){
+ const root=new THREE.Group();
+ const defaultColor=PLAIN;
+ function addLine(points, closed=false, color=defaultColor){
+   if(!points || points.length<2)return;
+   if(xf)points=points.map(p=>p?xf(p):p);
+   const verts=points.filter(p=>p && Number.isFinite(Number(p.x)) && Number.isFinite(Number(p.y)))
+     .map(p=>new THREE.Vector3(Number(p.x),Number(p.y),Number(p.z)||0));
+   if(verts.length<2)return;
+   if(closed && verts.length>2)verts.push(verts[0].clone());
+   const geom=new THREE.BufferGeometry().setFromPoints(verts);
+   const material=new THREE.LineBasicMaterial({color});
+   const line=new THREE.Line(geom,material);
+   line.userData.basePositions=Array.from(geom.getAttribute('position').array);
+   line.userData.isDxfEntity=true; line.userData.dxfType=curType; line.userData.closed=!!closed; line.userData.entityIndex=entityIndex++;
+   root.add(line);
+ }
+ let entityIndex=0, curType='', xf=null;
+ function sampleArc(center,r,start,end,segments=64){
+   let delta=end-start;
+   while(delta<0)delta+=Math.PI*2;
+   const out=[];
+   const n=Math.max(8,Math.ceil(segments*delta/(Math.PI*2)));
+   for(let i=0;i<=n;i++){const a=start+delta*i/n;out.push({x:center.x+Math.cos(a)*r,y:center.y+Math.sin(a)*r,z:center.z||0});}
+   return out;
+ }
+ const handled=new Set(['LINE','LWPOLYLINE','POLYLINE','CIRCLE','ARC','POINT','SPLINE','ELLIPSE','INSERT']),skipped={},seen={};
+ function processEntity(e,depth){
+   const type=String(e.type||'').toUpperCase();curType=type;const color=defaultColor;
+   if(depth===0&&e.inPaperSpace)return;
+   seen[type]=(seen[type]||0)+1;
+   if(!handled.has(type)){skipped[type]=(skipped[type]||0)+1;return;}
+   switch(type){
+    case 'LINE': {   // dxf-parser liefert die Endpunkte als vertices[0..1]; ältere Formate als start/end
+      const v=(e.vertices&&e.vertices.length>=2)?e.vertices:[e.start,e.end];
+      addLine(v.map(p=>p||{}),false,color); break;
+    }
+    case 'LWPOLYLINE':
+    case 'POLYLINE': {
+      const vs=e.vertices||e.points||[];
+      // Bulge arcs are approximated between adjacent vertices.
+      const pts=[];
+      for(let i=0;i<vs.length;i++){
+        const isClosed=!!(e.closed||e.shape), a=vs[i], b=(i+1<vs.length||isClosed)?vs[(i+1)%vs.length]:null;
+        pts.push(a);
+        if(b && a.bulge && Math.abs(a.bulge)>1e-8){
+          const dx=b.x-a.x,dy=b.y-a.y,chord=Math.hypot(dx,dy),theta=4*Math.atan(a.bulge);
+          if(chord>1e-9 && Math.abs(theta)>1e-8){
+            const r=chord/(2*Math.sin(Math.abs(theta)/2));
+            const midA=Math.atan2(dy,dx), offset=chord/(2*Math.tan(theta/2));
+            const cx=(a.x+b.x)/2 - Math.sin(midA)*offset, cy=(a.y+b.y)/2 + Math.cos(midA)*offset;
+            let a0=Math.atan2(a.y-cy,a.x-cx), a1=Math.atan2(b.y-cy,b.x-cx);
+            if(theta>0){while(a1<a0)a1+=Math.PI*2;}else{while(a1>a0)a1-=Math.PI*2;}
+            const n=Math.max(4,Math.ceil(Math.abs(theta)/(Math.PI/24)));
+            for(let k=1;k<n;k++){const ang=a0+(a1-a0)*k/n;pts.push({x:cx+r*Math.cos(ang),y:cy+r*Math.sin(ang),z:a.z||0});}
+          }
+        }
+      }
+      addLine(pts,!!(e.closed || (e.shape)),color); break;
+    }
+    case 'CIRCLE': {
+      const c=e.center||{x:0,y:0,z:0};addLine(sampleArc(c,e.radius||0,0,Math.PI*2-1e-5,128),true,color);break;
+    }
+    case 'ARC': {
+      const c=e.center||{x:0,y:0,z:0};addLine(sampleArc(c,e.radius||0,e.startAngle||0,e.endAngle||0,96),false,color);break;
+    }
+    case 'ELLIPSE': {
+      const c=e.center||{x:0,y:0,z:0},m=e.majorAxisEndPoint||{x:1,y:0,z:0},ratio=e.axisRatio??1;
+      const a0=e.startAngle??0;let a1=e.endAngle??Math.PI*2;while(a1<=a0)a1+=Math.PI*2;
+      const full=Math.abs((a1-a0)-Math.PI*2)<1e-6,n=Math.max(16,Math.ceil(128*(a1-a0)/(Math.PI*2))),nx=-m.y*ratio,ny=m.x*ratio,pts=[];
+      for(let i=0;i<(full?n:n+1);i++){const t=a0+(a1-a0)*i/n;pts.push({x:c.x+m.x*Math.cos(t)+nx*Math.sin(t),y:c.y+m.y*Math.cos(t)+ny*Math.sin(t),z:c.z||0});}
+      addLine(pts,full,color);break;
+    }
+    case 'POINT': if(e.position)addLine([e.position,{x:e.position.x+0.5,y:e.position.y,z:e.position.z||0}],false,color);break;
+    case 'SPLINE': {
+      const pts=e.fitPoints?.length?e.fitPoints:(e.controlPoints||[]);
+      if(pts.length>1)addLine(pts,false,color);break;
+    }
+    case 'INSERT': {   // Blockreferenz: Block-Inhalt mit Position, Skalierung und Drehung einsetzen (auch verschachtelt)
+      const blk=dxf.blocks&&dxf.blocks[e.name];if(!blk||depth>8)break;
+      const sx=e.xScale??1,sy=e.yScale??1,sz=e.zScale??1,rot=(e.rotation||0)*Math.PI/180,pos=e.position||{x:0,y:0,z:0},base=blk.position||{x:0,y:0,z:0};
+      const cs=Math.cos(rot),sn=Math.sin(rot),parent=xf;
+      const local=p=>{const x=(p.x-base.x)*sx,y=(p.y-base.y)*sy,z=((p.z||0)-(base.z||0))*sz;return {x:pos.x+x*cs-y*sn,y:pos.y+x*sn+y*cs,z:(pos.z||0)+z};};
+      xf=parent?(p=>parent(local(p))):local;
+      for(const be of (blk.entities||[]))processEntity(be,depth+1);
+      xf=parent;break;
+    }
+   }
+ }
+ for(const e of (dxf.entities||[]))processEntity(e,0);
+ root.userData.skipped=skipped;root.userData.seen=seen;
+ return root;
+}
+// Automatisches Verbinden: Elemente, deren Enden innerhalb von tol (mm) liegen, werden zu einem Element (Polylinie) zusammengefasst.
+// Es wird nur an Stellen verbunden, an denen genau zwei Enden zusammentreffen (keine Verzweigungen / Kreuzungen).
+const JOIN_TOL=0.2;
+function joinElements(root,items,tol=JOIN_TOL){
+ const open=items.filter(o=>!o.userData.closed&&(o.userData.basePositions||[]).length>=6);
+ const P=new Map(),pts=o=>{let a=P.get(o);if(!a){const b=o.userData.basePositions;a=[];for(let i=0;i<b.length;i+=3)a.push({x:b[i],y:b[i+1],z:b[i+2]||0});P.set(o,a);}return a;};
+ // Endpunkte sammeln und per Raster/Union-Find zu Clustern zusammenfassen
+ const E=[];open.forEach((o,i)=>{const a=pts(o);E.push({el:i,end:0,p:a[0]},{el:i,end:1,p:a[a.length-1]});});
+ const par=E.map((_,i)=>i),find=i=>{while(par[i]!==i){par[i]=par[par[i]];i=par[i];}return i;};
+ const grid=new Map(),cell=p=>[Math.floor(p.x/tol),Math.floor(p.y/tol)];
+ E.forEach((e,i)=>{const [cx,cy]=cell(e.p);
+  for(let dx=-1;dx<=1;dx++)for(let dy=-1;dy<=1;dy++){const l=grid.get((cx+dx)+','+(cy+dy));if(l)for(const j of l)if(Math.hypot(E[j].p.x-e.p.x,E[j].p.y-e.p.y)<=tol)par[find(i)]=find(j);}
+  const k=cx+','+cy;if(!grid.has(k))grid.set(k,[]);grid.get(k).push(i);});
+ const clusters=new Map();E.forEach((e,i)=>{const r=find(i);if(!clusters.has(r))clusters.set(r,[]);clusters.get(r).push(e);});
+ const link=new Map();      // "el:end" -> {el,end}
+ for(const c of clusters.values())if(c.length===2){const [a,b]=c;link.set(a.el+':'+a.end,{el:b.el,end:b.end});link.set(b.el+':'+b.end,{el:a.el,end:a.end});}
+ // Ketten durchlaufen
+ const visited=new Set(),chains=[];
+ const walk=(el0,end0)=>{const parts=[];let el=el0,from=end0;
+  for(;;){visited.add(el);parts.push({el,rev:from===1});const nx=link.get(el+':'+(1-from));
+   if(!nx)return {parts,closed:false};
+   if(nx.el===el0&&nx.end===end0)return {parts,closed:true};
+   if(visited.has(nx.el))return {parts,closed:false};
+   el=nx.el;from=nx.end;}};
+ for(let i=0;i<open.length;i++){if(visited.has(i))continue;
+  if(!link.has(i+':0'))chains.push(walk(i,0));else if(!link.has(i+':1'))chains.push(walk(i,1));}
+ for(let i=0;i<open.length;i++)if(!visited.has(i))chains.push(walk(i,0));   // Ringe
+ const map=new Map(),groups=[];let pieces=0,closedCount=0;
+ for(const ch of chains){
+  if(ch.parts.length<2&&!ch.closed)continue;
+  const arr=ch.parts.map(q=>{const a=pts(open[q.el]);return q.rev?a.slice().reverse():a;});
+  const res=arr[0].map(p=>({...p}));
+  for(let i=1;i<arr.length;i++){const l=res[res.length-1],f=arr[i][0];res[res.length-1]={x:(l.x+f.x)/2,y:(l.y+f.y)/2,z:(l.z+f.z)/2};for(const p of arr[i].slice(1))res.push({...p});}
+  if(ch.closed){const f=res[0],l=res[res.length-1],m={x:(f.x+l.x)/2,y:(f.y+l.y)/2,z:(f.z+l.z)/2};res[0]=m;res[res.length-1]={...m};}
+  const members=ch.parts.map(q=>open[q.el]),idx=Math.min(...members.map(o=>o.userData.entityIndex));
+  const types=new Set(members.map(o=>o.userData.dxfType));
+  const geom=new THREE.BufferGeometry().setFromPoints(res.map(p=>new THREE.Vector3(p.x,p.y,p.z)));
+  const line=new THREE.Line(geom,new THREE.LineBasicMaterial({color:PLAIN}));
+  line.userData.basePositions=Array.from(geom.getAttribute('position').array);
+  Object.assign(line.userData,{isDxfEntity:true,dxfType:types.size===1?[...types][0]:'JOINED',closed:ch.closed,entityIndex:idx,joinedCount:members.length});
+  for(const o of members){o.parent?.remove(o);o.geometry?.dispose();o.material?.dispose?.();if(o.userData.entityIndex!==idx)map.set(o.userData.entityIndex,idx);}
+  root.add(line);groups.push({line,count:members.length});pieces+=members.length;if(ch.closed)closedCount++;
+ }
+ return {map,groups,pieces,closed:closedCount};
+}
+function convertDXF(root){
+ clearGroup(camGroup);camPaths=[];camGcode='';clearGroup(modelGroup);modelLineCount=0;
+ const entityItems=[];root.traverse(o=>{if(o.userData.isDxfEntity)entityItems.push(o);});
+ const dups=findDuplicates(entityItems);dupMap=new Map(dups.map(d=>[d.dup.userData.entityIndex,d.of.userData.entityIndex]));lastDupCount=dups.length;
+ for(const d of dups){d.dup.parent?.remove(d.dup);d.dup.geometry?.dispose();d.dup.material?.dispose?.();}
+ const dupSet=new Set(dups.map(d=>d.dup)),jr=joinElements(root,entityItems.filter(o=>!dupSet.has(o)));
+ for(const [k,t] of [...dupMap])dupMap.set(k,jr.map.get(t)??t);for(const [m,k] of jr.map)if(!dupMap.has(m))dupMap.set(m,k);
+ lastJoin=jr;
+selectedLines.clear();elementOrder=[];lastRowClicked=null;renderElementList();updateSelectionStatus();
+ // DXFLoader provides THREE.js objects; normalize coordinates as CAD XY -> viewer XY, with Z up.
+ root.traverse(o=>{
+   if(o.isLine || o.isLineSegments){
+     const pos=o.geometry?.getAttribute('position');if(!pos)return;
+     const arr=[];for(let i=0;i<pos.count;i++){arr.push(pos.getX(i),pos.getY(i),pos.getZ(i));}
+     o.userData.basePositions=arr;
+     // DXF geometry is already XY-plane and Three.js camera is Z-up here.
+     modelLineCount++;
+   }
+ });
+ modelGroup.add(root);loadedObject=root;
+ {const sk=root.userData.skipped||{},seen=root.userData.seen||{},txt=o=>Object.entries(o).map(([k,v])=>`${v}× ${k}`).join(', ');
+  if(!modelLineCount)showError(Object.keys(seen).length?tr('geom.none',{types:txt(seen)}):tr('geom.noentities'),tr('geom.title'));
+  else if(Object.keys(sk).length)showError(tr('geom.skipped',{types:txt(sk)}),tr('toast.note'),'warn');}
+ if(lastJoin&&lastJoin.groups.length)showError(tr('join.msg',{p:lastJoin.pieces,g:lastJoin.groups.length,tol:JOIN_TOL,c:lastJoin.closed}),tr('join.title'),'ok');
+ if(dups.length){const nm=o=>tr('q',{s:defName(o)});const shown=dups.slice(0,6).map(d=>`${nm(d.dup)} = ${nm(d.of)}`).join(', ');
+  showError(tr('dups.msg',{n:dups.length,list:shown,more:dups.length>6?' …':''}),tr('dups.title'),'warn');}
+ elementOrder=[];root.traverse(o=>{if(o.userData.isDxfEntity)elementOrder.push(o);});elementOrder.sort((a,b)=>a.userData.entityIndex-b.userData.entityIndex);renderElementList();
+ modelBounds=new THREE.Box3().setFromObject(modelGroup);
+ if(modelBounds.isEmpty())modelBounds=new THREE.Box3(new THREE.Vector3(-50,-50,0),new THREE.Vector3(50,50,0));
+}
+const canvas=renderer.domElement, selectionRect=$('#selectionRect'), selectionStatus=$('#selectionStatus');
+const raycaster=new THREE.Raycaster(); let dragStart=null, dragMoved=false;
+function updateSelectionStatus(){
+ if(selectionStatus){let total=0,asg=0;modelGroup.traverse(o=>{if(o.userData.isDxfEntity){total++;if(o.userData.params)asg++;}});
+  const selAsg=[...selectedLines].filter(o=>o.userData.params).length;
+  selectionStatus.textContent=(selectedLines.size?tr('sel.some',{n:selectedLines.size,a:selAsg}):tr('sel.none'))+(total?' '+tr('sel.total',{a:asg,t:total}):'');}
+ refreshListSelection();refreshParamPanel();
+}
+function setLineSelected(line,on){
+ if(!line?.userData?.isDxfEntity)return;
+ if(on)selectedLines.add(line);else selectedLines.delete(line);
+ refreshColor(line);
+}
+function clearSelection(){for(const line of selectedLines)setLineSelected(line,false);selectedLines.clear();updateSelectionStatus();}
+function setSelectionMode(on){selectionMode=on;$('#selectMode').dataset.tip=on?tr('tb.select.on'):tr('tb.select.off');$('#selectMode').setAttribute('aria-label',$('#selectMode').dataset.tip);$('#selectMode').classList.toggle('select-active',on);$('#selectMode').setAttribute('aria-pressed',String(on));controls.enabled=!on;canvas.style.cursor=on?'crosshair':'grab';}
+function eventPos(e){const r=canvas.getBoundingClientRect();return {x:e.clientX-r.left,y:e.clientY-r.top,clientX:e.clientX,clientY:e.clientY};}
+function clickSelect(pos,additive){
+ const rect=canvas.getBoundingClientRect();const ndc=new THREE.Vector2((pos.x/rect.width)*2-1,-(pos.y/rect.height)*2+1);
+ raycaster.params.Line.threshold=Math.max(.1,controls.target.distanceTo(camera.position)/Math.max(rect.height,1)*7);
+ raycaster.setFromCamera(ndc,camera);const hits=raycaster.intersectObjects(modelGroup.children,true).filter(h=>h.object.userData.isDxfEntity);
+ if(!additive)clearSelection();if(hits.length){const line=hits[0].object;if(additive&&selectedLines.has(line))setLineSelected(line,false);else setLineSelected(line,true);}
+ updateSelectionStatus();
+}
+function rectIntersectsSegment(a,b,r){
+ const inside=p=>p.x>=r.left&&p.x<=r.right&&p.y>=r.top&&p.y<=r.bottom;
+ if(inside(a)||inside(b))return true;
+ const edges=[[{x:r.left,y:r.top},{x:r.right,y:r.top}],[{x:r.right,y:r.top},{x:r.right,y:r.bottom}],[{x:r.right,y:r.bottom},{x:r.left,y:r.bottom}],[{x:r.left,y:r.bottom},{x:r.left,y:r.top}]];
+ const cross=(p,q,t)=> (q.x-p.x)*(t.y-p.y)-(q.y-p.y)*(t.x-p.x);
+ for(const [c,d] of edges){const c1=cross(a,b,c),c2=cross(a,b,d),c3=cross(c,d,a),c4=cross(c,d,b);if(c1*c2<=0&&c3*c4<=0)return true;}return false;
+}
+function rectangleSelect(start,end){
+ const r={left:Math.min(start.x,end.x),right:Math.max(start.x,end.x),top:Math.min(start.y,end.y),bottom:Math.max(start.y,end.y)};
+ const bounds=canvas.getBoundingClientRect();
+ modelGroup.traverse(o=>{
+   if(!o.userData.isDxfEntity)return;const attr=o.geometry?.getAttribute('position');if(!attr)return;
+   let hit=false,prev=null;
+   for(let i=0;i<attr.count;i++){
+     const p=new THREE.Vector3(attr.getX(i),attr.getY(i),attr.getZ(i));o.localToWorld(p);p.project(camera);
+     const q={x:(p.x+1)*.5*bounds.width,y:(1-p.y)*.5*bounds.height};
+     if(prev&&rectIntersectsSegment(prev,q,r)){hit=true;break;}if(q.x>=r.left&&q.x<=r.right&&q.y>=r.top&&q.y<=r.bottom)hit=true;prev=q;
+   }
+   if(hit)setLineSelected(o,true);
+ });updateSelectionStatus();
+}
+canvas.addEventListener('pointerdown',e=>{if(!selectionMode||e.button!==0)return;e.preventDefault();e.stopPropagation();dragStart=eventPos(e);dragMoved=false;selectionRect.style.display='block';selectionRect.style.left=dragStart.x+'px';selectionRect.style.top=dragStart.y+'px';selectionRect.style.width='0px';selectionRect.style.height='0px';canvas.setPointerCapture?.(e.pointerId);});
+canvas.addEventListener('pointermove',e=>{if(!selectionMode||!dragStart)return;const p=eventPos(e);if(Math.hypot(p.x-dragStart.x,p.y-dragStart.y)>4)dragMoved=true;const l=Math.min(p.x,dragStart.x),t=Math.min(p.y,dragStart.y);selectionRect.style.left=l+'px';selectionRect.style.top=t+'px';selectionRect.style.width=Math.abs(p.x-dragStart.x)+'px';selectionRect.style.height=Math.abs(p.y-dragStart.y)+'px';});
+function finishSelection(e){if(!selectionMode||!dragStart)return;const end=eventPos(e);selectionRect.style.display='none';if(dragMoved){if(!(e.ctrlKey||e.metaKey||e.shiftKey))clearSelection();rectangleSelect(dragStart,end);}else clickSelect(end,e.ctrlKey||e.metaKey||e.shiftKey);dragStart=null;}
+canvas.addEventListener('pointerup',finishSelection);canvas.addEventListener('pointercancel',()=>{dragStart=null;selectionRect.style.display='none';});
+$('#selectMode').addEventListener('click',()=>setSelectionMode(!selectionMode));$('#clearSelection').addEventListener('click',clearSelection);
+document.addEventListener('keydown',e=>{if(e.key!=='Escape'||e.repeat)return;if(e.target?.matches?.('input[type=text]'))return;
+ if(typeof tabDrag!=='undefined'&&tabDrag.active){endTabDrag(false);return;}
+ if(dragStart){dragStart=null;selectionRect.style.display='none';}
+ setSelectionMode(!selectionMode);});
+document.querySelectorAll('label.tb[for]').forEach(l=>l.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();document.getElementById(l.htmlFor).click();}}));
+function linePoints(o){const a=o.userData.basePositions||Array.from(o.geometry.getAttribute('position').array);const pts=[];for(let i=0;i<a.length;i+=3){const q={x:a[i],y:a[i+1]};if(!pts.length||Math.hypot(q.x-pts.at(-1).x,q.y-pts.at(-1).y)>1e-7)pts.push(q);}return pts;}
+function area2(pts){let a=0;for(let i=0;i<pts.length;i++){const p=pts[i],q=pts[(i+1)%pts.length];a+=p.x*q.y-q.x*p.y;}return a;}
+function offsetPolyline(input, distance, closed){
+ let pts=input.slice();if(closed&&pts.length>2&&Math.hypot(pts[0].x-pts.at(-1).x,pts[0].y-pts.at(-1).y)<1e-6)pts.pop();
+ if(pts.length<2)return pts;
+ const n=pts.length, out=[];
+ const norm=(a,b)=>{const dx=b.x-a.x,dy=b.y-a.y,l=Math.hypot(dx,dy)||1;return {x:-dy/l,y:dx/l};};
+ for(let i=0;i<n;i++){
+  if(!closed&&(i===0||i===n-1)){const nn=i===0?norm(pts[0],pts[1]):norm(pts[n-2],pts[n-1]);out.push({x:pts[i].x+nn.x*distance,y:pts[i].y+nn.y*distance});continue;}
+  const prev=pts[(i-1+n)%n],cur=pts[i],next=pts[(i+1)%n],n1=norm(prev,cur),n2=norm(cur,next);
+  const sx=n1.x+n2.x,sy=n1.y+n2.y,sl=Math.hypot(sx,sy);
+  if(sl<1e-7){out.push({x:cur.x+n1.x*distance,y:cur.y+n1.y*distance});continue;}
+  const ux=sx/sl,uy=sy/sl,den=ux*n1.x+uy*n1.y;const m=Math.abs(den)<.15?distance:Math.max(-Math.abs(distance)*8,Math.min(Math.abs(distance)*8,distance/den));
+  out.push({x:cur.x+ux*m,y:cur.y+uy*m});
+ }
+ if(closed)out.push({...out[0]});return out;
+}
+function pathLine(points,color,material){const v=points.map(p=>new THREE.Vector3(p.x,p.y,p.z||0));if(v.length<2)return;const g=new THREE.BufferGeometry().setFromPoints(v);const o=new THREE.Line(g,material||mat(color));if(material?.isLineDashedMaterial)o.computeLineDistances();camGroup.add(o);}
+
+// ===== Taschenfräsen (konzentrische Versatzbahnen via Clipper) =====
+let ClipperLib=null;
+import('https://esm.sh/clipper-lib@6.4.2').then(m=>{ClipperLib=m.default||m;scheduleCam();}).catch(err=>console.warn('Clipper konnte nicht geladen werden',err));
+// Inseln: geschlossene Konturen, die komplett innerhalb der Tasche liegen, werden aus der Fläche herausgerechnet
+function findIslands(C,SC,base,cands){
+ const toInt=pts=>{let q=pts.slice();if(q.length>1&&Math.hypot(q[0].x-q.at(-1).x,q[0].y-q.at(-1).y)<1e-6)q.pop();q=q.map(p=>({X:Math.round(p.x*SC),Y:Math.round(p.y*SC)}));if(!C.Clipper.Orientation(q))q.reverse();return q;};
+ const bb=ps=>{let a=1e18,b=1e18,c=-1e18,d=-1e18;for(const p of ps){a=Math.min(a,p.X);b=Math.min(b,p.Y);c=Math.max(c,p.X);d=Math.max(d,p.Y);}return [a,b,c,d];};
+ const bBox=bb(base),areaB=Math.abs(C.Clipper.Area(base)),out=[];
+ for(const ch of cands){
+  const q=toInt(ch.pts);if(q.length<3)continue;
+  const b=bb(q);if(b[0]<bBox[0]-1||b[1]<bBox[1]-1||b[2]>bBox[2]+1||b[3]>bBox[3]+1)continue;
+  const aI=Math.abs(C.Clipper.Area(q));if(aI<1||aI>=areaB*0.999)continue;
+  const cl=new C.Clipper();cl.AddPath(q,C.PolyType.ptSubject,true);cl.AddPath(base,C.PolyType.ptClip,true);
+  const sol=new C.Paths();cl.Execute(C.ClipType.ctIntersection,sol,C.PolyFillType.pftNonZero,C.PolyFillType.pftNonZero);
+  const aIn=sol.reduce((a,p)=>a+Math.abs(C.Clipper.Area(p)),0);
+  if(aIn>=aI*0.999)out.push(q);   // liegt vollständig in der Tasche
+ }
+ return out;
+}
+function insetRegion(pts,r,what,cands){
+ const C=ClipperLib;
+ if(!C)throw new Error(tr('cam.err.clipper'));
+ const SC=1e4,base=pts.slice(0,-1).map(p=>({X:Math.round(p.x*SC),Y:Math.round(p.y*SC)}));
+ if(!C.Clipper.Orientation(base))base.reverse();
+ let region=[base];const islands=cands&&cands.length?findIslands(C,SC,base,cands):[];
+ if(islands.length){const cl=new C.Clipper();cl.AddPath(base,C.PolyType.ptSubject,true);cl.AddPaths(islands,C.PolyType.ptClip,true);
+  const sol=new C.Paths();cl.Execute(C.ClipType.ctDifference,sol,C.PolyFillType.pftNonZero,C.PolyFillType.pftNonZero);if(sol.length)region=sol;}
+ const off=(d,paths)=>{const co=new C.ClipperOffset(2,0.005*SC);co.AddPaths(paths||region,C.JoinType.jtRound,C.EndType.etClosedPolygon);const sol=new C.Paths();co.Execute(sol,d*SC);return sol.filter(q=>q.length>=3);};
+ const rr=r*0.995;   // minimale Toleranz, damit ein exakt passender Fräser nicht abgelehnt wird
+ let first=off(-r);if(!first.length)first=off(-rr);
+ if(!first.length)throw new Error(tr('cam.err.toowide',{dia:+(2*r).toFixed(3),what:tr('what.'+what)}));
+ // Engstellen: Bereiche schmaler als der Fräser würden nicht erreicht
+ {const area=ps=>ps.reduce((a,q)=>a+C.Clipper.Area(q),0)/(SC*SC);
+  const back=off(rr,off(-rr));
+  const loss=area(region)-area(back);
+  let allowed=0,run=0,perim=0;const corner=()=>{allowed+=r*r*(Math.tan(Math.min(run,3)/2)-run/2);run=0;};
+  for(const path of region){   // Außenring (CCW) und Inselränder (CW): Gebiet liegt immer links
+   const ring=path.map(q=>({x:q.X/SC,y:q.Y/SC})),n=ring.length;run=0;
+   for(let i=0;i<n;i++){const p0=ring[(i-1+n)%n],p1=ring[i],p2=ring[(i+1)%n];
+    const e2=Math.hypot(p2.x-p1.x,p2.y-p1.y);perim+=e2;
+    const phi=Math.atan2((p1.x-p0.x)*(p2.y-p1.y)-(p1.y-p0.y)*(p2.x-p1.x),(p1.x-p0.x)*(p2.x-p1.x)+(p1.y-p0.y)*(p2.y-p1.y));
+    if(phi>1e-6){run+=phi;if(e2>=r)corner();}else if(run>0)corner();}
+   if(run>0)corner();}
+  if(loss>allowed*1.3+perim*0.02)throw new Error(tr('cam.err.narrow',{what:tr('what.'+what),dia:+(2*r).toFixed(3)}));}
+ return {C,SC,first,off,islandCount:islands.length};
+}
+function insideLoops(pts,r){
+ const {SC,first}=insetRegion(pts,r,'inside');const ccw=area2(pts.slice(0,-1))>0;
+ return first.map(poly=>{const ring=poly.map(q=>({x:q.X/SC,y:q.Y/SC}));if(!ccw)ring.reverse();ring.push({x:ring[0].x,y:ring[0].y});return {pts:ring,linked:false};});
+}
+function pocketLoops(pts,r,step,islandCands){
+ const {C,SC,first,off}=insetRegion(pts,r,'pocket',islandCands);
+ const levels=[first];
+ for(let k=1;k<2000;k++){const q=off(-(r+k*step));if(!q.length){const h=off(-(r+(k-1)*step+step/2));if(h.length)levels.push(h);break;}levels.push(q);}
+ const inRegion=p=>first.reduce((n,poly)=>n+(C.Clipper.PointInPolygon({X:Math.round(p.x*SC),Y:Math.round(p.y*SC)},poly)!==0?1:0),0)%2===1;   // gerade/ungerade: Inseln sind Löcher
+ const loops=[];let prevEnd=null;
+ for(const lv of levels.slice().reverse())for(const poly of lv){      // von innen nach außen
+  let ring=poly.map(q=>({x:q.X/SC,y:q.Y/SC}));
+  let linked=false;
+  if(prevEnd){let bi=0,bd=Infinity;ring.forEach((p,i)=>{const d=Math.hypot(p.x-prevEnd.x,p.y-prevEnd.y);if(d<bd){bd=d;bi=i;}});ring=ring.slice(bi).concat(ring.slice(0,bi));
+   linked=bd<=2*step+1e-6&&[.25,.5,.75].every(t=>inRegion({x:prevEnd.x+(ring[0].x-prevEnd.x)*t,y:prevEnd.y+(ring[0].y-prevEnd.y)*t}));}
+  ring.push({x:ring[0].x,y:ring[0].y});loops.push({pts:ring,linked});prevEnd=ring.at(-1);
+ }
+ return loops;
+}
+function minDistToPoly(pt,poly){let best=Infinity;for(let i=0;i<poly.length-1;i++){const a=poly[i],b=poly[i+1],dx=b.x-a.x,dy=b.y-a.y,l2=dx*dx+dy*dy;let t=l2?((pt.x-a.x)*dx+(pt.y-a.y)*dy)/l2:0;t=Math.max(0,Math.min(1,t));const d=Math.hypot(pt.x-a.x-t*dx,pt.y-a.y-t*dy);if(d<best)best=d;}return best;}
+function toolFitsInside(orig,path,r){const tol=r*0.98-1e-3;
+ for(let i=0;i<path.length-1;i++){const a=path[i],b=path[i+1];for(const q of [a,{x:(a.x+b.x)/2,y:(a.y+b.y)/2}])if(minDistToPoly(q,orig)<tol)return false;}
+ return true;}
+function zLevels(top,fin,step){const total=top-fin,n=Math.max(1,Math.ceil(total/step-1e-9)),z=[];for(let k=1;k<n;k++)z.push(top-k*step);z.push(fin);return z;}
+function chainSegments(segs,tol=0.01){
+ const used=new Array(segs.length).fill(false),chains=[],near=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y)<=tol;
+ for(let i=0;i<segs.length;i++){
+  if(used[i])continue;used[i]=true;
+  let pts=segs[i].pts.slice(),ids=[segs[i].id];
+  if(segs[i].closed){chains.push({pts,ids,closed:true});continue;}
+  let grew=true;
+  while(grew&&!near(pts[0],pts.at(-1))){grew=false;
+   for(let j=0;j<segs.length;j++){if(used[j]||segs[j].closed)continue;
+    const q=segs[j].pts,a=q[0],b=q.at(-1),end=pts.at(-1),start=pts[0];
+    if(near(end,a))pts=pts.concat(q.slice(1));
+    else if(near(end,b))pts=pts.concat(q.slice().reverse().slice(1));
+    else if(near(start,b))pts=q.slice(0,-1).concat(pts);
+    else if(near(start,a))pts=q.slice().reverse().slice(0,-1).concat(pts);
+    else continue;
+    used[j]=true;ids.push(segs[j].id);grew=true;break;}
+  }
+  const closed=pts.length>3&&near(pts[0],pts.at(-1));
+  if(closed)pts[pts.length-1]={x:pts[0].x,y:pts[0].y};
+  chains.push({pts,ids,closed});
+ }
+ return chains;
+}
+// Duplikate: gleiche Geometrie, unabhängig von Startpunkt und Richtung der Punktfolge
+function findDuplicates(items,eps=1e-3){
+ const near=(a,b)=>Math.abs(a.x-b.x)<=eps&&Math.abs(a.y-b.y)<=eps;
+ const info=items.map(o=>{let pts=linePoints(o),closed=!!o.userData.closed;
+  if(pts.length>2&&near(pts[0],pts.at(-1))){pts=pts.slice(0,-1);closed=true;}
+  const xs=pts.map(p=>p.x),ys=pts.map(p=>p.y);
+  return {o,pts,closed,minx:Math.min(...xs),maxx:Math.max(...xs),miny:Math.min(...ys),maxy:Math.max(...ys)};});
+ const same=(a,b)=>{
+  if(a.closed!==b.closed||a.pts.length!==b.pts.length)return false;
+  if(Math.abs(a.minx-b.minx)>eps||Math.abs(a.maxx-b.maxx)>eps||Math.abs(a.miny-b.miny)>eps||Math.abs(a.maxy-b.maxy)>eps)return false;
+  const m=a.pts.length,A=a.pts,B=b.pts;
+  if(!a.closed){return A.every((p,i)=>near(p,B[i]))||A.every((p,i)=>near(p,B[m-1-i]));}
+  for(let k=0;k<m;k++){if(!near(A[0],B[k]))continue;
+   if(A.every((p,i)=>near(p,B[(k+i)%m]))||A.every((p,i)=>near(p,B[((k-i)%m+m)%m])))return true;}
+  return false;
+ };
+ const buckets=new Map(),dups=[];
+ for(const it of info){if(it.pts.length<2)continue;
+  const list=buckets.get(it.pts.length)||[];buckets.set(it.pts.length,list);
+  const hit=list.find(k=>same(k,it));
+  if(hit)dups.push({dup:it.o,of:hit.o});else list.push(it);}
+ return dups;
+}
+function orientLoop(l,dir){
+ const ar=area2(l.pts.slice(0,-1));if(Math.abs(ar)<1e-12)return l;
+ return (dir!=='cw')===(ar>0)?l:{...l,pts:l.pts.slice().reverse()};   // Start-/Endpunkt bleibt derselbe
+}
+function pathProject(pts,cum,q){let best={d:Infinity,s:0,x:pts[0].x,y:pts[0].y};
+ for(let i=0;i<pts.length-1;i++){const a=pts[i],b=pts[i+1],dx=b.x-a.x,dy=b.y-a.y,l2=dx*dx+dy*dy;if(l2<1e-18)continue;
+  let t=((q.x-a.x)*dx+(q.y-a.y)*dy)/l2;t=Math.max(0,Math.min(1,t));const x=a.x+t*dx,y=a.y+t*dy,d=Math.hypot(q.x-x,q.y-y);
+  if(d<best.d)best={d,s:cum[i]+t*(cum[i+1]-cum[i]),x,y};}
+ return best;}
+function pathPointAt(pts,cum,s){let lo=0,hi=cum.length-2;while(lo<hi){const mid=(lo+hi)>>1;if(cum[mid+1]<s)lo=mid+1;else hi=mid;}
+ const a=pts[lo],b=pts[lo+1],l=cum[lo+1]-cum[lo],t=l>0?Math.max(0,Math.min(1,(s-cum[lo])/l)):0;return {x:a.x+(b.x-a.x)*t,y:a.y+(b.y-a.y)*t};}
+// gerade Abschnitte des Fräswegs (Richtungsabweichung <= tolDeg gegenüber dem ersten Segment des Abschnitts)
+function straightRuns(pts,cum,L,closed,tolDeg=2){
+ const tol=tolDeg*Math.PI/180,dirs=[];
+ for(let i=0;i<pts.length-1;i++){const dx=pts[i+1].x-pts[i].x,dy=pts[i+1].y-pts[i].y;dirs.push(Math.hypot(dx,dy)>1e-9?Math.atan2(dy,dx):null);}
+ const adiff=(a,b)=>{const d=Math.abs(a-b)%(2*Math.PI);return d>Math.PI?2*Math.PI-d:d;};
+ const runs=[];let start=null,ref=null;
+ for(let i=0;i<dirs.length;i++){if(dirs[i]===null)continue;
+  if(start===null){start=cum[i];ref=dirs[i];}
+  else if(adiff(dirs[i],ref)>tol){runs.push([start,cum[i]]);start=cum[i];ref=dirs[i];}}
+ if(start!==null)runs.push([start,L]);
+ if(closed&&runs.length>1){const d0=dirs.find(d=>d!==null),dl=[...dirs].reverse().find(d=>d!==null);
+  if(adiff(d0,dl)<=tol){const last=runs.pop(),first=runs.shift();runs.push([last[0],first[1]+L]);}}
+ return runs;
+}
+// gleichmäßig verteilen, aber Tabs bevorzugt auf Geraden (H = halbe Gesamtlänge eines Tabs inkl. Rampen)
+function autoTabCenters(pts,cum,L,n,H,closed){
+ const m=1,gap=1,runs=straightRuns(pts,cum,L,closed).filter(r=>r[1]-r[0]>=2*H+2*m);
+ const circ=(a,b)=>{const d=Math.abs(a-b);return closed?Math.min(d,L-d):d;};
+ const placed=[],fits=c=>placed.every(q=>circ(c,q)>=2*H+gap);
+ const mod=x=>closed?((x%L)+L)%L:x;
+ return Array.from({length:n},(_,i)=>{
+  const id=(i+.5)*L/n;let best=null;
+  for(const r of runs){const lo=r[0]+H+m,hi=r[1]-H-m;if(lo>hi)continue;
+   for(const k of (closed?[-1,0,1]:[0])){
+    for(const c0 of [id+k*L,...placed.flatMap(q=>[q+2*H+gap,q-2*H-gap])]){
+     const c=mod(Math.min(hi,Math.max(lo,c0)));if(!fits(c))continue;
+     const sc=circ(c,id);if(!best||sc<best.sc)best={c,sc};}}}
+  const c=best?best.c:id;placed.push(c);return c;});
+}
+function addTabsToLoop(lp,p,closed){
+ const n=Math.round(p.tabCount||0);if(n<1)return lp;
+ const pts=lp.pts,cum=[0];
+ for(let i=1;i<pts.length;i++)cum.push(cum[i-1]+Math.hypot(pts[i].x-pts[i-1].x,pts[i].y-pts[i-1].y));
+ const L=cum.at(-1);if(!(L>0))return lp;
+ const ramp=p.tabShape==='ramp',Lr=ramp?p.tabHeight/Math.tan(Math.max(1,Math.min(90,p.tabRampAngle||45))*Math.PI/180):0;
+ const half=(p.tabWidth+p.cutterDia)/2,H=half+Lr;   // Fräsweg wird um den Fräserdurchmesser verlängert, damit der Steg im Material tabWidth breit bleibt
+ const manual=Array.isArray(p.tabPositions)&&p.tabPositions.length===n;
+ const centers=manual?p.tabPositions.map(q=>pathProject(pts,cum,q).s):autoTabCenters(pts,cum,L,n,H,closed);
+ const bp=new Set();
+ for(const c of centers)for(const o of (Lr>0?[-H,-half,half,H]:[-half,half])){let x=c+o;if(closed)x=((x%L)+L)%L;if(x>1e-9&&x<L-1e-9)bp.add(+x.toFixed(9));}
+ const cuts=[...bp].sort((a,b)=>a-b);
+ const prof=x=>{let F=0;for(const c of centers){let d=Math.abs(x-c);if(closed)d=Math.min(d,L-d);if(d<=half+1e-9)return 1;if(Lr>0&&d<H)F=Math.max(F,1-(d-half)/Lr);}return F;};
+ const out=[{x:pts[0].x,y:pts[0].y}],outS=[0];let ci=0;
+ for(let i=0;i<pts.length-1;i++){const s0=cum[i],s1=cum[i+1];if(s1-s0<1e-12)continue;
+  while(ci<cuts.length&&cuts[ci]<=s0+1e-9)ci++;
+  const stops=[s0];let cj=ci;while(cj<cuts.length&&cuts[cj]<s1-1e-9){stops.push(cuts[cj]);cj++;}stops.push(s1);
+  for(let k=1;k<stops.length;k++){const t=(stops[k]-s0)/(s1-s0);
+   const q=k===stops.length-1?pts[i+1]:{x:pts[i].x+(pts[i+1].x-pts[i].x)*t,y:pts[i].y+(pts[i+1].y-pts[i].y)*t};
+   out.push({x:q.x,y:q.y});outS.push(stops[k]);}
+  ci=cj;}
+ const seg=[],F=outS.map(prof);let plateau=0;
+ for(let i=0;i<out.length-1;i++){const mid=prof((outS[i]+outS[i+1])/2);seg.push(mid>0.5);if(mid>=0.999)plateau+=outS[i+1]-outS[i];}
+ if(plateau>=L-p.cutterDia)throw new Error(tr('cam.err.tabstoomany'));
+ const tabCenters=centers.map(c=>{const q=pathPointAt(out,outS,closed?((c%L)+L)%L:Math.max(0,Math.min(L,c)));return {s:c,x:q.x,y:q.y};});
+ return {...lp,pts:out,cum:outS,tabSeg:seg,tabF:ramp?F:undefined,tabCenters};
+}
+// Punktfolge eines Durchgangs mit Z-Werten; in Tab-Bereichen wird auf zTabTop angehoben
+function loopMoves(lp,z,zTabTop){
+ const pts=lp.pts,useTabs=zTabTop!=null&&z<zTabTop-1e-9&&!!(lp.tabF||lp.tabSeg);
+ if(useTabs&&lp.tabF){const dz=zTabTop-z;   // Rampe: Höhe folgt dem Tab-Profil
+  return pts.map((q,i)=>({x:q.x,y:q.y,z:z+dz*lp.tabF[i],tab:lp.tabF[i]>1e-9||(i>0&&lp.tabF[i-1]>1e-9)}));}
+ const on0=!!(useTabs&&lp.tabSeg[0]);
+ const out=[{x:pts[0].x,y:pts[0].y,z:on0?zTabTop:z,tab:on0}];let inTab=on0;
+ for(let i=0;i<pts.length-1;i++){
+  const on=!!(useTabs&&lp.tabSeg[i]);
+  if(on!==inTab){out.push({x:pts[i].x,y:pts[i].y,z:on?zTabTop:z,tab:on});inTab=on;}
+  out.push({x:pts[i+1].x,y:pts[i+1].y,z:on?zTabTop:z,tab:on});
+ }
+ return out;
+}
+function buildContours(){
+ if(!loadedObject)throw new Error(tr('err.loadfirst'));
+ const sz=safeZ(),assigned=elementOrder.filter(o=>o.userData.params);
+ if(!assigned.length)throw new Error(tr('cam.err.nocontour'));
+ const rank=new Map(),objBy=new Map();elementOrder.forEach((o,i)=>{rank.set(o.userData.entityIndex,i);objBy.set(o.userData.entityIndex,o);});
+ const nm=i=>tr('q',{s:elName(objBy.get(i))});
+ const groups=new Map();
+ for(const o of assigned){const p=o.userData.params,idx=o.userData.entityIndex;
+  if(!(p.stockTop<=sz+1e-9))throw new Error(tr('cam.err.stockTop',{name:nm(idx),top:p.stockTop,sz}));
+  if(!(p.finalDepth>0)||-p.finalDepth>=p.stockTop-1e-9)throw new Error(tr('cam.err.depth',{name:nm(idx),z:-p.finalDepth,top:p.stockTop}));
+  if(p.side!=='pocket'&&(p.tabCount||0)>0){
+   if(!(p.tabWidth>0)||!(p.tabHeight>0))throw new Error(tr('cam.err.tabwh',{name:nm(idx)}));
+   if(p.tabShape==='ramp'&&!(p.tabRampAngle>0&&p.tabRampAngle<=90))throw new Error(tr('cam.err.rampangle',{name:nm(idx)}));
+   if(p.tabHeight>=p.stockTop+p.finalDepth-1e-9)throw new Error(tr('cam.err.tabheight',{name:nm(idx),h:p.tabHeight,d:+(p.stockTop+p.finalDepth).toFixed(3)}));}
+  const pts=linePoints(o);if(pts.length<2)continue;
+  const key=JSON.stringify(p);if(!groups.has(key))groups.set(key,{params:p,segs:[]});
+  groups.get(key).segs.push({pts,id:idx,closed:!!o.userData.closed});}
+ const paths=[];
+ let islandCands=null;   // alle geschlossenen Nicht-Taschen-Konturen der Zeichnung (auch ohne Fräsparameter), einmal verkettet
+ const getIslandCands=()=>islandCands||(islandCands=chainSegments(elementOrder.filter(o=>o.userData.params?.side!=='pocket').map(o=>({pts:linePoints(o),id:o.userData.entityIndex,closed:!!o.userData.closed})).filter(s=>s.pts.length>=2)).filter(c=>c.closed&&c.pts.length>=4));
+ for(const g of groups.values()){const p=g.params,r=p.cutterDia/2;
+  for(const ch of chainSegments(g.segs)){
+   const ids=ch.ids.slice().sort((a,b)=>rank.get(a)-rank.get(b));let loops;
+   try{
+    if(p.side==='pocket'){
+     if(!ch.closed)throw new Error(tr('cam.err.pocketclosed'));
+     loops=pocketLoops(ch.pts,r,Math.max(.01,p.cutterDia*(p.stepover||40)/100),p.islands!=='no'?getIslandCands():null).map(l=>orientLoop(l,p.direction));
+    }else{
+     if(p.side==='inside'&&ch.closed&&ClipperLib){
+      loops=insideLoops(ch.pts,r);
+     }else{
+      let pts;
+      if(ch.closed){
+       const ar=area2(ch.pts.slice(0,-1));if(Math.abs(ar)<1e-8)throw new Error(tr('cam.err.noarea'));
+       const interiorLeft=ar>0,wantLeft=p.side==='inside'?interiorLeft:!interiorLeft;
+       pts=offsetPolyline(ch.pts,(wantLeft?1:-1)*r,true);
+       const ar2=area2(pts.slice(0,-1));
+       if(Math.sign(ar2)!==Math.sign(ar)||(p.side==='inside'?Math.abs(ar2)>=Math.abs(ar):Math.abs(ar2)<=Math.abs(ar)))
+        throw new Error(p.side==='inside'?tr('cam.err.inside.toowide',{dia:p.cutterDia}):tr('cam.err.outside.ambig',{dia:p.cutterDia}));
+       if(p.side==='inside'&&!toolFitsInside(ch.pts,pts,r))throw new Error(tr('cam.err.inside.narrow',{dia:p.cutterDia}));
+      }else pts=offsetPolyline(ch.pts,(p.side==='inside'?1:-1)*r,false);
+      loops=[{pts,linked:false}];
+     }
+     if(ch.closed)loops=loops.map(l=>orientLoop(l,p.direction));
+     if((p.tabCount||0)>0)loops=loops.map(l=>addTabsToLoop(l,p,ch.closed));
+    }
+   }catch(e){throw new Error(`${ids.map(nm).join(', ')}: ${e.message}`);}
+   const tabs=p.side!=='pocket'&&(p.tabCount||0)>0;
+   paths.push({loops,side:p.side,closed:ch.closed,entityIndices:ids,names:ids.map(i=>elName(objBy.get(i))),rank:Math.min(...ids.map(i=>rank.get(i))),params:p,
+    levels:zLevels(p.stockTop,-p.finalDepth,p.stepDepth),zTabTop:tabs?-p.finalDepth+p.tabHeight:null,tabCount:tabs?Math.round(p.tabCount):0});
+  }}
+ if(!paths.length)throw new Error(tr('cam.err.nousable'));
+ paths.sort((a,b)=>a.rank-b.rank);
+ return paths;
+}
+const gtxt=t=>String(t).replace(/ß/g,'ss').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[()]/g,'').replace(/[^\x20-\x7E]/g,'?');
+// Gemeinsame Quelle für G-Code und Simulator: Liste aus raw (nur G-Code), mv (Bewegung), info, pause
+function buildProgram(paths,sz){
+ const P=[],raw=(...l)=>P.push({raw:l}),mv=(g,o)=>P.push({mv:{g,...o}});
+ const sideName={inside:'inside contour',outside:'outside contour',pocket:'pocket'};
+ raw('(dxf-2-grbl-web - check and simulate before running the machine)','G21 (mm)','G90 (absolute coordinates)','G17 (XY plane)','G94 (feed rate mm/min)','G54');
+ mv(0,{z:sz});
+ const rpm=typeof $==='function'?Math.max(0,Math.round(Number($('#spindleRpm')?.value)||0)):0,spin=()=>{if(rpm>0)raw(`M3 S${rpm}`,'G4 P2');};
+ spin();
+ let lastDia=null;
+ paths.forEach((path,pi)=>{
+  const p=path.params;if(!path.loops.length)return;
+  if(lastDia===null)raw(`(Tool: cutter dia ${p.cutterDia} mm)`);
+  else if(Math.abs(p.cutterDia-lastDia)>1e-9){mv(0,{z:sz});P.push({raw:['M5',`M0 (Tool change: cutter dia ${p.cutterDia} mm)`],pause:{dia:p.cutterDia}});spin();}
+  lastDia=p.cutterDia;
+  raw(`(Contour ${pi+1}: ${gtxt(path.names.join(', '))}, ${sideName[p.side]||p.side}${path.closed?`, ${p.direction==='cw'?'CW':'CCW'}`:''}, stock top Z${Number(p.stockTop).toFixed(3)}${path.tabCount?`, ${path.tabCount} holding tabs ${p.tabShape==='ramp'?'(ramp) ':''}W${Number(p.tabWidth).toFixed(3)} H${Number(p.tabHeight).toFixed(3)}`:''})`);
+  let cur=null;const startZ=new Map(),nL=path.loops.length;
+  path.levels.forEach((z,k)=>{
+   // jede zweite Ebene in umgekehrter Reihenfolge, damit der Fräser dort weitermacht, wo er aufgehört hat
+   const order=(k%2===1&&nL>1)?path.loops.map((_,i)=>{const j=nL-1-i;return {lp:path.loops[j],link:i>0&&path.loops[j+1].linked};}):path.loops.map((lp,j)=>({lp,link:j>0&&lp.linked}));
+   order.forEach(({lp,link},li)=>{const m=loopMoves(lp,z,path.zTabTop);if(m.length<2)return;const st=m[0];
+    P.push({info:{pi:pi+1,n:paths.length,names:path.names.join(', '),side:p.side,k:k+1,kn:path.levels.length,dia:p.cutterDia,top:p.stockTop,bottom:-p.finalDepth}});
+    if(link&&cur)mv(1,{x:st.x,y:st.y,f:p.feedRate});
+    else if(cur&&li===0&&Math.hypot(cur.x-st.x,cur.y-st.y)<1e-6){if(Math.abs(st.z-cur.z)>1e-9)mv(1,{z:st.z,f:p.plungeRate});}   // direkt tiefer zustellen, kein Rückzug
+    else{mv(0,{z:sz});mv(0,{x:st.x,y:st.y});mv(0,{z:startZ.get(lp)??p.stockTop});mv(1,{z:st.z,f:p.plungeRate});}
+    startZ.set(lp,st.z);
+    for(let i=1;i<m.length;i++){const a=m[i-1],b=m[i],dxy=Math.hypot(b.x-a.x,b.y-a.y),dz=Math.abs(b.z-a.z);
+     if(dxy<1e-9&&dz>1e-9)mv(1,{z:b.z,f:p.plungeRate});
+     else if(dz>1e-9)mv(1,{x:b.x,y:b.y,z:b.z,f:p.feedRate});   // Rampe
+     else mv(1,{x:b.x,y:b.y,f:p.feedRate});}
+    cur={x:m.at(-1).x,y:m.at(-1).y,z:m.at(-1).z};
+   });
+  });
+  mv(0,{z:sz});
+ });
+ raw('M5');mv(0,{z:sz});raw('M30');
+ return P;
+}
+function programToGcode(prog){
+ const f=n=>Number(n).toFixed(3),L=[];
+ for(const it of prog){if(it.raw)L.push(...it.raw);
+  else if(it.mv){const m=it.mv;L.push(`G${m.g}`+(m.x!=null?` X${f(m.x)}`:'')+(m.y!=null?` Y${f(m.y)}`:'')+(m.z!=null?` Z${f(m.z)}`:'')+(m.f!=null?` F${f(m.f)}`:''));}}
+ return L.join('\n')+'\n';
+}
+function makeGcode(paths,sz){return programToGcode(buildProgram(paths,sz));}
+// Zeitachse für den Simulator: 1.0x = Echtzeit (Vorschub bzw. Eilgang in mm/min)
+const infoText=i=>i&&i.pi?tr('sim.info',{pi:i.pi,n:i.n,names:i.names,side:sideLabel(i.side),k:i.k,kn:i.kn}):'';
+function simTimeline(prog,sz,rapid,dia0){
+ let pos={x:0,y:0,z:sz},t=0,cur={dia:dia0,top:0,bottom:-1};const segs=[],pauses=[],lineSeg=[];   // lineSeg[k] = Index des zuletzt abgeschlossenen Segments nach G-Code-Zeile k (wie im Job gezählt)
+ for(const it of prog){
+  if(it.info)cur=it.info;
+  if(it.pause)pauses.push({t,dia:it.pause.dia});
+  if(it.raw){for(const r of it.raw)if(r.replace(/\(.*?\)/g,'').trim())lineSeg.push(Math.max(0,segs.length-1));}
+  if(!it.mv)continue;
+  lineSeg.push(Math.max(0,segs.length));   // Zeile k erzeugt (falls Länge>0) Segment segs.length
+  const m=it.mv,n={x:m.x??pos.x,y:m.y??pos.y,z:m.z??pos.z},len=Math.hypot(n.x-pos.x,n.y-pos.y,n.z-pos.z);
+  if(len<1e-9){pos=n;lineSeg[lineSeg.length-1]=Math.max(0,segs.length-1);continue;}
+  const fr=m.g===0?rapid:m.f,dur=len/Math.max(fr/60,1e-6);
+  segs.push({t0:t,t1:t+dur,x0:pos.x,y0:pos.y,z0:pos.z,x1:n.x,y1:n.y,z1:n.z,g:m.g,f:fr,info:cur});
+  t+=dur;pos=n;
+ }
+ return {segs,pauses,total:t,lineSeg};
+}
+function generateCam(){
+ const paths=buildContours(),sz=safeZ();
+ clearGroup(camGroup);camPaths=paths;tabHandles=[];simInvalidate();
+ const cutMat=mat('#28a9ff'),tabMat=mat('#ffb020'),rapidMat=new THREE.LineDashedMaterial({color:'#9aa4b2',dashSize:3,gapSize:2,transparent:true,opacity:.9});let prev=null;
+ for(const p of paths){
+  for(const z of p.levels)for(const lp of p.loops){
+   const mv=loopMoves(lp,z,p.zTabTop);if(mv.length<2)continue;
+   let cur=mv[1].tab,run=[mv[0],mv[1]];
+   for(let i=2;i<mv.length;i++){if(mv[i].tab!==cur){pathLine(run,'',cur?tabMat:cutMat);cur=mv[i].tab;run=[mv[i-1],mv[i]];}else run.push(mv[i]);}
+   pathLine(run,'',cur?tabMat:cutMat);
+  }
+  const first=p.loops[0].pts[0];
+  if(prev){pathLine([{x:prev.pt.x,y:prev.pt.y,z:prev.z},{x:prev.pt.x,y:prev.pt.y,z:sz}],'#9aa4b2',rapidMat);pathLine([{x:prev.pt.x,y:prev.pt.y,z:sz},{x:first.x,y:first.y,z:sz}],'#9aa4b2',rapidMat);}
+  pathLine([{x:first.x,y:first.y,z:sz},{x:first.x,y:first.y,z:p.params.stockTop}],'#9aa4b2',rapidMat);
+  prev={pt:p.loops.at(-1).pts.at(-1),z:p.levels.at(-1)};
+ }
+ // Griffe zum Verschieben der Holding Tabs (nur bei Pfaden mit genau einer Schleife)
+ {const ext=modelBounds?modelBounds.getSize(new THREE.Vector3()):null,hr=Math.max(.8,(ext?Math.max(ext.x,ext.y,ext.z):100)/110),hg=new THREE.SphereGeometry(hr,16,12);
+  paths.forEach((p,pi)=>{if(!p.tabCount||p.loops.length!==1||!p.loops[0].tabCenters)return;const lp=p.loops[0];
+   lp.tabCenters.forEach((c,ci)=>{const m=new THREE.Mesh(hg,new THREE.MeshBasicMaterial({color:'#ffb020'}));m.position.set(c.x,c.y,p.params.stockTop);m.renderOrder=15;
+    m.userData={pathIdx:pi,ci,lp,z:p.params.stockTop,entityIndices:p.entityIndices};camGroup.add(m);tabHandles.push(m);});});}
+ camGcode=makeGcode(paths,sz);
+ const open=paths.filter(p=>!p.closed).length,passes=paths.reduce((n,p)=>n+p.levels.length,0),tabs=paths.reduce((n,p)=>n+p.tabCount,0);
+ setCamStatus(()=>tr('cam.result',{n:paths.length,passes})+(tabs?tr('cam.result.tabs',{n:tabs}):'')+(open?tr('cam.result.open',{n:open}):''));updateInfo();
+}
+
+// ===== Simulator =====
+const simGroup=new THREE.Group();simGroup.visible=false;scene.add(simGroup);
+const toolRoot=new THREE.Group(),toolRot=new THREE.Group();toolRot.rotation.x=Math.PI/2;toolRoot.add(toolRot);   // lokale Y-Achse = Z der Welt
+const cutMesh=new THREE.Mesh(new THREE.CylinderGeometry(.5,.5,1,32),new THREE.MeshStandardMaterial({color:0xffa726,metalness:.55,roughness:.35,transparent:true}));
+const shankMesh=new THREE.Mesh(new THREE.CylinderGeometry(.5,.5,1,32),new THREE.MeshStandardMaterial({color:0xb0bec5,metalness:.7,roughness:.4,transparent:true}));
+cutMesh.renderOrder=shankMesh.renderOrder=20;toolRot.add(cutMesh,shankMesh);simGroup.add(toolRoot);
+function setToolDia(d){const L1=Math.max(d*3,12),sh=Math.max(d,6),L2=30;cutMesh.scale.set(d,L1,d);cutMesh.position.y=L1/2;shankMesh.scale.set(sh,L2,sh);shankMesh.position.y=L1+L2/2;sim.lastDia=d;}
+const G={port:null,writer:null,reader:null,connected:false,ready:false,gotAny:false,ver:null,state:'Disconnected',sub:'',mpos:null,wpos:null,wco:{x:0,y:0,z:0},wcoStatus:false,params:{},fs:[0,0],ov:null,rx:'',q:[],pending:[],pendChars:0,jogIn:0,job:null,poll:null,step:1,axis:'X',initDone:false};
+const sim={state:'stopped',t:0,total:0,speed:1,segs:[],ends:[],pauses:[],pauseIdx:0,last:0,paintT:0,kerf:null,ctx:null,cvs:null,tex:null,sc:1,b:null,lastDia:0,uiT:0,msg:'',dragging:false,done:null,g1Before:[],g1List:[],partial:-1,cur:null,liveIdx:0,livePos:null};
+function simClearKerf(){if(!sim.ctx)return;const c=sim.ctx;c.clearRect(0,0,sim.cvs.width,sim.cvs.height);c.fillStyle='rgba(201,163,107,0.22)';c.fillRect(0,0,sim.cvs.width,sim.cvs.height);sim.tex.needsUpdate=true;sim.paintT=0;}
+function simBuild(){
+ if(!camPaths.length)throw new Error(tr('sim.err.nopaths'));
+ const sz=safeZ(),rapid=Math.max(1,Number($('#rapidRate').value)||3000);
+ const tl=simTimeline(buildProgram(camPaths,sz),sz,rapid,camPaths[0].params.cutterDia);
+ if(!tl.segs.length)throw new Error(tr('sim.err.nomoves'));
+ sim.segs=tl.segs;sim.lineSeg=tl.lineSeg;sim.ends=tl.segs.map(x=>x.t1);sim.pauses=tl.pauses;sim.total=tl.total;sim.t=0;sim.pauseIdx=0;sim.msg='';
+ let minx=Infinity,miny=Infinity,maxx=-Infinity,maxy=-Infinity,top=-Infinity;
+ for(const g of tl.segs){if(g.g!==1)continue;minx=Math.min(minx,g.x0,g.x1);maxx=Math.max(maxx,g.x0,g.x1);miny=Math.min(miny,g.y0,g.y1);maxy=Math.max(maxy,g.y0,g.y1);top=Math.max(top,g.info.top);}
+ if(!isFinite(minx)){minx=miny=0;maxx=maxy=10;top=0;}
+ const pad=Math.max(...camPaths.map(p=>p.params.cutterDia));minx-=pad;miny-=pad;maxx+=pad;maxy+=pad;
+ const w=maxx-minx,h=maxy-miny,sc=Math.min(2048/Math.max(w,h),60);
+ if(sim.kerf){simGroup.remove(sim.kerf);sim.kerf.geometry.dispose();sim.kerf.material.dispose();sim.tex.dispose();}
+ sim.cvs=document.createElement('canvas');sim.cvs.width=Math.max(8,Math.ceil(w*sc));sim.cvs.height=Math.max(8,Math.ceil(h*sc));sim.ctx=sim.cvs.getContext('2d');sim.sc=sc;sim.b={minx,maxy};
+ sim.tex=new THREE.CanvasTexture(sim.cvs);sim.tex.colorSpace=THREE.SRGBColorSpace;
+ sim.kerf=new THREE.Mesh(new THREE.PlaneGeometry(w,h),new THREE.MeshBasicMaterial({map:sim.tex,transparent:true,depthWrite:false}));
+ sim.kerf.position.set(minx+w/2,miny+h/2,top+0.02);sim.kerf.renderOrder=5;simGroup.add(sim.kerf);
+ // graue Spur der bereits abgefahrenen Schnittwege
+ sim.g1Before=[];sim.g1List=[];for(const sg of tl.segs){sim.g1Before.push(sim.g1List.length);if(sg.g===1)sim.g1List.push(sg);}
+ if(sim.done){simGroup.remove(sim.done);sim.done.geometry.dispose();sim.done.material.dispose();}
+ const arr=new Float32Array(Math.max(1,sim.g1List.length)*6);sim.g1List.forEach((sg,i)=>arr.set([sg.x0,sg.y0,sg.z0,sg.x1,sg.y1,sg.z1],i*6));
+ const og=new THREE.BufferGeometry();og.setAttribute('position',new THREE.BufferAttribute(arr,3));og.setDrawRange(0,0);
+ sim.done=new THREE.LineSegments(og,new THREE.LineBasicMaterial({color:'#8d97a3',transparent:true,depthTest:false,depthWrite:false}));sim.done.renderOrder=10;sim.done.frustumCulled=false;simGroup.add(sim.done);sim.partial=-1;
+ simClearKerf();setToolDia(tl.segs[0].info.dia);simApply(0);
+}
+function simAt(t){const S=sim.segs;let lo=0,hi=S.length-1;while(lo<hi){const mid=(lo+hi)>>1;if(sim.ends[mid]<t)lo=mid+1;else hi=mid;}
+ const s=S[lo],f=t>=s.t1?1:Math.max(0,(t-s.t0)/(s.t1-s.t0));
+ return {x:s.x0+(s.x1-s.x0)*f,y:s.y0+(s.y1-s.y0)*f,z:s.z0+(s.z1-s.z0)*f,s,i:lo};}
+function simShade(z,info){const f=Math.max(0,Math.min(1,(info.top-z)/Math.max(info.top-info.bottom,1e-6))),a=[166,124,74],b=[43,28,13];return `rgb(${a.map((v,i)=>Math.round(v+(b[i]-v)*f)).join(',')})`;}
+function simPaintSeg(x0,y0,x1,y1,z,info){
+ const c=sim.ctx,sc=sim.sc,px=x=>(x-sim.b.minx)*sc,py=y=>(sim.b.maxy-y)*sc;
+ c.strokeStyle=c.fillStyle=simShade(z,info);
+ if(Math.hypot(x1-x0,y1-y0)<1e-9){c.beginPath();c.arc(px(x0),py(y0),info.dia/2*sc,0,Math.PI*2);c.fill();return;}
+ c.lineWidth=info.dia*sc;c.lineCap='round';c.beginPath();c.moveTo(px(x0),py(y0));c.lineTo(px(x1),py(y1));c.stroke();
+}
+function simPaint(tNew){
+ if(!sim.ctx||tNew<=sim.paintT)return;
+ let lo=0,hi=sim.segs.length;while(lo<hi){const mid=(lo+hi)>>1;if(sim.ends[mid]>sim.paintT)hi=mid;else lo=mid+1;}
+ for(let i=lo;i<sim.segs.length;i++){const s=sim.segs[i];if(s.t0>=tNew)break;
+  const a=Math.max(s.t0,sim.paintT),b=Math.min(s.t1,tNew);if(b<=a||s.g!==1)continue;
+  const d=s.t1-s.t0,fa=(a-s.t0)/d,fb=(b-s.t0)/d,L=(p,q,f)=>p+(q-p)*f;
+  const z0=L(s.z0,s.z1,fa),z1=L(s.z0,s.z1,fb);if(Math.min(z0,z1)>=s.info.top-1e-6)continue;
+  simPaintSeg(L(s.x0,s.x1,fa),L(s.y0,s.y1,fa),L(s.x0,s.x1,fb),L(s.y0,s.y1,fb),Math.min(z0,z1),s.info);}
+ sim.paintT=tNew;sim.tex.needsUpdate=true;
+}
+function simApply(t){const p=simAt(t);toolRoot.position.set(p.x,p.y,p.z);if(p.s.info.dia!==sim.lastDia)setToolDia(p.s.info.dia);sim.cur=p;simOverlay(p);}
+function simOverlay(p){
+ const g=sim.done;if(!g)return;const pos=g.geometry.attributes.position,arr=pos.array,cs=sim.g1Before[p.i],isG1=p.s.g===1;
+ if(sim.partial>=0&&(!isG1||sim.partial!==cs)){const q=sim.g1List[sim.partial];arr[sim.partial*6+3]=q.x1;arr[sim.partial*6+4]=q.y1;arr[sim.partial*6+5]=q.z1;pos.needsUpdate=true;sim.partial=-1;}
+ if(isG1){const o=cs*6;arr[o+3]=p.x;arr[o+4]=p.y;arr[o+5]=p.z;sim.partial=cs;pos.needsUpdate=true;}
+ g.geometry.setDrawRange(0,(cs+(isG1?1:0))*2);
+}
+const simFmt=t=>{t=Math.max(0,Math.round(t));return `${String(Math.floor(t/60)).padStart(2,'0')}:${String(t%60).padStart(2,'0')}`;};
+function simUpdateUI(force){
+ const live=sim.state==='live',jobOn=!!(G.job&&['running','paused','toolchange'].includes(G.job.state));
+ $('#simPlay').disabled=sim.state==='playing'||live;$('#simPause').disabled=sim.state!=='playing';$('#simStop').disabled=sim.state==='stopped'||(live&&jobOn);
+ $('#simProg').disabled=live;
+ const now=performance.now();if(!force&&now-sim.uiT<80)return;sim.uiT=now;
+ if(live){const J=G.job;$('#simProg').value=J&&J.lines.length?Math.round(J.acked/J.lines.length*1000):0;$('#simTime').textContent=J?tr('sim.lines',{a:J.acked,n:J.lines.length}):'';
+  const w=G.wpos;$('#simInfo').textContent=tr('sim.live',{state:G.state+(G.sub?':'+G.sub:'')})+(w?` · X ${w.x.toFixed(2)}  Y ${w.y.toFixed(2)}  Z ${w.z.toFixed(2)}`:'')+(sim.liveIdx&&sim.segs[sim.liveIdx]?` · ${infoText(sim.segs[sim.liveIdx].info)}`:'')+(jobOn?'':tr('sim.live.done'));return;}
+ if(!sim.dragging)$('#simProg').value=sim.total?Math.round(sim.t/sim.total*1000):0;
+ $('#simTime').textContent=`${simFmt(sim.t)} / ${simFmt(sim.total)}`;
+ let txt;
+ if(sim.state==='stopped')txt=tr('sim.ready',{speed:sim.speed.toFixed(1)});
+ else if(sim.msg)txt=typeof sim.msg==='function'?sim.msg():sim.msg;
+ else if(sim.cur){const q=sim.cur,s=q.s;txt=`${infoText(s.info)} · Ø${s.info.dia} mm · X ${q.x.toFixed(2)}  Y ${q.y.toFixed(2)}  Z ${q.z.toFixed(2)} · ${s.g===0?tr('sim.rapid'):tr('sim.feed',{f:s.f})}${sim.state==='finished'?' · '+tr('sim.finished'):''}`;}
+ $('#simInfo').textContent=txt||'';
+}
+function simPlay(){
+ if(sim.state==='playing'||sim.state==='live')return;
+ if(sim.state==='stopped'||sim.state==='finished'){try{simBuild();}catch(e){fail(tr('toast.simulator'),e);return;}}
+ sim.msg='';sim.state='playing';sim.last=performance.now();simGroup.visible=true;setTabHandlesVisible(false);simUpdateUI(true);
+}
+function simPause(){if(sim.state!=='playing')return;sim.state='paused';simUpdateUI(true);}
+function simStop(){
+ if(sim.state==='stopped')return;
+ if(sim.state==='live'&&G.job&&['running','paused','toolchange'].includes(G.job.state))return;
+ sim.state='stopped';sim.t=0;sim.pauseIdx=0;sim.msg='';simGroup.visible=false;simClearKerf();sim.cur=null;if(sim.done){sim.done.geometry.setDrawRange(0,0);sim.partial=-1;}setTabHandlesVisible(true);liveShowTool();simUpdateUI(true);
+}
+function simInvalidate(){if(sim.state!=='stopped'&&sim.state!=='live')simStop();}
+function simSeek(frac){
+ if(sim.state==='live')return;
+ if(sim.state==='stopped'){try{simBuild();}catch(e){fail(tr('toast.simulator'),e);$('#simProg').value=0;return;}sim.state='paused';simGroup.visible=true;setTabHandlesVisible(false);}
+ const target=Math.max(0,Math.min(1,frac))*sim.total;
+ if(target<sim.t){simClearKerf();}
+ sim.pauseIdx=sim.pauses.filter(p=>p.t<target-1e-9).length;sim.t=target;sim.msg='';
+ simPaint(target);simApply(target);
+ if(sim.state==='finished'&&target<sim.total)sim.state='paused';
+ simUpdateUI(true);
+}
+function simTick(now){
+ if(sim.state!=='playing'){sim.last=now;return;}
+ const dt=Math.min(Math.max(now-sim.last,0),100)/1000;sim.last=now;
+ let nt=sim.t+dt*sim.speed;
+ if(sim.pauseIdx<sim.pauses.length&&sim.pauses[sim.pauseIdx].t<=nt+1e-9){const pm=sim.pauses[sim.pauseIdx++];nt=Math.max(sim.t,pm.t);sim.state='paused';sim.msg=()=>tr('sim.toolchange',{dia:pm.dia});}
+ if(nt>=sim.total){nt=sim.total;sim.state='finished';}
+ sim.t=nt;simPaint(nt);simApply(nt);simUpdateUI(sim.state!=='playing');
+}
+$('#simPlay').addEventListener('click',simPlay);$('#simPause').addEventListener('click',simPause);$('#simStop').addEventListener('click',()=>simStop());
+$('#simSpeed').addEventListener('input',e=>{sim.speed=Number(e.target.value)||1;$('#simSpeedOut').textContent=sim.speed.toFixed(1)+'x';simUpdateUI(true);});
+$('#simProg').addEventListener('pointerdown',()=>{sim.dragging=true;});
+window.addEventListener('pointerup',()=>{sim.dragging=false;});
+$('#simProg').addEventListener('input',e=>simSeek(Number(e.target.value)/1000));
+$('#rapidRate').addEventListener('change',()=>simInvalidate());
+$('#spindleRpm').addEventListener('change',()=>{$('#mRpm').value=$('#spindleRpm').value;invalidateCam();});
+simUpdateUI(true);
+
+// ===== Holding Tabs mit der Maus verschieben =====
+const tabRay=new THREE.Raycaster(),tabDrag={active:false,h:null,from:null};
+function setTabHandlesVisible(v){for(const h of tabHandles)h.visible=v;}
+function pointerNdc(e){const r=renderer.domElement.getBoundingClientRect();return new THREE.Vector2(((e.clientX-r.left)/r.width)*2-1,-((e.clientY-r.top)/r.height)*2+1);}
+function pickTabHandle(e){if(!tabHandles.length||!camGroup.visible)return null;tabRay.setFromCamera(pointerNdc(e),camera);
+ return tabRay.intersectObjects(tabHandles.filter(h=>h.visible),false)[0]?.object||null;}
+function endTabDrag(commit){
+ if(!tabDrag.active)return;const h=tabDrag.h;tabDrag.active=false;tabDrag.h=null;controls.enabled=true;view.style.cursor='';
+ if(!commit){h.position.copy(tabDrag.from);return;}
+ const pos=tabHandles.filter(x=>x.userData.pathIdx===h.userData.pathIdx).sort((a,b)=>a.userData.ci-b.userData.ci).map(x=>({x:+x.position.x.toFixed(4),y:+x.position.y.toFixed(4)}));
+ for(const idx of h.userData.entityIndices){const o=elementOrder.find(q=>q.userData.entityIndex===idx);if(o?.userData.params)o.userData.params.tabPositions=pos;}
+ renderElementList();invalidateCam();
+}
+view.addEventListener('pointerdown',e=>{if(e.button!==0)return;const h=pickTabHandle(e);if(!h)return;
+ e.stopPropagation();e.preventDefault();tabDrag.active=true;tabDrag.h=h;tabDrag.from=h.position.clone();controls.enabled=false;view.style.cursor='grabbing';
+ try{view.setPointerCapture(e.pointerId);}catch{}},true);
+view.addEventListener('pointermove',e=>{
+ if(tabDrag.active){const h=tabDrag.h;tabRay.setFromCamera(pointerNdc(e),camera);
+  const pt=new THREE.Vector3();if(tabRay.ray.intersectPlane(new THREE.Plane(new THREE.Vector3(0,0,1),-h.userData.z),pt)){
+   const lp=h.userData.lp,pr=pathProject(lp.pts,lp.cum,{x:pt.x,y:pt.y});h.position.set(pr.x,pr.y,h.userData.z);}
+  e.stopPropagation();return;}
+ if(e.buttons)return;view.style.cursor=pickTabHandle(e)?'grab':'';
+},true);
+view.addEventListener('pointerup',e=>{if(!tabDrag.active)return;try{view.releasePointerCapture(e.pointerId);}catch{}endTabDrag(true);},true);
+view.addEventListener('pointercancel',()=>endTabDrag(false),true);
+
+// ===== Maschine (GRBL über Web Serial) =====
+const grblErrText=c=>hasTr('grbl.err.'+c)?tr('grbl.err.'+c):tr('toast.unknown');
+const grblAlmText=c=>hasTr('grbl.alm.'+c)?tr('grbl.alm.'+c):tr('m.alarm.unknown');
+const RX_LIMIT=120,enc=new TextEncoder();
+const jobActive=()=>!!(G.job&&['running','paused','toolchange'].includes(G.job.state));
+function mlog(cls,text){const el=$('#mLog');const d=document.createElement('div');d.className=cls;d.textContent=text;el.appendChild(d);while(el.childElementCount>300)el.firstChild.remove();el.scrollTop=el.scrollHeight;}
+function wr(bytes){if(!G.writer)return;G.writer.write(bytes).catch(e=>console.error('Serial write',e));}
+function rt(code){wr(new Uint8Array([code]));}                                      // Echtzeit-Befehl (kein Zeilenende, kein Puffer)
+function sendRaw(text){wr(enc.encode(text+'\n'));mlog('tx',text);}
+function sendLine(text,meta={}){G.q.push({text,meta});pump();}
+function jobFeedItem(){
+ const J=G.job;if(!J||J.state!=='running'||J.idx>=J.lines.length)return null;
+ const ln=J.lines[J.idx];
+ if(ln.tc){   // Werkzeugwechsel: erst senden, wenn alles abgearbeitet ist und die Maschine steht
+  if(!G.pending.length&&G.state==='Idle'){J.state='toolchange';mToolChangeShow(ln.msg);mUpdateUI();}
+  return null;}
+ return ln;
+}
+function pump(){
+ if(!G.connected||!G.writer)return;
+ for(;;){
+  let item=G.q[0],fromQ=!!item;if(!item)item=jobFeedItem();
+  if(!item)break;
+  const len=item.text.length+1;
+  if(G.pending.length&&G.pendChars+len>RX_LIMIT)break;           // Zeichenzählung: GRBL-Empfangspuffer nicht überfüllen
+  let meta;if(fromQ){G.q.shift();meta=item.meta;}else{G.job.idx++;meta={job:true,i:G.job.idx-1};}
+  G.pending.push({len,text:item.text,meta});G.pendChars+=len;sendRaw(item.text);
+ }
+}
+function resetStream(){G.q=[];G.pending=[];G.pendChars=0;G.jogIn=0;}
+function jobFail(msg){const J=G.job;if(!J||['done','error','aborted'].includes(J.state))return;J.state='error';J.err=msg;rt(0x21);mToolChangeHide();mUpdateUI();}
+function onAck(err){
+ const it=G.pending.shift();if(it)G.pendChars-=it.len;
+ if(it?.meta?.jog)G.jogIn=Math.max(0,G.jogIn-1);
+ if(it?.meta?.job&&!err&&G.job)G.job.acked++;
+ if(err){const m=`error:${err} – ${grblErrText(err)}`+(it?tr('m.err.cmd',{cmd:it.text}):'');mlog('er',m);
+  if(!(G.job&&G.job.state==='error'))showError(m,tr('m.grblerr'));
+  if(it?.meta?.job)jobFail(m);}
+ pump();jobCheckDone();mUpdateUI();
+}
+function jobCheckDone(){
+ const J=G.job;if(!J||J.state!=='running'||J.idx<J.lines.length||G.pending.length||G.state!=='Idle')return;
+ J.state='done';J.t1=Date.now();showError(tr('m.job.finished',{n:J.lines.length,dur:mFmtDur((J.t1-J.t0)/1000)}),tr('m.job.finished.title'),'ok');mUpdateUI();
+}
+function parseVec(str){const m=/(-?[\d.]+),(-?[\d.]+),(-?[\d.]+)/.exec(str||'');return m?{x:+m[1],y:+m[2],z:+m[3]}:null;}
+function parseStatus(line){
+ const sm=/^<([A-Za-z]+)(?::(\d+))?/.exec(line);if(!sm)return;
+ G.state=sm[1];G.sub=sm[2]||'';
+ if(G.ver==null)G.ver=line.includes('|')?1.1:0.9;
+ const mp=/MPos:([-\d.,]+)/.exec(line),wp=/WPos:([-\d.,]+)/.exec(line),wc=/WCO:([-\d.,]+)/.exec(line),fs=/FS:(\d+),(\d+)/.exec(line),ov=/Ov:(\d+),(\d+),(\d+)/.exec(line);
+ if(wc){G.wco=parseVec(wc[1])||G.wco;G.wcoStatus=true;}
+ if(mp)G.mpos=parseVec(mp[1]);
+ if(wp){G.wpos=parseVec(wp[1]);if(G.mpos)G.wco={x:G.mpos.x-G.wpos.x,y:G.mpos.y-G.wpos.y,z:G.mpos.z-G.wpos.z};}
+ else if(G.mpos)G.wpos={x:G.mpos.x-G.wco.x,y:G.mpos.y-G.wco.y,z:G.mpos.z-G.wco.z};
+ if(wp&&!mp&&G.wpos)G.mpos={x:G.wpos.x+G.wco.x,y:G.wpos.y+G.wco.y,z:G.wpos.z+G.wco.z};
+ if(fs)G.fs=[+fs[1],+fs[2]];if(ov)G.ov=[+ov[1],+ov[2],+ov[3]];
+ if(!G.ready){G.ready=true;mInit();}
+}
+function mInit(){if(G.initDone)return;G.initDone=true;sendLine('$I');sendLine('$#');}
+function onLine(line){
+ G.gotAny=true;
+ if(line[0]==='<'){parseStatus(line);pump();jobCheckDone();mUpdateUI();liveTick();return;}
+ mlog(/^(error|ALARM)/i.test(line)?'er':'rx',line);
+ if(line==='ok'){onAck(0);return;}
+ let m;
+ if((m=/^error:(\d+)/.exec(line))){onAck(+m[1]);return;}
+ if((m=/^ALARM:(\d+)/.exec(line))){const t=`ALARM:${m[1]} – ${grblAlmText(m[1])}`;showError(t,tr('m.grblalm'));G.state='Alarm';jobFail(t);mUpdateUI();return;}
+ if((m=/^Grbl\s+(\d)\.(\d)/i.exec(line))){G.ver=+(m[1]+'.'+m[2]);G.ready=true;resetStream();G.initDone=false;G.params={};G.wcoStatus=false;
+  if(G.job&&['running','paused','toolchange'].includes(G.job.state)){G.job.state='error';G.job.err=tr('m.err.reset');}
+  mToolChangeHide();mInit();mUpdateUI();return;}
+ if((m=/^\[(G5[4-9]|G28|G30|G92):(.*)\]$/.exec(line))){G.params[m[1]]=parseVec(m[2]);wcoFromParams();return;}
+ if((m=/^\[TLO:(-?[\d.]+)\]$/.exec(line))){G.params.TLO=+m[1];wcoFromParams();return;}
+}
+function wcoFromParams(){if(G.wcoStatus)return;const a=G.params.G54||{x:0,y:0,z:0},b=G.params.G92||{x:0,y:0,z:0};G.wco={x:a.x+b.x,y:a.y+b.y,z:a.z+b.z+(G.params.TLO||0)};}
+async function readLoop(port){
+ const dec=new TextDecoder();let reader;
+ try{reader=port.readable.getReader();G.reader=reader;
+  for(;;){const {value,done}=await reader.read();if(done)break;G.rx+=dec.decode(value,{stream:true});
+   let i;while((i=G.rx.search(/[\r\n]/))>=0){const ln=G.rx.slice(0,i).trim();G.rx=G.rx.slice(i+1);if(ln)onLine(ln);}}
+ }catch(e){console.error('Serial read',e);}
+ finally{try{reader?.releaseLock();}catch{}if(G.connected&&G.port===port)mDisconnect(tr('m.lost'));}
+}
+async function mConnect(){
+ if(!('serial' in navigator))throw new Error(tr('m.noserial'));
+ const port=await navigator.serial.requestPort();
+ await port.open({baudRate:Number($('#mBaud').value)||115200});
+ Object.assign(G,{port,writer:port.writable.getWriter(),connected:true,ready:false,gotAny:false,ver:null,state:'Connected',sub:'',rx:'',initDone:false,params:{},wcoStatus:false,mpos:null,wpos:null,job:null});resetStream();
+ readLoop(port);
+ G.poll=setInterval(()=>{if(G.connected)rt(0x3F);},200);
+ setTimeout(()=>{if(G.connected&&!G.gotAny)rt(0x18);},2500);          // keine Antwort: Soft-Reset auslösen
+ mlog('rx',tr('m.log.connected'));mUpdateUI();
+}
+async function mDisconnect(reason){
+ if(!G.connected&&!G.port)return;
+ G.connected=false;clearInterval(G.poll);
+ if(jobActive()){G.job.state='error';G.job.err=tr('m.lost.job');}
+ const port=G.port;try{await G.reader?.cancel();}catch{}await new Promise(r=>setTimeout(r,60));
+ try{G.writer?.releaseLock();}catch{}try{await port?.close();}catch{}
+ Object.assign(G,{port:null,writer:null,reader:null,ready:false,state:'Disconnected',sub:'',wpos:null,mpos:null});resetStream();
+ mToolChangeHide();liveHide();mUpdateUI();mlog('er',tr('m.log.disconnected'));
+ if(reason)showError(reason,tr('m.toast'));
+}
+// ---- Befehle ----
+function jogAllowed(){return G.connected&&G.ready&&(G.state==='Idle'||G.state==='Jog')&&(!G.job||G.job.state==='toolchange'||!['running','paused','error'].includes(G.job.state));}
+function idleAllowed(){return G.connected&&G.ready&&G.state==='Idle'&&(!G.job||G.job.state==='toolchange'||!['running','paused'].includes(G.job.state));}
+function jogStep(axis,dist){
+ if(!jogAllowed()||G.jogIn>=6||!dist)return;
+ const f=Math.max(1,Number($('#mFeed').value)||500),d=dist.toFixed(3);
+ if(G.ver>=1.1){G.jogIn++;sendLine(`$J=G91G21${axis}${d}F${f}`,{jog:true});}
+ else{G.jogIn++;sendLine('G91');sendLine(`G1${axis}${d}F${f}`,{jog:true});sendLine('G90');}
+}
+function zeroAxes(axes){if(!idleAllowed()){showError(tr('m.zero.idle'),tr('m.toast'));return;}sendLine(`G10 L20 P1 ${axes.map(a=>a+'0').join(' ')}`);sendLine('$#');}
+function goXY0(){if(!idleAllowed()){showError(tr('m.go.idle'),tr('m.toast'));return;}sendLine('G90');sendLine(`G0 Z${safeZ()}`);sendLine('G0 X0 Y0');}
+function mCmd(text){if(!G.connected)return;if(!text)return;sendLine(text.trim());}
+function mFmtDur(sec){sec=Math.max(0,Math.round(sec));const h=Math.floor(sec/3600),m=Math.floor(sec%3600/60),s=sec%60;return h?`${h} h ${m} min`:m?`${m} min ${s} s`:`${s} s`;}
+// ---- Fräsprogramm ----
+function jobStart(){
+ if(!G.connected||!G.ready){showError(tr('m.connectfirst'),tr('m.toast'));return;}
+ if(jobActive()){return;}
+ if(G.state!=='Idle'){showError(tr('m.notready',{state:G.state}),tr('m.toast'));return;}
+ try{if(camTimer||!camGcode){clearTimeout(camTimer);camTimer=null;generateCam();}}catch(e){fail(tr('err.gcode'),e);return;}
+ const lines=[];for(const raw of camGcode.split('\n')){const text=raw.replace(/\(.*?\)/g,'').trim();if(!text)continue;lines.push({text,tc:/^M0+$/i.test(text),msg:(/\((.*)\)/.exec(raw)||[])[1]});}
+ if(!lines.length){showError(tr('m.nogcode'),tr('m.toast'));return;}
+ const w=G.wpos,tools=[...new Set(camPaths.map(p=>p.params.cutterDia))],tcs=lines.filter(l=>l.tc).length;
+ const ok=confirm(tr('m.confirm.start',{dia:tools[0],sz:safeZ(),pos:`X ${w.x.toFixed(2)}  Y ${w.y.toFixed(2)}  Z ${w.z.toFixed(2)}`,n:lines.length,tc:tcs?tr('m.confirm.tc',{n:tcs}):''}));
+ if(!ok)return;
+ if(!simLiveStart())return;
+ G.job={lines,idx:0,acked:0,state:'running',t0:Date.now(),err:''};
+ mlog('rx',tr('m.log.started',{n:lines.length}));mUpdateUI();pump();
+}
+function jobPause(){const J=G.job;if(!J)return;if(J.state==='running'){rt(0x21);J.state='paused';}else if(J.state==='paused'){rt(0x7E);J.state='running';pump();}mUpdateUI();}
+function jobAbort(){
+ const J=G.job;if(!J||!['running','paused','toolchange','error'].includes(J.state))return;
+ const wasToolChange=J.state==='toolchange';J.state='aborted';mToolChangeHide();
+ if(!wasToolChange)rt(0x21);                                       // erst anhalten (Feed Hold) ...
+ setTimeout(()=>{rt(0x18);resetStream();mlog('er',tr('m.log.aborted'));mUpdateUI();},wasToolChange?0:500);   // ... dann Reset (stoppt auch die Spindel)
+ mUpdateUI();
+}
+function mToolChangeShow(msg){$('#mTc').hidden=false;const d=/dia\s+([\d.]+)/.exec(msg||'');G.tcDia=d?d[1]:null;mTcRender();}
+function mTcRender(){if(!$('#mTc').hidden)$('#mTcMsg').textContent=G.tcDia?tr('m.tc.msg',{dia:G.tcDia}):tr('m.tc.title');}
+function mToolChangeHide(){$('#mTc').hidden=true;}
+function toolChangeContinue(){const J=G.job;if(!J||J.state!=='toolchange')return;J.idx++;J.acked++;J.state='running';mToolChangeHide();mUpdateUI();pump();}
+// ---- Live-Anzeige (Fräser wie im Simulator) ----
+function segDist3(w,s){const dx=s.x1-s.x0,dy=s.y1-s.y0,dz=s.z1-s.z0,l2=dx*dx+dy*dy+dz*dz;let t=l2>0?((w.x-s.x0)*dx+(w.y-s.y0)*dy+(w.z-s.z0)*dz)/l2:0;t=Math.max(0,Math.min(1,t));
+ const x=s.x0+dx*t,y=s.y0+dy*t,z=s.z0+dz*t;return {d:Math.hypot(w.x-x,w.y-y,w.z-z),x,y,z};}
+function simLiveStart(){
+ try{if(sim.state!=='stopped'){if(sim.state==='live'){sim.state='finished';}simStop();}simBuild();}catch(e){fail(tr('toast.visual'),e);return false;}
+ sim.state='live';sim.liveIdx=0;sim.livePos=null;sim.kerf.visible=true;sim.done.visible=true;simGroup.visible=true;setTabHandlesVisible(false);simUpdateUI(true);return true;
+}
+const LIVE_BACK=40;
+function simLiveUpdate(w){
+ toolRoot.position.set(w.x,w.y,w.z);
+ const S=sim.segs;if(!S.length)return;
+ let best=sim.liveIdx,bp=null,bd=Infinity;
+  // Die Maschine kann nur Zeilen ausführen, die schon quittiert (acked) wurden, und höchstens ~LIVE_BACK Zeilen davor (Planner-/RX-Puffer).
+ // Nur dieses Fenster kommt als aktuelles Segment in Frage; so kann die Zuordnung nie auf eine andere Schleife/Ebene mit ähnlicher Geometrie springen.
+ let lo=Math.max(0,sim.liveIdx-2),hi=Math.min(S.length-1,sim.liveIdx+500);
+ const J=G.job,LS=sim.lineSeg;
+ if(J&&LS&&LS.length&&J.lines.length===LS.length){const a=Math.max(0,Math.min(J.acked,LS.length)-1);hi=Math.min(S.length-1,LS[a]);lo=Math.max(Math.min(lo,hi),LS[Math.max(0,a-LIVE_BACK)]);if(lo>hi)lo=hi;}
+ for(let i=lo;i<=hi;i++){const r=segDist3(w,S[i]);if(r.d<bd-1e-6){bd=r.d;best=i;bp=r;}}
+ if(bp&&bd<5)sim.liveIdx=best;else bp=segDist3(w,S[sim.liveIdx]);
+ const s=S[sim.liveIdx];if(s.info.dia!==sim.lastDia)setToolDia(s.info.dia);
+  // Braune Spur: exakt die geplanten Segmente bis zum aktuellen Fortschritt malen (wie im Simulator), keine Sehnen zwischen Positionsabfragen.
+ {const L=Math.hypot(s.x1-s.x0,s.y1-s.y0,s.z1-s.z0),fr=L>1e-9?Math.min(1,Math.hypot(bp.x-s.x0,bp.y-s.y0,bp.z-s.z0)/L):1;simPaint(s.t0+(s.t1-s.t0)*fr);}
+ sim.livePos={x:w.x,y:w.y,z:w.z};
+ simOverlay({i:sim.liveIdx,s,x:bp.x,y:bp.y,z:bp.z});
+}
+function liveShowTool(){
+ if(sim.state!=='stopped'||!G.connected||!G.wpos)return;
+ simGroup.visible=true;if(sim.kerf)sim.kerf.visible=false;if(sim.done)sim.done.visible=false;
+ if(!sim.lastDia)setToolDia(camPaths[0]?.params.cutterDia||3);
+ toolRoot.position.set(G.wpos.x,G.wpos.y,G.wpos.z);
+}
+function liveHide(){if(sim.state==='stopped')simGroup.visible=false;}
+function liveTick(){
+ if(!G.wpos)return;
+ if(sim.state==='live')simLiveUpdate(G.wpos);else liveShowTool();
+ if(sim.state==='live')simUpdateUI(false);
+}
+// ---- UI ----
+function mUpdateUI(){
+ const c=G.connected,ready=c&&G.ready,J=G.job,jobOn=jobActive();
+ const st=$('#mState');st.textContent=c?(G.ready?G.state+(G.sub?':'+G.sub:''):tr('m.state.wait')):tr('m.state.off');st.className='mstate '+(c&&G.ready?G.state.toLowerCase():'');
+ $('#mConnect').textContent=c?tr('m.disconnect'):tr('m.connect');$('#mBaud').disabled=c;$('#machineToggle').classList.toggle('conn',c);
+ $('#mHint').textContent=!c?tr('m.hint.off'):tr('m.hint.on',{ver:G.ver??'?'});mTcRender();
+ const f=v=>v==null?'–':v.toFixed(3);
+ for(const a of ['x','y','z']){$('#mw'+a.toUpperCase()).textContent=f(G.wpos?.[a]);$('#mm'+a.toUpperCase()).textContent=G.mpos?'M '+G.mpos[a].toFixed(3):'';}
+ $('#mJogSet').disabled=!jogAllowed();$('#mZeroSet').disabled=!idleAllowed();$('#mCtlSet').disabled=!ready||jobOn;
+ $('#mJobSet').disabled=!ready;
+ $('#mStart').disabled=jobOn||!ready;$('#mPauseJob').disabled=!(J&&['running','paused'].includes(J.state));$('#mPauseJob').textContent=J?.state==='paused'?tr('m.resume'):tr('m.pause');
+ $('#mAbort').disabled=!(J&&['running','paused','toolchange','error'].includes(J.state));
+ $('#mCmd').disabled=!ready;$('#mSend').disabled=!ready;
+ const pct=J&&J.lines.length?J.acked/J.lines.length:0;$('#mBar').style.width=(pct*100).toFixed(1)+'%';
+ let t=tr('m.job.none');
+ if(J){const el=((J.t1||Date.now())-J.t0)/1000;t=tr('m.job.'+J.state)+tr('m.job.line',{a:J.acked,n:J.lines.length,dur:mFmtDur(el)})+(J.err?` · ${J.err}`:'');}
+ $('#mJobInfo').textContent=t;
+ $('#mOvLbl').textContent=tr('m.ov.lbl',{v:G.ov?tr('m.ov.vals',{f:G.ov[0],r:G.ov[1],s:G.ov[2]}):'–'});
+ $('#mOvMinus').disabled=$('#mOvReset').disabled=$('#mOvPlus').disabled=!(ready&&G.ver>=1.1);
+ simUpdateUI(false);
+}
+const dialTicks=$('#mDialTicks');for(let i=0;i<24;i++){const a=i*15*Math.PI/180,r1=i%6===0?44:47,r2=50;const l=document.createElementNS('http://www.w3.org/2000/svg','line');l.setAttribute('x1',Math.sin(a)*r1);l.setAttribute('y1',-Math.cos(a)*r1);l.setAttribute('x2',Math.sin(a)*r2);l.setAttribute('y2',-Math.cos(a)*r2);dialTicks.appendChild(l);}
+let dialAng=0,dialAcc=0,dialDrag=null;
+function dialUpdate(){$('#mDialRot').setAttribute('transform',`rotate(${dialAng})`);$('#mDialTxt').textContent=`${G.axis} ${G.step}`;}
+function dialStep(dir){dialAng+=dir*15;dialUpdate();jogStep(G.axis,dir*G.step);}
+const dialEl=$('#mDial'),dialAngle=e=>{const r=dialEl.getBoundingClientRect();return Math.atan2(e.clientY-(r.top+r.height/2),e.clientX-(r.left+r.width/2))*180/Math.PI;};
+dialEl.addEventListener('pointerdown',e=>{dialEl.setPointerCapture(e.pointerId);dialDrag={a:dialAngle(e)};dialAcc=0;});
+dialEl.addEventListener('pointermove',e=>{if(!dialDrag)return;const a=dialAngle(e);let d=a-dialDrag.a;if(d>180)d-=360;if(d<-180)d+=360;dialDrag.a=a;dialAcc+=d;
+ while(Math.abs(dialAcc)>=15){const dir=Math.sign(dialAcc);dialAcc-=dir*15;dialStep(dir);}});
+['pointerup','pointercancel'].forEach(ev=>dialEl.addEventListener(ev,()=>{dialDrag=null;}));
+dialEl.addEventListener('wheel',e=>{e.preventDefault();dialStep(e.deltaY<0?1:-1);},{passive:false});
+dialEl.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowUp'){e.preventDefault();dialStep(1);}else if(e.key==='ArrowLeft'||e.key==='ArrowDown'){e.preventDefault();dialStep(-1);}});
+document.querySelectorAll('#mSteps button').forEach(b=>b.addEventListener('click',()=>{G.step=Number(b.dataset.step);document.querySelectorAll('#mSteps button').forEach(x=>x.classList.toggle('on',x===b));dialUpdate();}));
+document.querySelectorAll('#mAxis button').forEach(b=>b.addEventListener('click',()=>{G.axis=b.dataset.ax;document.querySelectorAll('#mAxis button').forEach(x=>x.classList.toggle('on',x===b));dialUpdate();}));
+document.querySelectorAll('.jb').forEach(b=>{const ax=b.dataset.ax,dir=Number(b.dataset.dir);let t1=null,t2=null;
+ const stop=()=>{clearTimeout(t1);clearInterval(t2);t1=t2=null;};
+ b.addEventListener('pointerdown',e=>{e.preventDefault();jogStep(ax,dir*G.step);if(G.step<=10)t1=setTimeout(()=>{t2=setInterval(()=>jogStep(ax,dir*G.step),160);},450);});
+ ['pointerup','pointerleave','pointercancel'].forEach(ev=>b.addEventListener(ev,stop));
+ b.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();jogStep(ax,dir*G.step);}});});
+/* Maschinen-Panel: von oben bis unten strecken; nur bei horizontaler Überlappung mit der Simulationsleiste oberhalb davon enden */
+function fitMachinePanel(){const p=$('#machinePanel');if(!p||p.hidden)return;const v=document.getElementById('view').getBoundingClientRect(),sb=$('#simBar').getBoundingClientRect();let bottom=10;
+  if(sb.width&&sb.height){const panelLeft=v.width-10-p.offsetWidth,simRight=sb.right-v.left;if(simRight+12>panelLeft)bottom=Math.max(10,Math.round(v.bottom-sb.top+10));}
+  p.style.setProperty('--mbot',bottom+'px');}
+{const ro=new ResizeObserver(fitMachinePanel);ro.observe(document.getElementById('view'));ro.observe($('#simBar'));}
+$('#machineToggle').addEventListener('click',()=>{const p=$('#machinePanel');p.hidden=!p.hidden;$('#machineToggle').setAttribute('aria-pressed',String(!p.hidden));fitMachinePanel();});
+$('#mClose').addEventListener('click',()=>{$('#machinePanel').hidden=true;$('#machineToggle').setAttribute('aria-pressed','false');});
+$('#mConnect').addEventListener('click',async()=>{
+ if(G.connected){if(jobActive()&&!confirm(tr('m.confirm.disc')))return;await mDisconnect();return;}
+ try{await mConnect();}catch(e){if(e?.name==='NotFoundError')return;await mDisconnect();fail(tr('m.toast'),e);}
+});
+if('serial' in navigator)navigator.serial.addEventListener('disconnect',()=>{if(G.connected)mDisconnect(tr('m.disconnected'));});
+$('#mZX').addEventListener('click',()=>zeroAxes(['X']));$('#mZY').addEventListener('click',()=>zeroAxes(['Y']));$('#mZZ').addEventListener('click',()=>zeroAxes(['Z']));
+$('#mZXY').addEventListener('click',()=>zeroAxes(['X','Y']));$('#mZAll').addEventListener('click',()=>zeroAxes(['X','Y','Z']));$('#mGoXY').addEventListener('click',goXY0);
+$('#mUnlock').addEventListener('click',()=>sendLine('$X'));$('#mHome').addEventListener('click',()=>sendLine('$H'));
+$('#mReset').addEventListener('click',()=>{if(jobActive()&&!confirm(tr('m.confirm.reset')))return;rt(0x18);resetStream();if(G.job&&jobActive()){G.job.state='aborted';}mToolChangeHide();mUpdateUI();});
+$('#mSpOn').addEventListener('click',()=>sendLine(`M3 S${Math.max(0,Number($('#mRpm').value)||0)}`));$('#mSpOff').addEventListener('click',()=>sendLine('M5'));
+$('#mStart').addEventListener('click',jobStart);$('#mPauseJob').addEventListener('click',jobPause);$('#mAbort').addEventListener('click',jobAbort);$('#mTcGo').addEventListener('click',toolChangeContinue);
+$('#mOvMinus').addEventListener('click',()=>rt(0x92));$('#mOvPlus').addEventListener('click',()=>rt(0x91));$('#mOvReset').addEventListener('click',()=>rt(0x90));
+$('#mSend').addEventListener('click',()=>{mCmd($('#mCmd').value);$('#mCmd').value='';});
+$('#mCmd').addEventListener('keydown',e=>{e.stopPropagation();if(e.key==='Enter'){mCmd($('#mCmd').value);$('#mCmd').value='';}});
+$('#mFeed').addEventListener('keydown',e=>e.stopPropagation());
+window.addEventListener('beforeunload',e=>{if(jobActive()){e.preventDefault();e.returnValue='';}});
+dialUpdate();mUpdateUI();
+function downloadText(name,text,mime='text/plain'){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:mime}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);}
+function currentConfig(){return Object.fromEntries(['safeZ','rapidRate','spindleRpm','gridStep','gridExtent','viewmode'].map(id=>[id,$('#'+id).value]));}
+function saveProject(){
+ const elements=[],names={};for(const o of elementOrder){if(o.userData.params)elements.push({entityIndex:o.userData.entityIndex,params:o.userData.params});if(o.userData.name)names[o.userData.entityIndex]=o.userData.name;}
+ const project={format:'DXF-CAM-project',version:3,app:'dxf-2-grbl-web',language:LANG,sourceName,sourceDxfText,config:currentConfig(),defaults:{...defaults},elements,names,order:elementOrder.map(o=>o.userData.entityIndex),
+  cam:{generated:!!camPaths.length,paths:camPaths.map(p=>({entityIndices:p.entityIndices,side:p.side,closed:p.closed,loops:p.loops,params:p.params})),gcode:camGcode}};
+ downloadText((sourceName.replace(/\.dxf$/i,'')||'project')+'.dxfcam.json',JSON.stringify(project,null,2),'application/json');
+}
+function applyConfig(c){for(const [id,v] of Object.entries(c||{})){const el=$('#'+id);if(el)el.value=v;}applyDisplay();}
+async function openProject(file){
+ const project=JSON.parse(await file.text());if(project.format!=='DXF-CAM-project'||!project.sourceDxfText)throw new Error(tr('proj.invalid'));
+ if(project.language&&I18N[project.language])setLanguage(project.language);
+ const parser=new DxfParser(),dxf=parser.parseSync(project.sourceDxfText);const obj=buildThreeFromDxf(dxf);
+ sourceName=project.sourceName||'project.dxf';sourceDxfText=project.sourceDxfText;convertDXF(obj);applyConfig(project.config);fitObject();
+ const cfg=project.config||{};
+ if(project.defaults)Object.assign(defaults,project.defaults);
+ else if(project.version===1){const m={side:cfg.camSide,cutterDia:cfg.cutterDia,finalDepth:cfg.finalDepth,stepDepth:cfg.stepDepth,feedRate:cfg.feedRate,plungeRate:cfg.plungeRate};for(const [k,v] of Object.entries(m)){if(v==null)continue;defaults[k]=k==='side'?v:Number(v);}}
+ setDefaultsUI();
+ const wanted=new Map();
+ if(Array.isArray(project.elements))for(const e of project.elements){if(dupMap.has(e.entityIndex)){const t=dupMap.get(e.entityIndex);if(!wanted.has(t))wanted.set(t,e.params);}else wanted.set(e.entityIndex,e.params);}
+ else for(const i of (project.selectedEntityIndices||[]))wanted.set(dupMap.has(i)?dupMap.get(i):i,{});   // alte Projekte (v1): Auswahl = Kontur mit Defaults
+ modelGroup.traverse(o=>{if(o.userData.isDxfEntity&&wanted.has(o.userData.entityIndex))o.userData.params={...defaults,...wanted.get(o.userData.entityIndex)};});
+ if(project.names){const nm=Object.entries(project.names).sort((a,b)=>(dupMap.has(+a[0])?0:1)-(dupMap.has(+b[0])?0:1));const byI=new Map(elementOrder.map(o=>[o.userData.entityIndex,o]));for(const [k,n] of nm){const o=byI.get(dupMap.has(+k)?dupMap.get(+k):+k);if(o&&n)o.userData.name=String(n);}}
+ if(Array.isArray(project.order)){const by=new Map(elementOrder.map(o=>[o.userData.entityIndex,o])),seen=new Set(),ord=[];for(const i of project.order){const o=by.get(i);if(o&&!seen.has(o)){ord.push(o);seen.add(o);}}for(const o of elementOrder)if(!seen.has(o))ord.push(o);elementOrder=ord;}
+ renderElementList();applyDisplay();updateSelectionStatus();
+ runCam();
+ setStatus(()=>tr('status.projopen',{name:sourceName}));
+}
+$('#exportGcode').addEventListener('click',()=>{try{if(camTimer||!camGcode){clearTimeout(camTimer);camTimer=null;generateCam();}downloadText((sourceName.replace(/\.dxf$/i,'')||'job')+'.nc',camGcode);}catch(e){fail(tr('err.gcode'),e);}});
+$('#saveProject').addEventListener('click',()=>{if(!sourceDxfText){showError(tr('err.loadfirst'),tr('tb.saveProject'));return;}saveProject();});
+$('#projectFile').addEventListener('change',async e=>{const f=e.target.files?.[0];if(!f)return;try{await openProject(f);}catch(err){fail(tr('proj.error'),err);}finally{e.target.value='';}});
+$('#file').addEventListener('change',async e=>{
+ const file=e.target.files?.[0];if(!file)return;
+ try{
+   setStatus(()=>tr('status.reading',{name:file.name}));
+   const text=await file.text();sourceDxfText=text;clearGroup(camGroup);camPaths=[];camGcode='';
+   const parser=new DxfParser();
+   const dxf=parser.parseSync(text);
+   const obj=buildThreeFromDxf(dxf);
+   sourceName=file.name;convertDXF(obj);fitObject();applyDisplay();scheduleCam();
+   {const fname=file.name;setStatus(()=>tr('status.loaded',{name:fname,n:modelLineCount})+(lastDupCount?tr('status.dups',{n:lastDupCount}):'')+(lastJoin&&lastJoin.groups.length?tr('status.joined',{p:lastJoin.pieces,g:lastJoin.groups.length}):''));}
+ }catch(err){console.error(err);{const em=err?.message||String(err);setStatus(()=>tr('status.readerr',{msg:em}));showError(em,tr('status.readerr.title'));}}finally{e.target.value='';}
+});
+$('#fit').addEventListener('click',()=>{if(loadedObject)fitObject();else setView('3d');});
+$('#reset').addEventListener('click',()=>setView('3d'));
+$('#viewmode').addEventListener('change',e=>setView(e.target.value));
+['showGrid','showAxes','showModel','showCam'].forEach(id=>$('#'+id).addEventListener('change',applyDisplay));
+['gridStep','gridExtent'].forEach(id=>$('#'+id).addEventListener('change',()=>{rebuildGrid();gridGroup.visible=$('#showGrid').checked;}));
+function resize(){const w=view.clientWidth,h=view.clientHeight;if(!w||!h)return;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();}
+new ResizeObserver(resize).observe(view);resize();rebuildGrid();setView('3d');
+renderer.setAnimationLoop(now=>{controls.update();simTick(now);renderer.render(scene,camera);});
+
+// ===== Sprachumschaltung =====
+function onLanguageChanged(){
+ applyI18n();refreshBound();
+ $('#lang').value=LANG;
+ document.querySelectorAll('#mSteps button').forEach(b=>{b.textContent=Number(b.dataset.step).toLocaleString(LANG);});
+ updateInfo();renderElementList();updateSelectionStatus();setSelectionMode(selectionMode);mUpdateUI();simUpdateUI(true);
+}
+function setLanguage(code,persist=true){
+ if(!I18N[code])return;LANG=code;
+ if(persist){try{localStorage.setItem(LANG_KEY,code);}catch{}}
+ onLanguageChanged();
+}
+{const sel=$('#lang');for(const c of Object.keys(I18N)){const o=document.createElement('option');o.value=c;o.textContent=I18N[c]['lang.name']||c;sel.appendChild(o);}
+ sel.addEventListener('change',()=>setLanguage(sel.value));}
+setStatus(()=>tr('status.none'));setCamStatus(()=>tr('cam.idle'));
+onLanguageChanged();
+</script>
+</body></html>
