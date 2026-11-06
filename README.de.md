@@ -55,7 +55,7 @@ Was das für dich heißt:
 
 ### 3D-Ansicht und Auswahl
 - Drehen, Zoomen, Verschieben; Kameravoreinstellungen (3D, Draufsicht, Vorderansicht, Seitenansicht); alles einpassen und Ansicht zurücksetzen
-- Raster, Achsen und Geometrie ein-/ausblenden; Rasterabstand und -größe einstellbar
+- Raster, Achsen und Geometrie ein-/ausblenden; Rasterabstand einstellbar. Das Raster deckt automatisch das ganze Bauteil plus mindestens 1 cm Rand ab, mit Linien auf Vielfachen des Abstands
 - Auswahlmodus: Klick, Auswahlrechteck, mit Strg/Shift erweitern; **Esc schaltet den Auswahlmodus um**
 - Ausgewählte Elemente sind rot, Elemente mit Fräsparametern grün, alle anderen bleiben hell
 

@@ -110,7 +110,6 @@ footer{color:var(--muted);font-size:11px;line-height:1.5}
   <section>
     <h2 data-i18n="grid.title">Raster und Geometrie</h2>
     <label for="gridStep" data-i18n="grid.step">Rasterabstand (mm)</label><input id="gridStep" type="number" min="0.001" step="1" value="10">
-    <label for="gridExtent" data-i18n="grid.extent">Rastergröße gesamt (mm)</label><input id="gridExtent" type="number" min="1" step="10" value="500">
   </section>
   <section>
     <h2 data-i18n="def.title">Projekt-Defaults</h2>
@@ -254,7 +253,6 @@ I18N.de={
   "tb.lang": "Sprache",
   "grid.title": "Raster und Geometrie",
   "grid.step": "Rasterabstand (mm)",
-  "grid.extent": "Rastergröße gesamt (mm)",
   "def.title": "Projekt-Defaults",
   "def.safeZ": "Sicherheitsebene Z (global, mm)",
   "def.rapid": "Eilganggeschwindigkeit (mm/min, nur Simulator)",
@@ -545,7 +543,6 @@ I18N.en={
   "tb.lang": "Language",
   "grid.title": "Grid and geometry",
   "grid.step": "Grid spacing (mm)",
-  "grid.extent": "Total grid size (mm)",
   "def.title": "Project defaults",
   "def.safeZ": "Safe height Z (global, mm)",
   "def.rapid": "Rapid traverse rate (mm/min, simulator only)",
@@ -1031,12 +1028,33 @@ function mat(color,opacity=1){return new THREE.LineBasicMaterial({color,transpar
 function clearGroup(g){while(g.children.length){const o=g.children.pop(); if(o.geometry)o.geometry.dispose(); if(o.material){if(Array.isArray(o.material))o.material.forEach(m=>m.dispose());else o.material.dispose();}}}
 function rebuildGrid(){
  clearGroup(gridGroup);clearGroup(axesGroup);
- const step=Math.max(.001,Number($('#gridStep').value)||10), extent=Math.max(step,Number($('#gridExtent').value)||500), half=extent/2;
- const divisions=Math.min(1000,Math.ceil(extent/step)); const actualStep=extent/divisions;
+ const MARGIN=10; // mm: Raster ist mindestens 1 cm groesser als das Bauteil
+ let step=Math.max(.001,Number($('#gridStep').value)||10);
+ let x0,x1,y0,y1;
+ const hasModel=!!(loadedObject&&modelBounds&&!modelBounds.isEmpty());
+ if(hasModel){
+  // Bauteil-Box + Rand, Nullpunkt bleibt im Raster (Achsen), Linien auf Vielfachen von step
+  const b=modelBounds;
+  let minX=Math.min(b.min.x,0),maxX=Math.max(b.max.x,0),minY=Math.min(b.min.y,0),maxY=Math.max(b.max.y,0);
+  // max. 1000 Teilungen je Richtung: Schrittweite in cm-Schritten vergroebern
+  const span=Math.max(maxX-minX,maxY-minY)+2*MARGIN;
+  while(span/step>1000)step+=10;
+  x0=Math.floor((b.min.x-MARGIN)/step)*step; x1=Math.ceil((b.max.x+MARGIN)/step)*step;
+  y0=Math.floor((b.min.y-MARGIN)/step)*step; y1=Math.ceil((b.max.y+MARGIN)/step)*step;
+  x0=Math.min(x0,Math.floor(minX/step)*step); x1=Math.max(x1,Math.ceil(maxX/step)*step);
+  y0=Math.min(y0,Math.floor(minY/step)*step); y1=Math.max(y1,Math.ceil(maxY/step)*step);
+ }else{
+  const extent=500,half=extent/2; // leeres Raster ohne Bauteil
+  const div=Math.min(1000,Math.ceil(extent/step)),st=extent/div;
+  x0=y0=-half;x1=y1=-half+div*st;step=st;
+ }
  const pts=[];
- for(let i=0;i<=divisions;i++){let p=-half+i*actualStep;pts.push(p,-half,0,p,half,0,-half,p,0,half,p,0);}
+ const nx=Math.round((x1-x0)/step), ny=Math.round((y1-y0)/step);
+ for(let i=0;i<=nx;i++){const x=x0+i*step;pts.push(x,y0,0,x,y1,0);}
+ for(let j=0;j<=ny;j++){const y=y0+j*step;pts.push(x0,y,0,x1,y,0);}
  const geo=new THREE.BufferGeometry();geo.setAttribute('position',new THREE.Float32BufferAttribute(pts,3));
  gridGroup.add(new THREE.LineSegments(geo,mat('#344151',.8)));
+ const extent=Math.max(x1-x0,y1-y0);
  const axisLen=Math.max(extent*.55,modelBounds?modelBounds.getSize(new THREE.Vector3()).length()*.65:0,50);
  function axis(a,b,c){const g=new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0,0,0),new THREE.Vector3(a,b,c)]);axesGroup.add(new THREE.Line(g,mat(c?'#68aaff':a?'#ff6262':'#62df8d')));}
  axis(axisLen,0,0);axis(0,axisLen,0);axis(0,0,axisLen);
@@ -1051,7 +1069,7 @@ function fitObject(){
  if(box.isEmpty()){box=new THREE.Box3(new THREE.Vector3(-100,-100,-10),new THREE.Vector3(100,100,10));}
  modelBounds=box.clone(); const center=box.getCenter(new THREE.Vector3()), size=box.getSize(new THREE.Vector3()); const maxDim=Math.max(size.x,size.y,size.z,10);
  controls.target.copy(center);camera.position.set(center.x+maxDim*1.5,center.y-maxDim*1.8,center.z+maxDim*1.5);camera.near=Math.max(.001,maxDim/10000);camera.far=maxDim*100;camera.updateProjectionMatrix();controls.update();
- $('#gridExtent').value=Math.max(100,Math.ceil(maxDim*1.5/10)*10);rebuildGrid();updateInfo();
+ rebuildGrid();updateInfo();
 }
 function setView(mode){
  const target=controls.target.clone();const box=modelBounds||new THREE.Box3(new THREE.Vector3(-50,-50,-5),new THREE.Vector3(50,50,5));const size=box.getSize(new THREE.Vector3());const d=Math.max(size.x,size.y,size.z,100)*2;
@@ -2039,7 +2057,7 @@ $('#mFeed').addEventListener('keydown',e=>e.stopPropagation());
 window.addEventListener('beforeunload',e=>{if(jobActive()){e.preventDefault();e.returnValue='';}});
 dialUpdate();mUpdateUI();
 function downloadText(name,text,mime='text/plain'){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:mime}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);}
-function currentConfig(){return Object.fromEntries(['safeZ','rapidRate','spindleRpm','gridStep','gridExtent','viewmode'].map(id=>[id,$('#'+id).value]));}
+function currentConfig(){return Object.fromEntries(['safeZ','rapidRate','spindleRpm','gridStep','viewmode'].map(id=>[id,$('#'+id).value]));}
 function saveProject(){
  const elements=[],names={};for(const o of elementOrder){if(o.userData.params)elements.push({entityIndex:o.userData.entityIndex,params:o.userData.params});if(o.userData.name)names[o.userData.entityIndex]=o.userData.name;}
  const project={format:'DXF-CAM-project',version:3,app:'dxf-2-grbl-web',language:LANG,sourceName,sourceDxfText,config:currentConfig(),defaults:{...defaults},elements,names,order:elementOrder.map(o=>o.userData.entityIndex),
@@ -2085,7 +2103,7 @@ $('#fit').addEventListener('click',()=>{if(loadedObject)fitObject();else setView
 $('#reset').addEventListener('click',()=>setView('3d'));
 $('#viewmode').addEventListener('change',e=>setView(e.target.value));
 ['showGrid','showAxes','showModel','showCam'].forEach(id=>$('#'+id).addEventListener('change',applyDisplay));
-['gridStep','gridExtent'].forEach(id=>$('#'+id).addEventListener('change',()=>{rebuildGrid();gridGroup.visible=$('#showGrid').checked;}));
+$('#gridStep').addEventListener('change',()=>{rebuildGrid();gridGroup.visible=$('#showGrid').checked;});
 function resize(){const w=view.clientWidth,h=view.clientHeight;if(!w||!h)return;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();}
 new ResizeObserver(resize).observe(view);resize();rebuildGrid();setView('3d');
 renderer.setAnimationLoop(now=>{controls.update();simTick(now);renderer.render(scene,camera);});

@@ -54,7 +54,7 @@ What this means for you:
 
 ### 3D view & selection
 - Orbit, zoom, pan; camera presets (3D, top, front, side); fit-all and reset view
-- Toggle grid, axes and geometry; configurable grid spacing and size
+- Toggle grid, axes and geometry; configurable grid spacing. The grid automatically covers the whole part plus at least 1 cm margin, with lines on multiples of the spacing
 - Selection mode: click, rubber-band selection, add with Ctrl/Shift; **Esc toggles the selection mode**
 - Selected elements are red, elements with milling parameters are green, others stay light
 
