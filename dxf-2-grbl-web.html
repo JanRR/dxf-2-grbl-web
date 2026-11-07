@@ -1386,10 +1386,32 @@ function pocketLoops(pts,r,step,islandCands){
  const levels=[first];
  for(let k=1;k<2000;k++){const q=off(-(r+k*step));if(!q.length){const h=off(-(r+(k-1)*step+step/2));if(h.length)levels.push(h);break;}levels.push(q);}
  const inRegion=p=>first.reduce((n,poly)=>n+(C.Clipper.PointInPolygon({X:Math.round(p.x*SC),Y:Math.round(p.y*SC)},poly)!==0?1:0),0)%2===1;   // gerade/ungerade: Inseln sind Löcher
+ // Jede Versatzbahn ist ein Knoten. Elternknoten = nächstgelegene Bahn der nächstäußeren Ebene.
+ // Nach innen teilt sich ein Gebiet in Äste (z.B. zwei Schenkel eines N), die erst weiter außen zusammenwachsen.
+ const nodes=levels.map((lv,k)=>lv.map(poly=>{const ring=poly.map(q=>({x:q.X/SC,y:q.Y/SC}));return {k,ring,closed:ring.concat([ring[0]]),children:[]};}));
+ const sample=(ring,n)=>{const m=Math.min(n,ring.length),out=[];for(let i=0;i<m;i++)out.push(ring[Math.floor(i*ring.length/m)]);return out;};
+ for(let k=1;k<nodes.length;k++)for(const nd of nodes[k]){
+  const sp=sample(nd.ring,12);let best=null,bd=Infinity;
+  for(const cand of nodes[k-1]){const d=sp.reduce((a,p)=>a+minDistToPoly(p,cand.closed),0)/sp.length;if(d<bd){bd=d;best=cand;}}
+  if(best)best.children.push(nd);
+ }
+ // Reihenfolge: Nachfolgeäste (innen) komplett von innen nach außen abarbeiten, erst dann den gemeinsamen äußeren Ring
+ // (Post-Order). So wechselt der Fräser pro Ast nur einmal, statt bei jeder Ebene zwischen den Ästen zu springen.
+ const order=[];let pos=null;
+ const dist=(p,q)=>Math.hypot(p.x-q.x,p.y-q.y);
+ const visit=nd=>{
+  let rest=nd.children.slice();
+  while(rest.length){   // nächsten Ast wählen: der, dessen Ring der aktuellen Position am nächsten liegt
+   let bi=0;if(pos&&rest.length>1){let bd=Infinity;rest.forEach((c,i)=>{const d=minDistToPoly(pos,c.closed);if(d<bd){bd=d;bi=i;}});}
+   visit(rest.splice(bi,1)[0]);
+  }
+  order.push(nd);pos=nd.ring[0];
+ };
+ let roots=nodes[0].slice();
+ while(roots.length){let bi=0;if(pos&&roots.length>1){let bd=Infinity;roots.forEach((c,i)=>{const d=minDistToPoly(pos,c.closed);if(d<bd){bd=d;bi=i;}});}visit(roots.splice(bi,1)[0]);}
  const loops=[];let prevEnd=null;
- for(const lv of levels.slice().reverse())for(const poly of lv){      // von innen nach außen
-  let ring=poly.map(q=>({x:q.X/SC,y:q.Y/SC}));
-  let linked=false;
+ for(const nd of order){
+  let ring=nd.ring.slice();let linked=false;
   if(prevEnd){let bi=0,bd=Infinity;ring.forEach((p,i)=>{const d=Math.hypot(p.x-prevEnd.x,p.y-prevEnd.y);if(d<bd){bd=d;bi=i;}});ring=ring.slice(bi).concat(ring.slice(0,bi));
    linked=bd<=2*step+1e-6&&[.25,.5,.75].every(t=>inRegion({x:prevEnd.x+(ring[0].x-prevEnd.x)*t,y:prevEnd.y+(ring[0].y-prevEnd.y)*t}));}
   ring.push({x:ring[0].x,y:ring[0].y});loops.push({pts:ring,linked});prevEnd=ring.at(-1);
