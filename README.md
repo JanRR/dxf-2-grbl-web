@@ -66,6 +66,7 @@ What this means for you:
 
 ### CAM – milling parameters (per element, with project defaults)
 - **Cutting side:** outside contour, inside contour, or **pocket**
+- **Width from contour** (outside/inside contour): mills a band of the given width starting at the contour line, outwards or inwards (minimum = cutter diameter, which is the plain contour pass)
 - **Cutting direction:** CW or CCW, independent of the point order in the DXF (closed contours and pockets)
 - Stock top Z (where milling starts), cutter diameter, final depth, max. depth per pass, cutting feed, plunge feed
 - Global safe height; the stock top is validated against it
@@ -77,6 +78,7 @@ What this means for you:
 - Contour offsets for outside/inside milling with the real cutter radius
 - Robust offsetting with [Clipper](https://sourceforge.net/projects/jsclipper/) for inside contours and pockets
 - **Errors if the cutter is too wide** for a contour or pocket – including narrow spots that the cutter could not reach
+- **Contour with width:** for outside/inside contours a band of the given width is milled from the contour line outwards or inwards. Concentric paths (stepover adjustable, evenly distributed) run from the outside towards the contour; the contour pass comes last for a clean edge, and the outermost path ends exactly at the given width. The width must be at least the cutter diameter (equal = normal contour pass). Open lines get parallel paths on their inside/outside. If an inside band is wider than the shape, the whole area is cleared like a pocket. Holding tabs are supported (see below)
 - **Pockets:** concentric paths from the inside out, adjustable stepover, linked at depth where safe
 - **Islands in pockets:** closed contours lying completely inside a pocket (also ones without milling parameters) are left standing automatically; the cutter keeps its radius away from them. Switchable per pocket ("Leave islands standing"); other pockets inside a pocket count as deeper pockets, not as islands
 - Multiple passes with direct plunging between depths (no needless retract on closed contours; pockets alternate their path order per level)
@@ -86,6 +88,7 @@ What this means for you:
 
 ### Holding tabs
 - Count, width and height per contour
+- **Also for contours with a width:** the tabs are defined on the contour pass and continued orthogonally across all paths of the band, so each bridge spans the whole milled width
 - **Automatic distribution, preferably on straight sections**
 - Shapes: **step** or **ramp** (adjustable ramp angle)
 - **Move tabs with the mouse** along the contour (drag the orange spheres); reset to automatic distribution with one click

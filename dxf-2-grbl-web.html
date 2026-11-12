@@ -123,7 +123,7 @@ footer{color:var(--muted);font-size:11px;line-height:1.5}
     <h2 data-i18n="cam.title">CAM / G-Code</h2>
     <div id="camStatus" class="hint" style="margin-top:0">Die Fräsbahnen werden bei jeder Änderung automatisch für alle grünen Elemente (mit zugewiesener Kontur) berechnet.</div>
     <div class="legend"><span><i class="dot" style="background:#28a9ff"></i><span data-i18n="cam.leg.path">Fräsbahn</span></span><span><i class="dot" style="background:#ffb020"></i><span data-i18n="cam.leg.tab">Holding Tab</span></span><span><i class="dot" style="background:#9aa4b2"></i><span data-i18n="cam.leg.rapid">Verfahrweg (gestrichelt)</span></span></div>
-    <div class="hint" data-i18n="cam.hint">Die Reihenfolge der Fräsbahnen entspricht der Elementliste rechts. Bei Wechsel des Fräserdurchmessers setzt der G-Code ein M0 (Pause). Tasche: räumt die Fläche innerhalb einer geschlossenen Kontur mit konzentrischen Bahnen von innen nach außen aus. Geschlossene Konturen innerhalb der Tasche (auch ohne Fräsparameter) bleiben als Inseln stehen, sofern „Inseln stehen lassen“ aktiv ist; andere Taschen darin gelten nicht als Inseln. Geschlossene Konturen (auch aus mehreren zusammenhängenden Linien/Bögen mit gleichen Parametern) werden unabhängig von der Zeichenrichtung bearbeitet; bei offenen Linien gilt die Zeichenrichtung („innen“ links, „außen“ rechts); die Fräsrichtung CW/CCW wirkt nur bei geschlossenen Konturen und Taschen und ist unabhängig von der Punktreihenfolge im DXF. Doppelte Elemente werden beim Laden automatisch entfernt. Simulator (unten in der Ansicht): 1,0x entspricht Echtzeit nach Vorschub und Eilgang; Beschleunigung der Maschine wird nicht berücksichtigt, bei Werkzeugwechsel (M0) hält die Simulation an. Prüfe G-Code, Nullpunkt, Werkzeug und Maschinenkonfiguration unbedingt in einem Simulator vor dem Fräsen.</div>
+    <div class="hint" data-i18n="cam.hint">Die Reihenfolge der Fräsbahnen entspricht der Elementliste rechts. Bei Wechsel des Fräserdurchmessers setzt der G-Code ein M0 (Pause). Tasche: räumt die Fläche innerhalb einer geschlossenen Kontur mit konzentrischen Bahnen von innen nach außen aus. Geschlossene Konturen innerhalb der Tasche (auch ohne Fräsparameter) bleiben als Inseln stehen, sofern „Inseln stehen lassen“ aktiv ist; andere Taschen darin gelten nicht als Inseln. Geschlossene Konturen (auch aus mehreren zusammenhängenden Linien/Bögen mit gleichen Parametern) werden unabhängig von der Zeichenrichtung bearbeitet; bei offenen Linien gilt die Zeichenrichtung („innen“ links, „außen“ rechts); die Fräsrichtung CW/CCW wirkt nur bei geschlossenen Konturen und Taschen und ist unabhängig von der Punktreihenfolge im DXF. Breite (Außen-/Innenkontur): fräst ein Band der angegebenen Breite von der Konturlinie aus nach außen bzw. innen (mindestens Fräserdurchmesser = nur die Linie); gefahren wird von außen zur Kontur hin, die Konturbahn kommt zuletzt, Holding Tabs werden orthogonal zur Kontur über alle Bahnen des Bandes gesetzt und lassen sich an der Konturbahn verschieben. Doppelte Elemente werden beim Laden automatisch entfernt. Simulator (unten in der Ansicht): 1,0x entspricht Echtzeit nach Vorschub und Eilgang; Beschleunigung der Maschine wird nicht berücksichtigt, bei Werkzeugwechsel (M0) hält die Simulation an. Prüfe G-Code, Nullpunkt, Werkzeug und Maschinenkonfiguration unbedingt in einem Simulator vor dem Fräsen.</div>
   </section>
   <section>
     <h2 data-i18n="file.title">Datei</h2>
@@ -263,7 +263,7 @@ I18N.de={
   "cam.leg.path": "Fräsbahn",
   "cam.leg.tab": "Holding Tab",
   "cam.leg.rapid": "Verfahrweg (gestrichelt)",
-  "cam.hint": "Die Reihenfolge der Fräsbahnen entspricht der Elementliste rechts. Bei Wechsel des Fräserdurchmessers setzt der G-Code ein M0 (Pause). Tasche: räumt die Fläche innerhalb einer geschlossenen Kontur mit konzentrischen Bahnen von innen nach außen aus. Geschlossene Konturen innerhalb der Tasche (auch ohne Fräsparameter) bleiben als Inseln stehen, sofern „Inseln stehen lassen“ aktiv ist; andere Taschen darin gelten nicht als Inseln. Geschlossene Konturen (auch aus mehreren zusammenhängenden Linien/Bögen mit gleichen Parametern) werden unabhängig von der Zeichenrichtung bearbeitet; bei offenen Linien gilt die Zeichenrichtung („innen“ links, „außen“ rechts); die Fräsrichtung CW/CCW wirkt nur bei geschlossenen Konturen und Taschen und ist unabhängig von der Punktreihenfolge im DXF. Doppelte Elemente werden beim Laden automatisch entfernt. Simulator (unten in der Ansicht): 1,0x entspricht Echtzeit nach Vorschub und Eilgang; Beschleunigung der Maschine wird nicht berücksichtigt, bei Werkzeugwechsel (M0) hält die Simulation an. Prüfe G-Code, Nullpunkt, Werkzeug und Maschinenkonfiguration unbedingt in einem Simulator vor dem Fräsen.",
+  "cam.hint": "Die Reihenfolge der Fräsbahnen entspricht der Elementliste rechts. Bei Wechsel des Fräserdurchmessers setzt der G-Code ein M0 (Pause). Tasche: räumt die Fläche innerhalb einer geschlossenen Kontur mit konzentrischen Bahnen von innen nach außen aus. Geschlossene Konturen innerhalb der Tasche (auch ohne Fräsparameter) bleiben als Inseln stehen, sofern „Inseln stehen lassen“ aktiv ist; andere Taschen darin gelten nicht als Inseln. Geschlossene Konturen (auch aus mehreren zusammenhängenden Linien/Bögen mit gleichen Parametern) werden unabhängig von der Zeichenrichtung bearbeitet; bei offenen Linien gilt die Zeichenrichtung („innen“ links, „außen“ rechts); die Fräsrichtung CW/CCW wirkt nur bei geschlossenen Konturen und Taschen und ist unabhängig von der Punktreihenfolge im DXF. Breite (Außen-/Innenkontur): fräst ein Band der angegebenen Breite von der Konturlinie aus nach außen bzw. innen (mindestens Fräserdurchmesser = nur die Linie); gefahren wird von außen zur Kontur hin, die Konturbahn kommt zuletzt, Holding Tabs werden orthogonal zur Kontur über alle Bahnen des Bandes gesetzt und lassen sich an der Konturbahn verschieben. Doppelte Elemente werden beim Laden automatisch entfernt. Simulator (unten in der Ansicht): 1,0x entspricht Echtzeit nach Vorschub und Eilgang; Beschleunigung der Maschine wird nicht berücksichtigt, bei Werkzeugwechsel (M0) hält die Simulation an. Prüfe G-Code, Nullpunkt, Werkzeug und Maschinenkonfiguration unbedingt in einem Simulator vor dem Fräsen.",
   "file.title": "Datei",
   "status.none": "Noch keine DXF-Datei geladen.",
   "footer": "Unterstützt gängige DXF-Entitäten wie LINE, LWPOLYLINE, POLYLINE, CIRCLE, ARC, ELLIPSE, SPLINE, POINT und Blöcke (INSERT), abhängig vom Dateiinhalt. DXF wird im Browser verarbeitet; die Datei wird nicht hochgeladen. Die Anzeige ist eine geometrische Vorschau, kein CAD-Prüfwerkzeug.",
@@ -308,7 +308,8 @@ I18N.de={
   "param.stepDepth": "Max. Zustellung je Durchgang (mm)",
   "param.feedRate": "Fräsgeschwindigkeit (mm/min)",
   "param.plungeRate": "Eintauchgeschwindigkeit (mm/min)",
-  "param.stepover": "Seitliche Zustellung Tasche (% vom Fräserdurchmesser)",
+  "param.width": "Breite ab Kontur (mm, min. = Fräserdurchmesser)",
+  "param.stepover": "Seitliche Zustellung Tasche/Breite (% vom Fräserdurchmesser)",
   "param.islands": "Tasche: Inseln stehen lassen (geschlossene Konturen innerhalb der Tasche)",
   "opt.islands.yes": "Ja (Inseln aussparen)",
   "opt.islands.no": "Nein (alles ausräumen)",
@@ -343,6 +344,7 @@ I18N.de={
   "list.dot.off": "Keine CAM-Infos",
   "sum.line": "{side} · {dir} · Ø{dia} · Tiefe {depth}",
   "sum.tabs": " · {n} Tabs",
+  "sum.width": " · Breite {w}",
   "sum.ramp": " (Rampe)",
   "sum.manual": " (manuell)",
   "elem.title": "CAM-Infos des Elements",
@@ -553,7 +555,7 @@ I18N.en={
   "cam.leg.path": "Toolpath",
   "cam.leg.tab": "Holding tab",
   "cam.leg.rapid": "Rapid move (dashed)",
-  "cam.hint": "The order of the toolpaths follows the element list on the right. When the cutter diameter changes, the G-code inserts an M0 (pause). Pocket: clears the area inside a closed contour with concentric paths from the inside out. Closed contours inside the pocket (even without milling parameters) are left standing as islands while “leave islands standing” is on; other pockets inside do not count as islands. Closed contours (also made of several connected lines/arcs with identical parameters) are machined independently of the drawing direction; for open lines the drawing direction applies (“inside” = left, “outside” = right); the CW/CCW cutting direction only applies to closed contours and pockets and is independent of the point order in the DXF. Duplicate elements are removed automatically on loading. Simulator (bottom of the view): 1.0x equals real time based on feed and rapid rates; machine acceleration is not considered, and the simulation stops at a tool change (M0). Always check G-code, zero point, tool and machine configuration in a simulator before milling.",
+  "cam.hint": "The order of the toolpaths follows the element list on the right. When the cutter diameter changes, the G-code inserts an M0 (pause). Pocket: clears the area inside a closed contour with concentric paths from the inside out. Closed contours inside the pocket (even without milling parameters) are left standing as islands while “leave islands standing” is on; other pockets inside do not count as islands. Closed contours (also made of several connected lines/arcs with identical parameters) are machined independently of the drawing direction; for open lines the drawing direction applies (“inside” = left, “outside” = right); the CW/CCW cutting direction only applies to closed contours and pockets and is independent of the point order in the DXF. Width (outside/inside contour): mills a band of the given width starting at the contour line, outwards or inwards (at least the cutter diameter = line only); the cut runs from the outside towards the contour with the contour pass last, and holding tabs are placed orthogonally to the contour across all paths of the band (draggable on the contour pass). Duplicate elements are removed automatically on loading. Simulator (bottom of the view): 1.0x equals real time based on feed and rapid rates; machine acceleration is not considered, and the simulation stops at a tool change (M0). Always check G-code, zero point, tool and machine configuration in a simulator before milling.",
   "file.title": "File",
   "status.none": "No DXF file loaded yet.",
   "footer": "Supports common DXF entities such as LINE, LWPOLYLINE, POLYLINE, CIRCLE, ARC, ELLIPSE, SPLINE, POINT and blocks (INSERT), depending on the file contents. DXF files are processed in the browser; the file is not uploaded. The display is a geometric preview, not a CAD verification tool.",
@@ -598,7 +600,8 @@ I18N.en={
   "param.stepDepth": "Max. depth per pass (mm)",
   "param.feedRate": "Cutting feed rate (mm/min)",
   "param.plungeRate": "Plunge feed rate (mm/min)",
-  "param.stepover": "Pocket stepover (% of cutter diameter)",
+  "param.width": "Width from contour (mm, min. = cutter diameter)",
+  "param.stepover": "Pocket/width stepover (% of cutter diameter)",
   "param.islands": "Pocket: leave islands standing (closed contours inside the pocket)",
   "opt.islands.yes": "Yes (skip islands)",
   "opt.islands.no": "No (clear everything)",
@@ -633,6 +636,7 @@ I18N.en={
   "list.dot.off": "No CAM info",
   "sum.line": "{side} · {dir} · Ø{dia} · depth {depth}",
   "sum.tabs": " · {n} tabs",
+  "sum.width": " · width {w}",
   "sum.ramp": " (ramp)",
   "sum.manual": " (manual)",
   "elem.title": "CAM info of the element",
@@ -869,7 +873,8 @@ function fail(title,err){const m=err?.message||String(err);console.error(err);sh
 const PLAIN='#e8f4ff', ASSIGNED='#4cd964', SELECTED='#ff3030';
 const PARAMS=[
  {key:'side',label:'param.side',type:'select',opts:[['outside','opt.side.outside'],['inside','opt.side.inside'],['pocket','opt.side.pocket']]},
- {key:'stepover',label:'param.stepover',step:5,min:1,max:100,only:'pocket'},
+ {key:'width',label:'param.width',step:.5,min:.01,only:'width'},
+ {key:'stepover',label:'param.stepover',step:5,min:1,max:100,only:'band'},
  {key:'islands',label:'param.islands',type:'select',opts:[['yes','opt.islands.yes'],['no','opt.islands.no']],only:'pocket'},
  {key:'direction',label:'param.direction',type:'select',opts:[['ccw','opt.dir.ccw'],['cw','opt.dir.cw']]},
  {key:'stockTop',label:'param.stockTop',step:.5,min:null},
@@ -883,7 +888,10 @@ const PARAMS=[
  {key:'tabHeight',label:'param.tabHeight',step:.1,min:.1,only:'contour'},
  {key:'tabShape',label:'param.tabShape',type:'select',opts:[['rect','opt.shape.rect'],['ramp','opt.shape.ramp']],only:'contour'},
  {key:'tabRampAngle',label:'param.tabRampAngle',step:5,min:5,max:90,only:'ramp'}];
-const defaults={side:'outside',direction:'ccw',stockTop:0,cutterDia:3,finalDepth:3,stepDepth:1,feedRate:400,plungeRate:100,stepover:40,islands:'yes',tabCount:0,tabWidth:4,tabHeight:1.5,tabShape:'rect',tabRampAngle:45};
+const defaults={side:'outside',width:0,direction:'ccw',stockTop:0,cutterDia:3,finalDepth:3,stepDepth:1,feedRate:400,plungeRate:100,stepover:40,islands:'yes',tabCount:0,tabWidth:4,tabHeight:1.5,tabShape:'rect',tabRampAngle:45};
+// Wirksame Breite des gefrästen Bandes: mindestens Fräserdurchmesser (= nur die Konturbahn); gespeichert wird 0 oder ein Wert > Fräserdurchmesser
+const effWidth=p=>Math.max(Number(p.width)||0,Number(p.cutterDia)||0);
+const isBand=p=>p.side!=='pocket'&&effWidth(p)>(Number(p.cutterDia)||0)+1e-9;
 function safeZ(){const v=Number($('#safeZ').value);return Number.isFinite(v)?v:5;}
 function buildFields(box,prefix){
  box.innerHTML=PARAMS.map(p=>{const id=`${prefix}_${p.key}`;
@@ -895,12 +903,13 @@ function buildFields(box,prefix){
 }
 function applyFieldVisibility(prefix,plist){
  for(const p of PARAMS){if(!p.only)continue;const w=$(`#${prefix}_wrap_${p.key}`);if(!w)continue;
-  const show=p.only==='pocket'?plist.some(q=>q.side==='pocket'):p.only==='ramp'?plist.some(q=>q.side!=='pocket'&&q.tabShape==='ramp'):plist.some(q=>q.side!=='pocket');
+  const np=q=>q.side!=='pocket',bd=isBand;   // bd: Außen-/Innenkontur mit Breite (Band)
+  const show=p.only==='pocket'?plist.some(q=>q.side==='pocket'):p.only==='band'?plist.some(q=>q.side==='pocket'||bd(q)):p.only==='width'?plist.some(np):p.only==='ramp'?plist.some(q=>np(q)&&q.tabShape==='ramp'):plist.some(np);
   w.style.display=show?'':'none';}
 }
 buildFields($('#defaultsFields'),'d');buildFields($('#elemFields'),'e');
 function readField(el,p){if(p.type==='select')return el.value||null;if(el.value.trim()==='')return null;const n=Number(el.value);return Number.isFinite(n)&&(p.min==null||n>=p.min)&&(p.max==null||n<=p.max)?(p.int?Math.round(n):n):null;}
-function setDefaultsUI(){for(const p of PARAMS)$('#d_'+p.key).value=String(defaults[p.key]);applyFieldVisibility('d',[defaults]);}
+function setDefaultsUI(){for(const p of PARAMS)$('#d_'+p.key).value=String(p.key==='width'?effWidth(defaults):defaults[p.key]);$('#d_width').min=defaults.cutterDia;applyFieldVisibility('d',[defaults]);}
 function refreshColor(o){if(o.material?.color)o.material.color.set(selectedLines.has(o)?SELECTED:(o.userData.params?ASSIGNED:PLAIN));}
 let camTimer=null,lastCamError=null;
 let tabHandles=[];
@@ -920,7 +929,7 @@ let elementOrder=[];const listRows=new Map();let lastRowClicked=null,dragEls=nul
 function defName(o){const ty=o.userData.dxfType==='JOINED'?tr('type.joined'):(o.userData.dxfType||tr('type.element'));return `${ty} ${o.userData.entityIndex+1}${o.userData.joinedCount>1?` (${tr('name.parts',{n:o.userData.joinedCount})})`:''}`;}
 function elName(o){return o.userData.name||defName(o);}
 function elSummary(o){const p=o.userData.params;if(!p)return tr('legend.nocam');
- return tr('sum.line',{side:sideLabel(p.side),dir:p.direction==='cw'?'CW':'CCW',dia:p.cutterDia,depth:p.finalDepth})+(p.side!=='pocket'&&p.tabCount>0?tr('sum.tabs',{n:p.tabCount})+(p.tabShape==='ramp'?tr('sum.ramp'):'')+(p.tabPositions?tr('sum.manual'):''):'');}
+ return tr('sum.line',{side:sideLabel(p.side),dir:p.direction==='cw'?'CW':'CCW',dia:p.cutterDia,depth:p.finalDepth})+(isBand(p)?tr('sum.width',{w:effWidth(p)}):'')+(p.side!=='pocket'&&p.tabCount>0?tr('sum.tabs',{n:p.tabCount})+(p.tabShape==='ramp'?tr('sum.ramp'):'')+(p.tabPositions?tr('sum.manual'):''):'');}
 const listEl=$('#elemList');
 function clearDropMarks(){listEl.querySelectorAll('.drop-before,.drop-after').forEach(r=>r.classList.remove('drop-before','drop-after'));}
 function renderElementList(){
@@ -1000,19 +1009,21 @@ function refreshParamPanel(){
  $('#assignDefaults').textContent=asg.length===sel.length?tr('elem.reset'):tr('elem.assign');
  $('#unassign').disabled=!asg.length;
  if(!asg.length)return;
- for(const p of PARAMS){const el=$('#e_'+p.key);const vals=new Set(asg.map(o=>o.userData.params[p.key]??defaults[p.key]));
+ for(const p of PARAMS){const el=$('#e_'+p.key);const vals=new Set(asg.map(o=>p.key==='width'?effWidth({...defaults,...o.userData.params}):(o.userData.params[p.key]??defaults[p.key])));
   el.value=vals.size===1?String([...vals][0]):'';el.placeholder=vals.size>1?tr('opt.mixed'):'';}
+ $('#e_width').min=Math.min(...asg.map(o=>o.userData.params.cutterDia??defaults.cutterDia));
  applyFieldVisibility('e',asg.map(o=>o.userData.params));
 }
 function afterAssignmentChange(){suppressListScroll=true;try{for(const o of selectedLines)refreshColor(o);renderElementList();invalidateCam();updateSelectionStatus();}finally{suppressListScroll=false;}}
 for(const p of PARAMS){
  $('#d_'+p.key).addEventListener('change',()=>{let v=readField($('#d_'+p.key),p);if(v===null){setDefaultsUI();return;}
   if(p.key==='stockTop'&&v>safeZ()){v=safeZ();showError(tr('msg.clamp',{v}),tr('toast.note'),'warn');}
+  if(p.key==='width'&&v<=defaults.cutterDia+1e-9)v=0;
   defaults[p.key]=v;setDefaultsUI();});
  $('#e_'+p.key).addEventListener('change',()=>{let v=readField($('#e_'+p.key),p);const targets=[...selectedLines].filter(o=>o.userData.params);
   if(v===null||!targets.length){refreshParamPanel();return;}
   if(p.key==='stockTop'&&v>safeZ()){v=safeZ();showError(tr('msg.clamp',{v}),tr('toast.note'),'warn');}
-  for(const o of targets)o.userData.params[p.key]=v;
+  for(const o of targets)o.userData.params[p.key]=(p.key==='width'&&v<=(o.userData.params.cutterDia??defaults.cutterDia)+1e-9)?0:v;
   if(p.key==='tabCount')for(const o of targets)delete o.userData.params.tabPositions;   // neue Anzahl = wieder automatisch verteilen
   afterAssignmentChange();});
 }
@@ -1381,11 +1392,28 @@ function insideLoops(pts,r){
  const {SC,first}=insetRegion(pts,r,'inside');const ccw=area2(pts.slice(0,-1))>0;
  return first.map(poly=>{const ring=poly.map(q=>({x:q.X/SC,y:q.Y/SC}));if(!ccw)ring.reverse();ring.push({x:ring[0].x,y:ring[0].y});return {pts:ring,linked:false};});
 }
-function pocketLoops(pts,r,step,islandCands){
- const {C,SC,first,off}=insetRegion(pts,r,'pocket',islandCands);
+function pocketLoops(pts,r,step,islandCands,nMax,what){   // nMax/what nur für Innenkontur mit Breite (Anzahl weiterer Versatzbahnen)
+ const band=nMax!=null;
+ const {C,SC,first,off}=insetRegion(pts,r,what||'pocket',islandCands);
  const levels=[first];
- for(let k=1;k<2000;k++){const q=off(-(r+k*step));if(!q.length){const h=off(-(r+(k-1)*step+step/2));if(h.length)levels.push(h);break;}levels.push(q);}
- const inRegion=p=>first.reduce((n,poly)=>n+(C.Clipper.PointInPolygon({X:Math.round(p.x*SC),Y:Math.round(p.y*SC)},poly)!==0?1:0),0)%2===1;   // gerade/ungerade: Inseln sind Löcher
+ for(let k=1;k<(band?nMax+1:2000);k++){const q=off(-(r+k*step));if(!q.length){const h=off(-(r+(k-1)*step+step/2));if(h.length)levels.push(h);break;}levels.push(q);}
+ const cnt=(ps,p)=>ps.reduce((n,poly)=>n+(C.Clipper.PointInPolygon({X:Math.round(p.x*SC),Y:Math.round(p.y*SC)},poly)!==0?1:0),0);
+ const inRegion=band&&levels.length>1?p=>(cnt(first,p)+cnt(levels.at(-1),p))%2===1:p=>cnt(first,p)%2===1;   // gerade/ungerade: Inseln sind Löcher; bei Breite zählt nur das Band
+ return ringLoops(C,SC,levels,step,inRegion);
+}
+// Außenkontur mit Breite: Versatzbahnen von der Kontur nach außen (Fräserrand bei Bahn 0 an der Linie, bei der letzten Bahn bei "Breite")
+function outsideBandLoops(pts,r,step,nMax){
+ const C=ClipperLib;if(!C)throw new Error(tr('cam.err.clipper'));
+ const SC=1e4,base=pts.slice(0,-1).map(p=>({X:Math.round(p.x*SC),Y:Math.round(p.y*SC)}));
+ if(!C.Clipper.Orientation(base))base.reverse();
+ const off=d=>{const co=new C.ClipperOffset(2,0.005*SC);co.AddPaths([base],C.JoinType.jtRound,C.EndType.etClosedPolygon);const sol=new C.Paths();co.Execute(sol,d*SC);return sol.filter(q=>q.length>=3);};
+ const levels=[];for(let k=0;k<=nMax;k++){const q=off(r+k*step);if(!q.length)break;levels.push(q);}
+ if(!levels.length)throw new Error(tr('cam.err.outside.ambig',{dia:+(2*r).toFixed(3)}));
+ const cnt=(ps,p)=>ps.reduce((n,poly)=>n+(C.Clipper.PointInPolygon({X:Math.round(p.x*SC),Y:Math.round(p.y*SC)},poly)!==0?1:0),0);
+ const inRegion=p=>(cnt(levels[0],p)+(levels.length>1?cnt(levels.at(-1),p):0))%2===1;   // nur das Band zwischen erster und letzter Bahn
+ return ringLoops(C,SC,levels,step,inRegion);
+}
+function ringLoops(C,SC,levels,step,inRegion){
  // Jede Versatzbahn ist ein Knoten. Elternknoten = nächstgelegene Bahn der nächstäußeren Ebene.
  // Nach innen teilt sich ein Gebiet in Äste (z.B. zwei Schenkel eines N), die erst weiter außen zusammenwachsen.
  const nodes=levels.map((lv,k)=>lv.map(poly=>{const ring=poly.map(q=>({x:q.X/SC,y:q.Y/SC}));return {k,ring,closed:ring.concat([ring[0]]),children:[]};}));
@@ -1414,7 +1442,7 @@ function pocketLoops(pts,r,step,islandCands){
   let ring=nd.ring.slice();let linked=false;
   if(prevEnd){let bi=0,bd=Infinity;ring.forEach((p,i)=>{const d=Math.hypot(p.x-prevEnd.x,p.y-prevEnd.y);if(d<bd){bd=d;bi=i;}});ring=ring.slice(bi).concat(ring.slice(0,bi));
    linked=bd<=2*step+1e-6&&[.25,.5,.75].every(t=>inRegion({x:prevEnd.x+(ring[0].x-prevEnd.x)*t,y:prevEnd.y+(ring[0].y-prevEnd.y)*t}));}
-  ring.push({x:ring[0].x,y:ring[0].y});loops.push({pts:ring,linked});prevEnd=ring.at(-1);
+  ring.push({x:ring[0].x,y:ring[0].y});loops.push({pts:ring,linked,lvl:nd.k});prevEnd=ring.at(-1);
  }
  return loops;
 }
@@ -1550,6 +1578,23 @@ function loopMoves(lp,z,zTabTop){
  }
  return out;
 }
+// Holding Tabs bei Kontur mit Breite: Die Positionen werden auf der Konturbahn (Ebene 0) bestimmt (automatisch oder manuell)
+// und auf jeder weiteren Bahn des Bandes orthogonal dazu übernommen, sodass die Stege das ganze Band überbrücken.
+function bandTabs(loops,p,closed,bS){
+ const cumOf=pts=>{const c=[0];for(let i=1;i<pts.length;i++)c.push(c[i-1]+Math.hypot(pts[i].x-pts[i-1].x,pts[i].y-pts[i-1].y));return c;};
+ let ci=-1,best=-1;loops.forEach((l,i)=>{if(l.lvl===0){const L=cumOf(l.pts).at(-1);if(L>best){best=L;ci=i;}}});
+ if(ci<0)ci=loops.length-1;
+ const cr={...addTabsToLoop(loops[ci],p,closed),linked:false},R=cr.tabCenters.map(c=>({x:c.x,y:c.y}));
+ const out=loops.map((l,i)=>{
+  if(i===ci)return cr;
+  const o=(l.lvl||0)*bS,tol=Math.max(.05,.05*o),cum=cumOf(l.pts);
+  const sub=R.filter(q=>pathProject(l.pts,cum,q).d<=o+tol);   // nur Tabs, deren Normale diese Bahn erreicht (nicht bei fremden Ästen/Löchern)
+  if(!sub.length)return {...l,linked:false};
+  try{return {...addTabsToLoop(l,{...p,tabCount:sub.length,tabPositions:sub},closed),linked:false};}
+  catch{return {...l,linked:false,tabSeg:new Array(l.pts.length-1).fill(true)};}   // Bahn komplett im Tab-Bereich
+ });
+ return {loops:out,tabLoop:cr};
+}
 function buildContours(){
  if(!loadedObject)throw new Error(tr('err.loadfirst'));
  const sz=safeZ(),assigned=elementOrder.filter(o=>o.userData.params);
@@ -1572,13 +1617,20 @@ function buildContours(){
  const getIslandCands=()=>islandCands||(islandCands=chainSegments(elementOrder.filter(o=>o.userData.params?.side!=='pocket').map(o=>({pts:linePoints(o),id:o.userData.entityIndex,closed:!!o.userData.closed})).filter(s=>s.pts.length>=2)).filter(c=>c.closed&&c.pts.length>=4));
  for(const g of groups.values()){const p=g.params,r=p.cutterDia/2;
   for(const ch of chainSegments(g.segs)){
-   const ids=ch.ids.slice().sort((a,b)=>rank.get(a)-rank.get(b));let loops;
+   const ids=ch.ids.slice().sort((a,b)=>rank.get(a)-rank.get(b));let loops,tabLoop=null;const bw=p.side!=='pocket'?effWidth(p):0;   // bw: Breite des gefrästen Bandes ab Kontur (mindestens Fräserdurchmesser)
    try{
     if(p.side==='pocket'){
      if(!ch.closed)throw new Error(tr('cam.err.pocketclosed'));
      loops=pocketLoops(ch.pts,r,Math.max(.01,p.cutterDia*(p.stepover||40)/100),p.islands!=='no'?getIslandCands():null).map(l=>orientLoop(l,p.direction));
     }else{
-     if(p.side==='inside'&&ch.closed&&ClipperLib){
+     const span=bw-p.cutterDia,band=span>1e-9;   // Breite = Fräserdurchmesser entspricht der normalen Konturbahn
+     const bStep=Math.max(.01,p.cutterDia*(p.stepover||40)/100),bN=band?Math.ceil(span/bStep-1e-9):0,bS=bN?span/bN:0;   // gleichmäßige Zustellung, letzte Bahn genau bei "Breite"
+     if(band&&ch.closed){
+      if(!ClipperLib)throw new Error(tr('cam.err.clipper'));
+      loops=p.side==='inside'?pocketLoops(ch.pts,r,bS,null,bN,'inside'):outsideBandLoops(ch.pts,r,bS,bN);
+     }else if(band){   // offene Kontur: parallele Bahnen auf der Außen-/Innenseite, von außen zur Linie hin
+      loops=[];for(let k=bN;k>=0;k--)loops.push({pts:offsetPolyline(ch.pts,(p.side==='inside'?1:-1)*(r+k*bS),false),linked:false,lvl:k});
+     }else if(p.side==='inside'&&ch.closed&&ClipperLib){
       loops=insideLoops(ch.pts,r);
      }else{
       let pts;
@@ -1594,11 +1646,11 @@ function buildContours(){
       loops=[{pts,linked:false}];
      }
      if(ch.closed)loops=loops.map(l=>orientLoop(l,p.direction));
-     if((p.tabCount||0)>0)loops=loops.map(l=>addTabsToLoop(l,p,ch.closed));
+     if((p.tabCount||0)>0){if(band){const bt=bandTabs(loops,p,ch.closed,bS);loops=bt.loops;tabLoop=bt.tabLoop;}else loops=loops.map(l=>addTabsToLoop(l,p,ch.closed));}
     }
    }catch(e){throw new Error(`${ids.map(nm).join(', ')}: ${e.message}`);}
    const tabs=p.side!=='pocket'&&(p.tabCount||0)>0;
-   paths.push({loops,side:p.side,closed:ch.closed,entityIndices:ids,names:ids.map(i=>elName(objBy.get(i))),rank:Math.min(...ids.map(i=>rank.get(i))),params:p,
+   paths.push({loops,tabLoop,side:p.side,closed:ch.closed,entityIndices:ids,names:ids.map(i=>elName(objBy.get(i))),rank:Math.min(...ids.map(i=>rank.get(i))),params:p,
     levels:zLevels(p.stockTop,-p.finalDepth,p.stepDepth),zTabTop:tabs?-p.finalDepth+p.tabHeight:null,tabCount:tabs?Math.round(p.tabCount):0});
   }}
  if(!paths.length)throw new Error(tr('cam.err.nousable'));
@@ -1620,7 +1672,7 @@ function buildProgram(paths,sz){
   if(lastDia===null)raw(`(Tool: cutter dia ${p.cutterDia} mm)`);
   else if(Math.abs(p.cutterDia-lastDia)>1e-9){mv(0,{z:sz});P.push({raw:['M5',`M0 (Tool change: cutter dia ${p.cutterDia} mm)`],pause:{dia:p.cutterDia}});spin();}
   lastDia=p.cutterDia;
-  raw(`(Contour ${pi+1}: ${gtxt(path.names.join(', '))}, ${sideName[p.side]||p.side}${path.closed?`, ${p.direction==='cw'?'CW':'CCW'}`:''}, stock top Z${Number(p.stockTop).toFixed(3)}${path.tabCount?`, ${path.tabCount} holding tabs ${p.tabShape==='ramp'?'(ramp) ':''}W${Number(p.tabWidth).toFixed(3)} H${Number(p.tabHeight).toFixed(3)}`:''})`);
+  raw(`(Contour ${pi+1}: ${gtxt(path.names.join(', '))}, ${sideName[p.side]||p.side}${isBand(p)?`, band width ${effWidth(p).toFixed(3)}`:''}${path.closed?`, ${p.direction==='cw'?'CW':'CCW'}`:''}, stock top Z${Number(p.stockTop).toFixed(3)}${path.tabCount?`, ${path.tabCount} holding tabs ${p.tabShape==='ramp'?'(ramp) ':''}W${Number(p.tabWidth).toFixed(3)} H${Number(p.tabHeight).toFixed(3)}`:''})`);
   let cur=null;const startZ=new Map(),nL=path.loops.length;
   path.levels.forEach((z,k)=>{
    // jede zweite Ebene in umgekehrter Reihenfolge, damit der Fräser dort weitermacht, wo er aufgehört hat
@@ -1686,7 +1738,7 @@ function generateCam(){
  }
  // Griffe zum Verschieben der Holding Tabs (nur bei Pfaden mit genau einer Schleife)
  {const ext=modelBounds?modelBounds.getSize(new THREE.Vector3()):null,hr=Math.max(.8,(ext?Math.max(ext.x,ext.y,ext.z):100)/110),hg=new THREE.SphereGeometry(hr,16,12);
-  paths.forEach((p,pi)=>{if(!p.tabCount||p.loops.length!==1||!p.loops[0].tabCenters)return;const lp=p.loops[0];
+  paths.forEach((p,pi)=>{const lp=p.tabLoop||(p.loops.length===1?p.loops[0]:null);if(!p.tabCount||!lp||!lp.tabCenters)return;
    lp.tabCenters.forEach((c,ci)=>{const m=new THREE.Mesh(hg,new THREE.MeshBasicMaterial({color:'#ffb020'}));m.position.set(c.x,c.y,p.params.stockTop);m.renderOrder=15;
     m.userData={pathIdx:pi,ci,lp,z:p.params.stockTop,entityIndices:p.entityIndices};camGroup.add(m);tabHandles.push(m);});});}
  camGcode=makeGcode(paths,sz);
