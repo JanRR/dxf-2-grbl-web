@@ -80,9 +80,19 @@ Was das für dich heißt:
 - Robuster Versatz mit [Clipper](https://sourceforge.net/projects/jsclipper/) für Innenkonturen und Taschen
 - **Fehlermeldung, wenn der Fräser zu breit ist** – auch bei Engstellen, die der Fräser nicht erreichen könnte
 - **Kontur mit Breite:** Bei Außen-/Innenkonturen wird ein Band der angegebenen Breite von der Konturlinie nach außen bzw. innen gefräst. Konzentrische Bahnen (seitliche Zustellung einstellbar, gleichmäßig verteilt) laufen von außen zur Kontur hin; die Konturbahn kommt zuletzt für eine saubere Kante, die äußerste Bahn endet genau bei der angegebenen Breite. Die Breite muss mindestens dem Fräserdurchmesser entsprechen (gleich = normale Konturbahn). Offene Linien erhalten parallele Bahnen auf ihrer Innen-/Außenseite. Ist ein Innenband breiter als die Form, wird wie bei einer Tasche die ganze Fläche ausgeräumt. Holding Tabs werden unterstützt (siehe unten)
-- **Taschen:** konzentrische Bahnen von innen nach außen, einstellbare seitliche Zustellung, auf Tiefe verbunden, wo es sicher ist
+- **Taschen** mit wählbarer Strategie:
+  - **Konturparallel** (Offset), von innen nach außen oder von außen nach innen; einstellbare seitliche Zustellung, auf Tiefe verbunden, wo es sicher ist
+  - **Linienförmig** mit einstellbarem Winkel: bidirektional (Zig-Zag) oder einseitig im Gleich- bzw. Gegenlauf
+  - **Spiralförmig:** durchgehende Spirale ohne scharfe Richtungswechsel (fällt bei ungeeigneter Form, z. B. mit Inseln, auf konturparallel zurück)
+  - **Trochoidal / Wirbelfräsen** mit einstellbarem Kreisdurchmesser
+  - **Hybrid:** Linien im Kern, Konturbahnen am Rand
+- **Eintauchen in Taschen:** Helix, Linear-/Zickzack-Rampe (Winkel einstellbar), senkrecht, Vorbohr-Position (X/Y) oder seitliches Einfahren. Ist die gewählte Methode an der Stelle nicht möglich, wird automatisch auf Helix, Rampe und zuletzt senkrecht ausgewichen (Kommentar im G-Code)
+- **Taschentypen:** geschlossene Tasche, **offene Tasche** (eine offene Kontur im DXF; die Öffnung wird automatisch geschlossen und das Werkzeug fährt von außen aus der Luft ein), Tasche mit Inseln, **Sackloch oder Durchgangstasche** (Bodenaufmaß und Boden-Schlichtgang nur beim Sackloch)
+- **Aufmaß und Schlichten:** seitliches Aufmaß und Bodenaufmaß; ein Kontur-Schlichtgang an der Wand läuft automatisch, wo er nötig ist (Aufmaß, nicht konturparallele Strategie, Eckenverrundung), und ist abschaltbar
+- **Eckenbehandlung:** Bahnecken verrunden (Radius in % des Fräser-Ø), Vorschub in Innenecken reduzieren oder beides
+- **Restmaterial:** Mit dem Ø eines vorherigen, größeren Fräsers werden nur die Bereiche bearbeitet, die dieser nicht erreicht hat
 - **Inseln in Taschen:** Geschlossene Konturen, die komplett innerhalb einer Tasche liegen (auch solche ohne Fräsparameter), bleiben automatisch stehen; der Fräser hält seinen Radius Abstand. Pro Tasche abschaltbar („Inseln stehen lassen“); weitere Taschen innerhalb einer Tasche gelten als tiefere Taschen, nicht als Inseln
-- Mehrere Durchgänge mit direktem Zustellen auf die nächste Tiefe (kein unnötiger Rückzug bei geschlossenen Konturen; Taschen wechseln pro Ebene die Bahnreihenfolge)
+- Mehrere Durchgänge mit direktem Zustellen auf die nächste Tiefe (kein unnötiger Rückzug bei geschlossenen Konturen; Taschen tauchen pro Ebene neu ein)
 - Offene Linien: innen = links, außen = rechts der Zeichenrichtung
 - Fräsbahnen werden **bei jeder Änderung automatisch neu berechnet**; per Knopf ein-/ausblendbar
 - Werkzeugwechsel: Der G-Code pausiert (`M0`), wenn sich der Fräserdurchmesser ändert
@@ -164,6 +174,7 @@ Was das für dich heißt:
 - Bahnen werden als viele kurze `G1`-Bewegungen ausgegeben (keine `G2`/`G3`-Bögen), die Dateien können daher groß werden
 - Keine Fräserradiuskorrektur in der Steuerung (`G41`/`G42`) – die Korrektur wird in der App berechnet
 - Elemente mit unterschiedlichen Parametern werden nie zu einer Kontur zusammengefasst
+- Die Taschen-Strategien (Spirale, Trochoidal, Hybrid, Eintauchmethoden, Restmaterial) wurden bisher nur durch Syntaxprüfung abgesichert, nicht an einer echten Maschine: unbedingt im Simulator prüfen. Das seitliche Einfahren funktioniert nur bei offenen Konturen; Gleich-/Gegenlauf gelten für Spindeldrehrichtung M3
 - Nicht jeder DXF-Elementtyp wird unterstützt (siehe oben)
 
 ---

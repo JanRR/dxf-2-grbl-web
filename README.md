@@ -79,9 +79,19 @@ What this means for you:
 - Robust offsetting with [Clipper](https://sourceforge.net/projects/jsclipper/) for inside contours and pockets
 - **Errors if the cutter is too wide** for a contour or pocket – including narrow spots that the cutter could not reach
 - **Contour with width:** for outside/inside contours a band of the given width is milled from the contour line outwards or inwards. Concentric paths (stepover adjustable, evenly distributed) run from the outside towards the contour; the contour pass comes last for a clean edge, and the outermost path ends exactly at the given width. The width must be at least the cutter diameter (equal = normal contour pass). Open lines get parallel paths on their inside/outside. If an inside band is wider than the shape, the whole area is cleared like a pocket. Holding tabs are supported (see below)
-- **Pockets:** concentric paths from the inside out, adjustable stepover, linked at depth where safe
+- **Pockets** with a selectable strategy:
+  - **Contour parallel** (offset), inside-out or outside-in; adjustable stepover, linked at depth where safe
+  - **Linear** at an adjustable angle: bidirectional (zig-zag) or one-way climb / conventional
+  - **Spiral:** continuous spiral without sharp direction changes (falls back to contour parallel if the shape does not allow it, e.g. with islands)
+  - **Trochoidal / adaptive clearing** with an adjustable circle diameter
+  - **Hybrid:** lines in the core, contour passes at the edge
+- **Pocket entry:** helical ramp, linear / zig-zag ramp (adjustable angle), plunge, pre-drill position (X/Y) or side entry. If the chosen method is not possible at a spot, the app falls back to helix, ramp and finally plunge (noted as a comment in the G-code)
+- **Pocket types:** closed pocket, **open pocket** (an open contour in the DXF; the opening is closed automatically and the tool enters from outside, in the air), pocket with islands, **blind or through pocket** (floor stock and floor finishing pass only for blind pockets)
+- **Stock to leave and finishing:** radial and axial (floor) stock; a contour finishing pass along the wall runs automatically where needed (stock left, non-contour-parallel strategy, corner rounding) and can be switched off
+- **Corner handling:** round path corners (radius in % of cutter dia), reduce feed in inside corners, or both
+- **Rest machining:** given the diameter of a previous, larger tool, only the areas it could not reach are machined
 - **Islands in pockets:** closed contours lying completely inside a pocket (also ones without milling parameters) are left standing automatically; the cutter keeps its radius away from them. Switchable per pocket ("Leave islands standing"); other pockets inside a pocket count as deeper pockets, not as islands
-- Multiple passes with direct plunging between depths (no needless retract on closed contours; pockets alternate their path order per level)
+- Multiple passes with direct plunging between depths (no needless retract on closed contours; pockets re-enter on every level)
 - Open lines: inside = left, outside = right of the drawing direction
 - Toolpaths are **recalculated automatically** on every change; show/hide them with one button
 - Tool change handling: the G-code pauses (`M0`) when the cutter diameter changes
@@ -163,6 +173,7 @@ What this means for you:
 - Paths are output as many short `G1` moves (no `G2`/`G3` arcs), so files can be large
 - No cutter-radius compensation in the controller (`G41`/`G42`) – compensation is calculated in the app
 - Elements that have different parameters are never merged into one contour
+- The new pocket strategies (spiral, trochoidal, hybrid, entry methods, rest machining) have so far only been syntax-checked, not run on a real machine: always verify them in the simulator. Side entry only works with open contours; climb/conventional assume spindle direction M3
 - Not every DXF entity type is supported (see above)
 
 ---
